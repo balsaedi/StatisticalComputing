@@ -1,0 +1,7 @@
+reviews
+functions
+group-manipulation
+general-statistics
+simple-linear-regression
+reproducibility-and-report-with-r-markdown
+r-shiny-building-r-packages
