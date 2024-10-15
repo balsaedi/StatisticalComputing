@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-12" />
+<meta name="date" content="2024-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -77,7 +141,13 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Reviews</a></li>
-<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a></li>
+<li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#types-of-functions-in-r"><i class="fa fa-check"></i><b>2.1</b> Types of Functions in R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#user-defined-functions"><i class="fa fa-check"></i><b>2.1.1</b> User-Defined Functions</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="group-manipulation.html"><a href="group-manipulation.html"><i class="fa fa-check"></i><b>3</b> Group Manipulation</a></li>
 <li class="chapter" data-level="4" data-path="general-statistics.html"><a href="general-statistics.html"><i class="fa fa-check"></i><b>4</b> General Statistics</a></li>
 <li class="chapter" data-level="5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Simple Linear Regression</a></li>
@@ -104,7 +174,188 @@
             <section class="normal" id="section-">
 <div id="functions" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Functions<a href="functions.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In programming, <strong>functions</strong> are like little blocks of code that perform a specific task. Think of them as reusable instructions that you can call whenever you need them.</p>
+<p>Here’s why functions are super helpful:</p>
+<ul>
+<li><strong>Avoid repetition:</strong> Instead of writing the same code multiple times, you can just call the function.</li>
+<li><strong>Cleaner code:</strong> Your code becomes easier to read and maintain because functions help organize it better.</li>
+<li><strong>Easier debugging:</strong> When something goes wrong, you only need to check the function itself rather than searching through your entire program.</li>
+</ul>
+<p><strong>Why Use Functions?</strong></p>
+<p>Imagine having to rewrite a set of instructions every time you need them! With functions, you write the code once and reuse it as many times as you want. A good <em>rule of thumb</em> is: if you expect to run a specific set of instructions more than twice, create a function for it.</p>
+<p><strong>What Can Functions Do?</strong></p>
+<p>Functions are flexible and can be used for many different purposes:</p>
+<ul>
+<li><strong>Take input</strong> (called arguments)</li>
+<li><strong>Process the input</strong> based on what the function is meant to do</li>
+<li><strong>Return a result</strong> after completing the task</li>
+</ul>
+<div id="types-of-functions-in-r" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Types of Functions in R<a href="functions.html#types-of-functions-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R, there are three main types of functions:</p>
+<ol style="list-style-type: decimal">
+<li><strong>User-Defined Functions (UDF)</strong> – Custom functions you write for your specific needs.</li>
+<li><strong>Built-in functions</strong> – These come pre-loaded in R. Example: <code>mean()</code></li>
+<li><strong>Package functions</strong> – Functions from external R packages you can install. Example: <code>ggplot()</code> and <code>select()</code> from <code>ggplot2</code> and <code>dplyr</code> respectively.</li>
+</ol>
+<div id="user-defined-functions" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> User-Defined Functions<a href="functions.html#user-defined-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The best way to grasp how functions work in R is by <strong>creating your own!</strong> These are called* <strong>User-Defined Functions (UDFs)</strong>, and they allow you to design custom tasks that fit your needs.</p>
+<p>In R, functions typically follow this format:</p>
+<pre><code>function_name &lt;- function(argument_1, argument_2) { 
+  # Function body (your instructions go here)
+  return(output)
+}</code></pre>
+<p>Let’s break down the key elements:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Function Name:</strong></li>
+</ol>
+<ul>
+<li>This is how you’ll call your function later. When you create a function, you assign it a name and save it as a new object. For example, if you name your function <code>calculate_mean</code>, that’s the name you’ll use every time you want to run the function.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Arguments</strong> (also called Parameters):</li>
+</ol>
+<ul>
+<li>Arguments are placed inside the parentheses. They tell the function what input to expect or how to modify its behavior. Think of them as placeholders for the data you’ll provide later when you run the function.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Function Body:</strong></li>
+</ol>
+<ul>
+<li>Inside the curly brackets <code>{}</code>, you’ll write the instructions that the function will follow to accomplish the task. This is the “heart” of the function.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Return Statement:</strong></li>
+</ol>
+<ul>
+<li>The <code>return()</code> function tells R what result to give you after the function finishes its job. It’s optional, but it helps if you want to store the function’s result in a variable.</li>
+</ul>
+<p>Let’s write a simple function that calculates the mean (average) of two numbers:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="functions.html#cb2-1" tabindex="-1"></a>mean_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(num_1, num_2) {</span>
+<span id="cb2-2"><a href="functions.html#cb2-2" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> (num_1 <span class="sc">+</span> num_2) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb2-3"><a href="functions.html#cb2-3" tabindex="-1"></a>  <span class="fu">return</span>(mean)</span>
+<span id="cb2-4"><a href="functions.html#cb2-4" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>How to Use the Function:</strong></p>
+<p>To find the mean of 10 and 20, simply call the function like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="functions.html#cb3-1" tabindex="-1"></a><span class="fu">mean_two_numbers</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<p>Let’s add a few more simple tasks: writing a function that calculates the difference between two numbers. Why is this important? Well, imagine you have two values and you want to find their difference—that’s exactly what this function will help us do!</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="functions.html#cb5-1" tabindex="-1"></a><span class="co"># Function to calculate the difference between two numbers</span></span>
+<span id="cb5-2"><a href="functions.html#cb5-2" tabindex="-1"></a>calculate_difference <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb5-3"><a href="functions.html#cb5-3" tabindex="-1"></a>  <span class="co"># Subtract the second number (y) from the first number (x)</span></span>
+<span id="cb5-4"><a href="functions.html#cb5-4" tabindex="-1"></a>  difference <span class="ot">&lt;-</span> x <span class="sc">-</span> y</span>
+<span id="cb5-5"><a href="functions.html#cb5-5" tabindex="-1"></a>  <span class="co"># Return the difference result so we can use it later</span></span>
+<span id="cb5-6"><a href="functions.html#cb5-6" tabindex="-1"></a>  <span class="fu">return</span>(difference)</span>
+<span id="cb5-7"><a href="functions.html#cb5-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>You see!:</p>
+<ul>
+<li><code>x</code> and <code>y</code> are our arguments: These are the two numbers we’ll use in our calculation.</li>
+<li>The subtraction happens inside the function: We simply subtract <code>y</code> from <code>x</code> and store the result in difference.
+Finally, we return the difference: This way, we can use the result when we call the function.</li>
+</ul>
+<p>Now, let’s put it to the test! We’ll run the function with different sets of numbers and see what we get:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="functions.html#cb6-1" tabindex="-1"></a><span class="fu">calculate_difference</span>(<span class="dv">10</span>, <span class="dv">5</span>)  <span class="co"># 10 - 5 = 5</span></span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="functions.html#cb8-1" tabindex="-1"></a><span class="fu">calculate_difference</span>(<span class="dv">25</span>, <span class="dv">15</span>) <span class="co"># 25 - 15 = 10</span></span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="functions.html#cb10-1" tabindex="-1"></a><span class="fu">calculate_difference</span>(<span class="dv">50</span>, <span class="dv">30</span>) <span class="co"># 50 - 30 = 20</span></span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<p>Notice how easy it is to calculate the difference between any two numbers by just calling our function? That’s the power of writing your own functions—they make life a lot easier!</p>
+<p>Now, lets make it more interesting! How about a function that greets you by name? We can do the same in R by creating a simple function that takes someone’s name and returns a greeting.</p>
+<p>Here is how we do it:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="functions.html#cb12-1" tabindex="-1"></a><span class="co"># Function to greet a student by their name</span></span>
+<span id="cb12-2"><a href="functions.html#cb12-2" tabindex="-1"></a>greet_student <span class="ot">&lt;-</span> <span class="cf">function</span>(student_name) {</span>
+<span id="cb12-3"><a href="functions.html#cb12-3" tabindex="-1"></a>  <span class="co"># Create a personalized greeting</span></span>
+<span id="cb12-4"><a href="functions.html#cb12-4" tabindex="-1"></a>  greeting <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, student_name, <span class="st">&quot;!&quot;</span>)</span>
+<span id="cb12-5"><a href="functions.html#cb12-5" tabindex="-1"></a>  <span class="co"># Return the greeting so we can use it later</span></span>
+<span id="cb12-6"><a href="functions.html#cb12-6" tabindex="-1"></a>  <span class="fu">return</span>(greeting)</span>
+<span id="cb12-7"><a href="functions.html#cb12-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>Remember!</p>
+<ul>
+<li>We use <code>student_name</code> as the argument: This is where you pass in the name of the student.</li>
+<li>We combine <code>"Hello"</code> with the name: The <code>paste()</code> function(that is an -in-built function which will discuss later in the course) helps us put the pieces together to form a full sentence.</li>
+<li>Return the greeting: The function gives us back a customized message, ready to greet anyone!</li>
+</ul>
+<p>Lets try it out with different names</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="functions.html#cb13-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;John&quot;</span>)    <span class="co"># Hello John!</span></span></code></pre></div>
+<pre><code>## [1] &quot;Hello John !&quot;</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="functions.html#cb15-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;Alice&quot;</span>)   <span class="co"># Hello Alice!</span></span></code></pre></div>
+<pre><code>## [1] &quot;Hello Alice !&quot;</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="functions.html#cb17-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;Michael&quot;</span>) <span class="co"># Hello Michael!</span></span></code></pre></div>
+<pre><code>## [1] &quot;Hello Michael !&quot;</code></pre>
+<p>Remember to try it out with your name!</p>
+<p><span style="color: orange;"><strong>Takeaway:</strong></span></p>
+<p>By writing these two simple functions, you’ve already tackled a lot of important concepts in R! You now know:</p>
+<ol style="list-style-type: decimal">
+<li>How to create a function.</li>
+<li>How to pass arguments (inputs/parameters) to a function.</li>
+<li>How to return a result that you can use later.</li>
+</ol>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>In this exercise, you’ll get hands-on practice creating your own functions in R. Follow the instructions below to write functions that perform specific tasks. Remember to test your functions with different input values!</p>
+<ol style="list-style-type: decimal">
+<li>Create a function called <code>add_numbers</code> that takes two arguments, <code>a</code> and <code>b</code>, and returns their sum.</li>
+<li>Write a function named <code>is_even</code> that takes a single argument, <code>num</code>, and returns <code>"Even"</code> if the number is even, or <code>"Odd"</code> if it’s odd.</li>
+<li>Create a function called <code>find_max</code> that takes three arguments and returns the largest of the three numbers.</li>
+</ol>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<ol style="list-style-type: decimal">
+<li>Create a function called <code>add_numbers</code> that takes two arguments, <code>a</code> and <code>b</code>, and returns their sum.</li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="functions.html#cb19-1" tabindex="-1"></a><span class="co"># Function to calculate the sum of two numbers</span></span>
+<span id="cb19-2"><a href="functions.html#cb19-2" tabindex="-1"></a>sum_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb19-3"><a href="functions.html#cb19-3" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb19-4"><a href="functions.html#cb19-4" tabindex="-1"></a>  <span class="fu">return</span>(sum)</span>
+<span id="cb19-5"><a href="functions.html#cb19-5" tabindex="-1"></a>}</span>
+<span id="cb19-6"><a href="functions.html#cb19-6" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="functions.html#cb19-7" tabindex="-1"></a><span class="co"># Test the function with different values</span></span>
+<span id="cb19-8"><a href="functions.html#cb19-8" tabindex="-1"></a><span class="fu">sum_two_numbers</span>(<span class="dv">5</span>, <span class="dv">10</span>)  <span class="co"># Output: 15</span></span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="functions.html#cb21-1" tabindex="-1"></a><span class="fu">sum_two_numbers</span>(<span class="dv">20</span>, <span class="dv">30</span>)  <span class="co"># Output: 50</span></span></code></pre></div>
+<pre><code>## [1] 50</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="functions.html#cb23-1" tabindex="-1"></a><span class="fu">sum_two_numbers</span>(<span class="dv">100</span>, <span class="dv">200</span>) <span class="co"># Output: 300</span></span></code></pre></div>
+<pre><code>## [1] 300</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Write a function named <code>is_even</code> that takes a single argument, <code>num</code>, and returns <code>"Even"</code> if the number is even, or <code>"Odd"</code> if it’s odd.</li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="functions.html#cb25-1" tabindex="-1"></a><span class="co"># Function to check if a number is even or odd</span></span>
+<span id="cb25-2"><a href="functions.html#cb25-2" tabindex="-1"></a>check_even_odd <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
+<span id="cb25-3"><a href="functions.html#cb25-3" tabindex="-1"></a>  <span class="cf">if</span> (number <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb25-4"><a href="functions.html#cb25-4" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Even&quot;</span>)</span>
+<span id="cb25-5"><a href="functions.html#cb25-5" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb25-6"><a href="functions.html#cb25-6" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Odd&quot;</span>)</span>
+<span id="cb25-7"><a href="functions.html#cb25-7" tabindex="-1"></a>  }</span>
+<span id="cb25-8"><a href="functions.html#cb25-8" tabindex="-1"></a>}</span>
+<span id="cb25-9"><a href="functions.html#cb25-9" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="functions.html#cb25-10" tabindex="-1"></a><span class="co"># Test the function with different numbers</span></span>
+<span id="cb25-11"><a href="functions.html#cb25-11" tabindex="-1"></a><span class="fu">check_even_odd</span>(<span class="dv">4</span>)  <span class="co"># Output: &quot;Even&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Even&quot;</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="functions.html#cb27-1" tabindex="-1"></a><span class="fu">check_even_odd</span>(<span class="dv">7</span>)  <span class="co"># Output: &quot;Odd&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Odd&quot;</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="functions.html#cb29-1" tabindex="-1"></a><span class="fu">check_even_odd</span>(<span class="dv">10</span>) <span class="co"># Output: &quot;Even&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Even&quot;</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Create a function called <code>find_max</code> that takes three arguments and returns the largest of the three numbers.</li>
+</ol>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="functions.html#cb31-1" tabindex="-1"></a><span class="co"># Function to find the maximum of three numbers</span></span>
+<span id="cb31-2"><a href="functions.html#cb31-2" tabindex="-1"></a>max_of_three <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b, c) {</span>
+<span id="cb31-3"><a href="functions.html#cb31-3" tabindex="-1"></a>  max_value <span class="ot">&lt;-</span> <span class="fu">max</span>(a, b, c)  <span class="co"># Use the built-in max function</span></span>
+<span id="cb31-4"><a href="functions.html#cb31-4" tabindex="-1"></a>  <span class="fu">return</span>(max_value)           <span class="co"># Return the maximum value</span></span>
+<span id="cb31-5"><a href="functions.html#cb31-5" tabindex="-1"></a>}</span>
+<span id="cb31-6"><a href="functions.html#cb31-6" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="functions.html#cb31-7" tabindex="-1"></a><span class="co"># Test the function with different values</span></span>
+<span id="cb31-8"><a href="functions.html#cb31-8" tabindex="-1"></a><span class="fu">max_of_three</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>)    <span class="co"># Output: 20</span></span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="functions.html#cb33-1" tabindex="-1"></a><span class="fu">max_of_three</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)      <span class="co"># Output: 3</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="functions.html#cb35-1" tabindex="-1"></a><span class="fu">max_of_three</span>(<span class="dv">7</span>, <span class="dv">15</span>, <span class="dv">12</span>)    <span class="co"># Output: 15</span></span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 
+</div>
+</div>
 </div>
             </section>
 

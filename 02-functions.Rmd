@@ -1,1 +1,191 @@
 # Functions
+In programming, **functions** are like little blocks of code that perform a specific task. Think of them as reusable instructions that you can call whenever you need them.
+
+Here’s why functions are super helpful:
+
+- **Avoid repetition:** Instead of writing the same code multiple times, you can just call the function.
+- **Cleaner code:** Your code becomes easier to read and maintain because functions help organize it better.
+- **Easier debugging:** When something goes wrong, you only need to check the function itself rather than searching through your entire program.
+
+**Why Use Functions?**
+
+Imagine having to rewrite a set of instructions every time you need them! With functions, you write the code once and reuse it as many times as you want. A good *rule of thumb* is: if you expect to run a specific set of instructions more than twice, create a function for it.
+
+**What Can Functions Do?**
+
+Functions are flexible and can be used for many different purposes:
+
+- **Take input** (called arguments)
+- **Process the input** based on what the function is meant to do
+- **Return a result** after completing the task
+
+## Types of Functions in R
+In R, there are three main types of functions:
+
+1. **User-Defined Functions (UDF)** – Custom functions you write for your specific needs.
+2. **Built-in functions** – These come pre-loaded in R. Example: `mean()`
+3. **Package functions** – Functions from external R packages you can install. Example: `ggplot()` and `select()` from `ggplot2` and `dplyr` respectively.
+
+### User-Defined Functions
+The best way to grasp how functions work in R is by **creating your own!** These are called* **User-Defined Functions (UDFs)**, and they allow you to design custom tasks that fit your needs.
+
+In R, functions typically follow this format:
+```
+function_name <- function(argument_1, argument_2) { 
+  # Function body (your instructions go here)
+  return(output)
+}
+```
+
+Let’s break down the key elements:
+
+1. **Function Name:**
+
+- This is how you’ll call your function later. When you create a function, you assign it a name and save it as a new object. For example, if you name your function `calculate_mean`, that’s the name you’ll use every time you want to run the function.
+
+2. **Arguments** (also called Parameters):
+
+- Arguments are placed inside the parentheses. They tell the function what input to expect or how to modify its behavior. Think of them as placeholders for the data you'll provide later when you run the function.
+
+3. **Function Body:**
+
+- Inside the curly brackets `{}`, you’ll write the instructions that the function will follow to accomplish the task. This is the "heart" of the function.
+
+4. **Return Statement:**
+
+- The `return()` function tells R what result to give you after the function finishes its job. It’s optional, but it helps if you want to store the function’s result in a variable.
+
+Let’s write a simple function that calculates the mean (average) of two numbers:
+```{r}
+mean_two_numbers <- function(num_1, num_2) {
+  mean <- (num_1 + num_2) / 2
+  return(mean)
+}
+```
+
+**How to Use the Function:**
+
+To find the mean of 10 and 20, simply call the function like this:
+```{r}
+mean_two_numbers(10, 20)
+```
+
+Let's add a few more simple tasks: writing a function that calculates the difference between two numbers. Why is this important? Well, imagine you have two values and you want to find their difference—that's exactly what this function will help us do!
+```{r}
+# Function to calculate the difference between two numbers
+calculate_difference <- function(x, y) {
+  # Subtract the second number (y) from the first number (x)
+  difference <- x - y
+  # Return the difference result so we can use it later
+  return(difference)
+}
+```
+
+You see!:
+
+- `x` and `y` are our arguments: These are the two numbers we’ll use in our calculation.
+- The subtraction happens inside the function: We simply subtract `y` from `x` and store the result in difference.
+Finally, we return the difference: This way, we can use the result when we call the function.
+
+Now, let's put it to the test! We’ll run the function with different sets of numbers and see what we get:
+```{r}
+calculate_difference(10, 5)  # 10 - 5 = 5
+calculate_difference(25, 15) # 25 - 15 = 10
+calculate_difference(50, 30) # 50 - 30 = 20
+```
+
+Notice how easy it is to calculate the difference between any two numbers by just calling our function? That's the power of writing your own functions—they make life a lot easier!
+
+Now, lets make it more interesting! How about a function that greets you by name? We can do the same in R by creating a simple function that takes someone’s name and returns a greeting. 
+
+Here is how we do it: 
+```{r}
+# Function to greet a student by their name
+greet_student <- function(student_name) {
+  # Create a personalized greeting
+  greeting <- paste("Hello", student_name, "!")
+  # Return the greeting so we can use it later
+  return(greeting)
+}
+```
+
+Remember!
+
+- We use `student_name` as the argument: This is where you pass in the name of the student.
+- We combine `"Hello"` with the name: The `paste()` function(that is an -in-built function which will discuss later in the course) helps us put the pieces together to form a full sentence.
+- Return the greeting: The function gives us back a customized message, ready to greet anyone!
+
+Lets try it out with different names
+```{r}
+greet_student("John")    # Hello John!
+greet_student("Alice")   # Hello Alice!
+greet_student("Michael") # Hello Michael!
+```
+
+Remember to try it out with your name! 
+
+<span style="color: orange;">**Takeaway:**</span> 
+
+By writing these two simple functions, you’ve already tackled a lot of important concepts in R! You now know:
+
+1. How to create a function.
+2. How to pass arguments (inputs/parameters) to a function.
+3. How to return a result that you can use later.
+
+<span style="color: green;">**Practical Exercise**</span> 
+
+In this exercise, you’ll get hands-on practice creating your own functions in R. Follow the instructions below to write functions that perform specific tasks. Remember to test your functions with different input values!
+
+1. Create a function called `add_numbers` that takes two arguments, `a` and `b`, and returns their sum.
+2. Write a function named `is_even` that takes a single argument, `num`, and returns `"Even"` if the number is even, or `"Odd"` if it’s odd.
+3. Create a function called `find_max` that takes three arguments and returns the largest of the three numbers.
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+1. Create a function called `add_numbers` that takes two arguments, `a` and `b`, and returns their sum.
+```{r}
+# Function to calculate the sum of two numbers
+sum_two_numbers <- function(x, y) {
+  sum <- x + y
+  return(sum)
+}
+
+# Test the function with different values
+sum_two_numbers(5, 10)  # Output: 15
+sum_two_numbers(20, 30)  # Output: 50
+sum_two_numbers(100, 200) # Output: 300
+```
+
+2. Write a function named `is_even` that takes a single argument, `num`, and returns `"Even"` if the number is even, or `"Odd"` if it’s odd.
+```{r}
+# Function to check if a number is even or odd
+check_even_odd <- function(number) {
+  if (number %% 2 == 0) {
+    return("Even")
+  } else {
+    return("Odd")
+  }
+}
+
+# Test the function with different numbers
+check_even_odd(4)  # Output: "Even"
+check_even_odd(7)  # Output: "Odd"
+check_even_odd(10) # Output: "Even"
+```
+
+3. Create a function called `find_max` that takes three arguments and returns the largest of the three numbers.
+```{r}
+# Function to find the maximum of three numbers
+max_of_three <- function(a, b, c) {
+  max_value <- max(a, b, c)  # Use the built-in max function
+  return(max_value)           # Return the maximum value
+}
+
+# Test the function with different values
+max_of_three(10, 20, 5)    # Output: 20
+max_of_three(3, 1, 2)      # Output: 3
+max_of_three(7, 15, 12)    # Output: 15
+```
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
