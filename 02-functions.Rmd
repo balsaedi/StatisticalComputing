@@ -189,3 +189,91 @@ max_of_three(7, 15, 12)    # Output: 15
 ```
 
 <span style="color: brown;">**________________________________________________________________________________**</span>
+
+### Built-in Fuctions
+
+We have learned how to create our own user-defined functions (UDFs) to perform specific tasks. Now, let's dive deeper into R's capabilities by exploring its built-in functions. These handy tools are readily available for you to use anytime, making your coding experience even smoother.
+
+R is packed with a treasure trove of built-in functions that allow you to perform a variety of tasks with just a few simple commands. Whether you're crunching numbers or analyzing data, these functions are your best friends.
+
+Here’s a sneak peek at some of the most useful built-in functions in R:
+
+- `print()`: This function displays an R object right on your console. It's like saying, "Hey, look at this!"
+```{r}
+print("Hello Mum")
+```
+- `min()` and `max()`: Need to find the smallest or largest number in a bunch? These functions will do just that for a numeric vector.
+
+- `sum()`: Want to add up a series of numbers? Use `sum()` to get the total of a numeric vector.
+- `mean()`: This function calculates the average of your numbers. Perfect for when you need to find the middle ground!
+- `range()`: Curious about the minimum and maximum values of your numeric vector? range() has you covered.
+- `str()`: Want to understand the structure of an R object? `str()` will give you a clear picture of what’s inside.
+- `ncol()`: If you're working with matrices or data frames, this function tells you how many columns you have.
+- `length()`: This one returns the number of items in an R object, whether it’s a vector, a list, or a matrix.
+
+Here’s a quick example to show you how easy it is to use these functions with a vector of numbers:
+```{r}
+v <- c(1, 3, 0.2, 1.5, 1.7)  # Create a vector
+
+print(v) # Display the vector
+
+sum(v) # Calculate the total sum
+
+mean(v) # Find the average
+
+length(v) # Get the number of elements
+```
+
+As you can see, working with R's built-in functions is straightforward and super helpful. Start experimenting with these functions and watch how they can simplify your coding experience!
+
+<span style="color: orange;">**Key Takeaways:**</span> 
+
+By completing this exercise, you've already tackled several important concepts in R! You now know:
+
+1. How to create a vector and use it for calculations.
+2. How to utilize built-in functions like `sum()`, `max()`, `min()`, `mean()`, and `length()`.
+3. How to derive meaningful statistics from data using R's built-in capabilities
+
+R has a wealth of resources on this topic, and as you gain more experience and knowledge, you'll uncover even more advanced built-in functions that can simplify your programming tasks.
+
+<span style="color: green;">**Practical Exercise**</span> 
+
+In this exercise, you are required to create a vector named `numbers` that contains the following values: `4, 8, 15, 16, 23, 42`. After creating the vector, you will use various built-in functions to analyze it based on the instructions below;
+
+i. Use the `sum()` function to calculate the total of the `numbers` vector.
+ii. Use the `max()` function to find the maximum value in the `numbers` vector.
+iii. Use the `min()` function to find the minimum value in the `numbers` vector.
+iv. Use the `mean()` function to calculate the average of the `numbers` vector.
+v. Use the `length()` function to find out how many elements are in your numbers vector.
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+In this exercise, you are required to create a vector named `numbers` that contains the following values: `4, 8, 15, 16, 23, 42`. After creating the vector, you will use various built-in functions to analyze it based on the instructions below;
+```{r}
+# Create a vector 
+numbers <- c(4, 8, 15, 16, 23, 42)
+```
+
+i. Use the `sum()` function to calculate the total of the `numbers` vector.
+```{r}
+sum(numbers)
+```
+ii. Use the `max()` function to find the maximum value in the `numbers` vector.
+```{r}
+max(numbers)
+```
+iii. Use the `min()` function to find the minimum value in the `numbers` vector.
+```{r}
+min(numbers)
+```
+iv. Use the `mean()` function to calculate the average of the `numbers` vector.
+```{r}
+mean(numbers)
+```
+v. Use the `length()` function to find out how many elements are in your numbers vector.
+```{r}
+length(numbers)
+```
+
+<span style="color: brown;">**________________________________________________________________________________**</span>

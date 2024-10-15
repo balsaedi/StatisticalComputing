@@ -2,6 +2,7 @@ reviews
 functions
 types-of-functions-in-r
 user-defined-functions
+built-in-fuctions
 group-manipulation
 general-statistics
 simple-linear-regression
