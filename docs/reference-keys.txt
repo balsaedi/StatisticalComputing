@@ -3,6 +3,7 @@ functions
 types-of-functions-in-r
 user-defined-functions
 built-in-fuctions
+package-functions
 group-manipulation
 general-statistics
 simple-linear-regression

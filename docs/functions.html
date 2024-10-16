@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-15" />
+<meta name="date" content="2024-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,6 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="functions.html"><a href="functions.html#user-defined-functions"><i class="fa fa-check"></i><b>2.1.1</b> User-Defined Functions</a></li>
 <li class="chapter" data-level="2.1.2" data-path="functions.html"><a href="functions.html#built-in-fuctions"><i class="fa fa-check"></i><b>2.1.2</b> Built-in Fuctions</a></li>
+<li class="chapter" data-level="2.1.3" data-path="functions.html"><a href="functions.html#package-functions"><i class="fa fa-check"></i><b>2.1.3</b> Package Functions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="group-manipulation.html"><a href="group-manipulation.html"><i class="fa fa-check"></i><b>3</b> Group Manipulation</a></li>
@@ -286,7 +287,7 @@ Finally, we return the difference: This way, we can use the result when we call 
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="functions.html#cb17-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;Michael&quot;</span>) <span class="co"># Hello Michael!</span></span></code></pre></div>
 <pre><code>## [1] &quot;Hello Michael !&quot;</code></pre>
 <p>Remember to try it out with your name!</p>
-<p><span style="color: orange;"><strong>Takeaway:</strong></span></p>
+<p><span style="color: orange;"><strong>Key Takeaways:</strong></span></p>
 <p>By writing these two simple functions, you’ve already tackled a lot of important concepts in R! You now know:</p>
 <ol style="list-style-type: decimal">
 <li>How to create a function.</li>
@@ -433,6 +434,172 @@ Finally, we return the difference: This way, we can use the result when we call 
 </ol>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="functions.html#cb56-1" tabindex="-1"></a><span class="fu">length</span>(numbers)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
+</div>
+<div id="package-functions" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Package Functions<a href="functions.html#package-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Just like we’ve learned about <strong>User-Defined</strong> and <strong>Built-in</strong> Functions, R also provides a vast number of additional functions through packages. These packages extend R’s capabilities and allow you to perform specific tasks, from data manipulation to machine learning, with ease.</p>
+<p><strong>What are R Package Functions?</strong>
+Packages in R are collections of R functions, data, and compiled code that are stored in a well-defined format. While R comes with a set of built-in functions, packages allow you to go beyond the basic functionality. You can install and load packages based on the task you want to accomplish.</p>
+<p>Think of package functions as tools in a toolbox: not everything is built-in, but by adding specific tools, you can perform new tasks easily.</p>
+<p>Lets explore how to get started using the functions;</p>
+<ul>
+<li><strong>Installing and Loading Packages</strong></li>
+</ul>
+<p>To use functions from a package, you first need to install the package and load it into your R session.</p>
+<pre><code>install.packages(&quot;package_name&quot;)</code></pre>
+<p>Every time you start a new R session if you want to use the functions from that package. Load the package by;</p>
+<pre><code>library(package_name)</code></pre>
+<p>To put this into real-life action, let’s learn about the <code>dplyr</code> package, which is commonly used for data manipulation. It contains many useful functions to work with data frames or tibbles (a modern version of data frames).</p>
+<p>Here’s an example of how to install and load dplyr, and use some of its core functions.</p>
+<ol style="list-style-type: decimal">
+<li>Install the package</li>
+</ol>
+<pre><code>install.packages(&quot;dplyr&quot;)  # Install it once</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Load the package</li>
+</ol>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="functions.html#cb61-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)  <span class="co"># Load it whenever you need to use it</span></span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Let’s explore a few package functions from dplyr:</li>
+</ol>
+<ul>
+<li><code>select()</code>: Chooses specific columns from a dataset.</li>
+<li><code>filter()</code>: Filters rows based on conditions.</li>
+<li><code>mutate()</code>: Adds new variables (columns) or modifies existing ones.</li>
+<li><code>summarise()</code>: Summarizes data, such as calculating the mean or total</li>
+</ul>
+<p>We will create a data frame to demonstrate how to use functions from the <code>dplyr</code> package.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="functions.html#cb65-1" tabindex="-1"></a><span class="co"># Create a data frame for demonstration</span></span>
+<span id="cb65-2"><a href="functions.html#cb65-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb65-3"><a href="functions.html#cb65-3" tabindex="-1"></a>  <span class="at">Name =</span> <span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;David&quot;</span>, <span class="st">&quot;Anna&quot;</span>),</span>
+<span id="cb65-4"><a href="functions.html#cb65-4" tabindex="-1"></a>  <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">34</span>, <span class="dv">22</span>, <span class="dv">19</span>),</span>
+<span id="cb65-5"><a href="functions.html#cb65-5" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">88</span>, <span class="dv">92</span>)</span>
+<span id="cb65-6"><a href="functions.html#cb65-6" tabindex="-1"></a>)</span>
+<span id="cb65-7"><a href="functions.html#cb65-7" tabindex="-1"></a></span>
+<span id="cb65-8"><a href="functions.html#cb65-8" tabindex="-1"></a><span class="co"># 1. Select only the Name and Score columns</span></span>
+<span id="cb65-9"><a href="functions.html#cb65-9" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> <span class="fu">select</span>(data, Name, Score)</span>
+<span id="cb65-10"><a href="functions.html#cb65-10" tabindex="-1"></a>selected_data</span></code></pre></div>
+<pre><code>##    Name Score
+## 1  John    85
+## 2  Jane    90
+## 3 David    88
+## 4  Anna    92</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="functions.html#cb67-1" tabindex="-1"></a><span class="co"># 2. Filter rows where Score is greater than 88</span></span>
+<span id="cb67-2"><a href="functions.html#cb67-2" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(data, Score <span class="sc">&gt;</span> <span class="dv">88</span>)</span>
+<span id="cb67-3"><a href="functions.html#cb67-3" tabindex="-1"></a>filtered_data</span></code></pre></div>
+<pre><code>##   Name Age Score
+## 1 Jane  34    90
+## 2 Anna  19    92</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="functions.html#cb69-1" tabindex="-1"></a><span class="co"># 3. Add a new column that increases Score by 10</span></span>
+<span id="cb69-2"><a href="functions.html#cb69-2" tabindex="-1"></a>mutated_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(data, <span class="at">New_Score =</span> Score <span class="sc">+</span> <span class="dv">10</span>)</span>
+<span id="cb69-3"><a href="functions.html#cb69-3" tabindex="-1"></a>mutated_data</span></code></pre></div>
+<pre><code>##    Name Age Score New_Score
+## 1  John  28    85        95
+## 2  Jane  34    90       100
+## 3 David  22    88        98
+## 4  Anna  19    92       102</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="functions.html#cb71-1" tabindex="-1"></a><span class="co"># 4. Calculate the average age</span></span>
+<span id="cb71-2"><a href="functions.html#cb71-2" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> <span class="fu">summarise</span>(data, <span class="at">Average_Age =</span> <span class="fu">mean</span>(Age))</span>
+<span id="cb71-3"><a href="functions.html#cb71-3" tabindex="-1"></a>summary_data</span></code></pre></div>
+<pre><code>##   Average_Age
+## 1       25.75</code></pre>
+<p>In this example, we used functions from the <code>dplyr</code> package to select columns, filter rows, modify data, and summarize it!</p>
+<p><span style="color: orange;"><strong>Key Takeaways: </strong></span></p>
+<p>By learning about R package functions, you’ve unlocked even more tools to work efficiently in R. Here’s what you’ve learned today:</p>
+<ol style="list-style-type: decimal">
+<li>How to install and load R packages.</li>
+<li>How to use package functions like those in <code>dplyr</code> for data manipulation.</li>
+<li>How to perform tasks like selecting columns, filtering data, and summarizing values.</li>
+</ol>
+<p>Packages in R allow you to extend the functionality of the base language for specific tasks.
+With packages, R becomes an even more powerful tool, allowing you to work with more advanced data sets and perform complex operations with ease!</p>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>In this exercise, you will use the functions from the <code>dplyr</code> package to manipulate the <code>iris</code> data set. Remember the <code>dplyr</code> package is installed by:</p>
+<pre><code>install.packages(&quot;dplyr&quot;)</code></pre>
+<p>and is loaded by:</p>
+<pre><code>library(dplyr)</code></pre>
+<p>The iris data set is loaded by</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="functions.html#cb75-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb75-2"><a href="functions.html#cb75-2" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="functions.html#cb75-3" tabindex="-1"></a><span class="co"># view the first few columns </span></span>
+<span id="cb75-4"><a href="functions.html#cb75-4" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>Solve the following questions;</p>
+<ol style="list-style-type: lower-roman">
+<li>Use the <code>select</code> function to select the <code>Sepal.Length</code>, <code>Sepal.Width</code>, and <code>Species</code> columns.</li>
+<li>Use the <code>filter</code> function to filter rows where <code>Sepal.Length</code> is greater than 5.</li>
+<li>Use the <code>mutate</code> function to create a new column <code>Sepal.Ratio</code> that divides <code>Sepal.Length</code> by <code>Sepal.Width</code>.</li>
+</ol>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p>In this exercise, you will use the functions from the <code>dplyr</code> package to manipulate the <code>iris</code> data set. Remember the <code>dplyr</code> package is installed by:</p>
+<pre><code>install.packages(&quot;dplyr&quot;)</code></pre>
+<p>and is loaded by:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="functions.html#cb78-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p>The iris data set is loaded by</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="functions.html#cb79-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb79-2"><a href="functions.html#cb79-2" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="functions.html#cb79-3" tabindex="-1"></a><span class="co"># view the first few columns </span></span>
+<span id="cb79-4"><a href="functions.html#cb79-4" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>Solve the following questions;</p>
+<ol style="list-style-type: lower-roman">
+<li>Use the <code>select</code> function to select the <code>Sepal.Length</code>, <code>Sepal.Width</code>, and <code>Species</code> columns.</li>
+</ol>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="functions.html#cb81-1" tabindex="-1"></a>selected_iris <span class="ot">&lt;-</span> <span class="fu">select</span>(iris, </span>
+<span id="cb81-2"><a href="functions.html#cb81-2" tabindex="-1"></a>                        Sepal.Length, Sepal.Width, Species)</span>
+<span id="cb81-3"><a href="functions.html#cb81-3" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="functions.html#cb81-4" tabindex="-1"></a><span class="fu">head</span>(selected_iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Species
+## 1          5.1         3.5  setosa
+## 2          4.9         3.0  setosa
+## 3          4.7         3.2  setosa
+## 4          4.6         3.1  setosa
+## 5          5.0         3.6  setosa
+## 6          5.4         3.9  setosa</code></pre>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Use the <code>filter</code> function to filter rows where <code>Sepal.Length</code> is greater than 5.</li>
+</ol>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="functions.html#cb83-1" tabindex="-1"></a>filtered_iris <span class="ot">&lt;-</span> <span class="fu">filter</span>(iris, </span>
+<span id="cb83-2"><a href="functions.html#cb83-2" tabindex="-1"></a>                        Sepal.Length<span class="sc">&gt;</span><span class="dv">5</span>)</span>
+<span id="cb83-3"><a href="functions.html#cb83-3" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="functions.html#cb83-4" tabindex="-1"></a><span class="fu">head</span>(filtered_iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          5.4         3.9          1.7         0.4  setosa
+## 3          5.4         3.7          1.5         0.2  setosa
+## 4          5.8         4.0          1.2         0.2  setosa
+## 5          5.7         4.4          1.5         0.4  setosa
+## 6          5.4         3.9          1.3         0.4  setosa</code></pre>
+<ol start="3" style="list-style-type: lower-roman">
+<li>Use the <code>mutate</code> function to create a new column <code>Sepal.Ratio</code> that divides <code>Sepal.Length</code> by <code>Sepal.Width</code>.</li>
+</ol>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="functions.html#cb85-1" tabindex="-1"></a>updated_iris <span class="ot">&lt;-</span> <span class="fu">mutate</span>(iris,</span>
+<span id="cb85-2"><a href="functions.html#cb85-2" tabindex="-1"></a>                       <span class="at">Sepal.Ratio=</span>Sepal.Length<span class="sc">/</span>Sepal.Width)</span>
+<span id="cb85-3"><a href="functions.html#cb85-3" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="functions.html#cb85-4" tabindex="-1"></a><span class="fu">head</span>(updated_iris<span class="sc">$</span>Sepal.Ratio)</span></code></pre></div>
+<pre><code>## [1] 1.457143 1.633333 1.468750 1.483871 1.388889 1.384615</code></pre>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 
 </div>

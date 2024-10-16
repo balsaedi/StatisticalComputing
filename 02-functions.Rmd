@@ -124,7 +124,7 @@ greet_student("Michael") # Hello Michael!
 
 Remember to try it out with your name! 
 
-<span style="color: orange;">**Takeaway:**</span> 
+<span style="color: orange;">**Key Takeaways:**</span> 
 
 By writing these two simple functions, you’ve already tackled a lot of important concepts in R! You now know:
 
@@ -274,6 +274,165 @@ mean(numbers)
 v. Use the `length()` function to find out how many elements are in your numbers vector.
 ```{r}
 length(numbers)
+```
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+### Package Functions 
+
+Just like we've learned about **User-Defined** and **Built-in** Functions, R also provides a vast number of additional functions through packages. These packages extend R’s capabilities and allow you to perform specific tasks, from data manipulation to machine learning, with ease.
+
+**What are R Package Functions?**
+Packages in R are collections of R functions, data, and compiled code that are stored in a well-defined format. While R comes with a set of built-in functions, packages allow you to go beyond the basic functionality. You can install and load packages based on the task you want to accomplish.
+
+Think of package functions as tools in a toolbox: not everything is built-in, but by adding specific tools, you can perform new tasks easily.
+
+Lets explore how to get started using the functions;
+
+- **Installing and Loading Packages**
+
+To use functions from a package, you first need to install the package and load it into your R session.
+```
+install.packages("package_name")
+```
+
+Every time you start a new R session if you want to use the functions from that package. Load the package by;
+```
+library(package_name)
+```
+
+To put this into real-life action, let’s learn about the `dplyr` package, which is commonly used for data manipulation. It contains many useful functions to work with data frames or tibbles (a modern version of data frames). 
+
+Here’s an example of how to install and load dplyr, and use some of its core functions.
+
+1. Install the package
+```
+install.packages("dplyr")  # Install it once
+```
+
+2. Load the package
+```{r}
+library(dplyr)  # Load it whenever you need to use it
+```
+
+3. Let’s explore a few package functions from dplyr:
+
+- `select()`: Chooses specific columns from a dataset.
+- `filter()`: Filters rows based on conditions.
+- `mutate()`: Adds new variables (columns) or modifies existing ones.
+- `summarise()`: Summarizes data, such as calculating the mean or total
+
+We will create a data frame to demonstrate how to use functions from the `dplyr` package.
+```{r}
+# Create a data frame for demonstration
+data <- data.frame(
+  Name = c("John", "Jane", "David", "Anna"),
+  Age = c(28, 34, 22, 19),
+  Score = c(85, 90, 88, 92)
+)
+
+# 1. Select only the Name and Score columns
+selected_data <- select(data, Name, Score)
+selected_data
+
+# 2. Filter rows where Score is greater than 88
+filtered_data <- filter(data, Score > 88)
+filtered_data
+
+# 3. Add a new column that increases Score by 10
+mutated_data <- mutate(data, New_Score = Score + 10)
+mutated_data
+
+# 4. Calculate the average age
+summary_data <- summarise(data, Average_Age = mean(Age))
+summary_data
+```
+
+
+In this example, we used functions from the `dplyr` package to select columns, filter rows, modify data, and summarize it!
+
+<span style="color: orange;">**Key Takeaways: **</span> 
+
+By learning about R package functions, you’ve unlocked even more tools to work efficiently in R. Here’s what you’ve learned today:
+
+1. How to install and load R packages.
+2. How to use package functions like those in `dplyr` for data manipulation.
+3. How to perform tasks like selecting columns, filtering data, and summarizing values.
+
+Packages in R allow you to extend the functionality of the base language for specific tasks.
+With packages, R becomes an even more powerful tool, allowing you to work with more advanced data sets and perform complex operations with ease!
+
+<span style="color: green;">**Practical Exercise**</span> 
+
+In this exercise, you will use the functions from the `dplyr` package to manipulate the `iris` data set. Remember the `dplyr` package is installed by:
+```
+install.packages("dplyr")
+```
+
+and is loaded by:
+```
+library(dplyr)
+```
+
+The iris data set is loaded by
+```{r}
+data("iris")
+
+# view the first few columns 
+head(iris)
+```
+
+Solve the following questions;
+
+i. Use the `select` function to select the `Sepal.Length`, `Sepal.Width`, and `Species` columns. 
+ii. Use the `filter` function to filter rows where `Sepal.Length` is greater than 5. 
+iii. Use the `mutate` function to create a new column `Sepal.Ratio` that divides `Sepal.Length` by `Sepal.Width`.
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+In this exercise, you will use the functions from the `dplyr` package to manipulate the `iris` data set. Remember the `dplyr` package is installed by:
+```
+install.packages("dplyr")
+```
+
+and is loaded by:
+```{r}
+library(dplyr)
+```
+
+The iris data set is loaded by
+```{r}
+data("iris")
+
+# view the first few columns 
+head(iris)
+```
+
+Solve the following questions;
+
+i. Use the `select` function to select the `Sepal.Length`, `Sepal.Width`, and `Species` columns. 
+```{r}
+selected_iris <- select(iris, 
+                        Sepal.Length, Sepal.Width, Species)
+
+head(selected_iris)
+```
+
+ii. Use the `filter` function to filter rows where `Sepal.Length` is greater than 5. 
+```{r}
+filtered_iris <- filter(iris, 
+                        Sepal.Length>5)
+
+head(filtered_iris)
+```
+
+iii. Use the `mutate` function to create a new column `Sepal.Ratio` that divides `Sepal.Length` by `Sepal.Width`.
+```{r}
+updated_iris <- mutate(iris,
+                       Sepal.Ratio=Sepal.Length/Sepal.Width)
+
+head(updated_iris$Sepal.Ratio)
 ```
 
 <span style="color: brown;">**________________________________________________________________________________**</span>
