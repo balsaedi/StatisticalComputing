@@ -19,8 +19,8 @@ Functions are flexible and can be used for many different purposes:
 - **Process the input** based on what the function is meant to do
 - **Return a result** after completing the task
 
-## Types of Functions in R
-In R, there are three main types of functions:
+## Writing Functions 
+Lets take a tour on different types of functions in R before diving deep into writing functions. This will help you understand when to write functions and when to use readily-available functions. There are three main types of functions:
 
 1. **User-Defined Functions (UDF)** – Custom functions you write for your specific needs.
 2. **Built-in functions** – These come pre-loaded in R. Example: `mean()`
@@ -435,4 +435,84 @@ updated_iris <- mutate(iris,
 head(updated_iris$Sepal.Ratio)
 ```
 
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+### Type of arguments in R functions
+
+Now that we’ve learned and explored different types of functions, let's dive into function arguments to strengthen your understanding of writing functions. Arguments are essential components of any function. Although it’s possible to write a function without parameters, like the example below, most functions do require arguments to tell them what data to process
+```{r}
+hello <- function() {
+  print('Hello, my friend')
+}
+```
+
+**Why Arguments Matter**
+
+Arguments are the input for functions. They allow us to give the function specific values to work with. If we want a function to handle different cases or data, arguments give us that flexibility.
+
+When defining arguments, you include them inside the parentheses of the function definition, separated by commas. Generally, functions with more arguments tend to be more complex, but they also offer greater control over what the function does.
+```
+# Creating a function with arguments 
+my_function <- function(argument1, argument2){
+  # function body
+}
+```
+
+**Handling Missing Arguments**
+
+Whenever you create a function with parameters, you must provide the values for those parameters when calling the function. Otherwise, R will return an error. For example, if you forget to supply both numbers in a function to calculate their mean, the function won’t work.
+
+But you can avoid this issue by using *default arguments*. These are preset values that the function will use if you don’t provide them during the call. Let’s modify our mean function to demonstrate:
+```{r}
+mean_two_numbers <- function(num_1, num_2 = 30) {
+  mean <- (num_1 + num_2) / 2
+  return (mean)
+}
+```
+
+In this version, if you only provide one value when calling the function, R will automatically use the default value for the second number (which is 30 in this case):
+
+```{r}
+mean_two_numbers(num_1 = 10)
+```
+
+You now understand how arguments work and the importance of default values in making functions more flexible and error-proof.
+
+<span style="color: green;">**Practical Exercise**</span>
+
+1. Create a function `greet` that prints a simple message like `"Hello, welcome to R programming!"`.
+2. Write a function `multiply_numbers` that takes two arguments, `a` and `b`, and returns the product of these numbers
+3. Create a function `calculate_total` that accepts two arguments, price and tax_rate. Set a default value of `tax_rate = 0.15` (15%).
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+1. Create a function `greet` that prints a simple message like `"Hello, welcome to R programming!"`.
+```{r}
+greet <- function() {
+  print("Hello, welcome to R programming!")
+}
+
+# Call the function
+greet()
+```
+2. Write a function `multiply_numbers` that takes two arguments, `a` and `b`, and returns the product of these numbers.
+```{r}
+multiply_numbers <- function(a, b) {
+  return(a * b)
+}
+
+# Call the function
+multiply_numbers(6, 8)
+```
+3. Create a function `calculate_total` that accepts two arguments, price and tax_rate. Set a default value of `tax_rate = 0.15` (15%).
+```{r}
+calculate_total <- function(price, tax_rate = 0.15) {
+  total <- price + (price * tax_rate)
+  return(total)
+}
+
+# Call the function
+calculate_total(price=160)
+```
 <span style="color: brown;">**________________________________________________________________________________**</span>
