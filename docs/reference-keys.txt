@@ -5,6 +5,10 @@ user-defined-functions
 built-in-fuctions
 package-functions
 type-of-arguments-in-r-functions
+understanding-return-values-in-r-functions
+calling-the-functions
+function-documentation
+hands-on-exercise
 group-manipulation
 general-statistics
 simple-linear-regression

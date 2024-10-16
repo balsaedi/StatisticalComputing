@@ -516,3 +516,163 @@ calculate_total <- function(price, tax_rate = 0.15) {
 calculate_total(price=160)
 ```
 <span style="color: brown;">**________________________________________________________________________________**</span>
+
+### Understanding Return Values in R Functions
+
+In many programming languages, functions take data as input and produce some result as output. Often, you must use a `return` statement to explicitly give back the result. Otherwise, the value might only be visible inside the function and not available to use later. But in R, the situation is a little more relaxed!
+
+In R, a function will always return a value that can be stored in a variable, even without a return statement. However, for clarity and good practice, it's still helpful to include return to show your intent.
+
+Let’s walk through an example:
+```{r}
+mean_sum <- function(num_1, num_2) {
+  mean <- (num_1 + num_2) / 2
+  sum <- num_1 + num_2
+  return(list(mean = mean, sum = sum))
+}
+```
+
+Now, calling the function:
+```{r}
+results <- mean_sum(10, 20)
+print(results)  # You'll see both the mean and sum printed
+```
+
+## Calling the Functions 
+
+In previous sections, we’ve seen how to call functions with different arguments. Now, let's dig a little deeper into how **R works behind the scenes** when you pass arguments to a function.
+
+R allows two main ways of passing arguments:
+
+1. **By position** – The arguments are passed in the same order as the function definition.
+2. **By name** – You explicitly mention the argument name and its value.
+
+You can also **mix** these two strategies! Let’s explore these options using an example.
+
+Here's a simple function that takes two arguments: name and surname.
+```{r}
+hello <- function(name, surname) {
+  print(paste('Hello', name, surname))
+}
+```
+
+Lets call the function using different strategies;
+
+1. **By Position**
+
+You pass the arguments in the exact order the function expects.
+```{r}
+hello('Jane', 'McCain')
+```
+
+2. **By Name**
+
+When using this method, the order doesn’t matter. You just specify the argument names.
+```{r}
+hello(surname = 'McCain', name = 'Jane')
+```
+
+3. **Mixing Position and Name**
+
+You can mix both approaches. Named arguments are matched first, then the remaining ones are matched by position
+```{r}
+hello(surname = 'McCain', 'Jane')
+```
+
+This flexibility can make your code easier to read and maintain, especially when functions have many arguments!
+
+## Function Documentation
+
+Finally when writing functions, it’s always a good idea to provide documentation to guide users on how to use the function. This is especially important when dealing with complex functions or when the function is shared with others.
+
+One simple way to add documentation is by including comments in the body of your function. These comments explain what each part of the function does. This is an informal method, but it helps both you and others quickly understand what’s happening in the function.
+
+Here’s an example:
+```{r}
+hello <- function(name, surname) {
+  # Say hello to a person with their name and surname
+  print(paste('Hello,', name, surname))
+}
+```
+
+If you call the function without executing it, you’ll see its structure along with the comments:
+```{r}
+hello
+```
+
+If your function is part of a larger package and you want it to be properly documented, you should write formal documentation in a separate `.Rd` file. These files store structured documentation, which you can access using `?function_name` in R, similar to the help file you see for built-in functions like `?mean`.
+
+Formal documentation includes details such as:
+
+- Function name and description.
+- Arguments and their roles.
+- Examples of how to use the function.
+- Output that the function returns.
+- This approach ensures that users can easily understand and use your function, even in complex packages.
+
+## <span style="color: green;">**Hands-on Exercise**</span> 
+
+You will attempt this **hands-on exercise** to confirm your understanding of functions. For one of the functions you created, add comments inside the function to explain what each part of the function does.
+
+1. Create a User-Defined Function (UDF) named `calculate_area` that takes two arguments: `length` and `width`. The function should return the area of a rectangle.
+2. Create a vector named `values` with the numbers `4, 8, 15, 16, 23, 42`. Use the built-in `sum()` function to calculate the total of the values vector and print the result.
+3. Write a function named `greet` that takes one argument, `student_name`, and prints a greeting. Modify the function to have a default argument that greets a `"Student"` if no name is provided.
+4. Create a function named `mean_and_median` that takes a numeric vector as an argument and returns both the mean and median of that vector as a list.
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+1. Create a User-Defined Function (UDF) named `calculate_area` that takes two arguments: `length` and `width`. The function should return the area of a rectangle.
+```{r}
+calculate_area <- function(length, width) {
+  # Calculate the area by multiplying length and width
+  area <- length * width
+  # Return the calculated area
+  return(area)
+}
+
+# Example usage of the calculate_area function
+area_result <- calculate_area(5, 10)  # Length: 5, Width: 10
+print(paste("Area of rectangle:", area_result)) 
+```
+
+
+2. Create a vector named `values` with the numbers `4, 8, 15, 16, 23, 42`. Use the built-in `sum()` function to calculate the total of the values vector and print the result.
+```{r}
+values <- c(4, 8, 15, 16, 23, 42)
+# Use the built-in sum() function to calculate the total of the values vector
+total <- sum(values)
+# Print the result
+print(paste("Total of values vector:", total))
+```
+
+3. Write a function named `greet` that takes one argument, `student_name`, and prints a greeting. Modify the function to have a default argument that greets a `"Student"` if no name is provided.
+```{r}
+greet <- function(student_name = "Student") {
+  # Print a greeting using the provided name or default to "Student"
+  print(paste("Hello,", student_name))
+}
+
+# Example usage of the greet function with a provided name
+greet("John")  # Should print "Hello, John"
+# Example usage of the greet function without providing a name
+greet() 
+```
+
+4. Create a function named `mean_and_median` that takes a numeric vector as an argument and returns both the mean and median of that vector as a list.
+```{r}
+mean_and_median <- function(num_vector) {
+  # Calculate the mean of the vector
+  mean_value <- mean(num_vector)
+  # Calculate the median of the vector
+  median_value <- median(num_vector)
+  # Return both mean and median as a list
+  return(list(mean = mean_value, median = median_value))
+}
+
+# Example usage of the mean_and_median function
+results <- mean_and_median(c(12, 19, 21, 14, 09))
+# Print the results
+print(paste("Mean:", results$mean, ", Median:", results$median))
+```
+<span style="color: brown;">**________________________________________________________________________________**</span>
