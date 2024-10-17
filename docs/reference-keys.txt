@@ -12,5 +12,9 @@ hands-on-exercise
 group-manipulation
 general-statistics
 simple-linear-regression
+basics-of-wilkinson-rogers-notation-y-x-linear-regression
+scatterplots-with-regression-lines-reading-lm-output
+confidence-intervals-for-regression-coefficients-testing-coefficients
+identifying-points-in-a-plot
 reproducibility-and-report-with-r-markdown
 r-shiny-building-r-packages

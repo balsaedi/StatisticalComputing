@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-16" />
+<meta name="date" content="2024-10-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,7 +157,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="group-manipulation.html"><a href="group-manipulation.html"><i class="fa fa-check"></i><b>3</b> Group Manipulation</a></li>
 <li class="chapter" data-level="4" data-path="general-statistics.html"><a href="general-statistics.html"><i class="fa fa-check"></i><b>4</b> General Statistics</a></li>
-<li class="chapter" data-level="5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Simple Linear Regression</a></li>
+<li class="chapter" data-level="5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#basics-of-wilkinson-rogers-notation-y-x-linear-regression"><i class="fa fa-check"></i><b>5.1</b> Basics of Wilkinson-Rogers Notation (y ~ x), Linear Regression</a></li>
+<li class="chapter" data-level="5.2" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#scatterplots-with-regression-lines-reading-lm-output"><i class="fa fa-check"></i><b>5.2</b> Scatterplots with Regression Lines, Reading lm() Output</a></li>
+<li class="chapter" data-level="5.3" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#confidence-intervals-for-regression-coefficients-testing-coefficients"><i class="fa fa-check"></i><b>5.3</b> Confidence Intervals for Regression Coefficients, Testing Coefficients</a></li>
+<li class="chapter" data-level="5.4" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#identifying-points-in-a-plot"><i class="fa fa-check"></i><b>5.4</b> Identifying Points in a Plot</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="reproducibility-and-report-with-r-markdown.html"><a href="reproducibility-and-report-with-r-markdown.html"><i class="fa fa-check"></i><b>6</b> Reproducibility and Report with R Markdown</a></li>
 <li class="chapter" data-level="7" data-path="r-shiny-building-r-packages.html"><a href="r-shiny-building-r-packages.html"><i class="fa fa-check"></i><b>7</b> R Shiny, Building R Packages</a></li>
 <li class="divider"></li>
@@ -880,6 +886,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
