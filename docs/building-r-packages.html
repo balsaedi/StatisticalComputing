@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 R Shiny, Building R Packages | Statistical Computing</title>
-  <meta name="description" content="Chapter 7 R Shiny, Building R Packages | Statistical Computing" />
+  <title>Chapter 8 Building R Packages | Statistical Computing</title>
+  <meta name="description" content="Chapter 8 Building R Packages | Statistical Computing" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 R Shiny, Building R Packages | Statistical Computing" />
+  <meta property="og:title" content="Chapter 8 Building R Packages | Statistical Computing" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 R Shiny, Building R Packages | Statistical Computing" />
+  <meta name="twitter:title" content="Chapter 8 Building R Packages | Statistical Computing" />
   
   
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="reproducibility-and-report-with-r-markdown.html"/>
+<link rel="prev" href="r-shiny.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -165,15 +165,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#identifying-points-in-a-plot"><i class="fa fa-check"></i><b>5.4</b> Identifying Points in a Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="reproducibility-and-report-with-r-markdown.html"><a href="reproducibility-and-report-with-r-markdown.html"><i class="fa fa-check"></i><b>6</b> Reproducibility and Report with R Markdown</a></li>
-<li class="chapter" data-level="7" data-path="r-shiny-building-r-packages.html"><a href="r-shiny-building-r-packages.html"><i class="fa fa-check"></i><b>7</b> R Shiny, Building R Packages</a>
+<li class="chapter" data-level="7" data-path="r-shiny.html"><a href="r-shiny.html"><i class="fa fa-check"></i><b>7</b> R Shiny</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="r-shiny-building-r-packages.html"><a href="r-shiny-building-r-packages.html#r-shiny"><i class="fa fa-check"></i><b>7.1</b> R Shiny</a></li>
-<li class="chapter" data-level="7.2" data-path="r-shiny-building-r-packages.html"><a href="r-shiny-building-r-packages.html#structure-of-a-shiny-app"><i class="fa fa-check"></i><b>7.2</b> Structure of a Shiny App</a>
+<li class="chapter" data-level="7.1" data-path="r-shiny.html"><a href="r-shiny.html#structure-of-a-shiny-app"><i class="fa fa-check"></i><b>7.1</b> Structure of a Shiny App</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="r-shiny-building-r-packages.html"><a href="r-shiny-building-r-packages.html#user-interfaceui"><i class="fa fa-check"></i><b>7.2.1</b> USer Interface(ui)</a></li>
-<li class="chapter" data-level="7.2.2" data-path="r-shiny-building-r-packages.html"><a href="r-shiny-building-r-packages.html#server"><i class="fa fa-check"></i><b>7.2.2</b> Server</a></li>
+<li class="chapter" data-level="7.1.1" data-path="r-shiny.html"><a href="r-shiny.html#user-interfaceui"><i class="fa fa-check"></i><b>7.1.1</b> User Interface(ui)</a></li>
+<li class="chapter" data-level="7.1.2" data-path="r-shiny.html"><a href="r-shiny.html#server"><i class="fa fa-check"></i><b>7.1.2</b> Server</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="building-r-packages.html"><a href="building-r-packages.html"><i class="fa fa-check"></i><b>8</b> Building R Packages</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -193,144 +193,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-shiny-building-r-packages" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> R Shiny, Building R Packages<a href="r-shiny-building-r-packages.html#r-shiny-building-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="r-shiny" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> R Shiny<a href="r-shiny-building-r-packages.html#r-shiny" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Shiny is a fantastic R package that allows you to easily create interactive web applications (or “apps”) directly from R. In this lesson, we’ll dive right into how to start building Shiny apps.</p>
-<p>First things first, if you haven’t installed the Shiny package yet, simply open R, make sure you’re connected to the internet, and run the following command:</p>
-<pre><code>install.packages(&quot;shiny&quot;)</code></pre>
-<p>Shiny also integrates with another package called <code>bslib</code>, which helps in creating visually appealing user interfaces (UIs). To explore more about it, you can check out its documentation <a href="https://rstudio.github.io/bslib/index.html?_gl=1*zs9lrr*_ga*MTE1OTUxODYwNi4xNzI0OTMzNDk1*_ga_8QJS108GF1*MTcyOTE0NzUzMi4yLjEuMTcyOTE0ODQ0MC4wLjAuMA..*_ga_2C0WZ1JHG0*MTcyOTE0NzUzMi43LjEuMTcyOTE0ODQ0MC4wLjAuMA..">here</a>.</p>
-<p>Here is an example of an R shiny app
-<img src="images/example-rshiny.png" /></p>
-<p>The Shiny package comes with several pre-built examples that showcase how Shiny works in action. Each example is a fully functional Shiny app.</p>
-<p>The Hello Shiny example, for instance, generates a histogram using R’s <em>faithful</em> data set. The histogram’s bin count can be adjusted by the user through a slider, and the app instantly updates based on their selection. This example is perfect for learning the basics of Shiny app structure and building your very first app.</p>
-<p>To try it out, just run the following commands in R:</p>
-<pre><code>library(shiny)
-runExample(&quot;01_hello&quot;)</code></pre>
-</div>
-<div id="structure-of-a-shiny-app" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Structure of a Shiny App<a href="r-shiny-building-r-packages.html#structure-of-a-shiny-app" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Shiny apps are typically organized in a single script called <code>app.R</code>, which resides in a designated folder (for example, <code>newdir/</code>). You can run the app by executing <code>runApp("newdir")</code>.</p>
-<p>The <code>app.R</code> file consists of three main components:</p>
-<ol style="list-style-type: decimal">
-<li>A User Interface Object</li>
-<li>A Server Function</li>
-<li>A Call to the shinyApp Function</li>
-</ol>
-<div id="user-interfaceui" class="section level3 hasAnchor" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> USer Interface(ui)<a href="r-shiny-building-r-packages.html#user-interfaceui" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The user interface (ui) object defines the layout and visual aspects of your app. Below is the <code>ui</code> object used in the Hello Shiny example:</p>
-<pre><code>library(shiny)
-library(bslib)
+<div id="building-r-packages" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Building R Packages<a href="building-r-packages.html#building-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 
-# Define UI for app that draws a histogram ----
-ui &lt;- page_sidebar(
-  # App title ----
-  title = &quot;Hello Shiny!&quot;,
-  # Sidebar panel for inputs ----
-  sidebar = sidebar(
-    # Input: Slider for the number of bins ----
-    sliderInput(
-      inputId = &quot;bins&quot;,
-      label = &quot;Number of bins:&quot;,
-      min = 1,
-      max = 50,
-      value = 30
-    )
-  ),
-  # Output: Histogram ----
-  plotOutput(outputId = &quot;distPlot&quot;)
-)</code></pre>
-</div>
-<div id="server" class="section level3 hasAnchor" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> Server<a href="r-shiny-building-r-packages.html#server" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Here i the server function for the Hello Shiny Example:</p>
-<pre><code># Define server logic required to draw a histogram ----
-server &lt;- function(input, output) {
-
-  # Histogram of the Old Faithful Geyser Data ----
-  # with requested number of bins
-  # This expression that generates a histogram is wrapped in a call
-  # to renderPlot to indicate that:
-  #
-  # 1. It is &quot;reactive&quot; and should automatically
-  #    re-execute when inputs (input$bins) change
-  # 2. Its output type is a plot
-  output$distPlot &lt;- renderPlot({
-  
-    x    &lt;- faithful$waiting
-    bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
-
-    hist(x, breaks = bins, col = &quot;#007bc2&quot;, border = &quot;white&quot;,
-         xlab = &quot;Waiting time to next eruption (in mins)&quot;,
-         main = &quot;Histogram of waiting times&quot;)
-  })
-
-}</code></pre>
-<p>At its core, the server function in the Hello Shiny example is quite straightforward. It performs some calculations and generates a histogram based on the specified number of bins.</p>
-<p>However, you’ll notice that most of the script is wrapped in a call to <code>renderPlot</code>. The comment above the function provides some explanation, but don’t worry if it seems unclear; we will explore this concept in greater detail later.</p>
-<p>Before you start experimenting with the Hello Shiny app and reviewing its source code, remember that your <code>app.R</code> file should begin with loading the Shiny package and conclude with a call to <code>shinyApp</code>:</p>
-<pre><code>library(shiny)
-
-# See above for the definitions of ui and server
-ui &lt;- ...
-
-server &lt;- ...
-
-shinyApp(ui = ui, server = server)</code></pre>
-<p>While the Hello Shiny app is running, your R session will be occupied and won’t accept other commands. R is actively monitoring the app and processing its reactions. To regain access to your R session, press the escape key or click the stop icon located in the upper right corner of the RStudio console panel.</p>
-<p>How that you have known how to create an RShiny app, lets create a simple temperature converter that will convert temperature from Celcius to Farenheit.</p>
-<pre><code>library(shiny)
-
-# Define UI for the Temperature Converter app
-ui &lt;- fluidPage(
-  titlePanel(&quot;Temperature Converter&quot;),
-  
-  sidebarLayout(
-    sidebarPanel(
-      numericInput(&quot;temp_input&quot;, &quot;Temperature:&quot;, value = 0),
-      selectInput(&quot;temp_scale&quot;, &quot;Select scale:&quot;, 
-                  choices = c(&quot;Celsius to Fahrenheit&quot;, &quot;Fahrenheit to Celsius&quot;)),
-      actionButton(&quot;convert&quot;, &quot;Convert&quot;)
-    ),
-    
-    mainPanel(
-      textOutput(&quot;result&quot;)
-    )
-  )
-)
-
-# Define server logic for the Temperature Converter
-server &lt;- function(input, output) {
-  observeEvent(input$convert, {
-    if (input$temp_scale == &quot;Celsius to Fahrenheit&quot;) {
-      result &lt;- (input$temp_input * 9/5) + 32
-      output$result &lt;- renderText({ 
-        paste(input$temp_input, &quot;°C =&quot;, round(result, 2), &quot;°F&quot;)
-      })
-    } else {
-      result &lt;- (input$temp_input - 32) * 5/9
-      output$result &lt;- renderText({ 
-        paste(input$temp_input, &quot;°F =&quot;, round(result, 2), &quot;°C&quot;)
-      })
-    }
-  })
-}
-
-# Run the app
-shinyApp(ui = ui, server = server)</code></pre>
-<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
-
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="reproducibility-and-report-with-r-markdown.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-shiny.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -362,7 +234,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/balsaedi/RCourse/edit/main/07-RShiny_and_building_R_packages.Rmd",
+"link": "https://github.com/balsaedi/RCourse/edit/main/08-building_R_packages.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -370,7 +242,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/balsaedi/RCourse/blob/main/07-RShiny_and_building_R_packages.Rmd",
+"link": "https://github.com/balsaedi/RCourse/blob/main/08-building_R_packages.Rmd",
 "text": null
 },
 "download": null,

@@ -17,4 +17,8 @@ scatterplots-with-regression-lines-reading-lm-output
 confidence-intervals-for-regression-coefficients-testing-coefficients
 identifying-points-in-a-plot
 reproducibility-and-report-with-r-markdown
-r-shiny-building-r-packages
+r-shiny
+structure-of-a-shiny-app
+user-interfaceui
+server
+building-r-packages
