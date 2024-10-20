@@ -1,1 +1,8 @@
 # Group Manipulation
+## Apply Family 
+
+## Aggregate Plyr
+
+
+## Data Reshaping 
+
