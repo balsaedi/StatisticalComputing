@@ -1,4 +1,7 @@
 reviews
+data-importing-and-exporting
+data-cleaning
+data-visualization
 functions
 writing-functions
 user-defined-functions
@@ -10,6 +13,9 @@ calling-the-functions
 function-documentation
 hands-on-exercise
 group-manipulation
+apply-family
+aggregate-plyr
+data-reshaping
 general-statistics
 simple-linear-regression
 basics-of-wilkinson-rogers-notation-y-x-linear-regression

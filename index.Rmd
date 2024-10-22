@@ -7,6 +7,13 @@ site: bookdown::bookdown_site
 
 # Reviews
 
+
+## Data Importing and Exporting 
 - Data structures and how to import data into R
+
+## Data Cleaning 
+
+
+## Data Visualization
 - A little bit of data visualization
 - 
