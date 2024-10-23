@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-22" />
+<meta name="date" content="2024-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,9 +142,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Reviews</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#data-importing-and-exporting"><i class="fa fa-check"></i><b>1.1</b> Data Importing and Exporting</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-cleaning"><i class="fa fa-check"></i><b>1.2</b> Data Cleaning</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-visualization"><i class="fa fa-check"></i><b>1.3</b> Data Visualization</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#data-types-and-structures"><i class="fa fa-check"></i><b>1.1</b> Data Types and Structures</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#data-types"><i class="fa fa-check"></i><b>1.1.1</b> Data Types</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#data-structures"><i class="fa fa-check"></i><b>1.1.2</b> Data Structures</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-importing-and-exporting"><i class="fa fa-check"></i><b>1.2</b> Data Importing and Exporting</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-cleaning"><i class="fa fa-check"></i><b>1.3</b> Data Cleaning</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#data-visualization"><i class="fa fa-check"></i><b>1.4</b> Data Visualization</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
 <ul>
@@ -206,21 +211,165 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Statistical Computing</h1>
 <p class="author"><em>YOUR NAME HERE</em></p>
-<p class="date"><em>2024-10-22</em></p>
+<p class="date"><em>2024-10-23</em></p>
 </div>
 <div id="reviews" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Reviews<a href="index.html#reviews" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="data-importing-and-exporting" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Data Importing and Exporting<a href="index.html#data-importing-and-exporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-types-and-structures" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Data Types and Structures<a href="index.html#data-types-and-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-types" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Data Types<a href="index.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are different kinds of values in R that can be manipulated in variables. They most commonly used are; strings, numerics(integers and floats) and boolean values. The function <code>class</code> can be used to find the data type.</p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>Before diving deep into data types, lets create a value with a random value for instance <code>age</code> and finds its data type.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">27</span></span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="fu">class</span>(age)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>The <code>age</code> is a <code>"numeric"</code> data type variable, interesting?</p>
+<p>Lets explore different data types and their examples;</p>
+<ol style="list-style-type: decimal">
+<li><strong>Integers: </strong> These are whole numbers without dev=cimal point(e.g., 10, -5). In R, it is specified with the <code>L</code> suffix like <code>10L</code>.</li>
+<li><strong>Floats: </strong> These are numbers with decimal points(e.g. 3.14, -2.718). R refers them as numerics.</li>
+<li><strong>Boolean(Logical): </strong> True or False values, represented as <code>TRUE</code> or <code>FALSE</code> in R. They are crucial in conditional statements.</li>
+<li><strong>Strings(Character): </strong> These are text values enclosed in quotes(e.g. <code>"Hello world"</code> , names like <code>"John", "Mustafa", "Patel"</code>, variable names like <code>"age", "gender", "salary"</code>)</li>
+</ol>
+<p>You will often deal with mixed data types when analyzing real-world data sets therefore understanding these will help you handles any data set!</p>
+<p><span style="color: orange;"><strong>Examples</strong></span></p>
+<p>Lets have some fun! We will create different variables and find their data types;</p>
+<ol style="list-style-type: lower-roman">
+<li><code>age &lt;- 34L</code></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">34</span><span class="dt">L</span></span>
+<span id="cb3-2"><a href="index.html#cb3-2" tabindex="-1"></a><span class="fu">class</span>(age)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<ol start="2" style="list-style-type: lower-roman">
+<li><code>weight &lt;- 68.2</code></li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fl">68.2</span></span>
+<span id="cb5-2"><a href="index.html#cb5-2" tabindex="-1"></a><span class="fu">class</span>(weight)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<ol start="3" style="list-style-type: lower-roman">
+<li><code>name &lt;- "Mustafa"</code></li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">&quot;Mustafa&quot;</span></span>
+<span id="cb7-2"><a href="index.html#cb7-2" tabindex="-1"></a><span class="fu">class</span>(name)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<ol start="4" style="list-style-type: lower-roman">
+<li><code>is_winter &lt;- FALSE</code></li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" tabindex="-1"></a>is_winter <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb9-2"><a href="index.html#cb9-2" tabindex="-1"></a><span class="fu">class</span>(is_winter)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<p>You see how simple it is to find the data type of different variables in R! Remember the <code>class</code> function returns any number whether with decimal or whole as <code>"numeric"</code>. It only returns <code>"integer"</code> when there is a suffix <code>L</code>.</p>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>Try out the practical exercise below to test your understanding in data types</p>
+<ol style="list-style-type: lower-roman">
+<li>Find the data type of <code>98.03</code> using <code>class()</code> function.</li>
+<li>Assign the value <code>98.03</code> to variable <code>height</code> and find data type of height.</li>
+<li>There are 27 goats in a field, assign the quantity of goats to a variable <code>goats</code> and find the data type of the variable <code>goats</code>. Remember to add suffix <code>L</code> to the value <code>27</code>.</li>
+<li>Find the data type of the value <code>"school"</code> using the <code>class()</code> function.</li>
+<li>Assign your first name to a variable <code>firstname</code> and find its data type. <strong>Remember to enclose it in quotation marks</strong></li>
+<li>Create a variable <code>is_student</code> and assign it the value <code>TRUE</code>. Use the <code>class()</code> function to find its data type.</li>
+</ol>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<ol style="list-style-type: lower-roman">
+<li>Find the data type of <code>98.03</code> using <code>class()</code> function.</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fl">98.03</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Assign the value <code>98.03</code> to variable <code>height</code> and find data type of height.</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="index.html#cb13-1" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fl">98.03</span></span>
+<span id="cb13-2"><a href="index.html#cb13-2" tabindex="-1"></a><span class="fu">class</span>(height)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<ol start="3" style="list-style-type: lower-roman">
+<li>There are 27 goats in a field, assign the quantity of goats to a variable <code>goats</code> and find the data type of the variable <code>goats</code>. Remember to add suffix <code>L</code> to the value <code>27</code>.</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="index.html#cb15-1" tabindex="-1"></a>goats <span class="ot">&lt;-</span> <span class="dv">27</span><span class="dt">L</span></span>
+<span id="cb15-2"><a href="index.html#cb15-2" tabindex="-1"></a><span class="fu">class</span>(goats)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<ol start="4" style="list-style-type: lower-roman">
+<li>Find the data type of the value <code>"school"</code> using the <code>class()</code> function.</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="index.html#cb17-1" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;school&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<ol start="22" style="list-style-type: lower-alpha">
+<li>Assign your first name to a variable <code>firstname</code> and find its data type. <strong>Remember to enclose it in quotation marks</strong></li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="index.html#cb19-1" tabindex="-1"></a>firstname <span class="ot">&lt;-</span> <span class="st">&quot;Bryant&quot;</span> <span class="co"># Any name will work</span></span>
+<span id="cb19-2"><a href="index.html#cb19-2" tabindex="-1"></a><span class="fu">class</span>(firstname)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<ol start="6" style="list-style-type: lower-roman">
+<li>Create a variable <code>is_student</code> and assign it the value <code>TRUE</code>. Use the <code>class()</code> function to find its data type.</li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="index.html#cb21-1" tabindex="-1"></a>is_student <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb21-2"><a href="index.html#cb21-2" tabindex="-1"></a><span class="fu">class</span>(is_student)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
+</div>
+<div id="data-structures" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Data Structures<a href="index.html#data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is the organization of data into or multiple data values in specific structures, they include vectors, matrix and data frames. Lets explore the mentioned data structures and their examples;</p>
+<ol style="list-style-type: decimal">
+<li><strong>Vector: </strong> This is a sequence of elements of the same data types(e.g., `<code>c(1, 2, 3)</code> is a numeric vector)</li>
+<li><strong>Matrix: </strong> This is a two-dimensional data structure with rows and columns, where all elements are of the same type(e.g. numbers).</li>
+<li><strong>Data Frames: </strong> This is the most common R data structure for handling tabular data(like an excel sheet). A data frame can contain different data types in each column unlike matrices and vectors.</li>
+</ol>
+<p>Data frames are central to real-world data analysis. You will work with them to analyze, transform, and visualize data sets, whether you are calculating averages or identifying trends. The <code>is.vector</code>, <code>is.matrix</code> and <code>is.data.frame</code> functions are used to confirm if the variable in question is a vector, matrix or data frame respectively.</p>
+<p><span style="color: orange;"><strong>Examples</strong></span></p>
+<p>Lets have some fun! We will create different data structures and find their data types:</p>
+<ul>
+<li>Create a vector, <code>marks</code> to store the values, <code>23, 67, 98, 34, 98, 21</code>. Print the vector to the console and use <code>is.vector</code> function to confirm if its a actually a vector.</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" tabindex="-1"></a>marks <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">67</span>, <span class="dv">98</span>, <span class="dv">34</span>, <span class="dv">98</span>, <span class="dv">21</span>)</span>
+<span id="cb23-2"><a href="index.html#cb23-2" tabindex="-1"></a><span class="fu">print</span>(marks) <span class="co"># print to the console</span></span></code></pre></div>
+<pre><code>## [1] 23 67 98 34 98 21</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1" tabindex="-1"></a><span class="fu">is.vector</span>(marks) <span class="co"># find its data structure</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ul>
+<li>Create a matrix with values from 1 to 9 and use the <code>is.matrix</code> function to find to confirm if its really a matrix.</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="index.html#cb27-1" tabindex="-1"></a>vector1 <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">9</span>) </span>
+<span id="cb27-2"><a href="index.html#cb27-2" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="index.html#cb27-3" tabindex="-1"></a><span class="co"># Convert to matrix</span></span>
+<span id="cb27-4"><a href="index.html#cb27-4" tabindex="-1"></a><span class="do">## create by column </span></span>
+<span id="cb27-5"><a href="index.html#cb27-5" tabindex="-1"></a>m1<span class="ot">=</span><span class="fu">matrix</span>(vector1, <span class="at">ncol=</span><span class="dv">3</span>)</span>
+<span id="cb27-6"><a href="index.html#cb27-6" tabindex="-1"></a><span class="fu">print</span>(m1) <span class="co"># print the matrix to the console </span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="index.html#cb29-1" tabindex="-1"></a><span class="fu">is.matrix</span>(m1) <span class="co"># confirms if its really a matrix </span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ul>
+<li>Create a <code>data.frame</code> from the above matrix. Add the column names as <code>"A", "B", "C"</code>. Confirm if its really a matrix.</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="index.html#cb31-1" tabindex="-1"></a>var_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>) <span class="co"># vector to store variable names </span></span>
+<span id="cb31-2"><a href="index.html#cb31-2" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="index.html#cb31-3" tabindex="-1"></a>m1_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(var_names, m1) <span class="co"># create the data frame</span></span>
+<span id="cb31-4"><a href="index.html#cb31-4" tabindex="-1"></a><span class="fu">print</span>(m1_df) <span class="co">#print to the console </span></span></code></pre></div>
+<pre><code>##   var_names X1 X2 X3
+## 1         A  1  4  7
+## 2         B  2  5  8
+## 3         C  3  6  9</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="index.html#cb33-1" tabindex="-1"></a><span class="fu">is.data.frame</span>(m1_df) <span class="co">#confirms if its really a data.frame. </span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+</div>
+</div>
+<div id="data-importing-and-exporting" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Data Importing and Exporting<a href="index.html#data-importing-and-exporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Data structures and how to import data into R</li>
 </ul>
 </div>
-<div id="data-cleaning" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Data Cleaning<a href="index.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-cleaning" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Data Cleaning<a href="index.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="data-visualization" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Data Visualization<a href="index.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-visualization" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Data Visualization<a href="index.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>A little bit of data visualization</li>
 <li></li>

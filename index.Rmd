@@ -6,7 +6,141 @@ site: bookdown::bookdown_site
 ---
 
 # Reviews
+## Data Types and Structures 
+### Data Types 
+There are different kinds of values in R that can be manipulated in variables. They most commonly used are; strings, numerics(integers and floats) and boolean values. The function `class` can be used to find the data type.
 
+<span style="color: orange;">**Try it!**</span> 
+
+Before diving deep into data types, lets create a value with a random value for instance `age` and finds its data type. 
+```{r}
+age <- 27
+class(age)
+```
+
+The `age` is a `"numeric"` data type variable, interesting?
+
+Lets explore different data types and their examples; 
+
+1. **Integers: ** These are whole numbers without dev=cimal point(e.g., 10, -5). In R, it is specified with the `L` suffix like `10L`. 
+2. **Floats: ** These are numbers with decimal points(e.g. 3.14, -2.718). R refers them as numerics. 
+3. **Boolean(Logical): ** True or False values, represented as `TRUE` or `FALSE` in R. They are crucial in conditional statements. 
+4. **Strings(Character): ** These are text values enclosed in quotes(e.g. `"Hello world"` , names like `"John", "Mustafa", "Patel"`, variable names like `"age", "gender", "salary"`)
+
+You will often deal with mixed data types when analyzing real-world data sets therefore understanding these will help you handles any data set!
+
+<span style="color: orange;">**Examples**</span>
+
+Lets have some fun! We will create different variables and find their data types;
+
+i. `age <- 34L`
+```{r}
+age <- 34L
+class(age)
+```
+ii. `weight <- 68.2`
+```{r}
+weight <- 68.2
+class(weight)
+```
+iii. `name <- "Mustafa"`
+```{r}
+name <- "Mustafa"
+class(name)
+```
+iv. `is_winter <- FALSE`
+```{R}
+is_winter <- FALSE
+class(is_winter)
+```
+
+You see how simple it is to find the data type of different variables in R! Remember the `class` function returns any number whether with decimal or whole as `"numeric"`. It only returns `"integer"` when there is a suffix `L`. 
+
+<span style="color: green;">**Practical Exercise**</span>
+
+Try out the practical exercise below to test your understanding in data types 
+
+i. Find the data type of `98.03` using `class()` function.
+ii. Assign the value `98.03` to variable `height` and find data type of height.
+iii. There are 27 goats in a field, assign the quantity of goats to a variable `goats` and find the data type of the variable `goats`. Remember to add suffix `L` to  the value `27`.
+iv. Find the data type of the value `"school"` using the `class()` function.
+v. Assign your first name to a variable `firstname` and find its data type. **Remember to enclose it in quotation marks**
+vi. Create a variable `is_student` and assign it the value `TRUE`. Use the `class()` function to find its data type. 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+i. Find the data type of `98.03` using `class()` function.
+```{r}
+class(98.03)
+```
+ii. Assign the value `98.03` to variable `height` and find data type of height.
+```{r}
+height <- 98.03
+class(height)
+```
+iii. There are 27 goats in a field, assign the quantity of goats to a variable `goats` and find the data type of the variable `goats`. Remember to add suffix `L` to  the value `27`.
+```{r}
+goats <- 27L
+class(goats)
+```
+iv. Find the data type of the value `"school"` using the `class()` function.
+```{r}
+class("school")
+```
+v. Assign your first name to a variable `firstname` and find its data type. **Remember to enclose it in quotation marks**
+```{r}
+firstname <- "Bryant" # Any name will work
+class(firstname)
+```
+vi. Create a variable `is_student` and assign it the value `TRUE`. Use the `class()` function to find its data type. 
+```{r}
+is_student <- TRUE
+class(is_student)
+```
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+### Data Structures 
+This is the organization of data into or multiple data values in specific structures, they include vectors, matrix and data frames. Lets explore the mentioned data structures and their examples;
+
+1. **Vector: ** This is a sequence of elements of the same data types(e.g., ``c(1, 2, 3)` is a numeric vector)
+2. **Matrix: ** This is a two-dimensional data structure with rows and columns, where all elements are of the same type(e.g. numbers).
+3. **Data Frames: ** This is the most common R data structure for handling tabular data(like an excel sheet). A data frame can contain different data types in each column unlike matrices and vectors. 
+
+Data frames are central to real-world data analysis. You will work with them to analyze, transform, and visualize data sets, whether you are calculating averages or identifying trends. The `is.vector`, `is.matrix` and `is.data.frame` functions are used to confirm if the variable in question is a vector, matrix or data frame respectively. 
+
+<span style="color: orange;">**Examples**</span>
+
+Lets have some fun! We will create different data structures and find their data types: 
+
+- Create a vector, `marks` to store the values, `23, 67, 98, 34, 98, 21`. Print the vector to the console and use `is.vector` function to confirm if its a actually a vector. 
+```{r}
+marks = c(23, 67, 98, 34, 98, 21)
+print(marks) # print to the console
+is.vector(marks) # find its data structure
+```
+- Create a matrix with values from 1 to 9 and use the `is.matrix` function to find to confirm if its really a matrix.
+```{r}
+vector1 = seq(1, 9) 
+
+# Convert to matrix
+## create by column 
+m1=matrix(vector1, ncol=3)
+print(m1) # print the matrix to the console 
+
+is.matrix(m1) # confirms if its really a matrix 
+```
+- Create a `data.frame` from the above matrix. Add the column names as `"A", "B", "C"`. Confirm if its really a matrix. 
+```{r}
+var_names <- c("A", "B", "C") # vector to store variable names 
+
+m1_df <- data.frame(var_names, m1) # create the data frame
+print(m1_df) #print to the console 
+
+is.data.frame(m1_df) #confirms if its really a data.frame. 
+```
+
+<span style="color: green;">**Practical Exercise**</span> 
 
 ## Data Importing and Exporting 
 - Data structures and how to import data into R
