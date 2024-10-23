@@ -142,11 +142,108 @@ is.data.frame(m1_df) #confirms if its really a data.frame.
 
 <span style="color: green;">**Practical Exercise**</span> 
 
+Try out the exercise below to test your understanding in R data structures;
+
+i. Create a vector named `height` with the values `120.1, 118, 123.4, 130.8, 115.2`. Use the `is.vector` to confirm that the created variable is a vector.
+ii. Use `length()` function to count the number of elements in the vector. 
+iii. Create a matrix `m1` from the vector `v1` where `v1 <- seq(1, 12)` with three columns. Use the `is.matrix` function to confirm if the said variable is a matrix. 
+iv. Access the third column by running the command `m1[, 3]`.
+v. Access the second row by running the command `m1[2,]`. 
+vi. Create a data frame `students_df` with the columns `"Name"`, `"Age"`, and `"Marks"` for three students. Where `Name <- c("Pragya", "Thomas", "Ali")`, `Age <- c(21, 19, 23)` and `Marks <- c(68, 72, 67)`. 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+i. Create a vector named `height` with the values `120.1, 118, 123.4, 130.8, 115.2`. Use the `is.vector` to confirm that the created variable is a vector.
+```{r}
+height <- c(120.1, 118, 123.4, 130.8, 115.2)
+is.vector(height)
+```
+
+ii. Use `length()` function to count the number of elements in the vector.
+```{r}
+length(height) # count the number of elements
+```
+
+iii. Create a matrix `m1` from the vector `v1` where `v1 <- seq(1, 12)` with three columns. Use the `is.matrix` function to confirm if the said variable is a matrix. 
+```{r}
+v1 <- seq(1, 12) # Create vector v1
+
+m1 <- matrix(v1, ncol=3) # create a matrix from the vector
+m1 
+
+is.matrix(m1) # Confirm if its a matrix
+```
+
+iv. Access the third column by running the command `m1[, 3]`.
+```{r}
+m1[, 3] # Access the third columns
+```
+
+v. Access the second row by running the command `m1[2,]`. 
+```{r}
+m1[2,] # Access of the second row
+```
+
+vi. Create a data frame `students_df` with the columns `"Name"`, `"Age"`, and `"Marks"` for three students. Where `Name <- c("Pragya", "Thomas", "Ali")`, `Age <- c(21, 19, 23)` and `Marks <- c(68, 72, 67)`. 
+```{r}
+student_df <- data.frame(
+  "Name"= c("Pragya", "Thomas", "Ali"),
+  "Age"=c(21, 19, 23),
+  "Marks"=c(68, 72, 67)
+)
+
+student_df
+```
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
 ## Data Importing and Exporting 
-- Data structures and how to import data into R
+Importing and exporting data is the foundation of data analysis workflows. The main two types of data files used are CSV and excel files. 
+
+- **CSV Files: ** R can easily import CSV files using `read.csv("filename.csv")`. The CSV is one of the most common formats you will encounter.
+- **Excel Files: ** For excel files, you can use the `readxl` package with the function `read_excel`. 
+
+<span style="color: orange;">**Try it: **</span>
+
+Let's have some fun by importing;
+
+i. From CSV file 
+```{r}
+m1_imported <- read.csv("data/m1.csv") # import the csv data set
+m1_imported # Display the data
+```
+ii. From Excel file
+```{r}
+library(readxl)
+
+students_imported <- read_excel("data/students.xlsx") # Import the data
+students_imported # Display the data
+```
+
+After data wrangling, manipulation and processing, the end product(processed data) can be saved for further use. The data can also be shared to others. Lets explore how export the CSV and Excel files 
+
+- **To CSV: ** You can save your data to CSV format using `write.csv(data, "filepath.csv")`.
+- **To Excel** To write to Excel, you can use `write.xlsx(data, "filepath.xlsx")` from the `openxlsx` package. 
+
+<span style="color: orange;">**Try it: **</span>
+
+Lets export the previously imported data set locally 
+
+i. To CSV
+```{r}
+write.csv(m1_imported, "data/m1_exported.csv") # Write the data set locally
+```
+ii. Excel File 
+```{r}
+library(openxlsx)
+
+write.xlsx(students_imported, "data/students_exported.xlsx")
+```
+
+<span style="color: green;">**Practical Exercise**</span>
 
 ## Data Cleaning 
-
 
 ## Data Visualization
 - A little bit of data visualization

@@ -357,13 +357,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="index.html#cb33-1" tabindex="-1"></a><span class="fu">is.data.frame</span>(m1_df) <span class="co">#confirms if its really a data.frame. </span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>Try out the exercise below to test your understanding in R data structures;</p>
+<ol style="list-style-type: lower-roman">
+<li>Create a vector named <code>height</code> with the values <code>120.1, 118, 123.4, 130.8, 115.2</code>. Use the <code>is.vector</code> to confirm that the created variable is a vector.</li>
+<li>Use <code>length()</code> function to count the number of elements in the vector.</li>
+<li>Create a matrix <code>m1</code> from the vector <code>v1</code> where <code>v1 &lt;- seq(1, 12)</code> with three columns. Use the <code>is.matrix</code> function to confirm if the said variable is a matrix.</li>
+<li>Access the third column by running the command <code>m1[, 3]</code>.</li>
+<li>Access the second row by running the command <code>m1[2,]</code>.</li>
+<li>Create a data frame <code>students_df</code> with the columns <code>"Name"</code>, <code>"Age"</code>, and <code>"Marks"</code> for three students. Where <code>Name &lt;- c("Pragya", "Thomas", "Ali")</code>, <code>Age &lt;- c(21, 19, 23)</code> and <code>Marks &lt;- c(68, 72, 67)</code>.</li>
+</ol>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<ol style="list-style-type: lower-roman">
+<li>Create a vector named <code>height</code> with the values <code>120.1, 118, 123.4, 130.8, 115.2</code>. Use the <code>is.vector</code> to confirm that the created variable is a vector.</li>
+</ol>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="index.html#cb35-1" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">120.1</span>, <span class="dv">118</span>, <span class="fl">123.4</span>, <span class="fl">130.8</span>, <span class="fl">115.2</span>)</span>
+<span id="cb35-2"><a href="index.html#cb35-2" tabindex="-1"></a><span class="fu">is.vector</span>(height)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Use <code>length()</code> function to count the number of elements in the vector.</li>
+</ol>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="index.html#cb37-1" tabindex="-1"></a><span class="fu">length</span>(height) <span class="co"># count the number of elements</span></span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<ol start="3" style="list-style-type: lower-roman">
+<li>Create a matrix <code>m1</code> from the vector <code>v1</code> where <code>v1 &lt;- seq(1, 12)</code> with three columns. Use the <code>is.matrix</code> function to confirm if the said variable is a matrix.</li>
+</ol>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="index.html#cb39-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">12</span>) <span class="co"># Create vector v1</span></span>
+<span id="cb39-2"><a href="index.html#cb39-2" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="index.html#cb39-3" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(v1, <span class="at">ncol=</span><span class="dv">3</span>) <span class="co"># create a matrix from the vector</span></span>
+<span id="cb39-4"><a href="index.html#cb39-4" tabindex="-1"></a>m1 </span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    5    9
+## [2,]    2    6   10
+## [3,]    3    7   11
+## [4,]    4    8   12</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="index.html#cb41-1" tabindex="-1"></a><span class="fu">is.matrix</span>(m1) <span class="co"># Confirm if its a matrix</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<ol start="4" style="list-style-type: lower-roman">
+<li>Access the third column by running the command <code>m1[, 3]</code>.</li>
+</ol>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="index.html#cb43-1" tabindex="-1"></a>m1[, <span class="dv">3</span>] <span class="co"># Access the third columns</span></span></code></pre></div>
+<pre><code>## [1]  9 10 11 12</code></pre>
+<ol start="22" style="list-style-type: lower-alpha">
+<li>Access the second row by running the command <code>m1[2,]</code>.</li>
+</ol>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="index.html#cb45-1" tabindex="-1"></a>m1[<span class="dv">2</span>,] <span class="co"># Access of the second row</span></span></code></pre></div>
+<pre><code>## [1]  2  6 10</code></pre>
+<ol start="6" style="list-style-type: lower-roman">
+<li>Create a data frame <code>students_df</code> with the columns <code>"Name"</code>, <code>"Age"</code>, and <code>"Marks"</code> for three students. Where <code>Name &lt;- c("Pragya", "Thomas", "Ali")</code>, <code>Age &lt;- c(21, 19, 23)</code> and <code>Marks &lt;- c(68, 72, 67)</code>.</li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="index.html#cb47-1" tabindex="-1"></a>student_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb47-2"><a href="index.html#cb47-2" tabindex="-1"></a>  <span class="st">&quot;Name&quot;</span><span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Pragya&quot;</span>, <span class="st">&quot;Thomas&quot;</span>, <span class="st">&quot;Ali&quot;</span>),</span>
+<span id="cb47-3"><a href="index.html#cb47-3" tabindex="-1"></a>  <span class="st">&quot;Age&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">23</span>),</span>
+<span id="cb47-4"><a href="index.html#cb47-4" tabindex="-1"></a>  <span class="st">&quot;Marks&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">68</span>, <span class="dv">72</span>, <span class="dv">67</span>)</span>
+<span id="cb47-5"><a href="index.html#cb47-5" tabindex="-1"></a>)</span>
+<span id="cb47-6"><a href="index.html#cb47-6" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="index.html#cb47-7" tabindex="-1"></a>student_df</span></code></pre></div>
+<pre><code>##     Name Age Marks
+## 1 Pragya  21    68
+## 2 Thomas  19    72
+## 3    Ali  23    67</code></pre>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
 </div>
 <div id="data-importing-and-exporting" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> Data Importing and Exporting<a href="index.html#data-importing-and-exporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Importing and exporting data is the foundation of data analysis workflows. The main two types of data files used are CSV and excel files.</p>
 <ul>
-<li>Data structures and how to import data into R</li>
+<li><strong>CSV Files: </strong> R can easily import CSV files using <code>read.csv("filename.csv")</code>. The CSV is one of the most common formats you will encounter.</li>
+<li><strong>Excel Files: </strong> For excel files, you can use the <code>readxl</code> package with the function <code>read_excel</code>.</li>
 </ul>
+<p><span style="color: orange;"><strong>Try it: </strong></span></p>
+<p>Let’s have some fun by importing;</p>
+<ol style="list-style-type: lower-roman">
+<li>From CSV file</li>
+</ol>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="index.html#cb49-1" tabindex="-1"></a>m1_imported <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/m1.csv&quot;</span>) <span class="co"># import the csv data set</span></span>
+<span id="cb49-2"><a href="index.html#cb49-2" tabindex="-1"></a>m1_imported <span class="co"># Display the data</span></span></code></pre></div>
+<pre><code>##   X V1 V2 V3
+## 1 1  1  5  9
+## 2 2  2  6 10
+## 3 3  3  7 11
+## 4 4  4  8 12</code></pre>
+<ol start="2" style="list-style-type: lower-roman">
+<li>From Excel file</li>
+</ol>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="index.html#cb51-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb51-2"><a href="index.html#cb51-2" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="index.html#cb51-3" tabindex="-1"></a>students_imported <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/students.xlsx&quot;</span>) <span class="co"># Import the data</span></span>
+<span id="cb51-4"><a href="index.html#cb51-4" tabindex="-1"></a>students_imported <span class="co"># Display the data</span></span></code></pre></div>
+<pre><code>## # A tibble: 3 × 3
+##   Name     Age Marks
+##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
+## 1 Pragya    21    68
+## 2 Thomas    19    72
+## 3 Ali       23    67</code></pre>
+<p>After data wrangling, manipulation and processing, the end product(processed data) can be saved for further use. The data can also be shared to others. Lets explore how export the CSV and Excel files</p>
+<ul>
+<li><strong>To CSV: </strong> You can save your data to CSV format using <code>write.csv(data, "filepath.csv")</code>.</li>
+<li><strong>To Excel</strong> To write to Excel, you can use <code>write.xlsx(data, "filepath.xlsx")</code> from the <code>openxlsx</code> package.</li>
+</ul>
+<p><span style="color: orange;"><strong>Try it: </strong></span></p>
+<p>Lets export the previously imported data set locally</p>
+<ol style="list-style-type: lower-roman">
+<li>To CSV</li>
+</ol>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="index.html#cb53-1" tabindex="-1"></a><span class="fu">write.csv</span>(m1_imported, <span class="st">&quot;data/m1_exported.csv&quot;</span>) <span class="co"># Write the data set locally</span></span></code></pre></div>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Excel File</li>
+</ol>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="index.html#cb54-1" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb54-2"><a href="index.html#cb54-2" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="index.html#cb54-3" tabindex="-1"></a><span class="fu">write.xlsx</span>(students_imported, <span class="st">&quot;data/students_exported.xlsx&quot;</span>)</span></code></pre></div>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
 </div>
 <div id="data-cleaning" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Data Cleaning<a href="index.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
