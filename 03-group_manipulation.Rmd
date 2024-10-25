@@ -1,9 +1,14 @@
 # Group Manipulation
-Group manipulation in R refers to the process of grouping data based on certain categories nd then performing operations based on each group separately. This is useful when you want to summarize, analyze or transform subsets of your data independently. In simple terms, group manipulation involves splitting the data into groups, applying a function to each group, and then combining the results. 
-**___recheck and add some content____**
+Group manipulation in R refers to the process of grouping data based on certain categories nd then performing operations based on each group separately. This is useful when you want to summarize, analyze or transform subsets of your data independently. In simple terms, group manipulation involves splitting the data into groups, applying a function to each group, and then combining the results. We will explore different methods designed by researchers for group manipulation. They are;
+
+- Group manipulation using the `apply` family,
+- The `aggregate` from `plyr` package,
+- Data reshaping
 
 ## Apply Family 
 The **apply family** in R is a collection of functions that helps you apply operations to data structures like vectors, lists, matrices and data frames in a more efficient way than using loops. Think of these functions as a way to give commands to your data in bulk, telling each piece what to do without repeating yourself. 
+
+Let’s make this fun! Imagine you’re running a café, and you have tables (rows of data) with customer orders (columns of data). You want to calculate the total for each table or find out how much each customer spent on average. The `apply` family is like hiring a helper who goes to each table and collects information without you having to ask each customer individually!
 
 Lets have a quick overview of the members of the **apply family**;
 
@@ -17,8 +22,34 @@ Lets have a quick overview of the members of the **apply family**;
 
 Let's see the `apply` family in action using the built-in R data set that contains information about flowers. 
 
-**______Add content________**
+- Use apply to calculate the mean of each column in the iris data set at once(No need of specifying the columns)
+```{r}
+#  Load and view the first few rows of the iris data set
+data(iris)
+head(iris)
 
+# Calculate the mean of each numeric column
+col_means <- apply(iris[, 1:4], 2, mean)
+print(col_means)
+```
+
+- The `2` in `apply` means "apply the function to columns" and the `mean` was used to find the average of each column. This is simple as asking a helper to calculate the  the average for all types of flowers for each characteristic (sepal length, petal length, etc.).
+
+- Now lets use the `lapply` function to find the range for each numeric column. This function applies to each element of a list(e.g vector) and returns a list. 
+```{r}
+# Calculate the range of each numeric column in the iris dataset
+column_ranges <- lapply(iris[, 1:4], range)
+print(column_ranges)
+```
+
+**_____ Explain this and add sapply, tapply and mapply functions**
+
+<span style="color: green;">**Practical Exercise**</span>
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
 
 ## Aggregate Plyr
 
@@ -79,7 +110,7 @@ head(mtcars_long)
 
 **______________Add explanations______________**
 
-<span style="color: green;">**Hands-on Exercises**</span> 
+<span style="color: green;">**Hands-on Exercise**</span> 
 
 _______________________________________________________________________
 <span style="color: brown;">**Solution**</span> 

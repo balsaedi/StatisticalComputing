@@ -247,10 +247,9 @@ write.xlsx(students_imported, "data/students_exported.xlsx")
 
 Before you analyze data, it is crucial to ensure that it is clean. Here are some common issues in data cleaning;
 
-- **Null Values: ** Missing data can distort your analysis. Functiions like `is.na()` and `na.omit()` are used to detect and remove null values respectively. 
+- **Null Values: ** Missing data can distort your analysis. Functions like `is.na()` and `na.omit()` are used to detect and remove null values respectively. Null values can also be imputed by filling the missing values with the most relevant value for instance mean, mode or median of the variable, zero, or any dedicated value. 
 - **Duplicated Records: ** Duplicates can cause bias in results and they can detected using the `duplicated()` function. This duplicated records can be removed by `unique()` function from R or `distinct()` from `dplyr` package. 
 - **Outliers: ** These are extreme values that don't follow the general trend. The use of summary statistics(specifically IQR) and boxplots can be used to cap these values based on the context. 
-
 
 Data cleaning is like polishing a diamond-it ensures the data is ready for analysis, free from distortions like missing values or outliers that can skew your insights. 
 
@@ -258,12 +257,94 @@ Data cleaning is like polishing a diamond-it ensures the data is ready for analy
 
 Lets have some fan! We will create a random data set, identify all data issues and address them by cleaning. 
 
-- Create the data set 
+- Create a sample data set 
 ```{r}
-#Remember to create the data set
+# Create a dataset
+set.seed(42)
+df <- data.frame(
+  Product = c('Shoes', 'Laptop', 'Watch', 'Phone', 'Shoes', 'Watch', 'Laptop', 'Shoes', 'Laptop', 'Phone'),
+  Sales = c(150, 500, NA, 300, 150, 1000, 500, 150, 500, 300), # Outlier in Sales (1000)
+  Category = c('Fashion', 'Tech', 'Fashion', 'Tech', 'Fashion', 'Fashion', 'Tech', 'Fashion', 'Tech', 'Tech'),
+  Discount = c(10, 0, 20, 5, 10, 20, 0, 10, 0, 5),
+  Returns = c(2, 0, 1, 0, 2, 1, 0, 2, 0, 0),
+  Profit = c(30, 100, NA, 70, 30, 500, 100, 30, 100, 70)  # Outlier in Profit (500)
+)
+
+# Add duplicated rows
+df <- rbind(df, df[2:3, ])
+
+# View the dataset
+head(df)
+```
+- Count the null values 
+```{r}
+sum(is.na(df))
 ```
 
+- There are 4 null values in the data set. Let's handle the null values by filling them with mean of the respective variables.
+```{r}
+# Fill missing Sales and Profit with the mean of the respective columns
+df$Sales[is.na(df$Sales)] <- mean(df$Sales, na.rm = TRUE)
+df$Profit[is.na(df$Profit)] <- mean(df$Profit, na.rm = TRUE)
+
+# View the data set after handling null values
+head(df)
+
+# Count the null values in the data set to confirm the operation
+sum(is.na(df))
+```
+- The null values are now filled and the data set is complete. Let's find if there exists some duplicated records and how many are they? 
+```{r}
+# Count the duplicated rows
+sum(duplicated(df))
+
+# Shape of the data set 
+dim(df)
+```
+
+- There are 7 duplicated rows. We will remove the duplicated records and retain only one row of the same kind. This can be achieved using `unique()` from base R or `distinct()` from `dplyr` package. In this case we will be using the `distinct` command. 
+```{r}
+# Load the required libraries 
+library(dplyr)
+
+# Remove duplicated rows
+df_cleaned <- df %>% distinct()
+
+# Count the duplicated records
+sum(duplicated(df_cleaned))
+
+# Shape of the data set 
+dim(df_cleaned)
+```
+
+- The data has no duplicated records and it is evident that 7 records(duplicated) were deleted. They are only 5 rows remaining. The last step of data cleaning in this case is to identify outliers in the `Sales` and `Profit`, and remove them using the IQR method. 
+```{r}
+# Use the IQR method to detect outliers in Sales and Profit
+Q1_sales <- quantile(df_cleaned$Sales, 0.25)
+Q3_sales <- quantile(df_cleaned$Sales, 0.75)
+IQR_sales <- Q3_sales - Q1_sales
+
+Q1_profit <- quantile(df_cleaned$Profit, 0.25)
+Q3_profit <- quantile(df_cleaned$Profit, 0.75)
+IQR_profit <- Q3_profit - Q1_profit
+
+# Filter out outliers
+df_cleaned <- df_cleaned %>%
+  filter(!(Sales < (Q1_sales - 1.5 * IQR_sales) | Sales > (Q3_sales + 1.5 * IQR_sales))) %>%
+  filter(!(Profit < (Q1_profit - 1.5 * IQR_profit) | Profit > (Q3_profit + 1.5 * IQR_profit)))
+
+# Find out how many records were affected
+dim(df_cleaned)
+```
+
+- Only one row had outliers and was removed. The data is now clean and ready for further analysis. 
+
 <span style="color: green;">**Practical Exercise**</span>
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
 
 ## Data Visualization
 

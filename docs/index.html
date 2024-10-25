@@ -476,7 +476,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.3</span> Data Cleaning<a href="index.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before you analyze data, it is crucial to ensure that it is clean. Here are some common issues in data cleaning;</p>
 <ul>
-<li><strong>Null Values: </strong> Missing data can distort your analysis. Functiions like <code>is.na()</code> and <code>na.omit()</code> are used to detect and remove null values respectively.</li>
+<li><strong>Null Values: </strong> Missing data can distort your analysis. Functions like <code>is.na()</code> and <code>na.omit()</code> are used to detect and remove null values respectively. Null values can also be imputed by filling the missing values with the most relevant value for instance mean, mode or median of the variable, zero, or any dedicated value.</li>
 <li><strong>Duplicated Records: </strong> Duplicates can cause bias in results and they can detected using the <code>duplicated()</code> function. This duplicated records can be removed by <code>unique()</code> function from R or <code>distinct()</code> from <code>dplyr</code> package.</li>
 <li><strong>Outliers: </strong> These are extreme values that don’t follow the general trend. The use of summary statistics(specifically IQR) and boxplots can be used to cap these values based on the context.</li>
 </ul>
@@ -484,10 +484,113 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span style="color: orange;"><strong>Try it: </strong></span></p>
 <p>Lets have some fan! We will create a random data set, identify all data issues and address them by cleaning.</p>
 <ul>
-<li>Create the data set</li>
+<li>Create a sample data set</li>
 </ul>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="index.html#cb55-1" tabindex="-1"></a><span class="co">#Remember to create the data set</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="index.html#cb55-1" tabindex="-1"></a><span class="co"># Create a dataset</span></span>
+<span id="cb55-2"><a href="index.html#cb55-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb55-3"><a href="index.html#cb55-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb55-4"><a href="index.html#cb55-4" tabindex="-1"></a>  <span class="at">Product =</span> <span class="fu">c</span>(<span class="st">&#39;Shoes&#39;</span>, <span class="st">&#39;Laptop&#39;</span>, <span class="st">&#39;Watch&#39;</span>, <span class="st">&#39;Phone&#39;</span>, <span class="st">&#39;Shoes&#39;</span>, <span class="st">&#39;Watch&#39;</span>, <span class="st">&#39;Laptop&#39;</span>, <span class="st">&#39;Shoes&#39;</span>, <span class="st">&#39;Laptop&#39;</span>, <span class="st">&#39;Phone&#39;</span>),</span>
+<span id="cb55-5"><a href="index.html#cb55-5" tabindex="-1"></a>  <span class="at">Sales =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">500</span>, <span class="cn">NA</span>, <span class="dv">300</span>, <span class="dv">150</span>, <span class="dv">1000</span>, <span class="dv">500</span>, <span class="dv">150</span>, <span class="dv">500</span>, <span class="dv">300</span>), <span class="co"># Outlier in Sales (1000)</span></span>
+<span id="cb55-6"><a href="index.html#cb55-6" tabindex="-1"></a>  <span class="at">Category =</span> <span class="fu">c</span>(<span class="st">&#39;Fashion&#39;</span>, <span class="st">&#39;Tech&#39;</span>, <span class="st">&#39;Fashion&#39;</span>, <span class="st">&#39;Tech&#39;</span>, <span class="st">&#39;Fashion&#39;</span>, <span class="st">&#39;Fashion&#39;</span>, <span class="st">&#39;Tech&#39;</span>, <span class="st">&#39;Fashion&#39;</span>, <span class="st">&#39;Tech&#39;</span>, <span class="st">&#39;Tech&#39;</span>),</span>
+<span id="cb55-7"><a href="index.html#cb55-7" tabindex="-1"></a>  <span class="at">Discount =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">5</span>),</span>
+<span id="cb55-8"><a href="index.html#cb55-8" tabindex="-1"></a>  <span class="at">Returns =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb55-9"><a href="index.html#cb55-9" tabindex="-1"></a>  <span class="at">Profit =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">100</span>, <span class="cn">NA</span>, <span class="dv">70</span>, <span class="dv">30</span>, <span class="dv">500</span>, <span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">70</span>)  <span class="co"># Outlier in Profit (500)</span></span>
+<span id="cb55-10"><a href="index.html#cb55-10" tabindex="-1"></a>)</span>
+<span id="cb55-11"><a href="index.html#cb55-11" tabindex="-1"></a></span>
+<span id="cb55-12"><a href="index.html#cb55-12" tabindex="-1"></a><span class="co"># Add duplicated rows</span></span>
+<span id="cb55-13"><a href="index.html#cb55-13" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df, df[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, ])</span>
+<span id="cb55-14"><a href="index.html#cb55-14" tabindex="-1"></a></span>
+<span id="cb55-15"><a href="index.html#cb55-15" tabindex="-1"></a><span class="co"># View the dataset</span></span>
+<span id="cb55-16"><a href="index.html#cb55-16" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>##   Product Sales Category Discount Returns Profit
+## 1   Shoes   150  Fashion       10       2     30
+## 2  Laptop   500     Tech        0       0    100
+## 3   Watch    NA  Fashion       20       1     NA
+## 4   Phone   300     Tech        5       0     70
+## 5   Shoes   150  Fashion       10       2     30
+## 6   Watch  1000  Fashion       20       1    500</code></pre>
+<ul>
+<li>Count the null values</li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="index.html#cb57-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df))</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<ul>
+<li>There are 4 null values in the data set. Let’s handle the null values by filling them with mean of the respective variables.</li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="index.html#cb59-1" tabindex="-1"></a><span class="co"># Fill missing Sales and Profit with the mean of the respective columns</span></span>
+<span id="cb59-2"><a href="index.html#cb59-2" tabindex="-1"></a>df<span class="sc">$</span>Sales[<span class="fu">is.na</span>(df<span class="sc">$</span>Sales)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>Sales, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb59-3"><a href="index.html#cb59-3" tabindex="-1"></a>df<span class="sc">$</span>Profit[<span class="fu">is.na</span>(df<span class="sc">$</span>Profit)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>Profit, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb59-4"><a href="index.html#cb59-4" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="index.html#cb59-5" tabindex="-1"></a><span class="co"># View the data set after handling null values</span></span>
+<span id="cb59-6"><a href="index.html#cb59-6" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>##   Product Sales Category Discount Returns Profit
+## 1   Shoes   150  Fashion       10       2     30
+## 2  Laptop   500     Tech        0       0    100
+## 3   Watch   405  Fashion       20       1    113
+## 4   Phone   300     Tech        5       0     70
+## 5   Shoes   150  Fashion       10       2     30
+## 6   Watch  1000  Fashion       20       1    500</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="index.html#cb61-1" tabindex="-1"></a><span class="co"># Count the null values in the data set to confirm the operation</span></span>
+<span id="cb61-2"><a href="index.html#cb61-2" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df))</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<ul>
+<li>The null values are now filled and the data set is complete. Let’s find if there exists some duplicated records and how many are they?</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="index.html#cb63-1" tabindex="-1"></a><span class="co"># Count the duplicated rows</span></span>
+<span id="cb63-2"><a href="index.html#cb63-2" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(df))</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="index.html#cb65-1" tabindex="-1"></a><span class="co"># Shape of the data set </span></span>
+<span id="cb65-2"><a href="index.html#cb65-2" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
+<pre><code>## [1] 12  6</code></pre>
+<ul>
+<li>There are 7 duplicated rows. We will remove the duplicated records and retain only one row of the same kind. This can be achieved using <code>unique()</code> from base R or <code>distinct()</code> from <code>dplyr</code> package. In this case we will be using the <code>distinct</code> command.</li>
+</ul>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="index.html#cb67-1" tabindex="-1"></a><span class="co"># Load the required libraries </span></span>
+<span id="cb67-2"><a href="index.html#cb67-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="index.html#cb71-1" tabindex="-1"></a><span class="co"># Remove duplicated rows</span></span>
+<span id="cb71-2"><a href="index.html#cb71-2" tabindex="-1"></a>df_cleaned <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">distinct</span>()</span>
+<span id="cb71-3"><a href="index.html#cb71-3" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="index.html#cb71-4" tabindex="-1"></a><span class="co"># Count the duplicated records</span></span>
+<span id="cb71-5"><a href="index.html#cb71-5" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(df_cleaned))</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="index.html#cb73-1" tabindex="-1"></a><span class="co"># Shape of the data set </span></span>
+<span id="cb73-2"><a href="index.html#cb73-2" tabindex="-1"></a><span class="fu">dim</span>(df_cleaned)</span></code></pre></div>
+<pre><code>## [1] 5 6</code></pre>
+<ul>
+<li>The data has no duplicated records and it is evident that 7 records(duplicated) were deleted. They are only 5 rows remaining. The last step of data cleaning in this case is to identify outliers in the <code>Sales</code> and <code>Profit</code>, and remove them using the IQR method.</li>
+</ul>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="index.html#cb75-1" tabindex="-1"></a><span class="co"># Use the IQR method to detect outliers in Sales and Profit</span></span>
+<span id="cb75-2"><a href="index.html#cb75-2" tabindex="-1"></a>Q1_sales <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df_cleaned<span class="sc">$</span>Sales, <span class="fl">0.25</span>)</span>
+<span id="cb75-3"><a href="index.html#cb75-3" tabindex="-1"></a>Q3_sales <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df_cleaned<span class="sc">$</span>Sales, <span class="fl">0.75</span>)</span>
+<span id="cb75-4"><a href="index.html#cb75-4" tabindex="-1"></a>IQR_sales <span class="ot">&lt;-</span> Q3_sales <span class="sc">-</span> Q1_sales</span>
+<span id="cb75-5"><a href="index.html#cb75-5" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="index.html#cb75-6" tabindex="-1"></a>Q1_profit <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df_cleaned<span class="sc">$</span>Profit, <span class="fl">0.25</span>)</span>
+<span id="cb75-7"><a href="index.html#cb75-7" tabindex="-1"></a>Q3_profit <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df_cleaned<span class="sc">$</span>Profit, <span class="fl">0.75</span>)</span>
+<span id="cb75-8"><a href="index.html#cb75-8" tabindex="-1"></a>IQR_profit <span class="ot">&lt;-</span> Q3_profit <span class="sc">-</span> Q1_profit</span>
+<span id="cb75-9"><a href="index.html#cb75-9" tabindex="-1"></a></span>
+<span id="cb75-10"><a href="index.html#cb75-10" tabindex="-1"></a><span class="co"># Filter out outliers</span></span>
+<span id="cb75-11"><a href="index.html#cb75-11" tabindex="-1"></a>df_cleaned <span class="ot">&lt;-</span> df_cleaned <span class="sc">%&gt;%</span></span>
+<span id="cb75-12"><a href="index.html#cb75-12" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(Sales <span class="sc">&lt;</span> (Q1_sales <span class="sc">-</span> <span class="fl">1.5</span> <span class="sc">*</span> IQR_sales) <span class="sc">|</span> Sales <span class="sc">&gt;</span> (Q3_sales <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> IQR_sales))) <span class="sc">%&gt;%</span></span>
+<span id="cb75-13"><a href="index.html#cb75-13" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(Profit <span class="sc">&lt;</span> (Q1_profit <span class="sc">-</span> <span class="fl">1.5</span> <span class="sc">*</span> IQR_profit) <span class="sc">|</span> Profit <span class="sc">&gt;</span> (Q3_profit <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> IQR_profit)))</span>
+<span id="cb75-14"><a href="index.html#cb75-14" tabindex="-1"></a></span>
+<span id="cb75-15"><a href="index.html#cb75-15" tabindex="-1"></a><span class="co"># Find out how many records were affected</span></span>
+<span id="cb75-16"><a href="index.html#cb75-16" tabindex="-1"></a><span class="fu">dim</span>(df_cleaned)</span></code></pre></div>
+<pre><code>## [1] 4 6</code></pre>
+<ul>
+<li>Only one row had outliers and was removed. The data is now clean and ready for further analysis.</li>
+</ul>
 <p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
 <div id="data-visualization" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> Data Visualization<a href="index.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -507,7 +610,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Load the library</li>
 </ul>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="index.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="index.html#cb78-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 </div>
 <div id="hands-on-exercises" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> <span style="color: green;"><strong>Hands-on Exercises</strong></span><a href="index.html#hands-on-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
