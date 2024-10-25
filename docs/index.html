@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-23" />
+<meta name="date" content="2024-10-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#data-importing-and-exporting"><i class="fa fa-check"></i><b>1.2</b> Data Importing and Exporting</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-cleaning"><i class="fa fa-check"></i><b>1.3</b> Data Cleaning</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#data-visualization"><i class="fa fa-check"></i><b>1.4</b> Data Visualization</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#hands-on-exercises"><i class="fa fa-check"></i><b>1.5</b> <span style="color: green;"><strong>Hands-on Exercises</strong></span></a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
 <ul>
@@ -211,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Statistical Computing</h1>
 <p class="author"><em>YOUR NAME HERE</em></p>
-<p class="date"><em>2024-10-23</em></p>
+<p class="date"><em>2024-10-25</em></p>
 </div>
 <div id="reviews" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Reviews<a href="index.html#reviews" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -473,13 +474,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="data-cleaning" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Data Cleaning<a href="index.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before you analyze data, it is crucial to ensure that it is clean. Here are some common issues in data cleaning;</p>
+<ul>
+<li><strong>Null Values: </strong> Missing data can distort your analysis. Functiions like <code>is.na()</code> and <code>na.omit()</code> are used to detect and remove null values respectively.</li>
+<li><strong>Duplicated Records: </strong> Duplicates can cause bias in results and they can detected using the <code>duplicated()</code> function. This duplicated records can be removed by <code>unique()</code> function from R or <code>distinct()</code> from <code>dplyr</code> package.</li>
+<li><strong>Outliers: </strong> These are extreme values that don’t follow the general trend. The use of summary statistics(specifically IQR) and boxplots can be used to cap these values based on the context.</li>
+</ul>
+<p>Data cleaning is like polishing a diamond-it ensures the data is ready for analysis, free from distortions like missing values or outliers that can skew your insights.</p>
+<p><span style="color: orange;"><strong>Try it: </strong></span></p>
+<p>Lets have some fan! We will create a random data set, identify all data issues and address them by cleaning.</p>
+<ul>
+<li>Create the data set</li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="index.html#cb55-1" tabindex="-1"></a><span class="co">#Remember to create the data set</span></span></code></pre></div>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
 </div>
 <div id="data-visualization" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> Data Visualization<a href="index.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>**____What is Data Visualization____** <code>ggplot</code> is one of the most popular and flexble data visualization libraries in R. It follows the <strong>grammar of graphics</strong> philosophy, allowing you o build plots in layers. Here are some of the basic plots in data visualization;</p>
 <ul>
-<li>A little bit of data visualization</li>
-<li></li>
+<li><strong>Scatter Plots: </strong> used to visualize the relationship between two variables in R.</li>
+<li><strong>Bar Charts: </strong> used to compare categorical data.</li>
+<li><strong>Histograms: </strong> used to represent distribution of a single continuous variable.</li>
 </ul>
+<p>Visualizations are powerful tools that help you see patterns and insights that raw data might hide. A well-made plot can communicate your findings more effectively than numbers alone.</p>
+<p><span style="color: orange;"><strong>Try it: </strong></span></p>
+<p>Lets use the above data set that we cleaned to plot simple charts in R using <code>ggplot</code> library.</p>
+<ul>
+<li>Install the package if not installed</li>
+</ul>
+<pre><code>install.packages(&quot;ggplot2&quot;)</code></pre>
+<ul>
+<li>Load the library</li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="index.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+</div>
+<div id="hands-on-exercises" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> <span style="color: green;"><strong>Hands-on Exercises</strong></span><a href="index.html#hands-on-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 
 </div>
 </div>

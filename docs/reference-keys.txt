@@ -5,6 +5,7 @@ data-structures
 data-importing-and-exporting
 data-cleaning
 data-visualization
+hands-on-exercises
 functions
 writing-functions
 user-defined-functions

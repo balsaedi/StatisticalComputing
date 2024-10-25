@@ -245,6 +245,53 @@ write.xlsx(students_imported, "data/students_exported.xlsx")
 
 ## Data Cleaning 
 
+Before you analyze data, it is crucial to ensure that it is clean. Here are some common issues in data cleaning;
+
+- **Null Values: ** Missing data can distort your analysis. Functiions like `is.na()` and `na.omit()` are used to detect and remove null values respectively. 
+- **Duplicated Records: ** Duplicates can cause bias in results and they can detected using the `duplicated()` function. This duplicated records can be removed by `unique()` function from R or `distinct()` from `dplyr` package. 
+- **Outliers: ** These are extreme values that don't follow the general trend. The use of summary statistics(specifically IQR) and boxplots can be used to cap these values based on the context. 
+
+
+Data cleaning is like polishing a diamond-it ensures the data is ready for analysis, free from distortions like missing values or outliers that can skew your insights. 
+
+<span style="color: orange;">**Try it: **</span> 
+
+Lets have some fan! We will create a random data set, identify all data issues and address them by cleaning. 
+
+- Create the data set 
+```{r}
+#Remember to create the data set
+```
+
+<span style="color: green;">**Practical Exercise**</span>
+
 ## Data Visualization
-- A little bit of data visualization
-- 
+
+**____What is Data Visualization____** `ggplot` is one of the most popular and flexble data visualization libraries in R. It follows the **grammar of graphics** philosophy, allowing you o build plots in layers. Here are some of the basic plots in data visualization;
+
+- **Scatter Plots: ** used to visualize the relationship between two variables in R.
+- **Bar Charts: ** used to compare categorical data. 
+- **Histograms: ** used to represent distribution of a single continuous variable. 
+
+Visualizations are powerful tools that help you see patterns and insights that raw data might hide. A well-made plot can communicate your findings more effectively than numbers alone. 
+
+<span style="color: orange;">**Try it: **</span>
+
+Lets use the above data set that we cleaned to plot simple charts in R using `ggplot` library. 
+
+- Install the package if not installed
+```
+install.packages("ggplot2")
+```
+
+- Load the library
+```{r}
+library(ggplot2)
+```
+
+## <span style="color: green;">**Hands-on Exercises**</span> 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+<span style="color: brown;">**________________________________________________________________________________**</span>

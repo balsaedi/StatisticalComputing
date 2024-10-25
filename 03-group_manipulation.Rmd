@@ -1,8 +1,87 @@
 # Group Manipulation
+Group manipulation in R refers to the process of grouping data based on certain categories nd then performing operations based on each group separately. This is useful when you want to summarize, analyze or transform subsets of your data independently. In simple terms, group manipulation involves splitting the data into groups, applying a function to each group, and then combining the results. 
+**___recheck and add some content____**
+
 ## Apply Family 
+The **apply family** in R is a collection of functions that helps you apply operations to data structures like vectors, lists, matrices and data frames in a more efficient way than using loops. Think of these functions as a way to give commands to your data in bulk, telling each piece what to do without repeating yourself. 
+
+Lets have a quick overview of the members of the **apply family**;
+
+- `apply()` - Works with matrices or data frames, applying a function to rows or columns. 
+- `lapply()` - Loops over elements in a list, applying a function to each element and returning a list. 
+- `sapply()` - Similar to `lapply`, but it returns a vector or matrix when possible. 
+- `tapply()` - Applies a function over subsets of data, especially useful for factors or groups. 
+- `mapply()` - Applies a function to multiple arguments simultaneously. 
+
+<span style="color: orange;">**Try it: **</span>
+
+Let's see the `apply` family in action using the built-in R data set that contains information about flowers. 
+
+**______Add content________**
+
 
 ## Aggregate Plyr
 
+The `aggregate()` function from `plyr` package is a powerful tool for grouping and summarizing data in R. This is similar to the SQL `GROUP BY` command or the `tapply()` that we have discussed above. The difference is that `aggregate()` allows to summarize data based on one or more grouping factors. 
+
+<span style="color: orange;">**Try it!**</span>
+
+Let's explore an example using the built-in `mtcars` data set to show how to use the `aggregate()` from the `plyr` package. 
+
+**____Add Code____and explanations___________**
+
+We have just calculate the average `mpg` (miles per gallon) grouped by the number of `cyl`(cylinders). Let's make a little bit more complex by grouping with multiple variables and summarize multiple columns as well. We will calculate the mean horsepower(`hp`) and the weight(`wt`) by the number of cylinders(`cyl`) and the number of transmission(`am`). 
+
+**___Add Code___ And explanation____________**
+
 
 ## Data Reshaping 
+Data reshaping is the process of transforming the layout or structure of a data set without changing the actual data. You typically reshape data to suit different analyses, visualizations, or reporting formats. Common operations for reshaping include pivoting data between **wide** and **long** formats. 
 
+- **Wide format: ** Each subject(row) has its own columns for measurements at different time points or categories. 
+- **Long format: ** The data has one measurement per row, making it easier to analyze in some cases, especially with repeated measures. 
+
+In R, the most common function for reshaping data include; 
+
+- `pivot_longer()` and `pivot_wider()` from the `tidyr` package.
+- `melt()` and `dcast()` from the `reshape2` package. 
+
+<span style="color: orange;">**Try it!**</span>
+
+Let's have some fun by working on the `mtcars` data set where we will demonstrate reshaping between wide and long formats
+
+**Step 1: Inspect the Data**
+
+The `mtcars` data set is already in a wide format where each row represents a car, and columns represent different variables for instance `mpg, cyl, hp`. 
+```{r}
+data(mtcars) # Load the data set
+
+# First few records of the data set
+head(mtcars)
+```
+
+**Step2: Converting from Wide to Long Format**
+
+We will use the `pivot_longer()` function from the `tidyr` package to convert the data set from wide to long format. In this case, we will shape the `mpg`, `hp` and `wt` columns into a longer format making it easier to work with. 
+```{r}
+library(tidyr)
+
+# Reshape the data from wide to long format
+mtcars_long <- mtcars %>% 
+  pivot_longer(cols=c(mpg, hp, wt),
+               names_to = "variable",
+               values_to = "value")
+
+# View the respaed data 
+head(mtcars_long)
+```
+
+
+**______________Add explanations______________**
+
+<span style="color: green;">**Hands-on Exercises**</span> 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
