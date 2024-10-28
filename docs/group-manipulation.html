@@ -401,10 +401,79 @@ It’s like your helper asking every customer for two values and summing them up
 <h2><span class="header-section-number">3.2</span> Aggregate Plyr<a href="group-manipulation.html#aggregate-plyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>aggregate()</code> function from <code>plyr</code> package is a powerful tool for grouping and summarizing data in R. This is similar to the SQL <code>GROUP BY</code> command or the <code>tapply()</code> that we have discussed above. The difference is that <code>aggregate()</code> allows to summarize data based on one or more grouping factors.</p>
 <p><span style="color: orange;"><strong>Try it!</strong></span></p>
-<p>Let’s explore an example using the built-in <code>mtcars</code> data set to show how to use the <code>aggregate()</code> from the <code>plyr</code> package.</p>
-<p><strong>____Add Code_<strong><em>and explanations</em></strong>________</strong></p>
-<p>We have just calculate the average <code>mpg</code> (miles per gallon) grouped by the number of <code>cyl</code>(cylinders). Let’s make a little bit more complex by grouping with multiple variables and summarize multiple columns as well. We will calculate the mean horsepower(<code>hp</code>) and the weight(<code>wt</code>) by the number of cylinders(<code>cyl</code>) and the number of transmission(<code>am</code>).</p>
-<p><strong><strong><em>Add Code</em></strong> And explanation____________</strong></p>
+<p>Let’s explore an example using the built-in <code>mtcars</code> data set to show how to use the <code>aggregate()</code> from the <code>plyr</code> package. The <code>plyr</code> package can be installed by:</p>
+<pre><code>install.packages(&quot;plyr&quot;)</code></pre>
+<p>Lets start</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="group-manipulation.html#cb225-1" tabindex="-1"></a><span class="fu">library</span>(plyr)</span></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------------</code></pre>
+<pre><code>## You have loaded plyr after dplyr - this is likely to cause problems.
+## If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+## library(plyr); library(dplyr)</code></pre>
+<pre><code>## ------------------------------------------------------------------------------</code></pre>
+<pre><code>## 
+## Attaching package: &#39;plyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize</code></pre>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="group-manipulation.html#cb231-1" tabindex="-1"></a><span class="co"># Load the data set</span></span>
+<span id="cb231-2"><a href="group-manipulation.html#cb231-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb231-3"><a href="group-manipulation.html#cb231-3" tabindex="-1"></a></span>
+<span id="cb231-4"><a href="group-manipulation.html#cb231-4" tabindex="-1"></a><span class="co"># Use aggregate to find the average &#39;mpg&#39; (miles per gallon) grouped by the number of cylinders (&#39;cyl&#39;)</span></span>
+<span id="cb231-5"><a href="group-manipulation.html#cb231-5" tabindex="-1"></a>avg_mpg_by_cyl <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(mpg <span class="sc">~</span> cyl, </span>
+<span id="cb231-6"><a href="group-manipulation.html#cb231-6" tabindex="-1"></a>                            <span class="at">data =</span> mtcars, </span>
+<span id="cb231-7"><a href="group-manipulation.html#cb231-7" tabindex="-1"></a>                            <span class="at">FUN =</span> mean)</span>
+<span id="cb231-8"><a href="group-manipulation.html#cb231-8" tabindex="-1"></a>avg_mpg_by_cyl</span></code></pre></div>
+<pre><code>##   cyl      mpg
+## 1   4 26.66364
+## 2   6 19.74286
+## 3   8 15.10000</code></pre>
+<p>If we break done the code;</p>
+<ol style="list-style-type: lower-roman">
+<li><code>mpg ~ cyl</code> tells R to calculate the average <code>mpg</code>(dependent variable) for each unique value of <code>cyl</code>(grouping factor).</li>
+<li><code>data = mtcars</code> specifies the data set.</li>
+<li><code>FUN = mean</code> applies the <code>mean</code> function to compute the average <code>mpg</code> for each group of <code>cyl</code>.</li>
+</ol>
+<p>We have just calculated the average <code>mpg</code> (miles per gallon) grouped by the number of <code>cyl</code>(cylinders). Let’s make it a little bit more complex by grouping with multiple variables and summarize multiple columns as well. We will calculate the mean horsepower(<code>hp</code>) and the weight(<code>wt</code>) by the number of cylinders(<code>cyl</code>) and the number of transmission(<code>am</code>).</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="group-manipulation.html#cb233-1" tabindex="-1"></a><span class="co"># Use aggregate to find the mean hp and wt by cylinders and transmission type</span></span>
+<span id="cb233-2"><a href="group-manipulation.html#cb233-2" tabindex="-1"></a>avg_hp_wt_by_cyl_am <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="fu">cbind</span>(hp, wt) <span class="sc">~</span> cyl <span class="sc">+</span> am, </span>
+<span id="cb233-3"><a href="group-manipulation.html#cb233-3" tabindex="-1"></a>                                 <span class="at">data =</span> mtcars, </span>
+<span id="cb233-4"><a href="group-manipulation.html#cb233-4" tabindex="-1"></a>                                 <span class="at">FUN =</span> mean)</span>
+<span id="cb233-5"><a href="group-manipulation.html#cb233-5" tabindex="-1"></a></span>
+<span id="cb233-6"><a href="group-manipulation.html#cb233-6" tabindex="-1"></a>avg_hp_wt_by_cyl_am</span></code></pre></div>
+<pre><code>##   cyl am        hp       wt
+## 1   4  0  84.66667 2.935000
+## 2   6  0 115.25000 3.388750
+## 3   8  0 194.16667 4.104083
+## 4   4  1  81.87500 2.042250
+## 5   6  1 131.66667 2.755000
+## 6   8  1 299.50000 3.370000</code></pre>
+<p>If we breakdown the code;</p>
+<ol style="list-style-type: lower-roman">
+<li><code>cbind(hp, wt)</code> allows you to summarize multiple columns (<code>hp</code> and <code>wt</code>).</li>
+<li><code>cyl + am</code> groups the data by the number of cylinders and the transmission type (<code>am</code> = 0 for automatic, 1 for manual`).</li>
+<li>The argument <code>FUN</code> defines the function to be used here therefore, <code>FUN = mean</code> calculates the mean values for <code>hp</code> and <code>wt</code> for each group of <code>cyl</code> and <code>am</code>.</li>
+</ol>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>Try using the <code>aggregate()</code> with the <code>iris</code> data set to find the mean sepal length (<code>Sepal.Length</code>) and petal length(<code>Petal.Length</code>) for each species.</p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="group-manipulation.html#cb235-1" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb235-2"><a href="group-manipulation.html#cb235-2" tabindex="-1"></a></span>
+<span id="cb235-3"><a href="group-manipulation.html#cb235-3" tabindex="-1"></a><span class="co"># Load the iris data set</span></span>
+<span id="cb235-4"><a href="group-manipulation.html#cb235-4" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb235-5"><a href="group-manipulation.html#cb235-5" tabindex="-1"></a></span>
+<span id="cb235-6"><a href="group-manipulation.html#cb235-6" tabindex="-1"></a><span class="co"># Calculate the averages as per the instructions</span></span>
+<span id="cb235-7"><a href="group-manipulation.html#cb235-7" tabindex="-1"></a>avg_sepal_petal_by_species <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="fu">cbind</span>(Sepal.Length, Petal.Length) <span class="sc">~</span> Species, </span>
+<span id="cb235-8"><a href="group-manipulation.html#cb235-8" tabindex="-1"></a>                                        <span class="at">data =</span> iris,</span>
+<span id="cb235-9"><a href="group-manipulation.html#cb235-9" tabindex="-1"></a>                                        <span class="at">FUN =</span> mean)</span>
+<span id="cb235-10"><a href="group-manipulation.html#cb235-10" tabindex="-1"></a></span>
+<span id="cb235-11"><a href="group-manipulation.html#cb235-11" tabindex="-1"></a>avg_sepal_petal_by_species</span></code></pre></div>
+<pre><code>##      Species Sepal.Length Petal.Length
+## 1     setosa        5.006        1.462
+## 2 versicolor        5.936        4.260
+## 3  virginica        6.588        5.552</code></pre>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
 <div id="data-reshaping" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Data Reshaping<a href="group-manipulation.html#data-reshaping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -422,10 +491,10 @@ It’s like your helper asking every customer for two values and summing them up
 <p>Let’s have some fun by working on the <code>mtcars</code> data set where we will demonstrate reshaping between wide and long formats</p>
 <p><strong>Step 1: Inspect the Data</strong></p>
 <p>The <code>mtcars</code> data set is already in a wide format where each row represents a car, and columns represent different variables for instance <code>mpg, cyl, hp</code>.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="group-manipulation.html#cb224-1" tabindex="-1"></a><span class="fu">data</span>(mtcars) <span class="co"># Load the data set</span></span>
-<span id="cb224-2"><a href="group-manipulation.html#cb224-2" tabindex="-1"></a></span>
-<span id="cb224-3"><a href="group-manipulation.html#cb224-3" tabindex="-1"></a><span class="co"># First few records of the data set</span></span>
-<span id="cb224-4"><a href="group-manipulation.html#cb224-4" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="group-manipulation.html#cb237-1" tabindex="-1"></a><span class="fu">data</span>(mtcars) <span class="co"># Load the data set</span></span>
+<span id="cb237-2"><a href="group-manipulation.html#cb237-2" tabindex="-1"></a></span>
+<span id="cb237-3"><a href="group-manipulation.html#cb237-3" tabindex="-1"></a><span class="co"># First few records of the data set</span></span>
+<span id="cb237-4"><a href="group-manipulation.html#cb237-4" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -435,16 +504,16 @@ It’s like your helper asking every customer for two values and summing them up
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 <p><strong>Step2: Converting from Wide to Long Format</strong></p>
 <p>We will use the <code>pivot_longer()</code> function from the <code>tidyr</code> package to convert the data set from wide to long format. In this case, we will shape the <code>mpg</code>, <code>hp</code> and <code>wt</code> columns into a longer format making it easier to work with.</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="group-manipulation.html#cb226-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb226-2"><a href="group-manipulation.html#cb226-2" tabindex="-1"></a></span>
-<span id="cb226-3"><a href="group-manipulation.html#cb226-3" tabindex="-1"></a><span class="co"># Reshape the data from wide to long format</span></span>
-<span id="cb226-4"><a href="group-manipulation.html#cb226-4" tabindex="-1"></a>mtcars_long <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb226-5"><a href="group-manipulation.html#cb226-5" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(mpg, hp, wt),</span>
-<span id="cb226-6"><a href="group-manipulation.html#cb226-6" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>,</span>
-<span id="cb226-7"><a href="group-manipulation.html#cb226-7" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>)</span>
-<span id="cb226-8"><a href="group-manipulation.html#cb226-8" tabindex="-1"></a></span>
-<span id="cb226-9"><a href="group-manipulation.html#cb226-9" tabindex="-1"></a><span class="co"># View the respaed data </span></span>
-<span id="cb226-10"><a href="group-manipulation.html#cb226-10" tabindex="-1"></a><span class="fu">head</span>(mtcars_long)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="group-manipulation.html#cb239-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb239-2"><a href="group-manipulation.html#cb239-2" tabindex="-1"></a></span>
+<span id="cb239-3"><a href="group-manipulation.html#cb239-3" tabindex="-1"></a><span class="co"># Reshape the data from wide to long format</span></span>
+<span id="cb239-4"><a href="group-manipulation.html#cb239-4" tabindex="-1"></a>mtcars_long <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb239-5"><a href="group-manipulation.html#cb239-5" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(mpg, hp, wt),</span>
+<span id="cb239-6"><a href="group-manipulation.html#cb239-6" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>,</span>
+<span id="cb239-7"><a href="group-manipulation.html#cb239-7" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>)</span>
+<span id="cb239-8"><a href="group-manipulation.html#cb239-8" tabindex="-1"></a></span>
+<span id="cb239-9"><a href="group-manipulation.html#cb239-9" tabindex="-1"></a><span class="co"># View the respaed data </span></span>
+<span id="cb239-10"><a href="group-manipulation.html#cb239-10" tabindex="-1"></a><span class="fu">head</span>(mtcars_long)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
 ##     cyl  disp  drat  qsec    vs    am  gear  carb variable  value
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;

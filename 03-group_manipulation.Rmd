@@ -145,14 +145,67 @@ The `aggregate()` function from `plyr` package is a powerful tool for grouping a
 
 <span style="color: orange;">**Try it!**</span>
 
-Let's explore an example using the built-in `mtcars` data set to show how to use the `aggregate()` from the `plyr` package. 
+Let's explore an example using the built-in `mtcars` data set to show how to use the `aggregate()` from the `plyr` package. The `plyr` package can be installed by:
+```
+install.packages("plyr")
+```
 
-**____Add Code____and explanations___________**
+Lets start
+```{r}
+library(plyr)
 
-We have just calculate the average `mpg` (miles per gallon) grouped by the number of `cyl`(cylinders). Let's make a little bit more complex by grouping with multiple variables and summarize multiple columns as well. We will calculate the mean horsepower(`hp`) and the weight(`wt`) by the number of cylinders(`cyl`) and the number of transmission(`am`). 
+# Load the data set
+data("mtcars")
 
-**___Add Code___ And explanation____________**
+# Use aggregate to find the average 'mpg' (miles per gallon) grouped by the number of cylinders ('cyl')
+avg_mpg_by_cyl <- aggregate(mpg ~ cyl, 
+                            data = mtcars, 
+                            FUN = mean)
+avg_mpg_by_cyl
+```
+If we break done the code;
 
+i. `mpg ~ cyl` tells R to calculate the average `mpg`(dependent variable) for each unique value of `cyl`(grouping factor).
+ii. `data = mtcars` specifies the data set. 
+iii. `FUN = mean` applies the `mean` function to compute the average `mpg` for each group of `cyl`. 
+
+We have just calculated the average `mpg` (miles per gallon) grouped by the number of `cyl`(cylinders). Let's make it a little bit more complex by grouping with multiple variables and summarize multiple columns as well. We will calculate the mean horsepower(`hp`) and the weight(`wt`) by the number of cylinders(`cyl`) and the number of transmission(`am`). 
+```{r}
+# Use aggregate to find the mean hp and wt by cylinders and transmission type
+avg_hp_wt_by_cyl_am <- aggregate(cbind(hp, wt) ~ cyl + am, 
+                                 data = mtcars, 
+                                 FUN = mean)
+
+avg_hp_wt_by_cyl_am
+```
+If we breakdown the code;
+
+i. `cbind(hp, wt)` allows you to summarize multiple columns (`hp` and `wt`).
+ii. `cyl + am` groups the data by the number of cylinders and the transmission type (`am` = 0 for automatic, 1 for manual`).
+iii. The argument `FUN` defines the function to be used here therefore, `FUN = mean` calculates the mean values for `hp` and `wt` for each group of `cyl` and `am`.
+
+<span style="color: green;">**Practical Exercise**</span>
+
+Try using the `aggregate()` with the `iris` data set to find the mean sepal length (`Sepal.Length`) and petal length(`Petal.Length`) for each species. 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span>
+
+```{r}
+library(plyr)
+
+# Load the iris data set
+data(iris)
+
+# Calculate the averages as per the instructions
+avg_sepal_petal_by_species <- aggregate(cbind(Sepal.Length, Petal.Length) ~ Species, 
+                                        data = iris,
+                                        FUN = mean)
+
+avg_sepal_petal_by_species
+```
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
 
 ## Data Reshaping 
 Data reshaping is the process of transforming the layout or structure of a data set without changing the actual data. You typically reshape data to suit different analyses, visualizations, or reporting formats. Common operations for reshaping include pivoting data between **wide** and **long** formats. 
