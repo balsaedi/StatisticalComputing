@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-25" />
+<meta name="date" content="2024-10-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,10 +225,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Let’s use the built-in <code>mtcars</code> data set in R to demonstrate how to perform simple linear regression.</p>
 <p>Load the data set</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="simple-linear-regression.html#cb206-1" tabindex="-1"></a><span class="co"># Load the mtcars dataset</span></span>
-<span id="cb206-2"><a href="simple-linear-regression.html#cb206-2" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb206-3"><a href="simple-linear-regression.html#cb206-3" tabindex="-1"></a><span class="co"># View the first few rows of the dataset</span></span>
-<span id="cb206-4"><a href="simple-linear-regression.html#cb206-4" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="simple-linear-regression.html#cb228-1" tabindex="-1"></a><span class="co"># Load the mtcars dataset</span></span>
+<span id="cb228-2"><a href="simple-linear-regression.html#cb228-2" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb228-3"><a href="simple-linear-regression.html#cb228-3" tabindex="-1"></a><span class="co"># View the first few rows of the dataset</span></span>
+<span id="cb228-4"><a href="simple-linear-regression.html#cb228-4" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -237,13 +237,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 <p>Fit the simple linear regression model that will predict <code>mpg</code> (miles per gallon) based on <code>wt</code> (the weight of the car).</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="simple-linear-regression.html#cb208-1" tabindex="-1"></a><span class="co"># Fit the linear regression model</span></span>
-<span id="cb208-2"><a href="simple-linear-regression.html#cb208-2" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="simple-linear-regression.html#cb230-1" tabindex="-1"></a><span class="co"># Fit the linear regression model</span></span>
+<span id="cb230-2"><a href="simple-linear-regression.html#cb230-2" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> mtcars)</span></code></pre></div>
 <ul>
 <li>Get the model summary to get important information about the model we just fitted.</li>
 </ul>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="simple-linear-regression.html#cb209-1" tabindex="-1"></a><span class="co"># Get the summary of the model</span></span>
-<span id="cb209-2"><a href="simple-linear-regression.html#cb209-2" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="simple-linear-regression.html#cb231-1" tabindex="-1"></a><span class="co"># Get the summary of the model</span></span>
+<span id="cb231-2"><a href="simple-linear-regression.html#cb231-2" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = mpg ~ wt, data = mtcars)
@@ -265,19 +265,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Plot the data and regression line to understand the relationship</li>
 </ul>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="simple-linear-regression.html#cb211-1" tabindex="-1"></a><span class="co"># Plot the data points</span></span>
-<span id="cb211-2"><a href="simple-linear-regression.html#cb211-2" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg, <span class="at">main =</span> <span class="st">&quot;Simple Linear Regression&quot;</span>, </span>
-<span id="cb211-3"><a href="simple-linear-regression.html#cb211-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight of the Car (wt)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Miles Per Gallon (mpg)&quot;</span>, </span>
-<span id="cb211-4"><a href="simple-linear-regression.html#cb211-4" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb211-5"><a href="simple-linear-regression.html#cb211-5" tabindex="-1"></a></span>
-<span id="cb211-6"><a href="simple-linear-regression.html#cb211-6" tabindex="-1"></a><span class="co"># Add the regression line</span></span>
-<span id="cb211-7"><a href="simple-linear-regression.html#cb211-7" tabindex="-1"></a><span class="fu">abline</span>(model, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="simple-linear-regression.html#cb233-1" tabindex="-1"></a><span class="co"># Plot the data points</span></span>
+<span id="cb233-2"><a href="simple-linear-regression.html#cb233-2" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg, <span class="at">main =</span> <span class="st">&quot;Simple Linear Regression&quot;</span>, </span>
+<span id="cb233-3"><a href="simple-linear-regression.html#cb233-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight of the Car (wt)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Miles Per Gallon (mpg)&quot;</span>, </span>
+<span id="cb233-4"><a href="simple-linear-regression.html#cb233-4" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb233-5"><a href="simple-linear-regression.html#cb233-5" tabindex="-1"></a></span>
+<span id="cb233-6"><a href="simple-linear-regression.html#cb233-6" tabindex="-1"></a><span class="co"># Add the regression line</span></span>
+<span id="cb233-7"><a href="simple-linear-regression.html#cb233-7" tabindex="-1"></a><span class="fu">abline</span>(model, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
 <p>Predictions can be made based on the data. Lets predict the mpg for car that weighs 3.5 tons</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="simple-linear-regression.html#cb212-1" tabindex="-1"></a><span class="co"># Predict mpg for a car that weighs 3.5 tons</span></span>
-<span id="cb212-2"><a href="simple-linear-regression.html#cb212-2" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">wt =</span> <span class="fl">3.5</span>)</span>
-<span id="cb212-3"><a href="simple-linear-regression.html#cb212-3" tabindex="-1"></a>predicted_mpg <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, new_data)</span>
-<span id="cb212-4"><a href="simple-linear-regression.html#cb212-4" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Predicted MPG for a car weighing 3.5 tons:&quot;</span>, <span class="fu">round</span>(predicted_mpg, <span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="simple-linear-regression.html#cb234-1" tabindex="-1"></a><span class="co"># Predict mpg for a car that weighs 3.5 tons</span></span>
+<span id="cb234-2"><a href="simple-linear-regression.html#cb234-2" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">wt =</span> <span class="fl">3.5</span>)</span>
+<span id="cb234-3"><a href="simple-linear-regression.html#cb234-3" tabindex="-1"></a>predicted_mpg <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, new_data)</span>
+<span id="cb234-4"><a href="simple-linear-regression.html#cb234-4" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Predicted MPG for a car weighing 3.5 tons:&quot;</span>, <span class="fu">round</span>(predicted_mpg, <span class="dv">2</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;Predicted MPG for a car weighing 3.5 tons: 18.58&quot;</code></pre>
 <div id="basics-of-wilkinson-rogers-notation-y-x-linear-regression" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Basics of Wilkinson-Rogers Notation (y ~ x), Linear Regression<a href="simple-linear-regression.html#basics-of-wilkinson-rogers-notation-y-x-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>

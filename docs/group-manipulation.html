@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-25" />
+<meta name="date" content="2024-10-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -211,9 +211,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="group-manipulation" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Group Manipulation<a href="group-manipulation.html#group-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Group manipulation in R refers to the process of grouping data based on certain categories nd then performing operations based on each group separately. This is useful when you want to summarize, analyze or transform subsets of your data independently. In simple terms, group manipulation involves splitting the data into groups, applying a function to each group, and then combining the results. We will explore different methods designed by researchers for group manipulation. They are;</p>
+<p>Group manipulation in R refers to the process of grouping data based on certain categories and then performing operations based on each group separately. This is useful when you want to summarize, analyze or transform subsets of your data independently. In simple terms, group manipulation involves splitting the data into groups, applying a function to each group, and then combining the results. We will explore different methods designed by researchers for group manipulation. They are group manipulation using;</p>
 <ul>
-<li>Group manipulation using the <code>apply</code> family,</li>
+<li>The <code>apply</code> family,</li>
 <li>The <code>aggregate</code> from <code>plyr</code> package,</li>
 <li>Data reshaping</li>
 </ul>
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>mapply()</code> - Applies a function to multiple arguments simultaneously.</li>
 </ul>
 <p><span style="color: orange;"><strong>Try it: </strong></span></p>
-<p>Let’s see the <code>apply</code> family in action using the built-in R data set that contains information about flowers.</p>
+<p>Here is the <code>apply</code> family in action using the built-in R data set that contains information about flowers.</p>
 <ul>
 <li>Use apply to calculate the mean of each column in the iris data set at once(No need of specifying the columns)</li>
 </ul>
@@ -250,12 +250,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
 ##     5.843333     3.057333     3.758000     1.199333</code></pre>
 <ul>
-<li><p>The <code>2</code> in <code>apply</code> means “apply the function to columns” and the <code>mean</code> was used to find the average of each column. This is simple as asking a helper to calculate the the average for all types of flowers for each characteristic (sepal length, petal length, etc.).</p></li>
-<li><p>Now lets use the <code>lapply</code> function to find the range for each numeric column. This function applies to each element of a list(e.g vector) and returns a list.</p></li>
+<li>The <code>2</code> in <code>apply</code> means “apply the function to columns” and the <code>mean</code> was used to find the average of each column. This is simple as asking a helper to calculate the the average for all types of flowers for each characteristic (sepal length, petal length, etc.). Let’s repeat the same for a each row, instead of argument value <code>2</code> we will put argument value <code>1</code> in the second position.</li>
 </ul>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="group-manipulation.html#cb200-1" tabindex="-1"></a><span class="co"># Calculate the range of each numeric column in the iris dataset</span></span>
-<span id="cb200-2"><a href="group-manipulation.html#cb200-2" tabindex="-1"></a>column_ranges <span class="ot">&lt;-</span> <span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], range)</span>
-<span id="cb200-3"><a href="group-manipulation.html#cb200-3" tabindex="-1"></a><span class="fu">print</span>(column_ranges)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="group-manipulation.html#cb200-1" tabindex="-1"></a>row_means <span class="ot">&lt;-</span> <span class="fu">apply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="dv">1</span>, mean) <span class="co"># Calculate the mean for each row </span></span>
+<span id="cb200-2"><a href="group-manipulation.html#cb200-2" tabindex="-1"></a><span class="fu">head</span>(row_means, <span class="dv">15</span>) <span class="co"># Show the first fifteen averages of the row</span></span></code></pre></div>
+<pre><code>##  [1] 2.550 2.375 2.350 2.350 2.550 2.850 2.425 2.525 2.225 2.400 2.700 2.500
+## [13] 2.325 2.125 2.800</code></pre>
+<ul>
+<li>Now lets use the <code>lapply</code> function to find the range for each numeric column. This function applies to each element and returns a list. No need to specify if its a column or a row</li>
+</ul>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="group-manipulation.html#cb202-1" tabindex="-1"></a><span class="co"># Calculate the range of each numeric column in the iris dataset</span></span>
+<span id="cb202-2"><a href="group-manipulation.html#cb202-2" tabindex="-1"></a>column_ranges <span class="ot">&lt;-</span> <span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], range)</span>
+<span id="cb202-3"><a href="group-manipulation.html#cb202-3" tabindex="-1"></a><span class="fu">print</span>(column_ranges)</span></code></pre></div>
 <pre><code>## $Sepal.Length
 ## [1] 4.3 7.9
 ## 
@@ -267,10 +273,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $Petal.Width
 ## [1] 0.1 2.5</code></pre>
-<p><strong>_____ Explain this and add sapply, tapply and mapply functions</strong></p>
+<p>Repeating the function with <code>mean</code> function instead of the <code>range</code> function.</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="group-manipulation.html#cb204-1" tabindex="-1"></a><span class="co"># Calculate the mean of each numeric column in the iris dataset</span></span>
+<span id="cb204-2"><a href="group-manipulation.html#cb204-2" tabindex="-1"></a>col_means <span class="ot">&lt;-</span> <span class="fu">lapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], mean)</span>
+<span id="cb204-3"><a href="group-manipulation.html#cb204-3" tabindex="-1"></a><span class="fu">print</span>(col_means)</span></code></pre></div>
+<pre><code>## $Sepal.Length
+## [1] 5.843333
+## 
+## $Sepal.Width
+## [1] 3.057333
+## 
+## $Petal.Length
+## [1] 3.758
+## 
+## $Petal.Width
+## [1] 1.199333</code></pre>
+<p>You see! <code>lapply</code> function works column wise instead of row wise when working with data frames. Lets create a function that will add 10 to the input value and use the <code>lapply</code> function to work on a vector.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="group-manipulation.html#cb206-1" tabindex="-1"></a><span class="co"># Create a vector</span></span>
+<span id="cb206-2"><a href="group-manipulation.html#cb206-2" tabindex="-1"></a>current_ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">43</span>, <span class="dv">12</span>, <span class="dv">56</span>, <span class="dv">32</span>)</span>
+<span id="cb206-3"><a href="group-manipulation.html#cb206-3" tabindex="-1"></a></span>
+<span id="cb206-4"><a href="group-manipulation.html#cb206-4" tabindex="-1"></a><span class="co"># Create a function that adds 10 to an input value </span></span>
+<span id="cb206-5"><a href="group-manipulation.html#cb206-5" tabindex="-1"></a>add_10 <span class="ot">&lt;-</span> <span class="cf">function</span>(value){</span>
+<span id="cb206-6"><a href="group-manipulation.html#cb206-6" tabindex="-1"></a>  <span class="fu">return</span>(value <span class="sc">+</span> <span class="dv">10</span>)</span>
+<span id="cb206-7"><a href="group-manipulation.html#cb206-7" tabindex="-1"></a>}</span>
+<span id="cb206-8"><a href="group-manipulation.html#cb206-8" tabindex="-1"></a></span>
+<span id="cb206-9"><a href="group-manipulation.html#cb206-9" tabindex="-1"></a><span class="co"># Test the function </span></span>
+<span id="cb206-10"><a href="group-manipulation.html#cb206-10" tabindex="-1"></a><span class="fu">add_10</span>(<span class="dv">27</span>)</span></code></pre></div>
+<pre><code>## [1] 37</code></pre>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="group-manipulation.html#cb208-1" tabindex="-1"></a><span class="co"># Apply the function to vector ages </span></span>
+<span id="cb208-2"><a href="group-manipulation.html#cb208-2" tabindex="-1"></a>ages_10_years_later <span class="ot">&lt;-</span> <span class="fu">lapply</span>(current_ages, add_10)</span>
+<span id="cb208-3"><a href="group-manipulation.html#cb208-3" tabindex="-1"></a>ages_10_years_later <span class="co"># Show the result</span></span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 31
+## 
+## [[2]]
+## [1] 53
+## 
+## [[3]]
+## [1] 22
+## 
+## [[4]]
+## [1] 66
+## 
+## [[5]]
+## [1] 42</code></pre>
+<p>It returns a <code>list</code> with values in the vector <code>current_ages</code> add 10 to each value.</p>
+<ul>
+<li>The <code>sapply()</code> function works similarly to <code>lapply()</code>, but it tries to simplify the output. If possible, it will return a vector or matrix instead of a list.
+Let`s calculate the variance for each numeric column;</li>
+</ul>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="group-manipulation.html#cb210-1" tabindex="-1"></a><span class="co"># Calculate the variance for each numeric column</span></span>
+<span id="cb210-2"><a href="group-manipulation.html#cb210-2" tabindex="-1"></a>col_variance <span class="ot">&lt;-</span> <span class="fu">sapply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], var)</span>
+<span id="cb210-3"><a href="group-manipulation.html#cb210-3" tabindex="-1"></a><span class="fu">print</span>(col_variance)</span></code></pre></div>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##    0.6856935    0.1899794    3.1162779    0.5810063</code></pre>
+<p>Remember that we created a function <code>add_10</code> that adds 10 to the current ages of the clients. Lets repeat the same using the <code>sapply</code> function instead of <code>lapply</code> function.</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="group-manipulation.html#cb212-1" tabindex="-1"></a><span class="co"># Calculate the variance for each numeric column</span></span>
+<span id="cb212-2"><a href="group-manipulation.html#cb212-2" tabindex="-1"></a>ages_10_years_later <span class="ot">&lt;-</span> <span class="fu">sapply</span>(current_ages, add_10)</span>
+<span id="cb212-3"><a href="group-manipulation.html#cb212-3" tabindex="-1"></a><span class="fu">print</span>(ages_10_years_later)</span></code></pre></div>
+<pre><code>## [1] 31 53 22 66 42</code></pre>
+<p>It is now evident that <code>sapply</code> has a simpler output than the <code>lapply</code> function.</p>
+<ul>
+<li>The <code>tapply()</code> function applies a function to subsets of data grouped by a factor (e.g., species in our case). Let’s calculate the average sepal length for each species:</li>
+</ul>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="group-manipulation.html#cb214-1" tabindex="-1"></a><span class="co"># Calculate the average Sepal.Length for each Species</span></span>
+<span id="cb214-2"><a href="group-manipulation.html#cb214-2" tabindex="-1"></a>avg_sepal_by_species <span class="ot">&lt;-</span> <span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, mean)</span>
+<span id="cb214-3"><a href="group-manipulation.html#cb214-3" tabindex="-1"></a><span class="fu">print</span>(avg_sepal_by_species)</span></code></pre></div>
+<pre><code>##     setosa versicolor  virginica 
+##      5.006      5.936      6.588</code></pre>
+<p>This is like sending your helper to collect the sepal lengths for each species separately, and then calculating the average for each group.</p>
+<ul>
+<li>Finally the <code>mapply()</code> function is useful when you want to apply a function to multiple sets of arguments at once. Let’s calculate the sum of <code>Sepal.Length</code> and <code>Sepal.Width</code> for each row:</li>
+</ul>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="group-manipulation.html#cb216-1" tabindex="-1"></a><span class="co"># Sum Sepal.Length and Sepal.Width for each row</span></span>
+<span id="cb216-2"><a href="group-manipulation.html#cb216-2" tabindex="-1"></a>sepal_sum <span class="ot">&lt;-</span> <span class="fu">mapply</span>(sum, iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width)</span>
+<span id="cb216-3"><a href="group-manipulation.html#cb216-3" tabindex="-1"></a><span class="fu">head</span>(sepal_sum)</span></code></pre></div>
+<pre><code>## [1] 8.6 7.9 7.9 7.7 8.6 9.3</code></pre>
+<p>This function adds the sepal length and width for each flower row by row.
+It’s like your helper asking every customer for two values and summing them up together.</p>
 <p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>Now it’s time to test your skills!</p>
+<ol style="list-style-type: decimal">
+<li>Use <code>apply()</code> to calculate the maximum for each column in the iris data set.</li>
+<li>Use <code>lapply()</code> to find the summary statistics (use the <code>summary()</code> function) for each numeric column in the iris data set.</li>
+<li>Use <code>tapply()</code> to find the average petal width for each species in the iris data set.</li>
+</ol>
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>
+<ol style="list-style-type: decimal">
+<li>Use <code>apply()</code> to calculate the maximum for each column in the iris data set.</li>
+</ol>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="group-manipulation.html#cb218-1" tabindex="-1"></a>max_values <span class="ot">&lt;-</span> <span class="fu">apply</span>(iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="dv">2</span>, max)</span>
+<span id="cb218-2"><a href="group-manipulation.html#cb218-2" tabindex="-1"></a><span class="fu">print</span>(max_values)</span></code></pre></div>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##          7.9          4.4          6.9          2.5</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Use <code>lapply()</code> to find the summary statistics (use the <code>summary()</code> function) for each numeric column in the iris data set.</li>
+</ol>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="group-manipulation.html#cb220-1" tabindex="-1"></a>sum_stats <span class="ot">&lt;-</span> <span class="fu">lapply</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], summary)</span>
+<span id="cb220-2"><a href="group-manipulation.html#cb220-2" tabindex="-1"></a><span class="fu">print</span>(sum_stats)</span></code></pre></div>
+<pre><code>## $Sepal.Length
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   4.300   5.100   5.800   5.843   6.400   7.900 
+## 
+## $Sepal.Width
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   2.000   2.800   3.000   3.057   3.300   4.400 
+## 
+## $Petal.Length
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   1.600   4.350   3.758   5.100   6.900 
+## 
+## $Petal.Width
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.100   0.300   1.300   1.199   1.800   2.500</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Use <code>tapply()</code> to find the average petal width for each species in the iris data set.</li>
+</ol>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="group-manipulation.html#cb222-1" tabindex="-1"></a><span class="co"># Calculate the average Petal.Width for each Species</span></span>
+<span id="cb222-2"><a href="group-manipulation.html#cb222-2" tabindex="-1"></a>avg_petal_width_by_species <span class="ot">&lt;-</span> <span class="fu">tapply</span>(iris<span class="sc">$</span>Petal.Width, iris<span class="sc">$</span>Species, mean)</span>
+<span id="cb222-3"><a href="group-manipulation.html#cb222-3" tabindex="-1"></a><span class="fu">print</span>(avg_petal_width_by_species)</span></code></pre></div>
+<pre><code>##     setosa versicolor  virginica 
+##      0.246      1.326      2.026</code></pre>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
 <div id="aggregate-plyr" class="section level2 hasAnchor" number="3.2">
@@ -298,10 +422,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s have some fun by working on the <code>mtcars</code> data set where we will demonstrate reshaping between wide and long formats</p>
 <p><strong>Step 1: Inspect the Data</strong></p>
 <p>The <code>mtcars</code> data set is already in a wide format where each row represents a car, and columns represent different variables for instance <code>mpg, cyl, hp</code>.</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="group-manipulation.html#cb202-1" tabindex="-1"></a><span class="fu">data</span>(mtcars) <span class="co"># Load the data set</span></span>
-<span id="cb202-2"><a href="group-manipulation.html#cb202-2" tabindex="-1"></a></span>
-<span id="cb202-3"><a href="group-manipulation.html#cb202-3" tabindex="-1"></a><span class="co"># First few records of the data set</span></span>
-<span id="cb202-4"><a href="group-manipulation.html#cb202-4" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="group-manipulation.html#cb224-1" tabindex="-1"></a><span class="fu">data</span>(mtcars) <span class="co"># Load the data set</span></span>
+<span id="cb224-2"><a href="group-manipulation.html#cb224-2" tabindex="-1"></a></span>
+<span id="cb224-3"><a href="group-manipulation.html#cb224-3" tabindex="-1"></a><span class="co"># First few records of the data set</span></span>
+<span id="cb224-4"><a href="group-manipulation.html#cb224-4" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -311,16 +435,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 <p><strong>Step2: Converting from Wide to Long Format</strong></p>
 <p>We will use the <code>pivot_longer()</code> function from the <code>tidyr</code> package to convert the data set from wide to long format. In this case, we will shape the <code>mpg</code>, <code>hp</code> and <code>wt</code> columns into a longer format making it easier to work with.</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="group-manipulation.html#cb204-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb204-2"><a href="group-manipulation.html#cb204-2" tabindex="-1"></a></span>
-<span id="cb204-3"><a href="group-manipulation.html#cb204-3" tabindex="-1"></a><span class="co"># Reshape the data from wide to long format</span></span>
-<span id="cb204-4"><a href="group-manipulation.html#cb204-4" tabindex="-1"></a>mtcars_long <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb204-5"><a href="group-manipulation.html#cb204-5" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(mpg, hp, wt),</span>
-<span id="cb204-6"><a href="group-manipulation.html#cb204-6" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>,</span>
-<span id="cb204-7"><a href="group-manipulation.html#cb204-7" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>)</span>
-<span id="cb204-8"><a href="group-manipulation.html#cb204-8" tabindex="-1"></a></span>
-<span id="cb204-9"><a href="group-manipulation.html#cb204-9" tabindex="-1"></a><span class="co"># View the respaed data </span></span>
-<span id="cb204-10"><a href="group-manipulation.html#cb204-10" tabindex="-1"></a><span class="fu">head</span>(mtcars_long)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="group-manipulation.html#cb226-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb226-2"><a href="group-manipulation.html#cb226-2" tabindex="-1"></a></span>
+<span id="cb226-3"><a href="group-manipulation.html#cb226-3" tabindex="-1"></a><span class="co"># Reshape the data from wide to long format</span></span>
+<span id="cb226-4"><a href="group-manipulation.html#cb226-4" tabindex="-1"></a>mtcars_long <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb226-5"><a href="group-manipulation.html#cb226-5" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(mpg, hp, wt),</span>
+<span id="cb226-6"><a href="group-manipulation.html#cb226-6" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>,</span>
+<span id="cb226-7"><a href="group-manipulation.html#cb226-7" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>)</span>
+<span id="cb226-8"><a href="group-manipulation.html#cb226-8" tabindex="-1"></a></span>
+<span id="cb226-9"><a href="group-manipulation.html#cb226-9" tabindex="-1"></a><span class="co"># View the respaed data </span></span>
+<span id="cb226-10"><a href="group-manipulation.html#cb226-10" tabindex="-1"></a><span class="fu">head</span>(mtcars_long)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
 ##     cyl  disp  drat  qsec    vs    am  gear  carb variable  value
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
