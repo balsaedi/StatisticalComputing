@@ -523,7 +523,81 @@ It’s like your helper asking every customer for two values and summing them up
 ## 4     6   160   3.9  17.0     0     1     4     4 mpg       21   
 ## 5     6   160   3.9  17.0     0     1     4     4 hp       110   
 ## 6     6   160   3.9  17.0     0     1     4     4 wt         2.88</code></pre>
-<p><strong>______________Add explanations______________</strong></p>
+<p>If we break down the code;</p>
+<ol style="list-style-type: lower-roman">
+<li><code>pivot_longer()</code> function moves the selected columns (<code>mpg</code>, <code>hp</code>, <code>wt</code>) into a new “long” format, with eah row representing a unique combination of car characteristics(<code>variable</code>) and their corresponding <code>value</code>.</li>
+<li><code>names_to = "variable"</code>: The variable names (e.g., <code>mpg</code>, <code>hp</code>, <code>wt</code>) are moved to a column named “variable”.</li>
+<li><code>values_to = "value"</code>: The data for each variable is placed in a column named <code>"value"</code>.</li>
+</ol>
+<p>Also, data in long format can be converted to a wide format. The <code>pivot_wider</code> function from <code>dplyr</code> gets the work done.</p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>Lets put the <code>pivot_wider</code> function into practice. We will convert the <code>ntcars_long</code> data set that we just recently generated to a wider format.</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="group-manipulation.html#cb241-1" tabindex="-1"></a><span class="co"># Reshape from long to wide format</span></span>
+<span id="cb241-2"><a href="group-manipulation.html#cb241-2" tabindex="-1"></a>mtcars_wide <span class="ot">&lt;-</span> mtcars_long <span class="sc">%&gt;%</span></span>
+<span id="cb241-3"><a href="group-manipulation.html#cb241-3" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;value&quot;</span>)</span>
+<span id="cb241-4"><a href="group-manipulation.html#cb241-4" tabindex="-1"></a></span>
+<span id="cb241-5"><a href="group-manipulation.html#cb241-5" tabindex="-1"></a><span class="co"># View the reshaped data</span></span>
+<span id="cb241-6"><a href="group-manipulation.html#cb241-6" tabindex="-1"></a><span class="fu">head</span>(mtcars_wide)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 11
+##     cyl  disp  drat  qsec    vs    am  gear  carb   mpg    hp    wt
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     6   160  3.9   16.5     0     1     4     4  21     110  2.62
+## 2     6   160  3.9   17.0     0     1     4     4  21     110  2.88
+## 3     4   108  3.85  18.6     1     1     4     1  22.8    93  2.32
+## 4     6   258  3.08  19.4     1     0     3     1  21.4   110  3.22
+## 5     8   360  3.15  17.0     0     0     3     2  18.7   175  3.44
+## 6     6   225  2.76  20.2     1     0     3     1  18.1   105  3.46</code></pre>
+<p>If we break down the code;</p>
+<ol style="list-style-type: lower-roman">
+<li><code>pivot_wider()</code> converts the long format back into the wide format, with separate columns for each variable (<code>mpg</code>, <code>hp</code>, <code>wt</code>).</li>
+<li><code>names_from = "variable"</code>: Moves the unique values from the <code>"variable</code>” column into their own columns (e.g., <code>mpg</code>, <code>hp</code>, <code>wt</code>).</li>
+<li><code>values_from = "value"</code>: Populates the new columns with values from the “value” column.</li>
+</ol>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>Use the pivot_longer() function to convert the iris dataset (which contains measurements for different flower features) into a long format. Focus on converting the numeric columns like Sepal.Length and Sepal.Width.</p>
+<p>Then, use pivot_wider() to convert it back to a wide format.</p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p>Convert to long format</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="group-manipulation.html#cb243-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb243-2"><a href="group-manipulation.html#cb243-2" tabindex="-1"></a></span>
+<span id="cb243-3"><a href="group-manipulation.html#cb243-3" tabindex="-1"></a><span class="co"># Load the data </span></span>
+<span id="cb243-4"><a href="group-manipulation.html#cb243-4" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb243-5"><a href="group-manipulation.html#cb243-5" tabindex="-1"></a></span>
+<span id="cb243-6"><a href="group-manipulation.html#cb243-6" tabindex="-1"></a><span class="co"># Load the iris dataset and reshape it</span></span>
+<span id="cb243-7"><a href="group-manipulation.html#cb243-7" tabindex="-1"></a>iris_long <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb243-8"><a href="group-manipulation.html#cb243-8" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;Sepal&quot;</span>), </span>
+<span id="cb243-9"><a href="group-manipulation.html#cb243-9" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;feature&quot;</span>, </span>
+<span id="cb243-10"><a href="group-manipulation.html#cb243-10" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;measurement&quot;</span>)</span>
+<span id="cb243-11"><a href="group-manipulation.html#cb243-11" tabindex="-1"></a></span>
+<span id="cb243-12"><a href="group-manipulation.html#cb243-12" tabindex="-1"></a><span class="co"># View the reshaped data</span></span>
+<span id="cb243-13"><a href="group-manipulation.html#cb243-13" tabindex="-1"></a><span class="fu">head</span>(iris_long)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##   Petal.Length Petal.Width Species feature      measurement
+##          &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;   &lt;chr&gt;              &lt;dbl&gt;
+## 1          1.4         0.2 setosa  Sepal.Length         5.1
+## 2          1.4         0.2 setosa  Sepal.Width          3.5
+## 3          1.4         0.2 setosa  Sepal.Length         4.9
+## 4          1.4         0.2 setosa  Sepal.Width          3  
+## 5          1.3         0.2 setosa  Sepal.Length         4.7
+## 6          1.3         0.2 setosa  Sepal.Width          3.2</code></pre>
+<p>Back to wide</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="group-manipulation.html#cb245-1" tabindex="-1"></a><span class="co"># Now reshape it back to wide format</span></span>
+<span id="cb245-2"><a href="group-manipulation.html#cb245-2" tabindex="-1"></a>iris_wide <span class="ot">&lt;-</span> iris_long <span class="sc">%&gt;%</span></span>
+<span id="cb245-3"><a href="group-manipulation.html#cb245-3" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;feature&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;measurement&quot;</span>)</span>
+<span id="cb245-4"><a href="group-manipulation.html#cb245-4" tabindex="-1"></a></span>
+<span id="cb245-5"><a href="group-manipulation.html#cb245-5" tabindex="-1"></a><span class="co"># View the reshaped data</span></span>
+<span id="cb245-6"><a href="group-manipulation.html#cb245-6" tabindex="-1"></a><span class="fu">head</span>(iris_wide)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##   Petal.Length Petal.Width Species Sepal.Length Sepal.Width
+##          &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;   &lt;list&gt;       &lt;list&gt;     
+## 1          1.4         0.2 setosa  &lt;dbl [8]&gt;    &lt;dbl [8]&gt;  
+## 2          1.3         0.2 setosa  &lt;dbl [4]&gt;    &lt;dbl [4]&gt;  
+## 3          1.5         0.2 setosa  &lt;dbl [7]&gt;    &lt;dbl [7]&gt;  
+## 4          1.7         0.4 setosa  &lt;dbl [1]&gt;    &lt;dbl [1]&gt;  
+## 5          1.4         0.3 setosa  &lt;dbl [3]&gt;    &lt;dbl [3]&gt;  
+## 6          1.5         0.1 setosa  &lt;dbl [2]&gt;    &lt;dbl [2]&gt;</code></pre>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 <p><span style="color: green;"><strong>Hands-on Exercise</strong></span></p>
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>

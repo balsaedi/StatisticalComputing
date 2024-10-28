@@ -248,8 +248,69 @@ mtcars_long <- mtcars %>%
 head(mtcars_long)
 ```
 
+If we break down the code;
 
-**______________Add explanations______________**
+i. `pivot_longer()` function moves the selected columns (`mpg`, `hp`, `wt`) into a new "long" format, with eah row representing a unique combination of car characteristics(`variable`) and their corresponding `value`. 
+ii. `names_to = "variable"`: The variable names (e.g., `mpg`, `hp`, `wt`) are moved to a column named "variable".
+iii. `values_to = "value"`: The data for each variable is placed in a column named `"value"`.
+
+Also, data in long format can be converted to a wide format. The `pivot_wider` function from `dplyr` gets the work done. 
+
+<span style="color: orange;">**Try it!**</span> 
+
+Lets put the `pivot_wider` function into practice. We will convert the `ntcars_long` data set that we just recently generated to a wider format. 
+```{r}
+# Reshape from long to wide format
+mtcars_wide <- mtcars_long %>%
+  pivot_wider(names_from = "variable", values_from = "value")
+
+# View the reshaped data
+head(mtcars_wide)
+```
+
+If we break down the code;
+
+i. `pivot_wider()` converts the long format back into the wide format, with separate columns for each variable (`mpg`, `hp`, `wt`).
+ii. `names_from = "variable"`: Moves the unique values from the `"variable`" column into their own columns (e.g., `mpg`, `hp`, `wt`).
+iii. `values_from = "value"`: Populates the new columns with values from the "value" column.
+
+<span style="color: green;">**Practical Exercise**</span> 
+
+Use the pivot_longer() function to convert the iris dataset (which contains measurements for different flower features) into a long format. Focus on converting the numeric columns like Sepal.Length and Sepal.Width.
+
+Then, use pivot_wider() to convert it back to a wide format.
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+Convert to long format
+```{r}
+library(tidyr)
+
+# Load the data 
+data(iris)
+
+# Load the iris dataset and reshape it
+iris_long <- iris %>%
+  pivot_longer(cols = starts_with("Sepal"), 
+               names_to = "feature", 
+               values_to = "measurement")
+
+# View the reshaped data
+head(iris_long)
+```
+
+Back to wide 
+```{r warning=FALSE}
+# Now reshape it back to wide format
+iris_wide <- iris_long %>%
+  pivot_wider(names_from = "feature", values_from = "measurement")
+
+# View the reshaped data
+head(iris_wide)
+```
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
 
 <span style="color: green;">**Hands-on Exercise**</span> 
 
