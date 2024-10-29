@@ -1,1 +1,20 @@
 # General Statistics
+
+- Measure of spread and central tendency
+  - mean
+  - mode
+  - Quartiles
+  - Range(IQR, maximum and minimum)
+
+- Data Visualizations 
+  -relationship(scatter plot and heatmaps)
+  - trend(line chart)
+  - distribution(histograms and density plots)
+  - comparison(bar charts)
+  - composition (pie charts)
+  - outliers (boxplots and violin plots)
+  
+- Inferential Statistics
+  - hypothesis testing 
+  - t-tests( one sample, anova, chi-square)
+  - 

@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-28" />
+<meta name="date" content="2024-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -180,7 +180,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#confidence-intervals-for-regression-coefficients-testing-coefficients"><i class="fa fa-check"></i><b>5.3</b> Confidence Intervals for Regression Coefficients, Testing Coefficients</a></li>
 <li class="chapter" data-level="5.4" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#identifying-points-in-a-plot"><i class="fa fa-check"></i><b>5.4</b> Identifying Points in a Plot</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="reproducibility-and-report-with-r-markdown.html"><a href="reproducibility-and-report-with-r-markdown.html"><i class="fa fa-check"></i><b>6</b> Reproducibility and Report with R Markdown</a></li>
+<li class="chapter" data-level="6" data-path="reproducibility-and-report-with-r-markdown.html"><a href="reproducibility-and-report-with-r-markdown.html"><i class="fa fa-check"></i><b>6</b> Reproducibility and Report with R Markdown</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="reproducibility-and-report-with-r-markdown.html"><a href="reproducibility-and-report-with-r-markdown.html#key-tools-in-r-for-reproducibility-and-reporting"><i class="fa fa-check"></i><b>6.1</b> Key Tools in R for Reproducibility and Reporting</a></li>
+<li class="chapter" data-level="6.2" data-path="reproducibility-and-report-with-r-markdown.html"><a href="reproducibility-and-report-with-r-markdown.html#creating-reproducible-reports"><i class="fa fa-check"></i><b>6.2</b> Creating Reproducible Reports</a></li>
+<li class="chapter" data-level="6.3" data-path="reproducibility-and-report-with-r-markdown.html"><a href="reproducibility-and-report-with-r-markdown.html#going-beyond-shiny-for-interactive-reporting"><i class="fa fa-check"></i><b>6.3</b> Going Beyond: Shiny for Interactive Reporting</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="r-shiny.html"><a href="r-shiny.html"><i class="fa fa-check"></i><b>7</b> R Shiny</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="r-shiny.html"><a href="r-shiny.html#structure-of-a-shiny-app"><i class="fa fa-check"></i><b>7.1</b> Structure of a Shiny App</a>
@@ -211,7 +216,117 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="reproducibility-and-report-with-r-markdown" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Reproducibility and Report with R Markdown<a href="reproducibility-and-report-with-r-markdown.html#reproducibility-and-report-with-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Reproducibility</strong> is one of the core values in data science and R makes it both achievable and easy! Imagine trying to recreate someone’s analysis only to find that you get different results or that they left out crucial steps. Frustrating, right? Reproducibility is the answer—it means you can get the same results every time by following the same steps.</p>
+<p><strong>Why Reproducibility Matters</strong></p>
+<ul>
+<li><strong>Trustworthiness:</strong> When your results can be replicated, others can trust your analysis.</li>
+<li><strong>Error Detection:</strong> Re-running the same code helps catch mistakes early.</li>
+<li><strong>Efficiency:</strong> With reproducible scripts, you save time if you need to redo parts of your analysis.</li>
+</ul>
+<div id="key-tools-in-r-for-reproducibility-and-reporting" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Key Tools in R for Reproducibility and Reporting<a href="reproducibility-and-report-with-r-markdown.html#key-tools-in-r-for-reproducibility-and-reporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s dive into the tools that make reproducibility and reporting a breeze in R:</p>
+<ol style="list-style-type: decimal">
+<li><strong>R Markdown:</strong> This is the gold standard for reproducible reports in R. You can write code, comments, and format it all beautifully in one document. Think of it as combining your code with a notebook-style narrative.</li>
+</ol>
+<ul>
+<li><strong>Interactive Demo:</strong> Create an R Markdown file in RStudio by clicking File &gt; New File &gt; R Markdown…. You can add headers, code chunks, and text.</li>
+<li><strong>Run Your Code:</strong> Run each chunk individually, or click Knit to create a fully formatted report with all your code and outputs embedded.</li>
+</ul>
+<p>Find <a href="">here</a> more resources on R markdown. <strong>________remember the resources_______</strong></p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Setting a Seed fr Consistency:</strong> R’s random number generator can be controlled with <code>set.seed()</code>. For instance;</li>
+</ol>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="reproducibility-and-report-with-r-markdown.html#cb255-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb255-2"><a href="reproducibility-and-report-with-r-markdown.html#cb255-2" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 49 65 25 74 18</code></pre>
+<p>This will always produce the same random sample, making your analysis consistent.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Code Commenting and Documentation:</strong> Clear comments make your analysis easy to understand for others and for yourself. Use comments (<code>#</code>) in your code to describe steps, and include documentation for more complex functions.</li>
+</ol>
+<p>Below is an example of a comment.</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="reproducibility-and-report-with-r-markdown.html#cb257-1" tabindex="-1"></a><span class="co"># This is a comment</span></span></code></pre></div>
+</div>
+<div id="creating-reproducible-reports" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Creating Reproducible Reports<a href="reproducibility-and-report-with-r-markdown.html#creating-reproducible-reports" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s walk through a simple activity where we create a reproducible report:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Set Up Your R Markdown File</strong></li>
+</ol>
+<ul>
+<li>Open RStudio and create a new R Markdown file.</li>
+<li>Add a title, your name, and the date.</li>
+<li>Start with an introduction: “This report explores the relationship between…”</li>
+</ul>
+<p><strong>_______Add a screenshot______________</strong></p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Add Your Code and Analysis</strong></li>
+</ol>
+<p>Insert code chunks for each analysis step. For example, try loading and summarizing the <code>mtcars</code> data set:</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="reproducibility-and-report-with-r-markdown.html#cb258-1" tabindex="-1"></a><span class="co"># Load the data </span></span>
+<span id="cb258-2"><a href="reproducibility-and-report-with-r-markdown.html#cb258-2" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb258-3"><a href="reproducibility-and-report-with-r-markdown.html#cb258-3" tabindex="-1"></a></span>
+<span id="cb258-4"><a href="reproducibility-and-report-with-r-markdown.html#cb258-4" tabindex="-1"></a><span class="co"># Summary of the data set</span></span>
+<span id="cb258-5"><a href="reproducibility-and-report-with-r-markdown.html#cb258-5" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span></code></pre></div>
+<pre><code>##       mpg             cyl             disp             hp       
+##  Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
+##  1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
+##  Median :19.20   Median :6.000   Median :196.3   Median :123.0  
+##  Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
+##  3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
+##  Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
+##       drat             wt             qsec             vs        
+##  Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
+##  1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
+##  Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
+##  Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
+##  3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
+##  Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
+##        am              gear            carb      
+##  Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+##  1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+##  Median :0.0000   Median :4.000   Median :2.000  
+##  Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+##  3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+##  Max.   :1.0000   Max.   :5.000   Max.   :8.000</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Customize and Style Your Report</strong></li>
+</ol>
+<ul>
+<li>Add section headers, bold text, and bullet points to organize your report.</li>
+<li>You can use <code>ggplot2</code> to add visualizations for a polished look.</li>
+</ul>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="reproducibility-and-report-with-r-markdown.html#cb260-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb260-2"><a href="reproducibility-and-report-with-r-markdown.html#cb260-2" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb260-3"><a href="reproducibility-and-report-with-r-markdown.html#cb260-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb260-4"><a href="reproducibility-and-report-with-r-markdown.html#cb260-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Horsepower vs. Miles per Gallon&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Knit the Report</strong></li>
+</ol>
+<ul>
+<li>Click the <strong>Knit</strong> button to render your report into an HTML, PDF, or Word document.</li>
+<li>Notice how your code, output, and comments are all integrated.</li>
+</ul>
+</div>
+<div id="going-beyond-shiny-for-interactive-reporting" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Going Beyond: Shiny for Interactive Reporting<a href="reproducibility-and-report-with-r-markdown.html#going-beyond-shiny-for-interactive-reporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For advanced projects, consider using Shiny to create interactive reports! Shiny apps can run right in your browser and allow users to interact with your data in real time.</p>
+<p><span style="color: brown;"><em>More details on RShiny will be discussed later on the next topic</em></span></p>
+<p>Reproducibility is a powerful skill—keep practicing, and you’ll quickly see how it enhances your data work!</p>
+<p><span style="color: green;"><strong>Hands-on Exercises</strong></span></p>
+<p>Create an R Markdown file with:</p>
+<ol style="list-style-type: lower-roman">
+<li>A title and introduction explaining your analysis.</li>
+<li>An example dataset analysis (try using <code>iris</code> or <code>mtcars</code>).</li>
+<li>A basic visualization.</li>
+<li>A conclusion summarizing your findings.</li>
+</ol>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 
+</div>
 </div>
             </section>
 
