@@ -17,6 +17,7 @@ We will explore the fundamentals of statistics using the data set that is packed
   - Mode
   - Quartiles
   - Range(IQR, maximum and minimum)
+  - Standard deviation and variance
 
 - Data Visualizations 
   - Relationship(scatter plot and heatmaps)
@@ -32,11 +33,27 @@ We will explore the fundamentals of statistics using the data set that is packed
 
 ## Measure of Spread and Central Tendency
 
-a. **Arithmetic mean**
+Central tendency identifies the center or typical value of a data set. Measuring central tendency summarizes the data by identifying skewness, distribution and how the data is robust to outliers. Business calculate the central tendencies like average sales, median customer age to make informed decision-making.
+
+Here are some of the statistical concepts used to define central tendecy and spread;
+
+a. Mean
+b. Mode
+c. Quartiles(Median, upper and lower quartile)
+d. Range and IQR 
+e. Variance and standard deviation
+
+  a.**Arithmetic mean**
 
 It is also referred to as the average. It is the sum of all values divided by the number of values in the set. R has a function `mean` to calculate the average. 
 
-**Formula for mean**
+Here is the formula for mean; $$\overline{x} ={ \sum^{n}_{i=1}x_i\over{n}}$$
+
+Where;
+
+- $\overline{x}$ is the mean
+- $x_i$ represent value at position $i$
+- $n$ is the number(count) of values in a set
 
 Lets calculate the average net amount spent on the ecommerce store. 
 ```{r}
@@ -61,11 +78,101 @@ c. **Quartiles**
 
 **____Come back later_____**
 
+d. **Range**
 
+To understand range, we will define, maximum and maximum values. The **maximum** value is the largest value in a set while the **minimum** is the smallest value in a set. **Range** is the difference between the maximum(largest value) and the minimum value in a set. 
 
+Here is a formula for range; $$Range = Max - Min$$
 
+Lets create a vector `ages` that defines the ages of different customers on a retail stores, find the maximum and minimum ages then calculate the range. 
+```{r}
+# Create vector ages
+ages <- c(21, 27, 55, 13, 87, 51, 33, 64)
 
+# Find the maximum
+max(ages)
 
+# Find the minimum 
+min(ages)
 
+# Calculate the range 
+diff(range(ages))
+```
 
+<span style="color: orange;">**Try it!**</span> 
 
+Now its clear what range, lets get into the real-world scenario. We will find the maximum and minimum `Gross.Amount` spent on the ecommerce store. Finally, we calculate the range of amount spent by customers(`Gross.Amount`)
+```{r}
+# Maximum amount spent by customers 
+max(ecommerce$Gross.Amount)
+
+# Minimum amount spent by customers
+min(ecommerce$Gross.Amount)
+
+# Range 
+diff(range(ecommerce$Gross.Amount))
+```
+
+e. **Standard deviation and Variance** 
+
+Variance is statistical measure of dispersion that defines how spread the data points are in a data set in relation to the mean of the data set. Standard deviation is the measure of how data is clustered around the mean. It is simply defined to as the square root of variance.
+
+Here is the formula of variance; $$\sigma = {\sum(x_i - \overline{x})^2 \over{n}}$$
+
+Where;
+
+- $\sigma$ is the variance
+- $x_i$ is the value
+- $\overline{x}$ is the population mean
+- $n$ is the value count
+
+Standard is simply the square root of variance, Here is the formula for standard deviation; $$S = \sqrt{\sigma}$$ or $$S = \sqrt{{\sum(x_i - \overline{x})^2 \over{n}}}$$
+
+Where $S$ is the standard deviation. 
+
+Variance and standard deviation can be calculated in R environment using `var()` and `sd()` functions respectively.
+
+Lets create a vector of weights of the athletes in kilograms and calculate the variance and standard deviation.
+```{r}
+# Sample vector 
+athlete_weights = c(55, 76, 52, 68, 71, 63, 58, 52, 85, 96)
+
+# Calculate variance
+var(athlete_weights)
+
+# Calculate the standard deviation
+sd(athlete_weights)
+```
+
+Lets put into real world practice and calculate variance and standard deviation of net amount spent on the ecommerce store. 
+```{r}
+# Variance
+var(ecommerce$Net.Amount)
+
+# Standard deviation
+sd(ecommerce$Net.Amount)
+
+```
+
+<span style="color: green;">**Practical Exercise**</span> 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+## Data Visualization
+
+Data visualization is the process of using visual elements like chart, graphs or maps to represent data in a way that is easier to understand. 
+
+Luckily, R has a package, `ggplot2`, specifically designed to create charts and graphs. The package is said to implement the "Grammar of Graphics" that is a conceptual framework for creating graphs by Leland Wilkinson. 
+
+The package can be installed by; 
+```
+install.packages("ggplot2")
+```
+
+and once the package is installed it is loaded by;
+```{r}
+library(ggplot2)
+```

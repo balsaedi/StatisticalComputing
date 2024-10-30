@@ -175,6 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="general-statistics.html"><a href="general-statistics.html"><i class="fa fa-check"></i><b>4</b> General Statistics</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="general-statistics.html"><a href="general-statistics.html#measure-of-spread-and-central-tendency"><i class="fa fa-check"></i><b>4.1</b> Measure of Spread and Central Tendency</a></li>
+<li class="chapter" data-level="4.2" data-path="general-statistics.html"><a href="general-statistics.html#data-visualization-1"><i class="fa fa-check"></i><b>4.2</b> Data Visualization</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Simple Linear Regression</a>
 <ul>
@@ -254,6 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Mode</li>
 <li>Quartiles</li>
 <li>Range(IQR, maximum and minimum)</li>
+<li>Standard deviation and variance</li>
 </ul></li>
 <li>Data Visualizations
 <ul>
@@ -272,10 +274,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="measure-of-spread-and-central-tendency" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Measure of Spread and Central Tendency<a href="general-statistics.html#measure-of-spread-and-central-tendency" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Central tendency identifies the center or typical value of a data set. Measuring central tendency summarizes the data by identifying skewness, distribution and how the data is robust to outliers. Business calculate the central tendencies like average sales, median customer age to make informed decision-making.</p>
+<p>Here are some of the statistical concepts used to define central tendecy and spread;</p>
 <ol style="list-style-type: lower-alpha">
-<li><strong>Arithmetic mean</strong></li>
+<li>Mean</li>
+<li>Mode</li>
+<li>Quartiles(Median, upper and lower quartile)</li>
+<li>Range and IQR</li>
+<li>Variance and standard deviation</li>
 </ol>
+<p>a.<strong>Arithmetic mean</strong></p>
 <p>It is also referred to as the average. It is the sum of all values divided by the number of values in the set. R has a function <code>mean</code> to calculate the average.</p>
+<p>Here is the formula for mean; <span class="math display">\[\overline{x} ={ \sum^{n}_{i=1}x_i\over{n}}\]</span></p>
+<p>Where;</p>
+<ul>
+<li><span class="math inline">\(\overline{x}\)</span> is the mean</li>
+<li><span class="math inline">\(x_i\)</span> represent value at position <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(n\)</span> is the number(count) of values in a set</li>
+</ul>
 <p>Lets calculate the average net amount spent on the ecommerce store.</p>
 <div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="general-statistics.html#cb249-1" tabindex="-1"></a><span class="co"># Calculate the mean net amount</span></span>
 <span id="cb249-2"><a href="general-statistics.html#cb249-2" tabindex="-1"></a><span class="fu">mean</span>(ecommerce<span class="sc">$</span>Net.Amount)</span></code></pre></div>
@@ -302,6 +318,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Quartiles</strong></li>
 </ol>
 <p><strong>____Come back later_____</strong></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><strong>Range</strong></li>
+</ol>
+<p>To understand range, we will define, maximum and maximum values. The <strong>maximum</strong> value is the largest value in a set while the <strong>minimum</strong> is the smallest value in a set. <strong>Range</strong> is the difference between the maximum(largest value) and the minimum value in a set.</p>
+<p>Here is a formula for range; <span class="math display">\[Range = Max - Min\]</span></p>
+<p>Lets create a vector <code>ages</code> that defines the ages of different customers on a retail stores, find the maximum and minimum ages then calculate the range.</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="general-statistics.html#cb255-1" tabindex="-1"></a><span class="co"># Create vector ages</span></span>
+<span id="cb255-2"><a href="general-statistics.html#cb255-2" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">27</span>, <span class="dv">55</span>, <span class="dv">13</span>, <span class="dv">87</span>, <span class="dv">51</span>, <span class="dv">33</span>, <span class="dv">64</span>)</span>
+<span id="cb255-3"><a href="general-statistics.html#cb255-3" tabindex="-1"></a></span>
+<span id="cb255-4"><a href="general-statistics.html#cb255-4" tabindex="-1"></a><span class="co"># Find the maximum</span></span>
+<span id="cb255-5"><a href="general-statistics.html#cb255-5" tabindex="-1"></a><span class="fu">max</span>(ages)</span></code></pre></div>
+<pre><code>## [1] 87</code></pre>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="general-statistics.html#cb257-1" tabindex="-1"></a><span class="co"># Find the minimum </span></span>
+<span id="cb257-2"><a href="general-statistics.html#cb257-2" tabindex="-1"></a><span class="fu">min</span>(ages)</span></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="general-statistics.html#cb259-1" tabindex="-1"></a><span class="co"># Calculate the range </span></span>
+<span id="cb259-2"><a href="general-statistics.html#cb259-2" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(ages))</span></code></pre></div>
+<pre><code>## [1] 74</code></pre>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>Now its clear what range, lets get into the real-world scenario. We will find the maximum and minimum <code>Gross.Amount</code> spent on the ecommerce store. Finally, we calculate the range of amount spent by customers(<code>Gross.Amount</code>)</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="general-statistics.html#cb261-1" tabindex="-1"></a><span class="co"># Maximum amount spent by customers </span></span>
+<span id="cb261-2"><a href="general-statistics.html#cb261-2" tabindex="-1"></a><span class="fu">max</span>(ecommerce<span class="sc">$</span>Gross.Amount)</span></code></pre></div>
+<pre><code>## [1] 8394.826</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="general-statistics.html#cb263-1" tabindex="-1"></a><span class="co"># Minimum amount spent by customers</span></span>
+<span id="cb263-2"><a href="general-statistics.html#cb263-2" tabindex="-1"></a><span class="fu">min</span>(ecommerce<span class="sc">$</span>Gross.Amount)</span></code></pre></div>
+<pre><code>## [1] 136.4543</code></pre>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="general-statistics.html#cb265-1" tabindex="-1"></a><span class="co"># Range </span></span>
+<span id="cb265-2"><a href="general-statistics.html#cb265-2" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(ecommerce<span class="sc">$</span>Gross.Amount))</span></code></pre></div>
+<pre><code>## [1] 8258.371</code></pre>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><strong>Standard deviation and Variance</strong></li>
+</ol>
+<p>Variance is statistical measure of dispersion that defines how spread the data points are in a data set in relation to the mean of the data set. Standard deviation is the measure of how data is clustered around the mean. It is simply defined to as the square root of variance.</p>
+<p>Here is the formula of variance; <span class="math display">\[\sigma = {\sum(x_i - \overline{x})^2 \over{n}}\]</span></p>
+<p>Where;</p>
+<ul>
+<li><span class="math inline">\(\sigma\)</span> is the variance</li>
+<li><span class="math inline">\(x_i\)</span> is the value</li>
+<li><span class="math inline">\(\overline{x}\)</span> is the population mean</li>
+<li><span class="math inline">\(n\)</span> is the value count</li>
+</ul>
+<p>Standard is simply the square root of variance, Here is the formula for standard deviation; <span class="math display">\[S = \sqrt{\sigma}\]</span> or <span class="math display">\[S = \sqrt{{\sum(x_i - \overline{x})^2 \over{n}}}\]</span></p>
+<p>Where <span class="math inline">\(S\)</span> is the standard deviation.</p>
+<p>Variance and standard deviation can be calculated in R environment using <code>var()</code> and <code>sd()</code> functions respectively.</p>
+<p>Lets create a vector of weights of the athletes in kilograms and calculate the variance and standard deviation.</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="general-statistics.html#cb267-1" tabindex="-1"></a><span class="co"># Sample vector </span></span>
+<span id="cb267-2"><a href="general-statistics.html#cb267-2" tabindex="-1"></a>athlete_weights <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">76</span>, <span class="dv">52</span>, <span class="dv">68</span>, <span class="dv">71</span>, <span class="dv">63</span>, <span class="dv">58</span>, <span class="dv">52</span>, <span class="dv">85</span>, <span class="dv">96</span>)</span>
+<span id="cb267-3"><a href="general-statistics.html#cb267-3" tabindex="-1"></a></span>
+<span id="cb267-4"><a href="general-statistics.html#cb267-4" tabindex="-1"></a><span class="co"># Calculate variance</span></span>
+<span id="cb267-5"><a href="general-statistics.html#cb267-5" tabindex="-1"></a><span class="fu">var</span>(athlete_weights)</span></code></pre></div>
+<pre><code>## [1] 216.7111</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="general-statistics.html#cb269-1" tabindex="-1"></a><span class="co"># Calculate the standard deviation</span></span>
+<span id="cb269-2"><a href="general-statistics.html#cb269-2" tabindex="-1"></a><span class="fu">sd</span>(athlete_weights)</span></code></pre></div>
+<pre><code>## [1] 14.72111</code></pre>
+<p>Lets put into real world practice and calculate variance and standard deviation of net amount spent on the ecommerce store.</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="general-statistics.html#cb271-1" tabindex="-1"></a><span class="co"># Variance</span></span>
+<span id="cb271-2"><a href="general-statistics.html#cb271-2" tabindex="-1"></a><span class="fu">var</span>(ecommerce<span class="sc">$</span>Net.Amount)</span></code></pre></div>
+<pre><code>## [1] 2979517</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="general-statistics.html#cb273-1" tabindex="-1"></a><span class="co"># Standard deviation</span></span>
+<span id="cb273-2"><a href="general-statistics.html#cb273-2" tabindex="-1"></a><span class="fu">sd</span>(ecommerce<span class="sc">$</span>Net.Amount)</span></code></pre></div>
+<pre><code>## [1] 1726.128</code></pre>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
+</div>
+<div id="data-visualization-1" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Data Visualization<a href="general-statistics.html#data-visualization-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Data visualization is the process of using visual elements like chart, graphs or maps to represent data in a way that is easier to understand.</p>
+<p>Luckily, R has a package, <code>ggplot2</code>, specifically designed to create charts and graphs. The package is said to implement the “Grammar of Graphics” that is a conceptual framework for creating graphs by Leland Wilkinson.</p>
+<p>The package can be installed by;</p>
+<pre><code>install.packages(&quot;ggplot2&quot;)</code></pre>
+<p>and once the package is installed it is loaded by;</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="general-statistics.html#cb276-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 
 </div>
 </div>
