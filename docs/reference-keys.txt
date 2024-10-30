@@ -21,6 +21,7 @@ apply-family
 aggregate-plyr
 data-reshaping
 general-statistics
+measure-of-spread-and-central-tendency
 simple-linear-regression
 basics-of-wilkinson-rogers-notation-y-x-linear-regression
 scatterplots-with-regression-lines-reading-lm-output

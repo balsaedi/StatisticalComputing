@@ -1,20 +1,71 @@
 # General Statistics
+  
+In this course, we will require the ecommerce data set that can be downloaded from [here](https://www.kaggle.com/datasets/shrishtimanja/ecommerce-dataset-for-data-analysis/data). 
+
+Lets load the data set
+```{r}
+ecommerce <- read.csv("data/ecommerce.csv")
+
+# First few rows of the data set 
+head(ecommerce)
+```
+
+We will explore the fundamentals of statistics using the data set that is packed with real-life insights on customers and their purchasing behavior. At the end of this course unit you will be able to understand;
 
 - Measure of spread and central tendency
-  - mean
-  - mode
+  - Mean(the average)
+  - Mode
   - Quartiles
   - Range(IQR, maximum and minimum)
 
 - Data Visualizations 
-  -relationship(scatter plot and heatmaps)
-  - trend(line chart)
-  - distribution(histograms and density plots)
-  - comparison(bar charts)
-  - composition (pie charts)
-  - outliers (boxplots and violin plots)
+  - Relationship(scatter plot and heatmaps)
+  - Trend(line chart)
+  - Distribution(histograms and density plots)
+  - Comparison(bar charts)
+  - Composition (pie charts)
+  - Outliers (boxplots and violin plots)
   
 - Inferential Statistics
-  - hypothesis testing 
-  - t-tests( one sample, anova, chi-square)
-  - 
+  - Hypothesis testing 
+  - T-tests( one sample, anova, chi-square)
+
+## Measure of Spread and Central Tendency
+
+a. **Arithmetic mean**
+
+It is also referred to as the average. It is the sum of all values divided by the number of values in the set. R has a function `mean` to calculate the average. 
+
+**Formula for mean**
+
+Lets calculate the average net amount spent on the ecommerce store. 
+```{r}
+# Calculate the mean net amount
+mean(ecommerce$Net.Amount)
+```
+
+The average amount spent on the e-commerce store by all the customers was 2875.95 INR. 
+
+b. **Mode**
+
+The mode shows the most frequent value, thereby pinpoint the most popular categories in a data set. In the commerce data set we will find the most popular category and age group in the data set. 
+
+Find the most popular category
+```{r}
+# Calculate the mode for 'ProductCategory'
+table(ecommerce$Product.Category)
+which.max(table(ecommerce$Product.Category))
+```
+
+c. **Quartiles**
+
+**____Come back later_____**
+
+
+
+
+
+
+
+
+
