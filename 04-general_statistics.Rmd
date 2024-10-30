@@ -176,3 +176,176 @@ and once the package is installed it is loaded by;
 ```{r}
 library(ggplot2)
 ```
+
+Lets create simple charts with the `ggplot2` package. 
+
+a. **Scatter plots**
+
+Scatter plot is used to show the numerical relationship between two or more. Lets create a simple plot.
+```{r}
+# Sample data
+df <- data.frame(
+  x = rnorm(100),
+  y = rnorm(100)
+)
+
+# Creating a scatter plot
+ggplot(df, # data
+       aes(x = x, y = y)) + #aesthetics
+  geom_point() + #geometrics
+  labs(title = "Scatter Plot Example", x = "X Values", y = "Y Values") +
+  theme_minimal()
+```
+
+<span style="color: orange;">**Try it!**</span> 
+
+Lets make it more interesting by exploring the real world scenario where we will visualize the relationship between Discount and the Net Amount on the ecommerce store. 
+```{r}
+# Creating a scatter plot
+ggplot(ecommerce[1:100, ], # first 100 rows of the data
+       aes(x = Net.Amount, y = Discount.Amount..INR.)) + #aesthetics
+  geom_point() + #geometrics
+  labs(title = "Relationship between Net Amount and the Discount", 
+       x = "Net Amount", 
+       y = "Discount") +
+  theme_minimal()
+```
+
+The scatter chart above shows that there is no clear relationship between the Net Amount spent and the discount offered since at every spending(low, medium or high) had low or high discount. High spending did not necessarily guarantee low or high discount. 
+
+b. **Line Chart** 
+
+Line Chart is used to show trend(Growth or fall over time). Let create a simple line chart to show this;
+```{r}
+# Sample data 
+dates <- c("2023-10-01", "2023-10-05", "2023-10-10", "2023-10-15", "2023-10-20", "2023-10-25", "2023-10-30", "2023-11-04", "2023-11-09", "2023-11-14")
+scores <- c(75, 82, 88, 85, 90, 87, 92, 95, 98, 100)
+
+# Create a data frame 
+df <- data.frame(
+  date = as.Date(dates),
+  scores = scores
+)
+
+# Plot a scatter plot 
+ggplot(df, # data
+       aes(x=date, y=scores)) + 
+  geom_line()+
+  labs(
+    title = "Scores progression from October to November",
+    x = "Date",
+    y = "Scores"
+  ) + 
+  theme_minimal()
+```
+
+There has a been a gradual increase of scores from October to November. 
+
+<span style="color: orange;">**Try it!**</span> 
+
+Lets put this into a real world scenario. We will plot the Gross Amount spent by Customers over the years at the ecommerce store. 
+```{r}
+# Convert the purchase date to date type 
+ecommerce$Purchase.Date <- as.Date(ecommerce$Purchase.Date)
+
+# Plot a scatter plot 
+ggplot(ecommerce[1:100, ], # data
+       aes(x=Purchase.Date, y=Gross.Amount)) + 
+  geom_line()+
+  labs(
+    title = "Gross Amount spent over time",
+    x = "Purchase Date",
+    y = "Gross Amount"
+  ) + 
+  theme_minimal()
+```
+
+There has been gradual spikes of rise and fall of the amount spent on the store. 
+
+c. **Histograms and Density Plots**
+
+Histograms and Density plots are used to show the distribution of continuous variables. Histogram is visually similar to the bar chart however it is used show frequency and distribution across a list-like data set(vectors, lists, sets, arrays, etc) that stores continuous numeric values. The count of observation within a certain range of values are displayed.
+
+Lets create a vector of random 100 ages and plot the data to a histogram.
+```{r}
+# Generate random 1000 ages between 0 and 100
+set.seed(42)
+ages <- sample(0:100, 1000, replace = TRUE)
+
+# Create a data frame to use with ggplot
+age_data <- data.frame(Age = ages)
+
+# PLOTTING
+# Create the histogram using ggplot
+ggplot(age_data, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "blue", color = "black") +
+  labs(
+    title = "Histogram of Randomly Generated Ages", 
+    x = "Age", 
+    y = "Frequency") +
+  theme_minimal()
+```
+
+The bins are groups of ages ranging 5 years
+
+<span style="color: orange;">**Try it!**</span>
+
+Lets put his into action and plot the distribution of Discount offered on the ecommerce store
+```{r}
+# Create the histogram using ggplot
+ggplot(ecommerce, 
+       aes(x = Discount.Amount..INR.)) +
+  geom_histogram(bins = 10, fill = "blue", color = "black") +
+  labs(
+    title = "Histogram of Discount offered", 
+    x = "Discount", 
+    y = "Frequency") +
+  theme_minimal()
+```
+
+The distribution is right skewed and most of the customers in the store were offered very low discount for their purchases. 
+
+**Check it later and speak about density plots**
+
+d. **Bar Charts**
+
+Bar charts are used to represent both categorical and numeric data in form of rectangular bars. The length/height of each category represents its numeric value. It may corresponds to either length, count, age or any other numerical value. Bar charts are used when;-
+
+i. Comparing categorical data
+ii. Visualizing summarized data for instance aggregated sum, average or any other summary statistics.
+iii. Showing frequency or count for instance representing the number of products sold per each category.
+iv. Ranking data. Bar charts can effectively represents ranks especially in descending/ascending order for instance ranking the life expectancy of different countries.
+v. Other type of complex bar charts like stacked bar charts can be used to compare part-to-whole relationships.
+
+There are many more uses of bar charts however there are some use cases where bar charts are not preferred like when working with continuous data, scatter and line charts are more befitting. Also, bar charts are not appropriate where data has too many categories, heatmaps will do better.
+
+To create a simple bar chart using `ggplot2`, we use `geom_bar` to define that its a bar chart.
+```{r}
+# Sample data
+df <- data.frame(
+  category = c("A", "B", "C", "D"),
+  value = c(23, 17, 35, 10)
+)
+
+## The data set above will be used to create a bar chart
+# Creating a bar chart
+ggplot(df, 
+       aes(x = category, y = value)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Value by Category", 
+    x = "Category", 
+    y = "Value") +
+  theme_minimal()
+```
+
+From the bar chart above, Category "C" has the largest value while category "D" has the lowest value. 
+
+<span style="color: orange;">**Try it!**</span>
+
+Lets create a bar chart of a real world scenario. We will calculate the Gross amount spent by different age groups in the ecommerce store. 
+
+**_______Plot a bar chart________**
+
+
+

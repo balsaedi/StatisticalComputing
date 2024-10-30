@@ -392,6 +392,150 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>install.packages(&quot;ggplot2&quot;)</code></pre>
 <p>and once the package is installed it is loaded by;</p>
 <div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="general-statistics.html#cb276-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>Lets create simple charts with the <code>ggplot2</code> package.</p>
+<ol style="list-style-type: lower-alpha">
+<li><strong>Scatter plots</strong></li>
+</ol>
+<p>Scatter plot is used to show the numerical relationship between two or more. Lets create a simple plot.</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="general-statistics.html#cb277-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb277-2"><a href="general-statistics.html#cb277-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb277-3"><a href="general-statistics.html#cb277-3" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
+<span id="cb277-4"><a href="general-statistics.html#cb277-4" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb277-5"><a href="general-statistics.html#cb277-5" tabindex="-1"></a>)</span>
+<span id="cb277-6"><a href="general-statistics.html#cb277-6" tabindex="-1"></a></span>
+<span id="cb277-7"><a href="general-statistics.html#cb277-7" tabindex="-1"></a><span class="co"># Creating a scatter plot</span></span>
+<span id="cb277-8"><a href="general-statistics.html#cb277-8" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="co"># data</span></span>
+<span id="cb277-9"><a href="general-statistics.html#cb277-9" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="co">#aesthetics</span></span>
+<span id="cb277-10"><a href="general-statistics.html#cb277-10" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co">#geometrics</span></span>
+<span id="cb277-11"><a href="general-statistics.html#cb277-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scatter Plot Example&quot;</span>, <span class="at">x =</span> <span class="st">&quot;X Values&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Y Values&quot;</span>) <span class="sc">+</span></span>
+<span id="cb277-12"><a href="general-statistics.html#cb277-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>Lets make it more interesting by exploring the real world scenario where we will visualize the relationship between Discount and the Net Amount on the ecommerce store.</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="general-statistics.html#cb278-1" tabindex="-1"></a><span class="co"># Creating a scatter plot</span></span>
+<span id="cb278-2"><a href="general-statistics.html#cb278-2" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ], <span class="co"># first 100 rows of the data</span></span>
+<span id="cb278-3"><a href="general-statistics.html#cb278-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Net.Amount, <span class="at">y =</span> Discount.Amount..INR.)) <span class="sc">+</span> <span class="co">#aesthetics</span></span>
+<span id="cb278-4"><a href="general-statistics.html#cb278-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co">#geometrics</span></span>
+<span id="cb278-5"><a href="general-statistics.html#cb278-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relationship between Net Amount and the Discount&quot;</span>, </span>
+<span id="cb278-6"><a href="general-statistics.html#cb278-6" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Net Amount&quot;</span>, </span>
+<span id="cb278-7"><a href="general-statistics.html#cb278-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Discount&quot;</span>) <span class="sc">+</span></span>
+<span id="cb278-8"><a href="general-statistics.html#cb278-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<p>The scatter chart above shows that there is no clear relationship between the Net Amount spent and the discount offered since at every spending(low, medium or high) had low or high discount. High spending did not necessarily guarantee low or high discount.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><strong>Line Chart</strong></li>
+</ol>
+<p>Line Chart is used to show trend(Growth or fall over time). Let create a simple line chart to show this;</p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="general-statistics.html#cb279-1" tabindex="-1"></a><span class="co"># Sample data </span></span>
+<span id="cb279-2"><a href="general-statistics.html#cb279-2" tabindex="-1"></a>dates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;2023-10-01&quot;</span>, <span class="st">&quot;2023-10-05&quot;</span>, <span class="st">&quot;2023-10-10&quot;</span>, <span class="st">&quot;2023-10-15&quot;</span>, <span class="st">&quot;2023-10-20&quot;</span>, <span class="st">&quot;2023-10-25&quot;</span>, <span class="st">&quot;2023-10-30&quot;</span>, <span class="st">&quot;2023-11-04&quot;</span>, <span class="st">&quot;2023-11-09&quot;</span>, <span class="st">&quot;2023-11-14&quot;</span>)</span>
+<span id="cb279-3"><a href="general-statistics.html#cb279-3" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">82</span>, <span class="dv">88</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">87</span>, <span class="dv">92</span>, <span class="dv">95</span>, <span class="dv">98</span>, <span class="dv">100</span>)</span>
+<span id="cb279-4"><a href="general-statistics.html#cb279-4" tabindex="-1"></a></span>
+<span id="cb279-5"><a href="general-statistics.html#cb279-5" tabindex="-1"></a><span class="co"># Create a data frame </span></span>
+<span id="cb279-6"><a href="general-statistics.html#cb279-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb279-7"><a href="general-statistics.html#cb279-7" tabindex="-1"></a>  <span class="at">date =</span> <span class="fu">as.Date</span>(dates),</span>
+<span id="cb279-8"><a href="general-statistics.html#cb279-8" tabindex="-1"></a>  <span class="at">scores =</span> scores</span>
+<span id="cb279-9"><a href="general-statistics.html#cb279-9" tabindex="-1"></a>)</span>
+<span id="cb279-10"><a href="general-statistics.html#cb279-10" tabindex="-1"></a></span>
+<span id="cb279-11"><a href="general-statistics.html#cb279-11" tabindex="-1"></a><span class="co"># Plot a scatter plot </span></span>
+<span id="cb279-12"><a href="general-statistics.html#cb279-12" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="co"># data</span></span>
+<span id="cb279-13"><a href="general-statistics.html#cb279-13" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>scores)) <span class="sc">+</span> </span>
+<span id="cb279-14"><a href="general-statistics.html#cb279-14" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb279-15"><a href="general-statistics.html#cb279-15" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb279-16"><a href="general-statistics.html#cb279-16" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Scores progression from October to November&quot;</span>,</span>
+<span id="cb279-17"><a href="general-statistics.html#cb279-17" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Date&quot;</span>,</span>
+<span id="cb279-18"><a href="general-statistics.html#cb279-18" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Scores&quot;</span></span>
+<span id="cb279-19"><a href="general-statistics.html#cb279-19" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb279-20"><a href="general-statistics.html#cb279-20" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<p>There has a been a gradual increase of scores from October to November.</p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>Lets put this into a real world scenario. We will plot the Gross Amount spent by Customers over the years at the ecommerce store.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="general-statistics.html#cb280-1" tabindex="-1"></a><span class="co"># Convert the purchase date to date type </span></span>
+<span id="cb280-2"><a href="general-statistics.html#cb280-2" tabindex="-1"></a>ecommerce<span class="sc">$</span>Purchase.Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(ecommerce<span class="sc">$</span>Purchase.Date)</span>
+<span id="cb280-3"><a href="general-statistics.html#cb280-3" tabindex="-1"></a></span>
+<span id="cb280-4"><a href="general-statistics.html#cb280-4" tabindex="-1"></a><span class="co"># Plot a scatter plot </span></span>
+<span id="cb280-5"><a href="general-statistics.html#cb280-5" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ], <span class="co"># data</span></span>
+<span id="cb280-6"><a href="general-statistics.html#cb280-6" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Purchase.Date, <span class="at">y=</span>Gross.Amount)) <span class="sc">+</span> </span>
+<span id="cb280-7"><a href="general-statistics.html#cb280-7" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb280-8"><a href="general-statistics.html#cb280-8" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb280-9"><a href="general-statistics.html#cb280-9" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Gross Amount spent over time&quot;</span>,</span>
+<span id="cb280-10"><a href="general-statistics.html#cb280-10" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Purchase Date&quot;</span>,</span>
+<span id="cb280-11"><a href="general-statistics.html#cb280-11" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Gross Amount&quot;</span></span>
+<span id="cb280-12"><a href="general-statistics.html#cb280-12" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb280-13"><a href="general-statistics.html#cb280-13" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p>There has been gradual spikes of rise and fall of the amount spent on the store.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><strong>Histograms and Density Plots</strong></li>
+</ol>
+<p>Histograms and Density plots are used to show the distribution of continuous variables. Histogram is visually similar to the bar chart however it is used show frequency and distribution across a list-like data set(vectors, lists, sets, arrays, etc) that stores continuous numeric values. The count of observation within a certain range of values are displayed.</p>
+<p>Lets create a vector of random 100 ages and plot the data to a histogram.</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="general-statistics.html#cb281-1" tabindex="-1"></a><span class="co"># Generate random 1000 ages between 0 and 100</span></span>
+<span id="cb281-2"><a href="general-statistics.html#cb281-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb281-3"><a href="general-statistics.html#cb281-3" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb281-4"><a href="general-statistics.html#cb281-4" tabindex="-1"></a></span>
+<span id="cb281-5"><a href="general-statistics.html#cb281-5" tabindex="-1"></a><span class="co"># Create a data frame to use with ggplot</span></span>
+<span id="cb281-6"><a href="general-statistics.html#cb281-6" tabindex="-1"></a>age_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Age =</span> ages)</span>
+<span id="cb281-7"><a href="general-statistics.html#cb281-7" tabindex="-1"></a></span>
+<span id="cb281-8"><a href="general-statistics.html#cb281-8" tabindex="-1"></a><span class="co"># PLOTTING</span></span>
+<span id="cb281-9"><a href="general-statistics.html#cb281-9" tabindex="-1"></a><span class="co"># Create the histogram using ggplot</span></span>
+<span id="cb281-10"><a href="general-statistics.html#cb281-10" tabindex="-1"></a><span class="fu">ggplot</span>(age_data, <span class="fu">aes</span>(<span class="at">x =</span> Age)) <span class="sc">+</span></span>
+<span id="cb281-11"><a href="general-statistics.html#cb281-11" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb281-12"><a href="general-statistics.html#cb281-12" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb281-13"><a href="general-statistics.html#cb281-13" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Histogram of Randomly Generated Ages&quot;</span>, </span>
+<span id="cb281-14"><a href="general-statistics.html#cb281-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
+<span id="cb281-15"><a href="general-statistics.html#cb281-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb281-16"><a href="general-statistics.html#cb281-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<p>The bins are groups of ages ranging 5 years</p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>Lets put his into action and plot the distribution of Discount offered on the ecommerce store</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="general-statistics.html#cb282-1" tabindex="-1"></a><span class="co"># Create the histogram using ggplot</span></span>
+<span id="cb282-2"><a href="general-statistics.html#cb282-2" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce, </span>
+<span id="cb282-3"><a href="general-statistics.html#cb282-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Discount.Amount..INR.)) <span class="sc">+</span></span>
+<span id="cb282-4"><a href="general-statistics.html#cb282-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb282-5"><a href="general-statistics.html#cb282-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb282-6"><a href="general-statistics.html#cb282-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Histogram of Discount offered&quot;</span>, </span>
+<span id="cb282-7"><a href="general-statistics.html#cb282-7" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Discount&quot;</span>, </span>
+<span id="cb282-8"><a href="general-statistics.html#cb282-8" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb282-9"><a href="general-statistics.html#cb282-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+<p>The distribution is right skewed and most of the customers in the store were offered very low discount for their purchases.</p>
+<p><strong>Check it later and speak about density plots</strong></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li><strong>Bar Charts</strong></li>
+</ol>
+<p>Bar charts are used to represent both categorical and numeric data in form of rectangular bars. The length/height of each category represents its numeric value. It may corresponds to either length, count, age or any other numerical value. Bar charts are used when;-</p>
+<ol style="list-style-type: lower-roman">
+<li>Comparing categorical data</li>
+<li>Visualizing summarized data for instance aggregated sum, average or any other summary statistics.</li>
+<li>Showing frequency or count for instance representing the number of products sold per each category.</li>
+<li>Ranking data. Bar charts can effectively represents ranks especially in descending/ascending order for instance ranking the life expectancy of different countries.</li>
+<li>Other type of complex bar charts like stacked bar charts can be used to compare part-to-whole relationships.</li>
+</ol>
+<p>There are many more uses of bar charts however there are some use cases where bar charts are not preferred like when working with continuous data, scatter and line charts are more befitting. Also, bar charts are not appropriate where data has too many categories, heatmaps will do better.</p>
+<p>To create a simple bar chart using <code>ggplot2</code>, we use <code>geom_bar</code> to define that its a bar chart.</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="general-statistics.html#cb283-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb283-2"><a href="general-statistics.html#cb283-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb283-3"><a href="general-statistics.html#cb283-3" tabindex="-1"></a>  <span class="at">category =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>),</span>
+<span id="cb283-4"><a href="general-statistics.html#cb283-4" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">17</span>, <span class="dv">35</span>, <span class="dv">10</span>)</span>
+<span id="cb283-5"><a href="general-statistics.html#cb283-5" tabindex="-1"></a>)</span>
+<span id="cb283-6"><a href="general-statistics.html#cb283-6" tabindex="-1"></a></span>
+<span id="cb283-7"><a href="general-statistics.html#cb283-7" tabindex="-1"></a><span class="do">## The data set above will be used to create a bar chart</span></span>
+<span id="cb283-8"><a href="general-statistics.html#cb283-8" tabindex="-1"></a><span class="co"># Creating a bar chart</span></span>
+<span id="cb283-9"><a href="general-statistics.html#cb283-9" tabindex="-1"></a><span class="fu">ggplot</span>(df, </span>
+<span id="cb283-10"><a href="general-statistics.html#cb283-10" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> category, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb283-11"><a href="general-statistics.html#cb283-11" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb283-12"><a href="general-statistics.html#cb283-12" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb283-13"><a href="general-statistics.html#cb283-13" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Value by Category&quot;</span>, </span>
+<span id="cb283-14"><a href="general-statistics.html#cb283-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Category&quot;</span>, </span>
+<span id="cb283-15"><a href="general-statistics.html#cb283-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Value&quot;</span>) <span class="sc">+</span></span>
+<span id="cb283-16"><a href="general-statistics.html#cb283-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<p>From the bar chart above, Category “C” has the largest value while category “D” has the lowest value.</p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>Lets create a bar chart of a real world scenario. We will calculate the Gross amount spent by different age groups in the ecommerce store.</p>
+<p><strong>_______Plot a bar chart________</strong></p>
 
 </div>
 </div>
