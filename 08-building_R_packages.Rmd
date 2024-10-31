@@ -1,1 +1,49 @@
 # Building R Packages
+
+## Introduction 
+
+In the second chapter we introduced about functions and we later talked about package functions, here we will now focus on how to build those packages. Packages are bundles of code and data to perform created by R users or community to perform a set of goven tasks. 
+
+In this course you have encountered several packages like `dplyr`, `plyr` and `ggplot2` and might have installed one or many of them. Packages provide a ready-to-use functions and data sets that produce results faster without the need to write everything from scratch. Here we will discuss how you can create you own package in R. This will give you a deeper appreciation of the packages you rely on daily basis and how they are built. 
+
+CRAN(The Comprehensive R Archive Network) and GitHub provide a repository where one can host and install packages to their local environments. 
+
+In this guide, we will walk through how to create a package and host the packages either on GitHub or CRAN. 
+
+## Prerequisites 
+
+Before we jump in, there are a few packages you will want to have ready to help us along the way. We will install `devtools` and `roxygen2`. 
+
+Install the packages
+```
+# Install devtools 
+install.packages("devtools")
+
+# Install roxygen
+install.packages("roxygen2")
+```
+
+It might be necessary to restart R studio after installing the above packages 
+
+## Building a simple R package
+
+Here is where the fun begin! We will create a simple R package to serve you with the basics of building packages. The package will involve tow functions; 
+
+i. A function to convert temperature from degrees Fahrenheit($^oF$) to degrees Celsius($^oC$). 
+ii. A function to convert temperature from degrees Celsius($^oC$) to degrees Fahrenheit($^oF$).
+
+**Step 1**
+
+
+
+
+
+## Making A New R Project 
+
+## Adding Documentation 
+
+## Uploading and Installing from Github 
+
+## Uploading and instaling it from CRAN
+
+## More Info and Additonational Resources

@@ -310,9 +310,7 @@ iris_wide <- iris_long %>%
 head(iris_wide)
 ```
 
-<span style="color: brown;">**________________________________________________________________________________**</span>
-
-<span style="color: green;">**Hands-on Exercise**</span> 
+## <span style="color: green;">**Hands-on Exercise**</span> 
 
 _______________________________________________________________________
 <span style="color: brown;">**Solution**</span> 

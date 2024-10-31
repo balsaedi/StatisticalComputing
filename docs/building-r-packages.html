@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-30" />
+<meta name="date" content="2024-10-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,11 +171,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="group-manipulation.html"><a href="group-manipulation.html#apply-family"><i class="fa fa-check"></i><b>3.1</b> Apply Family</a></li>
 <li class="chapter" data-level="3.2" data-path="group-manipulation.html"><a href="group-manipulation.html#aggregate-plyr"><i class="fa fa-check"></i><b>3.2</b> Aggregate Plyr</a></li>
 <li class="chapter" data-level="3.3" data-path="group-manipulation.html"><a href="group-manipulation.html#data-reshaping"><i class="fa fa-check"></i><b>3.3</b> Data Reshaping</a></li>
+<li class="chapter" data-level="3.4" data-path="group-manipulation.html"><a href="group-manipulation.html#hands-on-exercise-1"><i class="fa fa-check"></i><b>3.4</b> <span style="color: green;"><strong>Hands-on Exercise</strong></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="general-statistics.html"><a href="general-statistics.html"><i class="fa fa-check"></i><b>4</b> General Statistics</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="general-statistics.html"><a href="general-statistics.html#measure-of-spread-and-central-tendency"><i class="fa fa-check"></i><b>4.1</b> Measure of Spread and Central Tendency</a></li>
 <li class="chapter" data-level="4.2" data-path="general-statistics.html"><a href="general-statistics.html#data-visualization-1"><i class="fa fa-check"></i><b>4.2</b> Data Visualization</a></li>
+<li class="chapter" data-level="4.3" data-path="general-statistics.html"><a href="general-statistics.html#inferential-statistics"><i class="fa fa-check"></i><b>4.3</b> Inferential Statistics</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="general-statistics.html"><a href="general-statistics.html#introduction-to-hypothesis-testing"><i class="fa fa-check"></i><b>4.3.1</b> Introduction to Hypothesis Testing</a></li>
+<li class="chapter" data-level="4.3.2" data-path="general-statistics.html"><a href="general-statistics.html#hands-on-exercises-1"><i class="fa fa-check"></i><b>4.3.2</b> Hands-on Exercises</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Simple Linear Regression</a>
 <ul>
@@ -198,7 +204,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.2" data-path="r-shiny.html"><a href="r-shiny.html#server"><i class="fa fa-check"></i><b>7.1.2</b> Server</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="building-r-packages.html"><a href="building-r-packages.html"><i class="fa fa-check"></i><b>8</b> Building R Packages</a></li>
+<li class="chapter" data-level="8" data-path="building-r-packages.html"><a href="building-r-packages.html"><i class="fa fa-check"></i><b>8</b> Building R Packages</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="building-r-packages.html"><a href="building-r-packages.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="building-r-packages.html"><a href="building-r-packages.html#prerequisites"><i class="fa fa-check"></i><b>8.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="8.3" data-path="building-r-packages.html"><a href="building-r-packages.html#building-the-most-basic-r-package"><i class="fa fa-check"></i><b>8.3</b> Building the most basic R package</a></li>
+<li class="chapter" data-level="8.4" data-path="building-r-packages.html"><a href="building-r-packages.html#making-a-new-r-project"><i class="fa fa-check"></i><b>8.4</b> Making A New R Project</a></li>
+<li class="chapter" data-level="8.5" data-path="building-r-packages.html"><a href="building-r-packages.html#adding-documentation"><i class="fa fa-check"></i><b>8.5</b> Adding Documentation</a></li>
+<li class="chapter" data-level="8.6" data-path="building-r-packages.html"><a href="building-r-packages.html#uploading-and-installing-from-github"><i class="fa fa-check"></i><b>8.6</b> Uploading and Installing from Github</a></li>
+<li class="chapter" data-level="8.7" data-path="building-r-packages.html"><a href="building-r-packages.html#uploading-and-instaling-it-from-cran"><i class="fa fa-check"></i><b>8.7</b> Uploading and instaling it from CRAN</a></li>
+<li class="chapter" data-level="8.8" data-path="building-r-packages.html"><a href="building-r-packages.html#more-info-and-additonational-resources"><i class="fa fa-check"></i><b>8.8</b> More Info and Additonational Resources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -220,7 +236,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="building-r-packages" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Building R Packages<a href="building-r-packages.html#building-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Introduction<a href="building-r-packages.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the second chapter we introduced about functions and we later talked about package functions, here we will now focus on how to build those packages. Packages are bundles of code and data to perform created by R users or community to perform a set of goven tasks.</p>
+<p>In this course you have encountered several packages like <code>dplyr</code>, <code>plyr</code> and <code>ggplot2</code> and might have installed one or many of them. Packages provide a ready-to-use functions and data sets that produce results faster without the need to write everything from scratch. Here we will discuss how you can create you own package in R. This will give you a deeper appreciation of the packages you rely on daily basis and how they are built.</p>
+<p>CRAN(The Comprehensive R Archive Network) and GitHub provide a repository where one can host and install packages to their local environments.</p>
+<p>In this guide, we will walk through how to create a package and host the packages either on GitHub or CRAN.</p>
+</div>
+<div id="prerequisites" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Prerequisites<a href="building-r-packages.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we jump in, there are a few packages you will want to have ready to help us along the way. We will install <code>devtools</code> and <code>roxygen2</code>.</p>
+<p>Install the packages</p>
+<pre><code># Install devtools 
+install.packages(&quot;devtools&quot;)
 
+# Install roxygen
+install.packages(&quot;roxygen2&quot;)</code></pre>
+</div>
+<div id="building-the-most-basic-r-package" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Building the most basic R package<a href="building-r-packages.html#building-the-most-basic-r-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="making-a-new-r-project" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Making A New R Project<a href="building-r-packages.html#making-a-new-r-project" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="adding-documentation" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Adding Documentation<a href="building-r-packages.html#adding-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="uploading-and-installing-from-github" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Uploading and Installing from Github<a href="building-r-packages.html#uploading-and-installing-from-github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="uploading-and-instaling-it-from-cran" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Uploading and instaling it from CRAN<a href="building-r-packages.html#uploading-and-instaling-it-from-cran" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="more-info-and-additonational-resources" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> More Info and Additonational Resources<a href="building-r-packages.html#more-info-and-additonational-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
 </div>
             </section>
 

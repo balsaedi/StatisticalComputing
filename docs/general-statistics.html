@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-30" />
+<meta name="date" content="2024-10-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,11 +171,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="group-manipulation.html"><a href="group-manipulation.html#apply-family"><i class="fa fa-check"></i><b>3.1</b> Apply Family</a></li>
 <li class="chapter" data-level="3.2" data-path="group-manipulation.html"><a href="group-manipulation.html#aggregate-plyr"><i class="fa fa-check"></i><b>3.2</b> Aggregate Plyr</a></li>
 <li class="chapter" data-level="3.3" data-path="group-manipulation.html"><a href="group-manipulation.html#data-reshaping"><i class="fa fa-check"></i><b>3.3</b> Data Reshaping</a></li>
+<li class="chapter" data-level="3.4" data-path="group-manipulation.html"><a href="group-manipulation.html#hands-on-exercise-1"><i class="fa fa-check"></i><b>3.4</b> <span style="color: green;"><strong>Hands-on Exercise</strong></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="general-statistics.html"><a href="general-statistics.html"><i class="fa fa-check"></i><b>4</b> General Statistics</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="general-statistics.html"><a href="general-statistics.html#measure-of-spread-and-central-tendency"><i class="fa fa-check"></i><b>4.1</b> Measure of Spread and Central Tendency</a></li>
 <li class="chapter" data-level="4.2" data-path="general-statistics.html"><a href="general-statistics.html#data-visualization-1"><i class="fa fa-check"></i><b>4.2</b> Data Visualization</a></li>
+<li class="chapter" data-level="4.3" data-path="general-statistics.html"><a href="general-statistics.html#inferential-statistics"><i class="fa fa-check"></i><b>4.3</b> Inferential Statistics</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="general-statistics.html"><a href="general-statistics.html#introduction-to-hypothesis-testing"><i class="fa fa-check"></i><b>4.3.1</b> Introduction to Hypothesis Testing</a></li>
+<li class="chapter" data-level="4.3.2" data-path="general-statistics.html"><a href="general-statistics.html#hands-on-exercises-1"><i class="fa fa-check"></i><b>4.3.2</b> Hands-on Exercises</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Simple Linear Regression</a>
 <ul>
@@ -198,7 +204,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.2" data-path="r-shiny.html"><a href="r-shiny.html#server"><i class="fa fa-check"></i><b>7.1.2</b> Server</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="building-r-packages.html"><a href="building-r-packages.html"><i class="fa fa-check"></i><b>8</b> Building R Packages</a></li>
+<li class="chapter" data-level="8" data-path="building-r-packages.html"><a href="building-r-packages.html"><i class="fa fa-check"></i><b>8</b> Building R Packages</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="building-r-packages.html"><a href="building-r-packages.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="building-r-packages.html"><a href="building-r-packages.html#prerequisites"><i class="fa fa-check"></i><b>8.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="8.3" data-path="building-r-packages.html"><a href="building-r-packages.html#building-the-most-basic-r-package"><i class="fa fa-check"></i><b>8.3</b> Building the most basic R package</a></li>
+<li class="chapter" data-level="8.4" data-path="building-r-packages.html"><a href="building-r-packages.html#making-a-new-r-project"><i class="fa fa-check"></i><b>8.4</b> Making A New R Project</a></li>
+<li class="chapter" data-level="8.5" data-path="building-r-packages.html"><a href="building-r-packages.html#adding-documentation"><i class="fa fa-check"></i><b>8.5</b> Adding Documentation</a></li>
+<li class="chapter" data-level="8.6" data-path="building-r-packages.html"><a href="building-r-packages.html#uploading-and-installing-from-github"><i class="fa fa-check"></i><b>8.6</b> Uploading and Installing from Github</a></li>
+<li class="chapter" data-level="8.7" data-path="building-r-packages.html"><a href="building-r-packages.html#uploading-and-instaling-it-from-cran"><i class="fa fa-check"></i><b>8.7</b> Uploading and instaling it from CRAN</a></li>
+<li class="chapter" data-level="8.8" data-path="building-r-packages.html"><a href="building-r-packages.html#more-info-and-additonational-resources"><i class="fa fa-check"></i><b>8.8</b> More Info and Additonational Resources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -534,9 +550,573 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 <p>From the bar chart above, Category “C” has the largest value while category “D” has the lowest value.</p>
 <p><span style="color: orange;"><strong>Try it!</strong></span></p>
-<p>Lets create a bar chart of a real world scenario. We will calculate the Gross amount spent by different age groups in the ecommerce store.</p>
-<p><strong>_______Plot a bar chart________</strong></p>
+<p>Lets create a bar chart of a real world scenario. We will calculate the average Gross amount spent by different age groups in the ecommerce store.</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="general-statistics.html#cb284-1" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb284-2"><a href="general-statistics.html#cb284-2" tabindex="-1"></a></span>
+<span id="cb284-3"><a href="general-statistics.html#cb284-3" tabindex="-1"></a><span class="co"># Aggregate by mean</span></span>
+<span id="cb284-4"><a href="general-statistics.html#cb284-4" tabindex="-1"></a>PurchasebyAge <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Gross.Amount <span class="sc">~</span> Age.Group,</span>
+<span id="cb284-5"><a href="general-statistics.html#cb284-5" tabindex="-1"></a>                           <span class="at">data =</span> ecommerce,</span>
+<span id="cb284-6"><a href="general-statistics.html#cb284-6" tabindex="-1"></a>                           <span class="at">FUN =</span> mean</span>
+<span id="cb284-7"><a href="general-statistics.html#cb284-7" tabindex="-1"></a>                           )</span>
+<span id="cb284-8"><a href="general-statistics.html#cb284-8" tabindex="-1"></a></span>
+<span id="cb284-9"><a href="general-statistics.html#cb284-9" tabindex="-1"></a><span class="co"># Plot a bar chart</span></span>
+<span id="cb284-10"><a href="general-statistics.html#cb284-10" tabindex="-1"></a><span class="fu">ggplot</span>(PurchasebyAge, </span>
+<span id="cb284-11"><a href="general-statistics.html#cb284-11" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age.Group, <span class="at">y =</span> Gross.Amount)) <span class="sc">+</span></span>
+<span id="cb284-12"><a href="general-statistics.html#cb284-12" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;blue&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb284-13"><a href="general-statistics.html#cb284-13" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb284-14"><a href="general-statistics.html#cb284-14" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Average Gross Amount by Age Group&quot;</span>, </span>
+<span id="cb284-15"><a href="general-statistics.html#cb284-15" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age Group&quot;</span>, </span>
+<span id="cb284-16"><a href="general-statistics.html#cb284-16" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Average Gross Amount&quot;</span>) <span class="sc">+</span></span>
+<span id="cb284-17"><a href="general-statistics.html#cb284-17" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<p>All the age group had an almost equal average spending on the ecommerce store.</p>
+<p>What if we calculated the total spending for each age group? That would be interesting! Lets calculate and plot a bar chart to represent that.</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="general-statistics.html#cb285-1" tabindex="-1"></a><span class="co"># Aggregate by sum</span></span>
+<span id="cb285-2"><a href="general-statistics.html#cb285-2" tabindex="-1"></a>PurchasebyAge <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Gross.Amount <span class="sc">~</span> Age.Group,</span>
+<span id="cb285-3"><a href="general-statistics.html#cb285-3" tabindex="-1"></a>                           <span class="at">data =</span> ecommerce,</span>
+<span id="cb285-4"><a href="general-statistics.html#cb285-4" tabindex="-1"></a>                           <span class="at">FUN =</span> sum</span>
+<span id="cb285-5"><a href="general-statistics.html#cb285-5" tabindex="-1"></a>                           )</span>
+<span id="cb285-6"><a href="general-statistics.html#cb285-6" tabindex="-1"></a></span>
+<span id="cb285-7"><a href="general-statistics.html#cb285-7" tabindex="-1"></a><span class="co"># Plot a bar chart</span></span>
+<span id="cb285-8"><a href="general-statistics.html#cb285-8" tabindex="-1"></a><span class="fu">ggplot</span>(PurchasebyAge, </span>
+<span id="cb285-9"><a href="general-statistics.html#cb285-9" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age.Group, <span class="at">y =</span> Gross.Amount)) <span class="sc">+</span></span>
+<span id="cb285-10"><a href="general-statistics.html#cb285-10" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;blue&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb285-11"><a href="general-statistics.html#cb285-11" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb285-12"><a href="general-statistics.html#cb285-12" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Total Gross Amount by Age Group&quot;</span>, </span>
+<span id="cb285-13"><a href="general-statistics.html#cb285-13" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age Group&quot;</span>, </span>
+<span id="cb285-14"><a href="general-statistics.html#cb285-14" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Total Gross Amount&quot;</span>) <span class="sc">+</span></span>
+<span id="cb285-15"><a href="general-statistics.html#cb285-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<p>Age 25 - 45 had the highest total spending in the ecommerce store while age of 60 and above had the least total spending.</p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li><strong>Pie Charts</strong></li>
+</ol>
+<p><strong>______Explain about pie charts________</strong></p>
+<ol start="6" style="list-style-type: lower-alpha">
+<li><strong>Boxplots and Violin Plots</strong></li>
+</ol>
+<p><strong>_______Explain about outliers using box plots_______</strong></p>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
+</div>
+<div id="inferential-statistics" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Inferential Statistics<a href="general-statistics.html#inferential-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introduction-to-hypothesis-testing" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Introduction to Hypothesis Testing<a href="general-statistics.html#introduction-to-hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="concept-of-hypothesis-testing" class="section level4 hasAnchor" number="4.3.1.1">
+<h4><span class="header-section-number">4.3.1.1</span> Concept of Hypothesis Testing<a href="general-statistics.html#concept-of-hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Hypothesis testing is a type of statistical analysis that is used to make assumptions of a population based on a sample of data. It is particularly used to find the relationship between two variables(populations). A real life example of hypothesis testing is that a teacher may assume that 60% of the students come from a middle-class family. There are two types of hypothesis;</p>
+<ul>
+<li>Null hypothesis(<span class="math inline">\(H_0\)</span>)</li>
+<li>Alternate hypothesis (<span class="math inline">\(H_1\)</span> or <span class="math inline">\(H_a\)</span>)</li>
+</ul>
+<p><strong>Null hypothesis</strong> is states that there is no effect or no difference(<span class="math inline">\(\mu = 0\)</span>). For instance there is no effect of standards of living to college admissions. <strong>Alternate hypothesis</strong> is the opposite and contradicts the null hypothesis. It provide evidence for what the statistician is trying to find(<span class="math inline">\(\mu \neq 0\)</span>). In this case, the standards of living have an effect on college admissions.</p>
+<p>The important aspects before conducting hypothesis testing are;-</p>
+<ul>
+<li><em>Significance level.</em> It is the probability of rejecting the null hypothesis when it is actually true.</li>
+<li><em>P-Value</em> is the probability of obtaining a test statistic at least as extreme as the one observed, given the null hypothesis is true. Most hypothesis testing projects are set at 0.05. Less than 0.05(or the set value) indicates the null the test is statistically significant and the null hypothesis should be rejected. Otherwise, the test is statistically insignificant and the null hypothesis is not rejected.</li>
+<li><em>Test statistic</em> also called T-statistic is a standardized value calcluated during a hypothesis test. It cab z-test or a t-test.
+-<em>Decision rule</em> is based on the calculated p-value and the significant level. In a hypothesis test where the significant and the p-value is 0.03444 the null hypothesis is not rejected.</li>
+</ul>
+<p>Now that you are familiar with the hypothesis testing aspects, take the following steps to perform hypothesis testing;-</p>
+<ol style="list-style-type: lower-roman">
+<li>Formulating the hypothesis by defining the null and alternate hypothesis.</li>
+<li>Collect and analyze the data.</li>
+<li>Choose a significant level(<span class="math inline">\(a\)</span>) and calculate the p-value.</li>
+<li>Make a decision by comparing the p-value to the significant level.</li>
+<li>Conclude your analysis results.</li>
+</ol>
+</div>
+<div id="t-tests" class="section level4 hasAnchor" number="4.3.1.2">
+<h4><span class="header-section-number">4.3.1.2</span> T-tests<a href="general-statistics.html#t-tests" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><em>One-Sample t-test</em></li>
+</ul>
+<p>One sample t-test is a statistical method used to find if the mean of a sample is different from the population(or preassumed) mean.</p>
+<p>It is based on the t-distribution(most observations fall close to the mean, and the rest of the observations make up the tails on either side) and is commonly used when dealing with small sample sizes. One sample t-test is especially performed where the population standard deviation is unknown.</p>
+<p>Below is the formula for one sample t-test
+<span class="math display">\[t={{\overline{X}-\mu}\over s / \sqrt{n}}\]</span></p>
+<p>where;</p>
+<ol style="list-style-type: lower-roman">
+<li><span class="math inline">\(t\)</span>: the one sample t-test value. t-test statistic</li>
+<li><span class="math inline">\(n\)</span>: the number of the observations in the sample</li>
+<li><span class="math inline">\(\overline{X}\)</span>: is the sample mean</li>
+<li><span class="math inline">\(s\)</span>: standard deviation of the sample</li>
+<li><span class="math inline">\(\mu\)</span>: Hypothesized population mean</li>
+</ol>
+<p>The result <span class="math inline">\(t\)</span>, simply measures how many standard errors the sample mean is away from the hypothesized population mean.</p>
+<p>Before conducting t-test, there is a need to establish the null(H0) and alternate hypothesis(Ha) where;</p>
+<ul>
+<li><em>Null Hypothesis(H0)</em>: There is no significant difference between the sample mean and the population(hypothesized) mean.</li>
+<li><em>ALternate Hypothesis(Ha)</em>: There is a significant difference between the sample mean and the population mean.</li>
+</ul>
+<p>P-value is the probability value that tells you how likely is that your data could have occurred under null hypothesis. In our case a p-value of below 0.05 is considered to be statistically significant and the null value is rejected. The vice versa is true</p>
+<p>Lets perform a t-test using R;</p>
+<p>We will generate sample data</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="general-statistics.html#cb286-1" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb286-2"><a href="general-statistics.html#cb286-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb286-3"><a href="general-statistics.html#cb286-3" tabindex="-1"></a></span>
+<span id="cb286-4"><a href="general-statistics.html#cb286-4" tabindex="-1"></a><span class="co"># Generate random student marks (out of 100)</span></span>
+<span id="cb286-5"><a href="general-statistics.html#cb286-5" tabindex="-1"></a>student_marks <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">65</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb286-6"><a href="general-statistics.html#cb286-6" tabindex="-1"></a></span>
+<span id="cb286-7"><a href="general-statistics.html#cb286-7" tabindex="-1"></a><span class="co"># Display the first few marks</span></span>
+<span id="cb286-8"><a href="general-statistics.html#cb286-8" tabindex="-1"></a><span class="fu">head</span>(student_marks)</span></code></pre></div>
+<pre><code>## [1] 59.39524 62.69823 80.58708 65.70508 66.29288 82.15065</code></pre>
+<p>Perform the t-test</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="general-statistics.html#cb288-1" tabindex="-1"></a><span class="co"># Conduct one-sample t-test</span></span>
+<span id="cb288-2"><a href="general-statistics.html#cb288-2" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(student_marks, <span class="at">mu =</span> <span class="dv">70</span>)</span>
+<span id="cb288-3"><a href="general-statistics.html#cb288-3" tabindex="-1"></a></span>
+<span id="cb288-4"><a href="general-statistics.html#cb288-4" tabindex="-1"></a><span class="co"># Display the t-test result</span></span>
+<span id="cb288-5"><a href="general-statistics.html#cb288-5" tabindex="-1"></a><span class="fu">print</span>(t_test_result)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  student_marks
+## t = -3.0546, df = 29, p-value = 0.004797
+## alternative hypothesis: true mean is not equal to 70
+## 95 percent confidence interval:
+##  60.86573 68.19219
+## sample estimates:
+## mean of x 
+##  64.52896</code></pre>
+<p><span style="color: green;"><strong>Practical exercise</strong></span></p>
+<p>Conduct one sample t-test on the sepal length of the setosa iris. The pre-assumed mean is 5.84 units.</p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<ul>
+<li>Null Hypothesis(<span class="math inline">\(H_0\)</span>): There is no significant difference between the setosa sepal length mean and the pre-assumed mean</li>
+<li>Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the setosa sepal length and the pre-assumed mean</li>
+</ul>
+<p><strong>Note</strong>: If the pre-assumed mean is not given in the question therefore the whole population mean is used(as the pre-assumed mean). In this case, the setosa sepal length mean of the whole iris species.</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="general-statistics.html#cb290-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb290-2"><a href="general-statistics.html#cb290-2" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb290-3"><a href="general-statistics.html#cb290-3" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb290-4"><a href="general-statistics.html#cb290-4" tabindex="-1"></a></span>
+<span id="cb290-5"><a href="general-statistics.html#cb290-5" tabindex="-1"></a><span class="co"># Get the setosa sepal length</span></span>
+<span id="cb290-6"><a href="general-statistics.html#cb290-6" tabindex="-1"></a>setosa <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb290-7"><a href="general-statistics.html#cb290-7" tabindex="-1"></a>  <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb290-8"><a href="general-statistics.html#cb290-8" tabindex="-1"></a></span>
+<span id="cb290-9"><a href="general-statistics.html#cb290-9" tabindex="-1"></a>setosa.sepal.length <span class="ot">&lt;-</span> setosa<span class="sc">$</span>Sepal.Length</span>
+<span id="cb290-10"><a href="general-statistics.html#cb290-10" tabindex="-1"></a></span>
+<span id="cb290-11"><a href="general-statistics.html#cb290-11" tabindex="-1"></a><span class="co"># Calculate one-sample ttest </span></span>
+<span id="cb290-12"><a href="general-statistics.html#cb290-12" tabindex="-1"></a><span class="do">## Set the pre-assumed mean </span></span>
+<span id="cb290-13"><a href="general-statistics.html#cb290-13" tabindex="-1"></a>pre_assumed_mean <span class="ot">&lt;-</span> <span class="fl">5.84</span> <span class="co"># as in the question</span></span>
+<span id="cb290-14"><a href="general-statistics.html#cb290-14" tabindex="-1"></a></span>
+<span id="cb290-15"><a href="general-statistics.html#cb290-15" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(setosa.sepal.length, <span class="at">mu =</span> pre_assumed_mean)</span>
+<span id="cb290-16"><a href="general-statistics.html#cb290-16" tabindex="-1"></a></span>
+<span id="cb290-17"><a href="general-statistics.html#cb290-17" tabindex="-1"></a><span class="fu">print</span>(t_test_result)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  setosa.sepal.length
+## t = -16.73, df = 49, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 5.84
+## 95 percent confidence interval:
+##  4.905824 5.106176
+## sample estimates:
+## mean of x 
+##     5.006</code></pre>
+<p>The p-value is much below 0.05, therefore the null hypothesis is rejected. It is concluded that there is a significant difference between the sepal length mean and the pre-assumed mean</p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
+<ul>
+<li><em>Two-Sample t-test</em></li>
+</ul>
+<p>Unlike one sample t-test where a sample population is tested against a pre-assumed mean, the Tow-sample t-test determines if there is a significant difference between the means of two independent populations.</p>
+<p>The practical application of two-sample t-test can be when comparing the test scores of two classes. This helps the statistician to understand if one class did better than the other one or it’s just a matter of luck.</p>
+<p>These are the prerequisites before conducting a two-sample t-test;</p>
+<ol style="list-style-type: lower-roman">
+<li>The groups contain separate data with a similar distribution.</li>
+<li>The two populations have a normal(typical bell-curve) distribution.</li>
+<li>The two sample populations have a similar variations</li>
+</ol>
+<p>The two sample t-test is calculated by;
+<img src="images/two-sample-ttest.jpg" /></p>
+<p>Where;</p>
+<ul>
+<li><span class="math inline">\(\overline{x}_1\)</span> and <span class="math inline">\(\overline{x}_2\)</span> are the mean of the first sample and the second sample respectively</li>
+<li><span class="math inline">\(s_{1}\)</span> and <span class="math inline">\(s_{2}\)</span> are the standard deviation of sample 1 and sample 2 respectively</li>
+<li><span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are the sample sizes of the first and second sample respectively.</li>
+</ul>
+<p>Let create a random population of student scores for two classes and perform two-sample t-test in R;</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="general-statistics.html#cb292-1" tabindex="-1"></a><span class="co"># Generate the population sample</span></span>
+<span id="cb292-2"><a href="general-statistics.html#cb292-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb292-3"><a href="general-statistics.html#cb292-3" tabindex="-1"></a>group_A_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">8</span>)  <span class="co"># Group A</span></span>
+<span id="cb292-4"><a href="general-statistics.html#cb292-4" tabindex="-1"></a>group_B_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">10</span>)  <span class="co"># Group B</span></span>
+<span id="cb292-5"><a href="general-statistics.html#cb292-5" tabindex="-1"></a></span>
+<span id="cb292-6"><a href="general-statistics.html#cb292-6" tabindex="-1"></a><span class="co"># Display the first few scores of each group</span></span>
+<span id="cb292-7"><a href="general-statistics.html#cb292-7" tabindex="-1"></a><span class="fu">head</span>(group_A_scores)</span></code></pre></div>
+<pre><code>## [1] 70.51619 73.15858 87.46967 75.56407 76.03430 88.72052</code></pre>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="general-statistics.html#cb294-1" tabindex="-1"></a><span class="fu">head</span>(group_B_scores)</span></code></pre></div>
+<pre><code>## [1] 63.13307 88.37787 81.53373 68.61863 92.53815 84.26464</code></pre>
+<p>Performing the two sample t-test. Lets set the confidence level to 95%(0.95)</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="general-statistics.html#cb296-1" tabindex="-1"></a>ttest_result <span class="ot">=</span> <span class="fu">t.test</span>(group_A_scores, group_B_scores, </span>
+<span id="cb296-2"><a href="general-statistics.html#cb296-2" tabindex="-1"></a>                      <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb296-3"><a href="general-statistics.html#cb296-3" tabindex="-1"></a>                      <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb296-4"><a href="general-statistics.html#cb296-4" tabindex="-1"></a></span>
+<span id="cb296-5"><a href="general-statistics.html#cb296-5" tabindex="-1"></a>ttest_result</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  group_A_scores and group_B_scores
+## t = -2.6403, df = 46.312, p-value = 0.01125
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -11.080984  -1.495049
+## sample estimates:
+## mean of x mean of y 
+##  74.73336  81.02137</code></pre>
+<ul>
+<li><strong>t-value = -2.6403</strong>: This indicates the difference between the means of the two groups, in terms of standard errors. A higher absolute value suggests a larger difference.</li>
+<li><strong>Degrees of freedom (df) = 46.312</strong>: This reflects the sample size and variability in the data.</li>
+<li><strong>p-value = 0.01125</strong>: Since the p-value is less than 0.05, we reject the null hypothesis. This suggests that the difference in means between Group A and Group B is statistically significant.</li>
+<li><strong>95% confidence interval: (-11.08, -1.50)</strong>: This indicates that we are 95% confident that the true difference in means lies between -11.08 and -1.50.</li>
+<li><strong>Mean of x (Group A) = 74.73, Mean of y (Group B) = 81.02</strong>: The average score of Group B is higher than Group A.</li>
+</ul>
+<p>In summary, the test shows a significant difference between the means of the two groups, with Group B having higher scores</p>
+<p><span style="color: green;"><strong>Practical exercise</strong></span></p>
+<p>Using the iris data set, compare the petal length of the <em>versicolor</em> and <em>virginica</em> species using two-sample t-test. Interpret the results</p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p>Lets formulate the hypothesis;</p>
+<ul>
+<li>Null Hypothesis(<span class="math inline">\(H_0\)</span>): There is no significant difference between the mean of virginica and the mean of versicolor</li>
+<li>Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the mean of virginica and the versicolor</li>
+</ul>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="general-statistics.html#cb298-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb298-2"><a href="general-statistics.html#cb298-2" tabindex="-1"></a></span>
+<span id="cb298-3"><a href="general-statistics.html#cb298-3" tabindex="-1"></a><span class="co"># Load the data </span></span>
+<span id="cb298-4"><a href="general-statistics.html#cb298-4" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb298-5"><a href="general-statistics.html#cb298-5" tabindex="-1"></a></span>
+<span id="cb298-6"><a href="general-statistics.html#cb298-6" tabindex="-1"></a><span class="co"># Retrieve the data for the two species </span></span>
+<span id="cb298-7"><a href="general-statistics.html#cb298-7" tabindex="-1"></a><span class="do">## Virginica petal length</span></span>
+<span id="cb298-8"><a href="general-statistics.html#cb298-8" tabindex="-1"></a>virginica <span class="ot">&lt;-</span> iris<span class="sc">%&gt;%</span> </span>
+<span id="cb298-9"><a href="general-statistics.html#cb298-9" tabindex="-1"></a>  <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)</span>
+<span id="cb298-10"><a href="general-statistics.html#cb298-10" tabindex="-1"></a></span>
+<span id="cb298-11"><a href="general-statistics.html#cb298-11" tabindex="-1"></a>virginica.petal.length <span class="ot">&lt;-</span> virginica<span class="sc">$</span>Petal.Length</span>
+<span id="cb298-12"><a href="general-statistics.html#cb298-12" tabindex="-1"></a></span>
+<span id="cb298-13"><a href="general-statistics.html#cb298-13" tabindex="-1"></a><span class="do">## Versicolor petal length</span></span>
+<span id="cb298-14"><a href="general-statistics.html#cb298-14" tabindex="-1"></a>versicolor <span class="ot">&lt;-</span> iris<span class="sc">%&gt;%</span> </span>
+<span id="cb298-15"><a href="general-statistics.html#cb298-15" tabindex="-1"></a>  <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb298-16"><a href="general-statistics.html#cb298-16" tabindex="-1"></a></span>
+<span id="cb298-17"><a href="general-statistics.html#cb298-17" tabindex="-1"></a>versicolor.petal.length <span class="ot">&lt;-</span> versicolor<span class="sc">$</span>Petal.Length</span>
+<span id="cb298-18"><a href="general-statistics.html#cb298-18" tabindex="-1"></a></span>
+<span id="cb298-19"><a href="general-statistics.html#cb298-19" tabindex="-1"></a><span class="co"># Conduct two-sample t-test</span></span>
+<span id="cb298-20"><a href="general-statistics.html#cb298-20" tabindex="-1"></a>ttest_result <span class="ot">=</span> <span class="fu">t.test</span>(virginica.petal.length, versicolor.petal.length, </span>
+<span id="cb298-21"><a href="general-statistics.html#cb298-21" tabindex="-1"></a>                      <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb298-22"><a href="general-statistics.html#cb298-22" tabindex="-1"></a>                      <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb298-23"><a href="general-statistics.html#cb298-23" tabindex="-1"></a></span>
+<span id="cb298-24"><a href="general-statistics.html#cb298-24" tabindex="-1"></a>ttest_result</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  virginica.petal.length and versicolor.petal.length
+## t = 12.604, df = 95.57, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  1.08851 1.49549
+## sample estimates:
+## mean of x mean of y 
+##     5.552     4.260</code></pre>
+<p>With a p-value of less than 0.05, the null hypothesis is rejected. It is concluded that there is a significant difference between the mean of virginica species and the mean of versicolor species.</p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
+</div>
+<div id="anova-analysis-of-variance" class="section level4 hasAnchor" number="4.3.1.3">
+<h4><span class="header-section-number">4.3.1.3</span> ANOVA (Analysis of Variance)<a href="general-statistics.html#anova-analysis-of-variance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>ANOVA is a statistical test used to analyze the difference between the means of more than two groups. This is different from the ttest that analyzes one or two groups, it uses F test to find the statistical significance. Multiple means are compared at once and if one mean is different the hypothesis is rejected.</p>
+<p>The F test compares the variance in each group from the overal group variance.</p>
+<p>An practical example of ANOVA is where a farmer wants to test the effect of three different fertilizers on the crop yield. The difference in the crop yield will be calculated.</p>
+<p>Before conducting ANOVA, the following assumptions are made;</p>
+<ol style="list-style-type: lower-roman">
+<li><strong>Independence of observations</strong>: the data was collected using statistically valid sampling methods and there are no hidden relationships among the observations.</li>
+<li><strong>Normal distribution</strong>: the dependent variable should follow a normal distribution.</li>
+<li><strong>Homogeinity of variance</strong>: All the groups being tested should have similar variations.</li>
+</ol>
+<p>Lets calculate the ANOVA using the the crop yield data set. The fertilizer are in three categories; 1, 2 and 3</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="general-statistics.html#cb300-1" tabindex="-1"></a><span class="co"># Load the data set </span></span>
+<span id="cb300-2"><a href="general-statistics.html#cb300-2" tabindex="-1"></a>crop_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cropdata.csv&quot;</span>)</span>
+<span id="cb300-3"><a href="general-statistics.html#cb300-3" tabindex="-1"></a><span class="fu">head</span>(crop_df) <span class="co"># view the first few rows of the data set</span></span></code></pre></div>
+<pre><code>##   density block fertilizer    yield
+## 1       1     1          1 177.2287
+## 2       2     2          1 177.5500
+## 3       1     3          1 176.4085
+## 4       2     4          1 177.7036
+## 5       1     1          1 177.1255
+## 6       2     2          1 176.7783</code></pre>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="general-statistics.html#cb302-1" tabindex="-1"></a><span class="co"># Calculate one way ANOVA </span></span>
+<span id="cb302-2"><a href="general-statistics.html#cb302-2" tabindex="-1"></a>anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> crop_df)</span>
+<span id="cb302-3"><a href="general-statistics.html#cb302-3" tabindex="-1"></a>anova</span></code></pre></div>
+<pre><code>## Call:
+##    aov(formula = yield ~ fertilizer, data = crop_df)
+## 
+## Terms:
+##                 fertilizer Residuals
+## Sum of Squares     5.74322  36.21101
+## Deg. of Freedom          1        94
+## 
+## Residual standard error: 0.6206638
+## Estimated effects may be unbalanced</code></pre>
+<p>The ANOVA output provides insights into the variation in crop yield explained by the fertilizer type. Here’s a detailed breakdown of the results:</p>
+<ul>
+<li><p><strong>Sum of Squares (fertilizer) = 5.74322</strong>: This value represents the variation in crop yield that can be attributed to the different types of fertilizers used in the experiment. In this case, 5.74322 units of the total variation are explained by fertilizer differences.</p></li>
+<li><p><strong>Sum of Squares (Residuals) = 36.21101</strong>: This is the unexplained variation in crop yield, also known as the error term. This shows how much of the variation is due to factors not accounted for in the model, such as environmental factors or random error.</p></li>
+<li><p><strong>Degrees of Freedom (fertilizer) = 1</strong>: There is only 1 degree of freedom for the fertilizer factor, which means there was a comparison between two groups (likely two fertilizer types or one fertilizer versus a control).</p></li>
+<li><p><strong>Degrees of Freedom (Residuals) = 94</strong>: There are 94 degrees of freedom associated with the residuals. This is related to the total number of observations minus the number of groups being compared. In this case, the large degrees of freedom indicate a sizable data set.</p></li>
+<li><p><strong>Residual Standard Error = 0.6206638</strong>: This value represents the typical deviation of the observed yield values from the predicted values, given the current model. A lower residual standard error suggests a better fit of the model to the data, though this value needs to be interpreted in context.</p></li>
+</ul>
+<p>The results show that the fertilizer type explains some of the variation in crop yield (Sum of Squares = 5.74322), while a larger portion remains unexplained (Sum of Squares of Residuals = 36.21101). To fully interpret the significance of this effect, a p-value and F-statistic would typically be calculated, but these are not provided here. Additionally, the residual standard error (0.6206638) gives an indication of the spread of the data around the predicted values, but more information would be needed to assess the strength of the model’s fit.</p>
+<p>In conclusion, while the fertilizer has some effect on crop yield, the overall variability and potential unbalanced data need further exploration for a complete understanding.</p>
+<p><span style="color: green;"><strong>Practical exercise</strong></span></p>
+<p>Perform ANOVA on the sepal width of the three species in the iris data set and interpret the results.</p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p>Lets formulate the hypothesis;</p>
+<ul>
+<li>Null Hypothesis(<span class="math inline">\(H_0\)</span>): There is no siginificant difference among the sepal width of all the iris species.</li>
+<li>Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a signifincant difference among the sepal width of all the iris species</li>
+</ul>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="general-statistics.html#cb304-1" tabindex="-1"></a><span class="co"># Load the data </span></span>
+<span id="cb304-2"><a href="general-statistics.html#cb304-2" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb304-3"><a href="general-statistics.html#cb304-3" tabindex="-1"></a></span>
+<span id="cb304-4"><a href="general-statistics.html#cb304-4" tabindex="-1"></a><span class="co"># Perform the ANOVA</span></span>
+<span id="cb304-5"><a href="general-statistics.html#cb304-5" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(Sepal.Width <span class="sc">~</span> Species, <span class="at">data =</span> iris)</span>
+<span id="cb304-6"><a href="general-statistics.html#cb304-6" tabindex="-1"></a></span>
+<span id="cb304-7"><a href="general-statistics.html#cb304-7" tabindex="-1"></a><span class="co"># Display the ANOVA table</span></span>
+<span id="cb304-8"><a href="general-statistics.html#cb304-8" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div>
+<pre><code>##              Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## Species       2  11.35   5.672   49.16 &lt;2e-16 ***
+## Residuals   147  16.96   0.115                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>it indicates that there are statistically significant differences in the mean <code>Sepal.Width</code> between the species.</p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
+</div>
+<div id="chi-square-test" class="section level4 hasAnchor" number="4.3.1.4">
+<h4><span class="header-section-number">4.3.1.4</span> Chi-Square Test<a href="general-statistics.html#chi-square-test" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>This is a statistical test that determines the difference between the observed and the expected data. It determines if the relationship between two categorical variables is due to chance or a relationship between them.</p>
+<p>It is calculated by;
+<span class="math display">\[x_{c}^{2} = \frac{\sum(O_{i}-E_{i})}{E_i}\]</span></p>
+<p>Where;</p>
+<ol style="list-style-type: lower-roman">
+<li><span class="math inline">\(c\)</span> is the degree of freedom. This is a statistical calculation that represents the number of variables that can carry and is calculated to ensure the chi-square tests are statistically valid</li>
+<li><span class="math inline">\(O\)</span> is the observed value</li>
+<li><span class="math inline">\(E\)</span> is the expected value</li>
+</ol>
+<p>Lets perform Chi-square on a survey data from the <code>MASS</code> library. The survey data represents data from a survey conducted on students.</p>
+<ul>
+<li>Null Hypothesis (<span class="math inline">\(H_0\)</span>): The smoking habit is independent of the student’s exercise level</li>
+<li>ALternate Hypothesis (<span class="math inline">\(H_a\)</span>): The smoking habit is dependent on the exercise level.</li>
+</ul>
+<p>Load the data</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="general-statistics.html#cb306-1" tabindex="-1"></a><span class="co"># Load the library</span></span>
+<span id="cb306-2"><a href="general-statistics.html#cb306-2" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="general-statistics.html#cb309-1" tabindex="-1"></a><span class="fu">head</span>(survey) <span class="co"># view the data</span></span></code></pre></div>
+<pre><code>##      Sex Wr.Hnd NW.Hnd W.Hnd    Fold Pulse    Clap Exer Smoke Height      M.I
+## 1 Female   18.5   18.0 Right  R on L    92    Left Some Never 173.00   Metric
+## 2   Male   19.5   20.5  Left  R on L   104    Left None Regul 177.80 Imperial
+## 3   Male   18.0   13.3 Right  L on R    87 Neither None Occas     NA     &lt;NA&gt;
+## 4   Male   18.8   18.9 Right  R on L    NA Neither None Never 160.00   Metric
+## 5   Male   20.0   20.0 Right Neither    35   Right Some Never 165.00   Metric
+## 6 Female   18.0   17.7 Right  L on R    64   Right Some Never 172.72 Imperial
+##      Age
+## 1 18.250
+## 2 17.583
+## 3 16.917
+## 4 20.333
+## 5 23.667
+## 6 21.000</code></pre>
+<p>Create a contigency table between the Smoke and the Exercise leel.</p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="general-statistics.html#cb311-1" tabindex="-1"></a><span class="co"># Create a contingency table with the needed variables.       </span></span>
+<span id="cb311-2"><a href="general-statistics.html#cb311-2" tabindex="-1"></a>stu_data <span class="ot">=</span> <span class="fu">table</span>(survey<span class="sc">$</span>Smoke,survey<span class="sc">$</span>Exer) </span>
+<span id="cb311-3"><a href="general-statistics.html#cb311-3" tabindex="-1"></a>                 </span>
+<span id="cb311-4"><a href="general-statistics.html#cb311-4" tabindex="-1"></a><span class="fu">print</span>(stu_data)</span></code></pre></div>
+<pre><code>##        
+##         Freq None Some
+##   Heavy    7    1    3
+##   Never   87   18   84
+##   Occas   12    3    4
+##   Regul    9    1    7</code></pre>
+<p>Perform the chi-square test on the <code>stu_data</code>, the contigency table.</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="general-statistics.html#cb313-1" tabindex="-1"></a><span class="co"># applying chisq.test() function</span></span>
+<span id="cb313-2"><a href="general-statistics.html#cb313-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">chisq.test</span>(stu_data))</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  stu_data
+## X-squared = 5.4885, df = 6, p-value = 0.4828</code></pre>
+<p>From the results, the p-value is 0.4828 which is greater than 0.05 therefore the null hypothesis is not rejected. It’c concluded that the smoking habit is independent of the exercise level since there is weak to now correlation between the <code>Smoke</code> and <code>Exer</code> variables.</p>
+<p>Finally, lets visualize the results from the contigency table;</p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="general-statistics.html#cb315-1" tabindex="-1"></a><span class="co"># Visualize the data with a bar plot</span></span>
+<span id="cb315-2"><a href="general-statistics.html#cb315-2" tabindex="-1"></a><span class="fu">barplot</span>(stu_data, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;lightgreen&quot;</span>),</span>
+<span id="cb315-3"><a href="general-statistics.html#cb315-3" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Smoking Habits vs Exercise Levels&quot;</span>,</span>
+<span id="cb315-4"><a href="general-statistics.html#cb315-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Exercise Level&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of Students&quot;</span>)</span>
+<span id="cb315-5"><a href="general-statistics.html#cb315-5" tabindex="-1"></a> </span>
+<span id="cb315-6"><a href="general-statistics.html#cb315-6" tabindex="-1"></a><span class="co"># Add legend separately</span></span>
+<span id="cb315-7"><a href="general-statistics.html#cb315-7" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;center&quot;</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(stu_data), <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;lightgreen&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<p>You can see from the table, those students who never smoke lead in every exercise level while the heavy smokers are the least in every group.</p>
+<p><span style="color: green;"><strong>Practical exercise</strong></span></p>
+<p>Using the Iris data set, perform a Chi-square test to determine if there is a relationship between two categorical variables: the species (Species) and a new categorical variable that classifies sepal width (Sepal.Length) into categories (e.g., “Short”, “Medium”, “Long”).</p>
+<ul>
+<li>“Short”: below 3.0</li>
+<li>“Medium”: above 3.0 to 3.8</li>
+<li>“Long”: above 3.8</li>
+</ul>
+<p>Follow the steps below;</p>
+<ol style="list-style-type: decimal">
+<li>Create a new variable <code>sepal.Width.Category</code> in the data set by categorizing the Sepal.Width variable into 3 categories: <code>"Short"</code>, <code>"Medium"</code>, and <code>"Long"</code> (as per the defined ranges).</li>
+<li>Perform a Chi-square test to see if there’s an association between the new <code>sepal.Width.Category</code> categories and the <code>Species</code> column.</li>
+<li>Interpret the results of the Chi-square test</li>
+</ol>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p>Load the data set</p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="general-statistics.html#cb316-1" tabindex="-1"></a><span class="fu">data</span>(iris) </span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>Create a new variable <code>sepal.Width.Category</code> in the data set by categorizing the <code>Sepal.Width</code> variable into 3 categories: <code>"Short"</code>, <code>"Medium"</code>, and <code>"Long"</code> (as per the defined ranges).</li>
+</ol>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="general-statistics.html#cb317-1" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb317-2"><a href="general-statistics.html#cb317-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb317-3"><a href="general-statistics.html#cb317-3" tabindex="-1"></a></span>
+<span id="cb317-4"><a href="general-statistics.html#cb317-4" tabindex="-1"></a><span class="co"># Create a new column &#39;Sepal_Width_Category&#39; based on conditions</span></span>
+<span id="cb317-5"><a href="general-statistics.html#cb317-5" tabindex="-1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb317-6"><a href="general-statistics.html#cb317-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sepal.Width.Category =</span> <span class="fu">case_when</span>(</span>
+<span id="cb317-7"><a href="general-statistics.html#cb317-7" tabindex="-1"></a>    Sepal.Width <span class="sc">&lt;</span> <span class="fl">3.0</span> <span class="sc">~</span> <span class="st">&quot;Short&quot;</span>,</span>
+<span id="cb317-8"><a href="general-statistics.html#cb317-8" tabindex="-1"></a>    Sepal.Width <span class="sc">&gt;=</span> <span class="fl">3.0</span> <span class="sc">&amp;</span> Sepal.Width <span class="sc">&lt;=</span> <span class="fl">3.8</span> <span class="sc">~</span> <span class="st">&quot;Medium&quot;</span>,</span>
+<span id="cb317-9"><a href="general-statistics.html#cb317-9" tabindex="-1"></a>    Sepal.Width <span class="sc">&gt;</span> <span class="fl">3.8</span> <span class="sc">~</span> <span class="st">&quot;Long&quot;</span></span>
+<span id="cb317-10"><a href="general-statistics.html#cb317-10" tabindex="-1"></a>  ))</span>
+<span id="cb317-11"><a href="general-statistics.html#cb317-11" tabindex="-1"></a></span>
+<span id="cb317-12"><a href="general-statistics.html#cb317-12" tabindex="-1"></a><span class="co"># Display the first few rows to see the new column</span></span>
+<span id="cb317-13"><a href="general-statistics.html#cb317-13" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+##   sepal.Width.Category
+## 1               Medium
+## 2               Medium
+## 3               Medium
+## 4               Medium
+## 5               Medium
+## 6                 Long</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Perform a Chi-square test to see if there’s an association between the new <code>sepal.Width.Category</code> categories and the <code>Species</code> column.</li>
+</ol>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="general-statistics.html#cb319-1" tabindex="-1"></a><span class="co"># Create a contigency table </span></span>
+<span id="cb319-2"><a href="general-statistics.html#cb319-2" tabindex="-1"></a>sepal_width_data <span class="ot">=</span> <span class="fu">table</span>(iris<span class="sc">$</span>sepal.Width.Category,iris<span class="sc">$</span>Species) </span>
+<span id="cb319-3"><a href="general-statistics.html#cb319-3" tabindex="-1"></a></span>
+<span id="cb319-4"><a href="general-statistics.html#cb319-4" tabindex="-1"></a><span class="fu">print</span>(sepal_width_data)</span></code></pre></div>
+<pre><code>##         
+##          setosa versicolor virginica
+##   Long        6          0         0
+##   Medium     42         16        29
+##   Short       2         34        21</code></pre>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="general-statistics.html#cb321-1" tabindex="-1"></a><span class="co"># applying chisq.test() function</span></span>
+<span id="cb321-2"><a href="general-statistics.html#cb321-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">chisq.test</span>(sepal_width_data))</span></code></pre></div>
+<pre><code>## Warning in chisq.test(sepal_width_data): Chi-squared approximation may be
+## incorrect</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  sepal_width_data
+## X-squared = 50.918, df = 4, p-value = 2.322e-10</code></pre>
+<p><strong>Intepret the results</strong></p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
+</div>
+</div>
+<div id="hands-on-exercises-1" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Hands-on Exercises<a href="general-statistics.html#hands-on-exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You are required to download the Groundhog Day Forecasts and Temperatures data set from <a href="https://www.kaggle.com/datasets/groundhogclub/groundhog-day">here</a>.</p>
+<ul>
+<li>Perform one sample t-test on February Average temperature. The pre-assumed mean is 35</li>
+<li>Conduct two sample t-test between the North East average temperature for March and the overall March daily temperature</li>
+<li>Perform ANOVA between the presence of Punxsutawney Phil and the February average temperature</li>
+</ul>
+<p>Interpret the results</p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p>Load the data</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="general-statistics.html#cb324-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/GroundhogDayForecastsandTemperaturesdata.csv&quot;</span>)</span></code></pre></div>
+<ul>
+<li>Perform one sample t-test on February Average temperature. The pre-assumed mean is 35</li>
+</ul>
+<p>Formulate the hypothesis
+- Null hypothesis (<span class="math inline">\(H_0\)</span>): There is no significant difference between the February Average Temeprature mean and the pre-assumed mean
+- Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the February Average Temperature and the pre-assumed mean.</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="general-statistics.html#cb325-1" tabindex="-1"></a>one.sample.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(df<span class="sc">$</span>February.Average.Temperature, <span class="at">mu=</span><span class="dv">35</span>)</span>
+<span id="cb325-2"><a href="general-statistics.html#cb325-2" tabindex="-1"></a></span>
+<span id="cb325-3"><a href="general-statistics.html#cb325-3" tabindex="-1"></a><span class="co"># Display the results </span></span>
+<span id="cb325-4"><a href="general-statistics.html#cb325-4" tabindex="-1"></a><span class="fu">print</span>(one.sample.ttest)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  df$February.Average.Temperature
+## t = -4.061, df = 122, p-value = 8.671e-05
+## alternative hypothesis: true mean is not equal to 35
+## 95 percent confidence interval:
+##  33.21928 34.38641
+## sample estimates:
+## mean of x 
+##  33.80285</code></pre>
+<p>The p-value is below 0.05, therefore the is enough evidence to reject the null hypothesis and conclude that there is a significant difference between the February Average Temperature and the pre-assumed mean(35).</p>
+<ul>
+<li>Conduct two sample t-test between the North East average temperature for March and the overall March daily temperature.</li>
+</ul>
+<p>Formulate the hypothesis:</p>
+<ul>
+<li>Null hypothesis(<span class="math inline">\(H_0\)</span>): There is no significant difference between the North East Average Temperature for March and the March daily temparature.</li>
+<li>ALternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the North East Average Temperature and the March daily temparature.</li>
+</ul>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="general-statistics.html#cb327-1" tabindex="-1"></a><span class="co"># Perform two sample ttest</span></span>
+<span id="cb327-2"><a href="general-statistics.html#cb327-2" tabindex="-1"></a>ttest_result <span class="ot">=</span> <span class="fu">t.test</span>(df<span class="sc">$</span>March.Average.Temperature..Northeast., </span>
+<span id="cb327-3"><a href="general-statistics.html#cb327-3" tabindex="-1"></a>                      df<span class="sc">$</span>March.Average.Temperature, </span>
+<span id="cb327-4"><a href="general-statistics.html#cb327-4" tabindex="-1"></a>                      <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb327-5"><a href="general-statistics.html#cb327-5" tabindex="-1"></a>                      <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb327-6"><a href="general-statistics.html#cb327-6" tabindex="-1"></a></span>
+<span id="cb327-7"><a href="general-statistics.html#cb327-7" tabindex="-1"></a>ttest_result</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  df$March.Average.Temperature..Northeast. and df$March.Average.Temperature
+## t = -21.288, df = 227.4, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -10.193516  -8.466321
+## sample estimates:
+## mean of x mean of y 
+##  32.36748  41.69740</code></pre>
+<p>The p-value is less than 0.05, therefore the null hypothesis is rejected. It is concluded that there is significant difference between the North East Average Temperature for March and overall Average daily Temperature for March</p>
+<ul>
+<li>Perform ANOVA between the presence of Punxsutawney Phil and the February average temperature</li>
+</ul>
+<p>Formulate the hypothesis</p>
+<ul>
+<li>Null Hypothesis(<span class="math inline">\(H_0\)</span>): There is no significant difference between the presence and the absence of Punxsutawney Phil during February based on the Average Temperature</li>
+<li>Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the presence and the absence of Punxsutawney Phil during February based on the Average Temperature</li>
+</ul>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="general-statistics.html#cb329-1" tabindex="-1"></a><span class="co"># Perform ANOVA</span></span>
+<span id="cb329-2"><a href="general-statistics.html#cb329-2" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(February.Average.Temperature <span class="sc">~</span> df<span class="sc">$</span>Punxsutawney.Phil, <span class="at">data =</span> df)</span>
+<span id="cb329-3"><a href="general-statistics.html#cb329-3" tabindex="-1"></a></span>
+<span id="cb329-4"><a href="general-statistics.html#cb329-4" tabindex="-1"></a><span class="co"># Display the ANOVA table</span></span>
+<span id="cb329-5"><a href="general-statistics.html#cb329-5" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div>
+<pre><code>##                       Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## df$Punxsutawney.Phil   4   92.7   23.18   2.258 0.0669 .
+## Residuals            118 1211.3   10.27                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 9 observations deleted due to missingness</code></pre>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 
+</div>
 </div>
 </div>
             </section>

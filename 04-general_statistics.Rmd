@@ -343,9 +343,511 @@ From the bar chart above, Category "C" has the largest value while category "D" 
 
 <span style="color: orange;">**Try it!**</span>
 
-Lets create a bar chart of a real world scenario. We will calculate the Gross amount spent by different age groups in the ecommerce store. 
+Lets create a bar chart of a real world scenario. We will calculate the average Gross amount spent by different age groups in the ecommerce store. 
+```{r}
+library(plyr)
 
-**_______Plot a bar chart________**
+# Aggregate by mean
+PurchasebyAge <- aggregate(Gross.Amount ~ Age.Group,
+                           data = ecommerce,
+                           FUN = mean
+                           )
+
+# Plot a bar chart
+ggplot(PurchasebyAge, 
+       aes(x = Age.Group, y = Gross.Amount)) +
+  geom_bar(stat = "identity", fill="blue", color="white") +
+  labs(
+    title = "Average Gross Amount by Age Group", 
+    x = "Age Group", 
+    y = "Average Gross Amount") +
+  theme_minimal()
+```
+
+All the age group had an almost equal average spending on the ecommerce store. 
+
+What if we calculated the total spending for each age group? That would be interesting! Lets calculate and plot a bar chart to represent that. 
+```{r}
+# Aggregate by sum
+PurchasebyAge <- aggregate(Gross.Amount ~ Age.Group,
+                           data = ecommerce,
+                           FUN = sum
+                           )
+
+# Plot a bar chart
+ggplot(PurchasebyAge, 
+       aes(x = Age.Group, y = Gross.Amount)) +
+  geom_bar(stat = "identity", fill="blue", color="white") +
+  labs(
+    title = "Total Gross Amount by Age Group", 
+    x = "Age Group", 
+    y = "Total Gross Amount") +
+  theme_minimal()
+```
+
+Age 25 - 45 had the highest total spending in the ecommerce store while age of 60 and above had the least total spending. 
+
+e. **Pie Charts**
+
+**______Explain about pie charts________**
+
+
+f. **Boxplots and Violin Plots**
+
+**_______Explain about outliers using box plots_______**
+
+<span style="color: green;">**Practical Exercise**</span>
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+## Inferential Statistics
+### Introduction to Hypothesis Testing
+#### Concept of Hypothesis Testing
+
+Hypothesis testing is a type of statistical analysis that is used to make assumptions of a population based on a sample of data. It is particularly used to find the relationship between two variables(populations). A real life example of hypothesis testing is that a teacher may assume that 60% of the students come from a middle-class family. There are two types of hypothesis; 
+
+  - Null hypothesis($H_0$)
+  - Alternate hypothesis ($H_1$ or $H_a$)
+  
+**Null hypothesis** is states that there is no effect or no difference($\mu = 0$). For instance there is no effect of standards of living to college admissions. **Alternate hypothesis** is the opposite and contradicts the null hypothesis. It provide evidence for what the statistician is trying to find($\mu \neq 0$). In this case, the standards of living have an effect on college admissions.
+
+The important aspects before conducting hypothesis testing are;-
+
+  - *Significance level.* It is the probability of rejecting the null hypothesis when it is actually true. 
+  - *P-Value* is the probability of obtaining a test statistic at least as extreme as the one observed, given the null hypothesis is true. Most hypothesis testing projects are set at 0.05. Less than 0.05(or the set value) indicates the null the test is statistically significant and the null hypothesis should be rejected. Otherwise, the test is statistically insignificant and the null hypothesis is not rejected. 
+  - *Test statistic* also called T-statistic is a standardized value calcluated during a hypothesis test. It cab z-test or a t-test.
+  -*Decision rule* is based on the calculated p-value and the significant level. In a hypothesis test where the significant and the p-value is 0.03444 the null hypothesis is not rejected. 
+
+Now that you are familiar with the hypothesis testing aspects, take the following steps to perform hypothesis testing;- 
+
+  i. Formulating the hypothesis by defining the null and alternate hypothesis.
+  ii. Collect and analyze the data. 
+  iii. Choose a significant level($a$) and calculate the p-value. 
+  iv. Make a decision by comparing the p-value to the significant level.
+  v. Conclude your analysis results. 
+  
+#### T-tests
+- *One-Sample t-test*
+
+One sample t-test is a statistical method used to find if the mean of a sample is different from the population(or preassumed) mean. 
+
+It is based on the t-distribution(most observations fall close to the mean, and the rest of the observations make up the tails on either side) and is commonly used when dealing with small sample sizes. One sample t-test is especially performed where the population standard deviation is unknown. 
+
+Below is the formula for one sample t-test
+$$t={{\overline{X}-\mu}\over s / \sqrt{n}}$$
+
+where;
+
+i. $t$: the one sample t-test value. t-test statistic
+ii. $n$: the number of the observations in the sample
+iii. $\overline{X}$: is the sample mean
+iv. $s$: standard deviation of the sample 
+v. $\mu$: Hypothesized population mean
+
+The result $t$, simply measures how many standard errors the sample mean is away from the hypothesized population mean. 
+
+Before conducting t-test, there is a need to establish the null(H0) and alternate hypothesis(Ha) where;
+
+- *Null Hypothesis(H0)*: There is no significant difference between the sample mean and the population(hypothesized) mean.
+- *ALternate Hypothesis(Ha)*: There is a significant difference between the sample mean and the population mean. 
+
+P-value is the probability value that tells you how likely is that your data could have occurred under null hypothesis. In our case a p-value of below  0.05 is considered to be statistically significant and the null value is rejected. The vice versa is true
+
+Lets perform a t-test using R;
+
+We will generate sample data
+```{r}
+# Set seed for reproducibility
+set.seed(123)
+
+# Generate random student marks (out of 100)
+student_marks <- rnorm(30, mean = 65, sd = 10)
+
+# Display the first few marks
+head(student_marks)
+```
+
+Perform the t-test
+```{r}
+# Conduct one-sample t-test
+t_test_result <- t.test(student_marks, mu = 70)
+
+# Display the t-test result
+print(t_test_result)
+```
+<span style="color: green;">**Practical exercise**</span>
+
+Conduct one sample t-test on the sepal length of the setosa iris. The pre-assumed mean is 5.84 units.
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+- Null Hypothesis($H_0$): There is no significant difference between the setosa sepal length mean and the pre-assumed mean
+- Alternate Hypothesis($H_a$): There is a significant difference between the setosa sepal length and the pre-assumed mean
+
+**Note**: If the pre-assumed mean is not given in the question therefore the whole population mean is used(as the pre-assumed mean). In this case, the setosa sepal length mean of the whole iris species. 
+
+```{r}
+library(dplyr)
+# Load the data
+data(iris)
+
+# Get the setosa sepal length
+setosa <- iris %>% 
+  filter(Species=="setosa")
+
+setosa.sepal.length <- setosa$Sepal.Length
+
+# Calculate one-sample ttest 
+## Set the pre-assumed mean 
+pre_assumed_mean <- 5.84 # as in the question
+
+t_test_result <- t.test(setosa.sepal.length, mu = pre_assumed_mean)
+
+print(t_test_result)
+```
+
+The p-value is much below 0.05, therefore the null hypothesis is rejected. It is concluded that there is a significant difference between the sepal length mean and the pre-assumed mean
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+- *Two-Sample t-test*
+
+Unlike one sample t-test where a sample population is tested against a pre-assumed mean, the Tow-sample t-test determines if there is a significant difference between the means of two independent populations. 
+
+The practical application of two-sample t-test can be when comparing the test scores of two classes. This helps the statistician to understand if one class did better than the other one or it's just a matter of luck. 
+
+These are the prerequisites before conducting a two-sample t-test; 
+
+i. The groups contain separate data with a similar distribution.
+ii. The two populations have a normal(typical bell-curve) distribution.
+iii. The two sample populations have a similar variations
+
+The two sample t-test is calculated by;
+![](images/two-sample-ttest.jpg)
+
+Where;
+
+- $\overline{x}_1$ and $\overline{x}_2$ are the mean of the first sample and the second sample respectively
+- $s_{1}$ and $s_{2}$ are the standard deviation of sample 1 and sample 2 respectively
+- $n_1$ and $n_2$ are the sample sizes of the first and second sample respectively. 
+
+Let create a random population of student scores for two classes and perform two-sample t-test in R; 
+
+```{r}
+# Generate the population sample
+set.seed(123)
+group_A_scores <- rnorm(25, mean = 75, sd = 8)  # Group A
+group_B_scores <- rnorm(25, mean = 80, sd = 10)  # Group B
+
+# Display the first few scores of each group
+head(group_A_scores)
+head(group_B_scores)
+```
+
+Performing the two sample t-test. Lets set the confidence level to 95%(0.95)
+```{r}
+ttest_result = t.test(group_A_scores, group_B_scores, 
+                      alternative = "two.sided", mu = 0, paired = FALSE,
+                      var.equal = FALSE, conf.level = 0.95)
+
+ttest_result
+```
+
+* **t-value = -2.6403**: This indicates the difference between the means of the two groups, in terms of standard errors. A higher absolute value suggests a larger difference.
+* **Degrees of freedom (df) = 46.312**: This reflects the sample size and variability in the data.
+* **p-value = 0.01125**: Since the p-value is less than 0.05, we reject the null hypothesis. This suggests that the difference in means between Group A and Group B is statistically significant.
+* **95% confidence interval: (-11.08, -1.50)**: This indicates that we are 95% confident that the true difference in means lies between -11.08 and -1.50.
+* **Mean of x (Group A) = 74.73, Mean of y (Group B) = 81.02**: The average score of Group B is higher than Group A.
+
+In summary, the test shows a significant difference between the means of the two groups, with Group B having higher scores
+
+
+<span style="color: green;">**Practical exercise**</span>
+
+Using the iris data set, compare the petal length of the *versicolor* and *virginica* species using two-sample t-test. Interpret the results
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+Lets formulate the hypothesis;
+
+- Null Hypothesis($H_0$): There is no significant difference between the mean of virginica and the mean of versicolor
+- Alternate Hypothesis($H_a$): There is a significant difference between the mean of virginica and the versicolor
+
+```{r}
+library(dplyr)
+
+# Load the data 
+data(iris)
+
+# Retrieve the data for the two species 
+## Virginica petal length
+virginica <- iris%>% 
+  filter(Species=="virginica")
+
+virginica.petal.length <- virginica$Petal.Length
+
+## Versicolor petal length
+versicolor <- iris%>% 
+  filter(Species=="versicolor")
+
+versicolor.petal.length <- versicolor$Petal.Length
+
+# Conduct two-sample t-test
+ttest_result = t.test(virginica.petal.length, versicolor.petal.length, 
+                      alternative = "two.sided", mu = 0, paired = FALSE,
+                      var.equal = FALSE, conf.level = 0.95)
+
+ttest_result
+```
+
+With a p-value of less than 0.05, the null hypothesis is rejected. It is concluded that there is a significant difference between the mean of virginica species and the mean of versicolor species. 
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+#### ANOVA (Analysis of Variance)
+ANOVA is a statistical test used to analyze the difference between the means of more than two groups. This is different from the ttest that analyzes one or two groups, it uses F test to find the statistical significance. Multiple means are compared at once and if one mean is different the hypothesis is rejected. 
+
+The F test compares the variance in each group from the overal group variance. 
+
+An practical example of ANOVA is where a farmer wants to test the effect of three different fertilizers on the crop yield. The difference in the crop yield will be calculated. 
+
+Before conducting ANOVA, the following assumptions are made;
+
+i. **Independence of observations**: the data was collected using statistically valid sampling methods and there are no hidden relationships among the observations. 
+ii. **Normal distribution**: the dependent variable should follow a normal distribution.
+iii. **Homogeinity of variance**: All the groups being tested should have similar variations. 
+
+Lets calculate the ANOVA using the the crop yield data set. The fertilizer are in three categories; 1, 2 and 3
+```{r}
+# Load the data set 
+crop_df <- read.csv("data/cropdata.csv")
+head(crop_df) # view the first few rows of the data set
+
+# Calculate one way ANOVA 
+anova <- aov(yield ~ fertilizer, data = crop_df)
+anova
+```
+The ANOVA output provides insights into the variation in crop yield explained by the fertilizer type. Here’s a detailed breakdown of the results:
+
+* **Sum of Squares (fertilizer) = 5.74322**: This value represents the variation in crop yield that can be attributed to the different types of fertilizers used in the experiment. In this case, 5.74322 units of the total variation are explained by fertilizer differences.
+
+* **Sum of Squares (Residuals) = 36.21101**: This is the unexplained variation in crop yield, also known as the error term. This shows how much of the variation is due to factors not accounted for in the model, such as environmental factors or random error.
+
+* **Degrees of Freedom (fertilizer) = 1**: There is only 1 degree of freedom for the fertilizer factor, which means there was a comparison between two groups (likely two fertilizer types or one fertilizer versus a control).
+
+* **Degrees of Freedom (Residuals) = 94**: There are 94 degrees of freedom associated with the residuals. This is related to the total number of observations minus the number of groups being compared. In this case, the large degrees of freedom indicate a sizable data set.
+
+* **Residual Standard Error = 0.6206638**: This value represents the typical deviation of the observed yield values from the predicted values, given the current model. A lower residual standard error suggests a better fit of the model to the data, though this value needs to be interpreted in context.
+
+The results show that the fertilizer type explains some of the variation in crop yield (Sum of Squares = 5.74322), while a larger portion remains unexplained (Sum of Squares of Residuals = 36.21101). To fully interpret the significance of this effect, a p-value and F-statistic would typically be calculated, but these are not provided here. Additionally, the residual standard error (0.6206638) gives an indication of the spread of the data around the predicted values, but more information would be needed to assess the strength of the model’s fit.
+
+In conclusion, while the fertilizer has some effect on crop yield, the overall variability and potential unbalanced data need further exploration for a complete understanding.
+
+<span style="color: green;">**Practical exercise**</span>
+
+Perform ANOVA on the sepal width of the three species in the iris data set and interpret the results. 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+Lets formulate the hypothesis;
+
+- Null Hypothesis($H_0$): There is no siginificant difference among the sepal width of all the iris species.
+- Alternate Hypothesis($H_a$): There is a signifincant difference among the sepal width of all the iris species
+
+```{r}
+# Load the data 
+data(iris)
+
+# Perform the ANOVA
+anova_result <- aov(Sepal.Width ~ Species, data = iris)
+
+# Display the ANOVA table
+summary(anova_result)
+```
+
+it indicates that there are statistically significant differences in the mean `Sepal.Width` between the species.
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+#### Chi-Square Test
+This is a statistical test that determines the difference between the observed and the expected data. It determines if the relationship between two categorical variables is due to chance or a relationship between them. 
+
+It is calculated by;
+$$x_{c}^{2} = \frac{\sum(O_{i}-E_{i})}{E_i}$$
+
+Where; 
+
+i. $c$ is the degree of freedom. This is a statistical calculation that represents the number of variables that can carry and is calculated to ensure the chi-square tests are statistically valid
+ii. $O$ is the observed value
+iii. $E$ is the expected value
+
+Lets perform Chi-square on a survey data from the `MASS` library. The survey data represents data from a survey conducted on students. 
+
+- Null Hypothesis ($H_0$): The smoking habit is independent of the student's exercise level
+- ALternate Hypothesis ($H_a$): The smoking habit is dependent on the exercise level.
+
+Load the data
+```{r}
+# Load the library
+library(MASS)
+
+head(survey) # view the data
+```
+
+Create a contigency table between the Smoke and the Exercise leel. 
+```{r}
+# Create a contingency table with the needed variables.       
+stu_data = table(survey$Smoke,survey$Exer) 
+                 
+print(stu_data)
+```
+
+Perform the chi-square test on the `stu_data`, the contigency table.
+```{r warning=FALSE}
+# applying chisq.test() function
+print(chisq.test(stu_data))
+```
+
+From the results, the p-value is 0.4828 which is greater than 0.05 therefore the null hypothesis is not rejected. It'c concluded that the smoking habit is independent of the exercise level since there is weak to now correlation between the `Smoke` and `Exer` variables. 
+
+Finally, lets visualize the results from the contigency table;
+```{r}
+# Visualize the data with a bar plot
+barplot(stu_data, beside = TRUE, col = c("lightblue", "lightgreen"),
+        main = "Smoking Habits vs Exercise Levels",
+        xlab = "Exercise Level", ylab = "Number of Students")
+ 
+# Add legend separately
+legend("center", legend = rownames(stu_data), fill = c("lightblue", "lightgreen"))
+```
+
+You can see from the table, those students who never smoke lead in every exercise level while the heavy smokers are the least in every group. 
+
+<span style="color: green;">**Practical exercise**</span>
+
+Using the Iris data set, perform a Chi-square test to determine if there is a relationship between two categorical variables: the species (Species) and a new categorical variable that classifies sepal width (Sepal.Length) into categories (e.g., "Short", "Medium", "Long").
+
+- "Short": below 3.0
+- "Medium": above 3.0 to 3.8
+- "Long": above 3.8
+
+Follow the steps below;
+
+1. Create a new variable `sepal.Width.Category` in the data set by categorizing the Sepal.Width variable into 3 categories: `"Short"`, `"Medium"`, and `"Long"` (as per the defined ranges).
+2. Perform a Chi-square test to see if there's an association between the new `sepal.Width.Category` categories and the `Species` column.
+3. Interpret the results of the Chi-square test
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+Load the data set
+```{r}
+data(iris) 
+```
+
+1. Create a new variable `sepal.Width.Category` in the data set by categorizing the `Sepal.Width` variable into 3 categories: `"Short"`, `"Medium"`, and `"Long"` (as per the defined ranges).
+```{r}
+# Load necessary libraries
+library(dplyr)
+
+# Create a new column 'Sepal_Width_Category' based on conditions
+iris <- iris %>%
+  mutate(sepal.Width.Category = case_when(
+    Sepal.Width < 3.0 ~ "Short",
+    Sepal.Width >= 3.0 & Sepal.Width <= 3.8 ~ "Medium",
+    Sepal.Width > 3.8 ~ "Long"
+  ))
+
+# Display the first few rows to see the new column
+head(iris)
+```
+
+2. Perform a Chi-square test to see if there’s an association between the new `sepal.Width.Category` categories and the `Species` column.
+
+```{r}
+# Create a contigency table 
+sepal_width_data = table(iris$sepal.Width.Category,iris$Species) 
+
+print(sepal_width_data)
+
+# applying chisq.test() function
+print(chisq.test(sepal_width_data))
+```
+**Intepret the results**
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+### Hands-on Exercises
+
+You are required to download the Groundhog Day Forecasts and Temperatures data set from [here](https://www.kaggle.com/datasets/groundhogclub/groundhog-day).
+
+- Perform one sample t-test on February Average temperature. The pre-assumed mean is 35
+- Conduct two sample t-test between the North East average temperature for March and the overall March daily temperature 
+- Perform ANOVA between the presence of Punxsutawney Phil and the February average temperature
+
+Interpret the results
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+Load the data
+```{r}
+df <- read.csv("data/GroundhogDayForecastsandTemperaturesdata.csv")
+```
+
+- Perform one sample t-test on February Average temperature. The pre-assumed mean is 35
+
+Formulate the hypothesis 
+- Null hypothesis ($H_0$): There is no significant difference between the February Average Temeprature mean and the pre-assumed mean
+- Alternate Hypothesis($H_a$): There is a significant difference between the February Average Temperature and the pre-assumed mean. 
+
+```{r}
+one.sample.ttest <- t.test(df$February.Average.Temperature, mu=35)
+
+# Display the results 
+print(one.sample.ttest)
+```
+
+The p-value is below 0.05, therefore the is enough evidence to reject the null hypothesis and conclude that there is a significant difference between the February Average Temperature and the pre-assumed mean(35). 
+
+- Conduct two sample t-test between the North East average temperature for March and the overall March daily temperature.
+
+Formulate the hypothesis:
+
+- Null hypothesis($H_0$): There is no significant difference between the North East Average Temperature for March and the March daily temparature.
+- ALternate Hypothesis($H_a$): There is a significant difference between the North East Average Temperature and the March daily temparature.
+```{r}
+# Perform two sample ttest
+ttest_result = t.test(df$March.Average.Temperature..Northeast., 
+                      df$March.Average.Temperature, 
+                      alternative = "two.sided", mu = 0, paired = FALSE,
+                      var.equal = FALSE, conf.level = 0.95)
+
+ttest_result
+```
+The p-value is less than 0.05, therefore the null hypothesis is rejected. It is concluded that there is significant difference between the  North East Average Temperature for March and overall Average daily Temperature for March
+
+- Perform ANOVA between the presence of Punxsutawney Phil and the February average temperature
+
+Formulate the hypothesis 
+
+- Null Hypothesis($H_0$): There is no significant difference between the presence and the absence of Punxsutawney Phil during February based on the Average Temperature
+- Alternate Hypothesis($H_a$): There is a significant difference between the presence and the absence of Punxsutawney Phil during February based on the Average Temperature
+```{r}
+# Perform ANOVA
+anova_result <- aov(February.Average.Temperature ~ df$Punxsutawney.Phil, data = df)
+
+# Display the ANOVA table
+summary(anova_result)
+```
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
 
 
 
