@@ -77,10 +77,51 @@ Title: Temperature Conversion Package for Demonstration
 Version: 0.0.1.0
 ```
 
+This is now a working R package and can be loaded by;
+```{r warning=FALSE}
+library(devtools);
+
+load_all("F2C_R_package") # Load the directory path to where the package is
+
+# Lets convert the temperature from Fahrenheit to Celsius
+F_to_C(79)
+
+# Converting from Celsius to Fahreinheit
+C_to_F(20)
+```
+
+After this its good to add documentation to help users know what the function does. 
 
 ## Making A New R Project 
 
+What we just did was an overview of how a package is created. Lets now explore how you can create a complete package with documentation. 
+
+To do this go to `File > New Project ...` and the dialog box below should pop up. 
+
+![](images/new_project_dialog_box.png)
+
+We will choose the `Existing Directory` option then `browse` to the `F2C_R_package` and click `Create Project` to create project from an existing directory. Now you should be able to see the project inside the package directory. 
+
+![](images/package_directory_content.png)
+
 ## Adding Documentation 
+
+Documentation helps others use the package that we have built, furthermore we can refer to the documentation to refer what we did after a long time. Documentation shows up in the `Help` tab of R Studio when running the function `help`. Just run the following in R studio to understand what I meant.
+```
+help(lm)
+```
+
+`?` does the same thing as `help`
+
+```
+?lm
+```
+
+You see there a tab that pops up with a documentation on `Linear Models`
+
+![](images/lm_documentation.png)
+
+**_____Add some more content______**
 
 ## Uploading and Installing from Github 
 
