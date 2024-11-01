@@ -47,7 +47,7 @@ server
 building-r-packages
 introduction
 prerequisites
-building-the-most-basic-r-package
+building-a-simple-r-package
 making-a-new-r-project
 adding-documentation
 uploading-and-installing-from-github

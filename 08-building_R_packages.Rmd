@@ -34,8 +34,48 @@ ii. A function to convert temperature from degrees Celsius($^oC$) to degrees Fah
 
 **Step 1**
 
+Create a folder that will hold the whole R package, in our case we will name the folder `F2C_R_package` like the one below.
+![](images/F2C_R_package_image.png)
 
+**Step 2**
 
+Currently this folder is empty, lets create another folder inside this `F2C_R_package` folder and name it `R`.
+![](images/R_inner_folder.png)
+
+Here is where all the R scripts are stored. It can hold any amount of R files and each R file can hold any amount of R functions. You could example give each function each own file or insert more than function in a file. 
+
+For large projects it is recommended to group similar functions in the same R file. 
+
+**Step 3**
+
+In our new R package, we will write both the two functions discussed above in the same file called, `temp_conversion.R` that has the code below;
+```{r}
+# Convert from Fahrenheit to Celsius
+F_to_C <- function(F_temp){
+  C_temp <- (F_temp -32) * 5/9
+  return (C_temp)
+}
+
+# Convert from Celsius to Fahrenheit
+C_to_F <- function(C_temp){
+  F_temp <- (C_temp * 9/5) + 32
+  return(F_temp)
+}
+```
+
+That is the whole file for now, it has less than 15 lines of code. 
+
+![](images/temp_conversion_image.png)
+
+**Step 4** 
+
+Next, create a file called `DESCRIPTION` in the `F2C_R_package` directory. This will be a plain text file with no extension and it will hold some of the metadata on the R package. In our case, it will hold the following lines of code specifying the package name, type, title and the version number. 
+```
+Package: F2CTempConverter
+Type: Package
+Title: Temperature Conversion Package for Demonstration
+Version: 0.0.1.0
+```
 
 
 ## Making A New R Project 

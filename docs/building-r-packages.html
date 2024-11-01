@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-10-31" />
+<meta name="date" content="2024-11-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -208,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1" data-path="building-r-packages.html"><a href="building-r-packages.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
 <li class="chapter" data-level="8.2" data-path="building-r-packages.html"><a href="building-r-packages.html#prerequisites"><i class="fa fa-check"></i><b>8.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="8.3" data-path="building-r-packages.html"><a href="building-r-packages.html#building-the-most-basic-r-package"><i class="fa fa-check"></i><b>8.3</b> Building the most basic R package</a></li>
+<li class="chapter" data-level="8.3" data-path="building-r-packages.html"><a href="building-r-packages.html#building-a-simple-r-package"><i class="fa fa-check"></i><b>8.3</b> Building a simple R package</a></li>
 <li class="chapter" data-level="8.4" data-path="building-r-packages.html"><a href="building-r-packages.html#making-a-new-r-project"><i class="fa fa-check"></i><b>8.4</b> Making A New R Project</a></li>
 <li class="chapter" data-level="8.5" data-path="building-r-packages.html"><a href="building-r-packages.html#adding-documentation"><i class="fa fa-check"></i><b>8.5</b> Adding Documentation</a></li>
 <li class="chapter" data-level="8.6" data-path="building-r-packages.html"><a href="building-r-packages.html#uploading-and-installing-from-github"><i class="fa fa-check"></i><b>8.6</b> Uploading and Installing from Github</a></li>
@@ -252,9 +252,44 @@ install.packages(&quot;devtools&quot;)
 
 # Install roxygen
 install.packages(&quot;roxygen2&quot;)</code></pre>
+<p>It might be necessary to restart R studio after installing the above packages</p>
 </div>
-<div id="building-the-most-basic-r-package" class="section level2 hasAnchor" number="8.3">
-<h2><span class="header-section-number">8.3</span> Building the most basic R package<a href="building-r-packages.html#building-the-most-basic-r-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="building-a-simple-r-package" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Building a simple R package<a href="building-r-packages.html#building-a-simple-r-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here is where the fun begin! We will create a simple R package to serve you with the basics of building packages. The package will involve tow functions;</p>
+<ol style="list-style-type: lower-roman">
+<li>A function to convert temperature from degrees Fahrenheit(<span class="math inline">\(^oF\)</span>) to degrees Celsius(<span class="math inline">\(^oC\)</span>).</li>
+<li>A function to convert temperature from degrees Celsius(<span class="math inline">\(^oC\)</span>) to degrees Fahrenheit(<span class="math inline">\(^oF\)</span>).</li>
+</ol>
+<p><strong>Step 1</strong></p>
+<p>Create a folder that will hold the whole R package, in our case we will name the folder <code>F2C_R_package</code> like the one below.
+<img src="images/F2C_R_package_image.png" /></p>
+<p><strong>Step 2</strong></p>
+<p>Currently this folder is empty, lets create another folder inside this <code>F2C_R_package</code> folder and name it <code>R</code>.
+<img src="images/R_inner_folder.png" /></p>
+<p>Here is where all the R scripts are stored. It can hold any amount of R files and each R file can hold any amount of R functions. You could example give each function each own file or insert more than function in a file.</p>
+<p>For large projects it is recommended to group similar functions in the same R file.</p>
+<p><strong>Step 3</strong></p>
+<p>In our new R package, we will write both the two functions discussed above in the same file called, <code>temp_conversion.R</code> that has the code below;</p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="building-r-packages.html#cb355-1" tabindex="-1"></a><span class="co"># Convert from Fahrenheit to Celsius</span></span>
+<span id="cb355-2"><a href="building-r-packages.html#cb355-2" tabindex="-1"></a>F_to_C <span class="ot">&lt;-</span> <span class="cf">function</span>(F_temp){</span>
+<span id="cb355-3"><a href="building-r-packages.html#cb355-3" tabindex="-1"></a>  C_temp <span class="ot">&lt;-</span> (F_temp <span class="sc">-</span><span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">9</span></span>
+<span id="cb355-4"><a href="building-r-packages.html#cb355-4" tabindex="-1"></a>  <span class="fu">return</span> (C_temp)</span>
+<span id="cb355-5"><a href="building-r-packages.html#cb355-5" tabindex="-1"></a>}</span>
+<span id="cb355-6"><a href="building-r-packages.html#cb355-6" tabindex="-1"></a></span>
+<span id="cb355-7"><a href="building-r-packages.html#cb355-7" tabindex="-1"></a><span class="co"># Convert from Celsius to Fahrenheit</span></span>
+<span id="cb355-8"><a href="building-r-packages.html#cb355-8" tabindex="-1"></a>C_to_F <span class="ot">&lt;-</span> <span class="cf">function</span>(C_temp){</span>
+<span id="cb355-9"><a href="building-r-packages.html#cb355-9" tabindex="-1"></a>  F_temp <span class="ot">&lt;-</span> (C_temp <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span></span>
+<span id="cb355-10"><a href="building-r-packages.html#cb355-10" tabindex="-1"></a>  <span class="fu">return</span>(F_temp)</span>
+<span id="cb355-11"><a href="building-r-packages.html#cb355-11" tabindex="-1"></a>}</span></code></pre></div>
+<p>That is the whole file for now, it has less than 15 lines of code.</p>
+<p><img src="images/temp_conversion_image.png" /></p>
+<p><strong>Step 4</strong></p>
+<p>Next, create a file called <code>DESCRIPTION</code> in the <code>F2C_R_package</code> directory. This will be a plain text file with no extension and it will hold some of the metadata on the R package. In our case, it will hold the following lines of code specifying the package name, type, title and the version number.</p>
+<pre><code>Package: F2CTempConverter
+Type: Package
+Title: Temperature Conversion Package for Demonstration
+Version: 0.0.1.0</code></pre>
 </div>
 <div id="making-a-new-r-project" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Making A New R Project<a href="building-r-packages.html#making-a-new-r-project" class="anchor-section" aria-label="Anchor link to header"></a></h2>
