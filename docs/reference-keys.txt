@@ -51,5 +51,4 @@ building-a-simple-r-package
 making-a-new-r-project
 adding-documentation
 uploading-and-installing-from-github
-uploading-and-instaling-it-from-cran
-more-info-and-additonational-resources
+hands-on-exercises-2
