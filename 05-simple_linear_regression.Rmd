@@ -6,6 +6,10 @@ For example, imagine you want to predict a student's exam score based on the num
 
 **What is Simple Linear Regression?**
 
+SWimple linear regression is essentially about finding the line that best describes the relationship between two variables(independent and dependent variables) in your data. The line is called the **regression line**, and it helps us make predictions. 
+
+## Basics of Wilkinson-Rogers Notation (y ~ x), Linear Regression
+
 In simple linear regression, we fit a straight line (called the regression line) through the data points. This line is defined by the equation:
 
 $$y = mx + b$$
@@ -16,6 +20,36 @@ Where:
 - $m$ is the slope of the line (how much $y$ changes for a unit change in $x$).
 - $x$ is the independent variable.
 - $b$ is the y-intercept (the value of $y$ when $x$ is 0).
+
+<span style="color: orange;">**Try it!**</span> 
+
+Lets say, we have a data set of age and height of youngsters as below here:
+```
+age = c(5, 10, 15, 20, 25)
+height = c(110, 130, 150, 160, 170)
+```
+
+We can use the age to predict the height where age is the independent variable and height is the dependent variable(depends on age). The equation is written like this in R;
+```
+height ~ age
+```
+
+in short `independent_variable ~ dependent_variable`. Now, lets work it out using the `lm()` function
+```{r}
+# Creating a sample data set
+age = c(5, 10, 15, 20, 25)
+height = c(110, 130, 150, 160, 170)
+
+# Fitting a linear regression data set
+model_1 <- lm(height ~ age)
+```
+
+The `lm()` function stands fir 'linear model` and it finds the best line to describle the relationship between height and age. 
+```{r}
+summary(model_1)
+```
+
+<span style="color: orange;">**Real world challenge**</span> 
 
 Let's use the built-in `mtcars` data set in R to demonstrate how to perform simple linear regression.
 
@@ -30,38 +64,67 @@ head(mtcars)
 Fit the simple linear regression model that will predict `mpg` (miles per gallon) based on `wt` (the weight of the car).
 ```{r}
 # Fit the linear regression model
-model <- lm(mpg ~ wt, data = mtcars)
+model_2 <- lm(mpg ~ wt, data = mtcars)
 ```
 
 - Get the model summary to get important information about the model we just fitted. 
 ```{r}
 # Get the summary of the model
-summary(model)
+summary(model_2)
 ```
 
-- Plot the data and regression line to understand the relationship
+## Scatterplots with Regression Lines, Reading lm() Output
+
+Now that we have a model in place lets plot the data and regression line to understand the relationship. You remember we have just worked on a case of where we use the age of youngsters to find their height? That's fine! Lets plot a scatter plot and regression line to visualize the relationship between age and height.
+```{r}
+# Scatter plot of age vs height 
+plot(age, height,
+     main = "Height vs Age", 
+     xlab = "Age",
+     ylab = "Height",pch=19,
+     col = "blue"
+       )
+```
+
+The scatter plot shows that the youngsters tend to be taller as they get older. Now lets add a regression line to the data to see how well it fits the data;
+```{r}
+# Scatter plot of age vs height 
+plot(age, height,
+     main = "Height vs Age", 
+     xlab = "Age",
+     ylab = "Height",pch=19,
+     col = "blue"
+       )
+
+# Adding a regression line 
+abline(model_1, col="red", lwd=2)
+```
+
+The regression line helps us visually understand the trend. In our case here, the regression line closely follows the data points, therefore, our model is a good fit!
+
+<span style="color: orange;">**Real World example**</span> 
+
+We will still consider the model that we created above for the `mtcars` data set. Lets plot a scatter plot and fit a regression line based on the model that we have just created. 
+
 ```{r}
 # Plot the data points
-plot(mtcars$wt, mtcars$mpg, main = "Simple Linear Regression", 
-     xlab = "Weight of the Car (wt)", ylab = "Miles Per Gallon (mpg)", 
+plot(mtcars$wt, mtcars$mpg, 
+     main = "Simple Linear Regression", 
+     xlab = "Weight of the Car (wt)", 
+     ylab = "Miles Per Gallon (mpg)", 
      pch = 19, col = "blue")
 
 # Add the regression line
-abline(model, col = "red")
+abline(model_2, col = "red")
 ```
 
 Predictions can be made based on the data. Lets predict the mpg for car that weighs 3.5 tons
 ```{r}
 # Predict mpg for a car that weighs 3.5 tons
 new_data <- data.frame(wt = 3.5)
-predicted_mpg <- predict(model, new_data)
+predicted_mpg <- predict(model_2, new_data)
 print(paste("Predicted MPG for a car weighing 3.5 tons:", round(predicted_mpg, 2)))
 ```
-
-## Basics of Wilkinson-Rogers Notation (y ~ x), Linear Regression
-
-
-## Scatterplots with Regression Lines, Reading lm() Output
 
 ## Confidence Intervals for Regression Coefficients, Testing Coefficients
 

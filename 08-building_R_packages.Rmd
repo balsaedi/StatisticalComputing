@@ -35,6 +35,7 @@ ii. A function to convert temperature from degrees Celsius($^oC$) to degrees Fah
 **Step 1**
 
 Create a folder that will hold the whole R package, in our case we will name the folder `F2C_R_package` like the one below.
+                                                                
 ![](images/F2C_R_package_image.png)
 
 **Step 2**
