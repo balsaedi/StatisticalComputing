@@ -256,15 +256,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Setting a Seed fr Consistency:</strong> R’s random number generator can be controlled with <code>set.seed()</code>. For instance;</li>
 </ol>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="reproducibility-and-report-with-r-markdown.html#cb346-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb346-2"><a href="reproducibility-and-report-with-r-markdown.html#cb346-2" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="reproducibility-and-report-with-r-markdown.html#cb353-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb353-2"><a href="reproducibility-and-report-with-r-markdown.html#cb353-2" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 49 65 25 74 18</code></pre>
 <p>This will always produce the same random sample, making your analysis consistent.</p>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Code Commenting and Documentation:</strong> Clear comments make your analysis easy to understand for others and for yourself. Use comments (<code>#</code>) in your code to describe steps, and include documentation for more complex functions.</li>
 </ol>
 <p>Below is an example of a comment.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="reproducibility-and-report-with-r-markdown.html#cb348-1" tabindex="-1"></a><span class="co"># This is a comment</span></span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="reproducibility-and-report-with-r-markdown.html#cb355-1" tabindex="-1"></a><span class="co"># This is a comment</span></span></code></pre></div>
 </div>
 <div id="creating-reproducible-reports" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Creating Reproducible Reports<a href="reproducibility-and-report-with-r-markdown.html#creating-reproducible-reports" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -282,11 +282,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Add Your Code and Analysis</strong></li>
 </ol>
 <p>Insert code chunks for each analysis step. For example, try loading and summarizing the <code>mtcars</code> data set:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="reproducibility-and-report-with-r-markdown.html#cb349-1" tabindex="-1"></a><span class="co"># Load the data </span></span>
-<span id="cb349-2"><a href="reproducibility-and-report-with-r-markdown.html#cb349-2" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb349-3"><a href="reproducibility-and-report-with-r-markdown.html#cb349-3" tabindex="-1"></a></span>
-<span id="cb349-4"><a href="reproducibility-and-report-with-r-markdown.html#cb349-4" tabindex="-1"></a><span class="co"># Summary of the data set</span></span>
-<span id="cb349-5"><a href="reproducibility-and-report-with-r-markdown.html#cb349-5" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="reproducibility-and-report-with-r-markdown.html#cb356-1" tabindex="-1"></a><span class="co"># Load the data </span></span>
+<span id="cb356-2"><a href="reproducibility-and-report-with-r-markdown.html#cb356-2" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb356-3"><a href="reproducibility-and-report-with-r-markdown.html#cb356-3" tabindex="-1"></a></span>
+<span id="cb356-4"><a href="reproducibility-and-report-with-r-markdown.html#cb356-4" tabindex="-1"></a><span class="co"># Summary of the data set</span></span>
+<span id="cb356-5"><a href="reproducibility-and-report-with-r-markdown.html#cb356-5" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span></code></pre></div>
 <pre><code>##       mpg             cyl             disp             hp       
 ##  Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
 ##  1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
@@ -315,11 +315,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Add section headers, bold text, and bullet points to organize your report.</li>
 <li>You can use <code>ggplot2</code> to add visualizations for a polished look.</li>
 </ul>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="reproducibility-and-report-with-r-markdown.html#cb351-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb351-2"><a href="reproducibility-and-report-with-r-markdown.html#cb351-2" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb351-3"><a href="reproducibility-and-report-with-r-markdown.html#cb351-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb351-4"><a href="reproducibility-and-report-with-r-markdown.html#cb351-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Horsepower vs. Miles per Gallon&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="reproducibility-and-report-with-r-markdown.html#cb358-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb358-2"><a href="reproducibility-and-report-with-r-markdown.html#cb358-2" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb358-3"><a href="reproducibility-and-report-with-r-markdown.html#cb358-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb358-4"><a href="reproducibility-and-report-with-r-markdown.html#cb358-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Horsepower vs. Miles per Gallon&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Knit the Report</strong></li>
 </ol>

@@ -348,7 +348,7 @@ _______________________________________________________________________
 
 ## Data Visualization
 
-**____What is Data Visualization____** `ggplot` is one of the most popular and flexble data visualization libraries in R. It follows the **grammar of graphics** philosophy, allowing you o build plots in layers. Here are some of the basic plots in data visualization;
+Data visualization is the representation of data through use of common graphics, such as charts, plots, infographics and even animations. In this course we will use the famous `ggplot2` library to create charts and graphs. `ggplot` is one of the most popular and flexible data visualization libraries in R. It follows the **grammar of graphics** philosophy, allowing you to build plots in layers. Here are some of the basic plots in data visualization;
 
 - **Scatter Plots: ** used to visualize the relationship between two variables in R.
 - **Bar Charts: ** used to compare categorical data. 
@@ -368,6 +368,119 @@ install.packages("ggplot2")
 - Load the library
 ```{r}
 library(ggplot2)
+```
+
+There are 5 key steps in plotting in ggplot;
+
+1. **The Setup** - Read the data set, define x and y axis. `ggplot(data, aes(x, y))+...`
+2. **The Labels** - Title, X and Y axis labels. `... + labs(xlab=, ylab=, title=) + ...`
+3. **The Theme** - Default, Black and White, colored etc. `....+ <theme_type>..`
+4. **The Facets** - Individual Graphs for each group in data with exactly same range
+5. **The Layers or geoms** - The actual plot type - e.g Bar plot, Box plot, Violin plot etc. `...+ geom_bar() + ...` for bar chart, `...+ geom_point() + ...` for scatter plot etc. 
+
+Lets explore how to create a basic chart using `ggplot2` library in R. We will create a sample student data set that we will use to visualize data in R. 
+
+Create the data set
+```{r}
+library(dplyr)
+
+# Sample data for students 
+set.seed(27)
+
+students_df <- data.frame(
+  student_id = 1:100,
+  score = sample(50:100, 100, replace = TRUE),
+  study_hours = sample(5:30, 100, replace = TRUE),
+  gender = sample(c("Male", "Female"), 100, replace = TRUE),
+  grade = sample(c("Freshman", "Sophomore", "Junior", "Senior"), 100, replace = TRUE)
+)
+
+head(students_df)
+```
+
+Plot the charts;
+
+**Scatter plot**
+
+We will plot to show the relationship between study hours and scores where scores is assumed to depend on study hours. Therefore scores will be on the y-axis and the study hours will be at the x-axis. 
+```{r}
+# The set up
+ggplot(data = students_df, 
+       aes(x = study_hours, y = score)) + 
+  # The geoms - for scatter plot 
+  geom_point() +
+  
+  # Labels 
+  labs(
+    title = "Study hours vs scores",
+    x = "Weekly study hours",
+    y = "Scores"
+  ) + 
+  
+  # Theme
+  theme_classic()
+```
+
+From the chart, study hours per week does not have an effect of the score - remember this is randomly generated data set. 
+
+**Bar Chart** 
+
+We will find the count of students in each grade level 
+```{r}
+ggplot(data = students_df, 
+       aes(x=grade)) + 
+  geom_bar() + 
+  labs(
+    title = "Students by grade level",
+    x = "Grade level",
+    y = "Number of Students"
+  ) + 
+  theme_minimal()
+```
+
+The Senior grade has the fewest students while the Sophomore grade takes the lead in the student population. 
+
+**Pie Chart**
+
+We will plot the gender distribution of students on a pie chart to show the proportion of male and female students. 
+```{r}
+# Prepare the data for pie chart 
+gender_count <- students_df %>%
+  count(gender)
+
+# Plot the pie chart
+ggplot(data = gender_count,
+       aes(x="", y = n, fill = gender)) + 
+  geom_bar(stat = "identity", width=1) + 
+  coord_polar("y") + 
+  labs(
+    title = "Gender distribution of students",
+    fill = "Gender"
+  ) +
+  theme_classic() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank()
+  )
+```
+
+From the pie chart, most students in the school are females. 
+
+**Histogram** 
+
+Finally we will plot a histogram to plot the distribution of scores. 
+```{r}
+ggplot(data = students_df,
+       aes(x=score)) + 
+  geom_histogram() +
+  labs(
+    title = "Students' scores distribution",
+    x = "Score", 
+    y = "Count of students"
+  ) + 
+  theme_minimal()
 ```
 
 ## <span style="color: green;">**Hands-on Exercises**</span> 
