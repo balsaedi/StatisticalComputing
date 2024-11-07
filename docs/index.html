@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-11-06" />
+<meta name="date" content="2024-11-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -236,7 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Statistical Computing</h1>
 <p class="author"><em>YOUR NAME HERE</em></p>
-<p class="date"><em>2024-11-06</em></p>
+<p class="date"><em>2024-11-07</em></p>
 </div>
 <div id="reviews" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Reviews<a href="index.html#reviews" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -739,8 +739,173 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="hands-on-exercises" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> <span style="color: green;"><strong>Hands-on Exercises</strong></span><a href="index.html#hands-on-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You will be required to work with a randomly generated patients data. Here are the steps to take to work on this exercise;</p>
+<ul>
+<li>You will run the code below to generate the data set.</li>
+</ul>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="index.html#cb86-1" tabindex="-1"></a><span class="co"># Set seed for reproducibility </span></span>
+<span id="cb86-2"><a href="index.html#cb86-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">71</span>)</span>
+<span id="cb86-3"><a href="index.html#cb86-3" tabindex="-1"></a></span>
+<span id="cb86-4"><a href="index.html#cb86-4" tabindex="-1"></a><span class="co"># Generate the data set </span></span>
+<span id="cb86-5"><a href="index.html#cb86-5" tabindex="-1"></a>patients_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb86-6"><a href="index.html#cb86-6" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,</span>
+<span id="cb86-7"><a href="index.html#cb86-7" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">sample</span>(<span class="dv">20</span><span class="sc">:</span><span class="dv">80</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb86-8"><a href="index.html#cb86-8" tabindex="-1"></a>  <span class="at">height_cm =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">165</span>, <span class="at">sd=</span><span class="dv">10</span>), </span>
+<span id="cb86-9"><a href="index.html#cb86-9" tabindex="-1"></a>  <span class="at">weight_kg =</span> <span class="fu">runif</span>(<span class="dv">1000</span>, <span class="at">min=</span><span class="dv">50</span>, <span class="at">max=</span><span class="dv">135</span>),</span>
+<span id="cb86-10"><a href="index.html#cb86-10" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb86-11"><a href="index.html#cb86-11" tabindex="-1"></a>  <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Hypertension&quot;</span>, <span class="st">&quot;Malaria&quot;</span>, <span class="st">&quot;Pneumonia&quot;</span>, <span class="st">&quot;Diabetes&quot;</span>, </span>
+<span id="cb86-12"><a href="index.html#cb86-12" tabindex="-1"></a>                       <span class="st">&quot;Asthma&quot;</span>, <span class="st">&quot;Healthy&quot;</span>), <span class="dv">1000</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb86-13"><a href="index.html#cb86-13" tabindex="-1"></a>)</span>
+<span id="cb86-14"><a href="index.html#cb86-14" tabindex="-1"></a></span>
+<span id="cb86-15"><a href="index.html#cb86-15" tabindex="-1"></a><span class="fu">head</span>(patients_data)</span></code></pre></div>
+<pre><code>##   patient_id age height_cm weight_kg gender    condition
+## 1          1  78  177.6077 108.48587 Female     Diabetes
+## 2          2  47  146.4456 130.03183 Female      Healthy
+## 3          3  34  158.7752  61.70929 Female      Malaria
+## 4          4  67  146.2848 114.83419 Female       Asthma
+## 5          5  65  146.6927  86.65565   Male Hypertension
+## 6          6  20  155.5785  74.65025   Male      Healthy</code></pre>
+<p>You will use the <code>patients_data</code> to answer the questions below;</p>
+<ol style="list-style-type: decimal">
+<li>Identify the data types for each column using the <code>str()</code> function.</li>
+<li>Find the shape of the data set using the <code>dim</code> function.</li>
+<li>Save the <code>patients_data</code> to CSV and name the file <code>patients_data.csv</code>.</li>
+<li>Import the saved data set as <code>patients_df</code>.</li>
+<li>Using the imported data set, <code>patients_df</code>, create the following charts.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Plot a histogram to show the distribution of height.</li>
+<li>Create a bar chart to compare the number of male and female patients.</li>
+<li>Use a pie chart to show the composition of different health conditions.</li>
+<li>Plot a scatter plot to show the relationship between age and weight.</li>
+</ol>
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p>Run the code</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="index.html#cb88-1" tabindex="-1"></a><span class="co"># Set seed for reproducibility </span></span>
+<span id="cb88-2"><a href="index.html#cb88-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">71</span>)</span>
+<span id="cb88-3"><a href="index.html#cb88-3" tabindex="-1"></a></span>
+<span id="cb88-4"><a href="index.html#cb88-4" tabindex="-1"></a><span class="co"># Generate the data set </span></span>
+<span id="cb88-5"><a href="index.html#cb88-5" tabindex="-1"></a>patients_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb88-6"><a href="index.html#cb88-6" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,</span>
+<span id="cb88-7"><a href="index.html#cb88-7" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">sample</span>(<span class="dv">20</span><span class="sc">:</span><span class="dv">80</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb88-8"><a href="index.html#cb88-8" tabindex="-1"></a>  <span class="at">height_cm =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">165</span>, <span class="at">sd=</span><span class="dv">10</span>), </span>
+<span id="cb88-9"><a href="index.html#cb88-9" tabindex="-1"></a>  <span class="at">weight_kg =</span> <span class="fu">runif</span>(<span class="dv">1000</span>, <span class="at">min=</span><span class="dv">50</span>, <span class="at">max=</span><span class="dv">135</span>),</span>
+<span id="cb88-10"><a href="index.html#cb88-10" tabindex="-1"></a>  <span class="at">gender =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb88-11"><a href="index.html#cb88-11" tabindex="-1"></a>  <span class="at">condition =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Hypertension&quot;</span>, <span class="st">&quot;Malaria&quot;</span>, <span class="st">&quot;Pneumonia&quot;</span>, <span class="st">&quot;Diabetes&quot;</span>, </span>
+<span id="cb88-12"><a href="index.html#cb88-12" tabindex="-1"></a>                       <span class="st">&quot;Asthma&quot;</span>, <span class="st">&quot;Healthy&quot;</span>), <span class="dv">1000</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb88-13"><a href="index.html#cb88-13" tabindex="-1"></a>)</span>
+<span id="cb88-14"><a href="index.html#cb88-14" tabindex="-1"></a></span>
+<span id="cb88-15"><a href="index.html#cb88-15" tabindex="-1"></a><span class="fu">head</span>(patients_data)</span></code></pre></div>
+<pre><code>##   patient_id age height_cm weight_kg gender    condition
+## 1          1  78  177.6077 108.48587 Female     Diabetes
+## 2          2  47  146.4456 130.03183 Female      Healthy
+## 3          3  34  158.7752  61.70929 Female      Malaria
+## 4          4  67  146.2848 114.83419 Female       Asthma
+## 5          5  65  146.6927  86.65565   Male Hypertension
+## 6          6  20  155.5785  74.65025   Male      Healthy</code></pre>
+<p>You will use the <code>patients_data</code> to answer the questions below;</p>
+<ol style="list-style-type: decimal">
+<li>Identify the data types for each column using the <code>str()</code> function.</li>
+</ol>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="index.html#cb90-1" tabindex="-1"></a><span class="fu">str</span>(patients_data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    1000 obs. of  6 variables:
+##  $ patient_id: int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ age       : int  78 47 34 67 65 20 58 69 27 31 ...
+##  $ height_cm : num  178 146 159 146 147 ...
+##  $ weight_kg : num  108.5 130 61.7 114.8 86.7 ...
+##  $ gender    : chr  &quot;Female&quot; &quot;Female&quot; &quot;Female&quot; &quot;Female&quot; ...
+##  $ condition : chr  &quot;Diabetes&quot; &quot;Healthy&quot; &quot;Malaria&quot; &quot;Asthma&quot; ...</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Find the shape of the data set using the <code>dim</code> function.</li>
+</ol>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="index.html#cb92-1" tabindex="-1"></a><span class="fu">dim</span>(patients_data)</span></code></pre></div>
+<pre><code>## [1] 1000    6</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Save the <code>patients_data</code> to CSV and name the file <code>patients_data.csv</code>.</li>
+</ol>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="index.html#cb94-1" tabindex="-1"></a><span class="fu">write.csv</span>(patients_data, <span class="st">&quot;data/patients_data.csv&quot;</span>)</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Import the saved data set as <code>patients_df</code>.</li>
+</ol>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="index.html#cb95-1" tabindex="-1"></a>patients_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/patients_data.csv&quot;</span>)</span>
+<span id="cb95-2"><a href="index.html#cb95-2" tabindex="-1"></a><span class="fu">head</span>(patients_df)</span></code></pre></div>
+<pre><code>##   X patient_id age height_cm weight_kg gender    condition
+## 1 1          1  78  177.6077 108.48587 Female     Diabetes
+## 2 2          2  47  146.4456 130.03183 Female      Healthy
+## 3 3          3  34  158.7752  61.70929 Female      Malaria
+## 4 4          4  67  146.2848 114.83419 Female       Asthma
+## 5 5          5  65  146.6927  86.65565   Male Hypertension
+## 6 6          6  20  155.5785  74.65025   Male      Healthy</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Using the imported data set, <code>patients_df</code>, create the following charts.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Plot a histogram to show the distribution of height.</li>
+<li>Create a bar chart to compare the number of male and female patients.</li>
+<li>Use a pie chart to show the composition of different health conditions.</li>
+<li>Plot a scatter plot to show the relationship between age and weight.</li>
+</ol>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="index.html#cb97-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb97-2"><a href="index.html#cb97-2" tabindex="-1"></a></span>
+<span id="cb97-3"><a href="index.html#cb97-3" tabindex="-1"></a><span class="co"># Histogram</span></span>
+<span id="cb97-4"><a href="index.html#cb97-4" tabindex="-1"></a><span class="fu">ggplot</span>(patients_df,</span>
+<span id="cb97-5"><a href="index.html#cb97-5" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> height_cm)) <span class="sc">+</span></span>
+<span id="cb97-6"><a href="index.html#cb97-6" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb97-7"><a href="index.html#cb97-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb97-8"><a href="index.html#cb97-8" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Distribution of height&quot;</span>,</span>
+<span id="cb97-9"><a href="index.html#cb97-9" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
+<span id="cb97-10"><a href="index.html#cb97-10" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Height(cm)&quot;</span></span>
+<span id="cb97-11"><a href="index.html#cb97-11" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb97-12"><a href="index.html#cb97-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>The distribution of height follows a near normal distribution.</p>
+<ul>
+<li>Plotting a bar chart</li>
+</ul>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="index.html#cb99-1" tabindex="-1"></a><span class="fu">ggplot</span>(patients_df, </span>
+<span id="cb99-2"><a href="index.html#cb99-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill=</span>gender)) <span class="sc">+</span></span>
+<span id="cb99-3"><a href="index.html#cb99-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb99-4"><a href="index.html#cb99-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb99-5"><a href="index.html#cb99-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Gender distribution&quot;</span>,</span>
+<span id="cb99-6"><a href="index.html#cb99-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Gender&quot;</span>, </span>
+<span id="cb99-7"><a href="index.html#cb99-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Count&quot;</span></span>
+<span id="cb99-8"><a href="index.html#cb99-8" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb99-9"><a href="index.html#cb99-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>The female gender had more patients than the male patients</p>
+<ul>
+<li>Plot a pie chart</li>
+</ul>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="index.html#cb100-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb100-2"><a href="index.html#cb100-2" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="index.html#cb100-3" tabindex="-1"></a><span class="co"># Find the condition count </span></span>
+<span id="cb100-4"><a href="index.html#cb100-4" tabindex="-1"></a>condition_count <span class="ot">&lt;-</span> patients_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(condition)</span>
+<span id="cb100-5"><a href="index.html#cb100-5" tabindex="-1"></a></span>
+<span id="cb100-6"><a href="index.html#cb100-6" tabindex="-1"></a><span class="co"># Plot the data</span></span>
+<span id="cb100-7"><a href="index.html#cb100-7" tabindex="-1"></a><span class="fu">ggplot</span>(condition_count, </span>
+<span id="cb100-8"><a href="index.html#cb100-8" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">&quot;&quot;</span>, <span class="at">y=</span>n, <span class="at">fill =</span> condition)) <span class="sc">+</span></span>
+<span id="cb100-9"><a href="index.html#cb100-9" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">width=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb100-10"><a href="index.html#cb100-10" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb100-11"><a href="index.html#cb100-11" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb100-12"><a href="index.html#cb100-12" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Proportion of Patients by Conditions&quot;</span></span>
+<span id="cb100-13"><a href="index.html#cb100-13" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb100-14"><a href="index.html#cb100-14" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<ul>
+<li>Plot the relationship between age and weight</li>
+</ul>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="index.html#cb101-1" tabindex="-1"></a><span class="fu">ggplot</span>(patients_df, </span>
+<span id="cb101-2"><a href="index.html#cb101-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> weight_kg)) <span class="sc">+</span></span>
+<span id="cb101-3"><a href="index.html#cb101-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb101-4"><a href="index.html#cb101-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb101-5"><a href="index.html#cb101-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Age vs Weight&quot;</span>, </span>
+<span id="cb101-6"><a href="index.html#cb101-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>,</span>
+<span id="cb101-7"><a href="index.html#cb101-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Weight&quot;</span></span>
+<span id="cb101-8"><a href="index.html#cb101-8" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb101-9"><a href="index.html#cb101-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 
 </div>

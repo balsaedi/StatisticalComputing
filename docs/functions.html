@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-11-06" />
+<meta name="date" content="2024-11-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -293,22 +293,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The <code>return()</code> function tells R what result to give you after the function finishes its job. It’s optional, but it helps if you want to store the function’s result in a variable.</li>
 </ul>
 <p>Let’s write a simple function that calculates the mean (average) of two numbers:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="functions.html#cb87-1" tabindex="-1"></a>mean_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(num_1, num_2) {</span>
-<span id="cb87-2"><a href="functions.html#cb87-2" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> (num_1 <span class="sc">+</span> num_2) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb87-3"><a href="functions.html#cb87-3" tabindex="-1"></a>  <span class="fu">return</span>(mean)</span>
-<span id="cb87-4"><a href="functions.html#cb87-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="functions.html#cb103-1" tabindex="-1"></a>mean_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(num_1, num_2) {</span>
+<span id="cb103-2"><a href="functions.html#cb103-2" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> (num_1 <span class="sc">+</span> num_2) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb103-3"><a href="functions.html#cb103-3" tabindex="-1"></a>  <span class="fu">return</span>(mean)</span>
+<span id="cb103-4"><a href="functions.html#cb103-4" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong>How to Use the Function:</strong></p>
 <p>To find the mean of 10 and 20, simply call the function like this:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="functions.html#cb88-1" tabindex="-1"></a><span class="fu">mean_two_numbers</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="functions.html#cb104-1" tabindex="-1"></a><span class="fu">mean_two_numbers</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
 <p>Let’s add a few more simple tasks: writing a function that calculates the difference between two numbers. Why is this important? Well, imagine you have two values and you want to find their difference—that’s exactly what this function will help us do!</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="functions.html#cb90-1" tabindex="-1"></a><span class="co"># Function to calculate the difference between two numbers</span></span>
-<span id="cb90-2"><a href="functions.html#cb90-2" tabindex="-1"></a>calculate_difference <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb90-3"><a href="functions.html#cb90-3" tabindex="-1"></a>  <span class="co"># Subtract the second number (y) from the first number (x)</span></span>
-<span id="cb90-4"><a href="functions.html#cb90-4" tabindex="-1"></a>  difference <span class="ot">&lt;-</span> x <span class="sc">-</span> y</span>
-<span id="cb90-5"><a href="functions.html#cb90-5" tabindex="-1"></a>  <span class="co"># Return the difference result so we can use it later</span></span>
-<span id="cb90-6"><a href="functions.html#cb90-6" tabindex="-1"></a>  <span class="fu">return</span>(difference)</span>
-<span id="cb90-7"><a href="functions.html#cb90-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="functions.html#cb106-1" tabindex="-1"></a><span class="co"># Function to calculate the difference between two numbers</span></span>
+<span id="cb106-2"><a href="functions.html#cb106-2" tabindex="-1"></a>calculate_difference <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb106-3"><a href="functions.html#cb106-3" tabindex="-1"></a>  <span class="co"># Subtract the second number (y) from the first number (x)</span></span>
+<span id="cb106-4"><a href="functions.html#cb106-4" tabindex="-1"></a>  difference <span class="ot">&lt;-</span> x <span class="sc">-</span> y</span>
+<span id="cb106-5"><a href="functions.html#cb106-5" tabindex="-1"></a>  <span class="co"># Return the difference result so we can use it later</span></span>
+<span id="cb106-6"><a href="functions.html#cb106-6" tabindex="-1"></a>  <span class="fu">return</span>(difference)</span>
+<span id="cb106-7"><a href="functions.html#cb106-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>You see!:</p>
 <ul>
 <li><code>x</code> and <code>y</code> are our arguments: These are the two numbers we’ll use in our calculation.</li>
@@ -316,22 +316,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Finally, we return the difference: This way, we can use the result when we call the function.</li>
 </ul>
 <p>Now, let’s put it to the test! We’ll run the function with different sets of numbers and see what we get:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="functions.html#cb91-1" tabindex="-1"></a><span class="fu">calculate_difference</span>(<span class="dv">10</span>, <span class="dv">5</span>)  <span class="co"># 10 - 5 = 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="functions.html#cb107-1" tabindex="-1"></a><span class="fu">calculate_difference</span>(<span class="dv">10</span>, <span class="dv">5</span>)  <span class="co"># 10 - 5 = 5</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="functions.html#cb93-1" tabindex="-1"></a><span class="fu">calculate_difference</span>(<span class="dv">25</span>, <span class="dv">15</span>) <span class="co"># 25 - 15 = 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="functions.html#cb109-1" tabindex="-1"></a><span class="fu">calculate_difference</span>(<span class="dv">25</span>, <span class="dv">15</span>) <span class="co"># 25 - 15 = 10</span></span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="functions.html#cb95-1" tabindex="-1"></a><span class="fu">calculate_difference</span>(<span class="dv">50</span>, <span class="dv">30</span>) <span class="co"># 50 - 30 = 20</span></span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="functions.html#cb111-1" tabindex="-1"></a><span class="fu">calculate_difference</span>(<span class="dv">50</span>, <span class="dv">30</span>) <span class="co"># 50 - 30 = 20</span></span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 <p>Notice how easy it is to calculate the difference between any two numbers by just calling our function? That’s the power of writing your own functions—they make life a lot easier!</p>
 <p>Now, lets make it more interesting! How about a function that greets you by name? We can do the same in R by creating a simple function that takes someone’s name and returns a greeting.</p>
 <p>Here is how we do it:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="functions.html#cb97-1" tabindex="-1"></a><span class="co"># Function to greet a student by their name</span></span>
-<span id="cb97-2"><a href="functions.html#cb97-2" tabindex="-1"></a>greet_student <span class="ot">&lt;-</span> <span class="cf">function</span>(student_name) {</span>
-<span id="cb97-3"><a href="functions.html#cb97-3" tabindex="-1"></a>  <span class="co"># Create a personalized greeting</span></span>
-<span id="cb97-4"><a href="functions.html#cb97-4" tabindex="-1"></a>  greeting <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, student_name, <span class="st">&quot;!&quot;</span>)</span>
-<span id="cb97-5"><a href="functions.html#cb97-5" tabindex="-1"></a>  <span class="co"># Return the greeting so we can use it later</span></span>
-<span id="cb97-6"><a href="functions.html#cb97-6" tabindex="-1"></a>  <span class="fu">return</span>(greeting)</span>
-<span id="cb97-7"><a href="functions.html#cb97-7" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="functions.html#cb113-1" tabindex="-1"></a><span class="co"># Function to greet a student by their name</span></span>
+<span id="cb113-2"><a href="functions.html#cb113-2" tabindex="-1"></a>greet_student <span class="ot">&lt;-</span> <span class="cf">function</span>(student_name) {</span>
+<span id="cb113-3"><a href="functions.html#cb113-3" tabindex="-1"></a>  <span class="co"># Create a personalized greeting</span></span>
+<span id="cb113-4"><a href="functions.html#cb113-4" tabindex="-1"></a>  greeting <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, student_name, <span class="st">&quot;!&quot;</span>)</span>
+<span id="cb113-5"><a href="functions.html#cb113-5" tabindex="-1"></a>  <span class="co"># Return the greeting so we can use it later</span></span>
+<span id="cb113-6"><a href="functions.html#cb113-6" tabindex="-1"></a>  <span class="fu">return</span>(greeting)</span>
+<span id="cb113-7"><a href="functions.html#cb113-7" tabindex="-1"></a>}</span></code></pre></div>
 <p>Remember!</p>
 <ul>
 <li>We use <code>student_name</code> as the argument: This is where you pass in the name of the student.</li>
@@ -339,11 +339,11 @@ Finally, we return the difference: This way, we can use the result when we call 
 <li>Return the greeting: The function gives us back a customized message, ready to greet anyone!</li>
 </ul>
 <p>Lets try it out with different names</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="functions.html#cb98-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;John&quot;</span>)    <span class="co"># Hello John!</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="functions.html#cb114-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;John&quot;</span>)    <span class="co"># Hello John!</span></span></code></pre></div>
 <pre><code>## [1] &quot;Hello John !&quot;</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="functions.html#cb100-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;Alice&quot;</span>)   <span class="co"># Hello Alice!</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="functions.html#cb116-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;Alice&quot;</span>)   <span class="co"># Hello Alice!</span></span></code></pre></div>
 <pre><code>## [1] &quot;Hello Alice !&quot;</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="functions.html#cb102-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;Michael&quot;</span>) <span class="co"># Hello Michael!</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="functions.html#cb118-1" tabindex="-1"></a><span class="fu">greet_student</span>(<span class="st">&quot;Michael&quot;</span>) <span class="co"># Hello Michael!</span></span></code></pre></div>
 <pre><code>## [1] &quot;Hello Michael !&quot;</code></pre>
 <p>Remember to try it out with your name!</p>
 <p><span style="color: orange;"><strong>Key Takeaways:</strong></span></p>
@@ -365,53 +365,53 @@ Finally, we return the difference: This way, we can use the result when we call 
 <ol style="list-style-type: decimal">
 <li>Create a function called <code>add_numbers</code> that takes two arguments, <code>a</code> and <code>b</code>, and returns their sum.</li>
 </ol>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="functions.html#cb104-1" tabindex="-1"></a><span class="co"># Function to calculate the sum of two numbers</span></span>
-<span id="cb104-2"><a href="functions.html#cb104-2" tabindex="-1"></a>sum_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb104-3"><a href="functions.html#cb104-3" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
-<span id="cb104-4"><a href="functions.html#cb104-4" tabindex="-1"></a>  <span class="fu">return</span>(sum)</span>
-<span id="cb104-5"><a href="functions.html#cb104-5" tabindex="-1"></a>}</span>
-<span id="cb104-6"><a href="functions.html#cb104-6" tabindex="-1"></a></span>
-<span id="cb104-7"><a href="functions.html#cb104-7" tabindex="-1"></a><span class="co"># Test the function with different values</span></span>
-<span id="cb104-8"><a href="functions.html#cb104-8" tabindex="-1"></a><span class="fu">sum_two_numbers</span>(<span class="dv">5</span>, <span class="dv">10</span>)  <span class="co"># Output: 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="functions.html#cb120-1" tabindex="-1"></a><span class="co"># Function to calculate the sum of two numbers</span></span>
+<span id="cb120-2"><a href="functions.html#cb120-2" tabindex="-1"></a>sum_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb120-3"><a href="functions.html#cb120-3" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb120-4"><a href="functions.html#cb120-4" tabindex="-1"></a>  <span class="fu">return</span>(sum)</span>
+<span id="cb120-5"><a href="functions.html#cb120-5" tabindex="-1"></a>}</span>
+<span id="cb120-6"><a href="functions.html#cb120-6" tabindex="-1"></a></span>
+<span id="cb120-7"><a href="functions.html#cb120-7" tabindex="-1"></a><span class="co"># Test the function with different values</span></span>
+<span id="cb120-8"><a href="functions.html#cb120-8" tabindex="-1"></a><span class="fu">sum_two_numbers</span>(<span class="dv">5</span>, <span class="dv">10</span>)  <span class="co"># Output: 15</span></span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="functions.html#cb106-1" tabindex="-1"></a><span class="fu">sum_two_numbers</span>(<span class="dv">20</span>, <span class="dv">30</span>)  <span class="co"># Output: 50</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="functions.html#cb122-1" tabindex="-1"></a><span class="fu">sum_two_numbers</span>(<span class="dv">20</span>, <span class="dv">30</span>)  <span class="co"># Output: 50</span></span></code></pre></div>
 <pre><code>## [1] 50</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="functions.html#cb108-1" tabindex="-1"></a><span class="fu">sum_two_numbers</span>(<span class="dv">100</span>, <span class="dv">200</span>) <span class="co"># Output: 300</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="functions.html#cb124-1" tabindex="-1"></a><span class="fu">sum_two_numbers</span>(<span class="dv">100</span>, <span class="dv">200</span>) <span class="co"># Output: 300</span></span></code></pre></div>
 <pre><code>## [1] 300</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Write a function named <code>is_even</code> that takes a single argument, <code>num</code>, and returns <code>"Even"</code> if the number is even, or <code>"Odd"</code> if it’s odd.</li>
 </ol>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="functions.html#cb110-1" tabindex="-1"></a><span class="co"># Function to check if a number is even or odd</span></span>
-<span id="cb110-2"><a href="functions.html#cb110-2" tabindex="-1"></a>check_even_odd <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
-<span id="cb110-3"><a href="functions.html#cb110-3" tabindex="-1"></a>  <span class="cf">if</span> (number <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb110-4"><a href="functions.html#cb110-4" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Even&quot;</span>)</span>
-<span id="cb110-5"><a href="functions.html#cb110-5" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb110-6"><a href="functions.html#cb110-6" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Odd&quot;</span>)</span>
-<span id="cb110-7"><a href="functions.html#cb110-7" tabindex="-1"></a>  }</span>
-<span id="cb110-8"><a href="functions.html#cb110-8" tabindex="-1"></a>}</span>
-<span id="cb110-9"><a href="functions.html#cb110-9" tabindex="-1"></a></span>
-<span id="cb110-10"><a href="functions.html#cb110-10" tabindex="-1"></a><span class="co"># Test the function with different numbers</span></span>
-<span id="cb110-11"><a href="functions.html#cb110-11" tabindex="-1"></a><span class="fu">check_even_odd</span>(<span class="dv">4</span>)  <span class="co"># Output: &quot;Even&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="functions.html#cb126-1" tabindex="-1"></a><span class="co"># Function to check if a number is even or odd</span></span>
+<span id="cb126-2"><a href="functions.html#cb126-2" tabindex="-1"></a>check_even_odd <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
+<span id="cb126-3"><a href="functions.html#cb126-3" tabindex="-1"></a>  <span class="cf">if</span> (number <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb126-4"><a href="functions.html#cb126-4" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Even&quot;</span>)</span>
+<span id="cb126-5"><a href="functions.html#cb126-5" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb126-6"><a href="functions.html#cb126-6" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Odd&quot;</span>)</span>
+<span id="cb126-7"><a href="functions.html#cb126-7" tabindex="-1"></a>  }</span>
+<span id="cb126-8"><a href="functions.html#cb126-8" tabindex="-1"></a>}</span>
+<span id="cb126-9"><a href="functions.html#cb126-9" tabindex="-1"></a></span>
+<span id="cb126-10"><a href="functions.html#cb126-10" tabindex="-1"></a><span class="co"># Test the function with different numbers</span></span>
+<span id="cb126-11"><a href="functions.html#cb126-11" tabindex="-1"></a><span class="fu">check_even_odd</span>(<span class="dv">4</span>)  <span class="co"># Output: &quot;Even&quot;</span></span></code></pre></div>
 <pre><code>## [1] &quot;Even&quot;</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="functions.html#cb112-1" tabindex="-1"></a><span class="fu">check_even_odd</span>(<span class="dv">7</span>)  <span class="co"># Output: &quot;Odd&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="functions.html#cb128-1" tabindex="-1"></a><span class="fu">check_even_odd</span>(<span class="dv">7</span>)  <span class="co"># Output: &quot;Odd&quot;</span></span></code></pre></div>
 <pre><code>## [1] &quot;Odd&quot;</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="functions.html#cb114-1" tabindex="-1"></a><span class="fu">check_even_odd</span>(<span class="dv">10</span>) <span class="co"># Output: &quot;Even&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="functions.html#cb130-1" tabindex="-1"></a><span class="fu">check_even_odd</span>(<span class="dv">10</span>) <span class="co"># Output: &quot;Even&quot;</span></span></code></pre></div>
 <pre><code>## [1] &quot;Even&quot;</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Create a function called <code>find_max</code> that takes three arguments and returns the largest of the three numbers.</li>
 </ol>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="functions.html#cb116-1" tabindex="-1"></a><span class="co"># Function to find the maximum of three numbers</span></span>
-<span id="cb116-2"><a href="functions.html#cb116-2" tabindex="-1"></a>max_of_three <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b, c) {</span>
-<span id="cb116-3"><a href="functions.html#cb116-3" tabindex="-1"></a>  max_value <span class="ot">&lt;-</span> <span class="fu">max</span>(a, b, c)  <span class="co"># Use the built-in max function</span></span>
-<span id="cb116-4"><a href="functions.html#cb116-4" tabindex="-1"></a>  <span class="fu">return</span>(max_value)           <span class="co"># Return the maximum value</span></span>
-<span id="cb116-5"><a href="functions.html#cb116-5" tabindex="-1"></a>}</span>
-<span id="cb116-6"><a href="functions.html#cb116-6" tabindex="-1"></a></span>
-<span id="cb116-7"><a href="functions.html#cb116-7" tabindex="-1"></a><span class="co"># Test the function with different values</span></span>
-<span id="cb116-8"><a href="functions.html#cb116-8" tabindex="-1"></a><span class="fu">max_of_three</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>)    <span class="co"># Output: 20</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="functions.html#cb132-1" tabindex="-1"></a><span class="co"># Function to find the maximum of three numbers</span></span>
+<span id="cb132-2"><a href="functions.html#cb132-2" tabindex="-1"></a>max_of_three <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b, c) {</span>
+<span id="cb132-3"><a href="functions.html#cb132-3" tabindex="-1"></a>  max_value <span class="ot">&lt;-</span> <span class="fu">max</span>(a, b, c)  <span class="co"># Use the built-in max function</span></span>
+<span id="cb132-4"><a href="functions.html#cb132-4" tabindex="-1"></a>  <span class="fu">return</span>(max_value)           <span class="co"># Return the maximum value</span></span>
+<span id="cb132-5"><a href="functions.html#cb132-5" tabindex="-1"></a>}</span>
+<span id="cb132-6"><a href="functions.html#cb132-6" tabindex="-1"></a></span>
+<span id="cb132-7"><a href="functions.html#cb132-7" tabindex="-1"></a><span class="co"># Test the function with different values</span></span>
+<span id="cb132-8"><a href="functions.html#cb132-8" tabindex="-1"></a><span class="fu">max_of_three</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>)    <span class="co"># Output: 20</span></span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="functions.html#cb118-1" tabindex="-1"></a><span class="fu">max_of_three</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)      <span class="co"># Output: 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="functions.html#cb134-1" tabindex="-1"></a><span class="fu">max_of_three</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)      <span class="co"># Output: 3</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="functions.html#cb120-1" tabindex="-1"></a><span class="fu">max_of_three</span>(<span class="dv">7</span>, <span class="dv">15</span>, <span class="dv">12</span>)    <span class="co"># Output: 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="functions.html#cb136-1" tabindex="-1"></a><span class="fu">max_of_three</span>(<span class="dv">7</span>, <span class="dv">15</span>, <span class="dv">12</span>)    <span class="co"># Output: 15</span></span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
@@ -423,7 +423,7 @@ Finally, we return the difference: This way, we can use the result when we call 
 <ul>
 <li><code>print()</code>: This function displays an R object right on your console. It’s like saying, “Hey, look at this!”</li>
 </ul>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="functions.html#cb122-1" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello Mum&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="functions.html#cb138-1" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello Mum&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello Mum&quot;</code></pre>
 <ul>
 <li><p><code>min()</code> and <code>max()</code>: Need to find the smallest or largest number in a bunch? These functions will do just that for a numeric vector.</p></li>
@@ -435,15 +435,15 @@ Finally, we return the difference: This way, we can use the result when we call 
 <li><p><code>length()</code>: This one returns the number of items in an R object, whether it’s a vector, a list, or a matrix.</p></li>
 </ul>
 <p>Here’s a quick example to show you how easy it is to use these functions with a vector of numbers:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="functions.html#cb124-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="fl">0.2</span>, <span class="fl">1.5</span>, <span class="fl">1.7</span>)  <span class="co"># Create a vector</span></span>
-<span id="cb124-2"><a href="functions.html#cb124-2" tabindex="-1"></a></span>
-<span id="cb124-3"><a href="functions.html#cb124-3" tabindex="-1"></a><span class="fu">print</span>(v) <span class="co"># Display the vector</span></span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="functions.html#cb140-1" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="fl">0.2</span>, <span class="fl">1.5</span>, <span class="fl">1.7</span>)  <span class="co"># Create a vector</span></span>
+<span id="cb140-2"><a href="functions.html#cb140-2" tabindex="-1"></a></span>
+<span id="cb140-3"><a href="functions.html#cb140-3" tabindex="-1"></a><span class="fu">print</span>(v) <span class="co"># Display the vector</span></span></code></pre></div>
 <pre><code>## [1] 1.0 3.0 0.2 1.5 1.7</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="functions.html#cb126-1" tabindex="-1"></a><span class="fu">sum</span>(v) <span class="co"># Calculate the total sum</span></span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="functions.html#cb142-1" tabindex="-1"></a><span class="fu">sum</span>(v) <span class="co"># Calculate the total sum</span></span></code></pre></div>
 <pre><code>## [1] 7.4</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="functions.html#cb128-1" tabindex="-1"></a><span class="fu">mean</span>(v) <span class="co"># Find the average</span></span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="functions.html#cb144-1" tabindex="-1"></a><span class="fu">mean</span>(v) <span class="co"># Find the average</span></span></code></pre></div>
 <pre><code>## [1] 1.48</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="functions.html#cb130-1" tabindex="-1"></a><span class="fu">length</span>(v) <span class="co"># Get the number of elements</span></span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="functions.html#cb146-1" tabindex="-1"></a><span class="fu">length</span>(v) <span class="co"># Get the number of elements</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>As you can see, working with R’s built-in functions is straightforward and super helpful. Start experimenting with these functions and watch how they can simplify your coding experience!</p>
 <p><span style="color: orange;"><strong>Key Takeaways:</strong></span></p>
@@ -466,32 +466,32 @@ Finally, we return the difference: This way, we can use the result when we call 
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>
 <p>In this exercise, you are required to create a vector named <code>numbers</code> that contains the following values: <code>4, 8, 15, 16, 23, 42</code>. After creating the vector, you will use various built-in functions to analyze it based on the instructions below;</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="functions.html#cb132-1" tabindex="-1"></a><span class="co"># Create a vector </span></span>
-<span id="cb132-2"><a href="functions.html#cb132-2" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="functions.html#cb148-1" tabindex="-1"></a><span class="co"># Create a vector </span></span>
+<span id="cb148-2"><a href="functions.html#cb148-2" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">42</span>)</span></code></pre></div>
 <ol style="list-style-type: lower-roman">
 <li>Use the <code>sum()</code> function to calculate the total of the <code>numbers</code> vector.</li>
 </ol>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="functions.html#cb133-1" tabindex="-1"></a><span class="fu">sum</span>(numbers)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="functions.html#cb149-1" tabindex="-1"></a><span class="fu">sum</span>(numbers)</span></code></pre></div>
 <pre><code>## [1] 108</code></pre>
 <ol start="2" style="list-style-type: lower-roman">
 <li>Use the <code>max()</code> function to find the maximum value in the <code>numbers</code> vector.</li>
 </ol>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="functions.html#cb135-1" tabindex="-1"></a><span class="fu">max</span>(numbers)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="functions.html#cb151-1" tabindex="-1"></a><span class="fu">max</span>(numbers)</span></code></pre></div>
 <pre><code>## [1] 42</code></pre>
 <ol start="3" style="list-style-type: lower-roman">
 <li>Use the <code>min()</code> function to find the minimum value in the <code>numbers</code> vector.</li>
 </ol>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="functions.html#cb137-1" tabindex="-1"></a><span class="fu">min</span>(numbers)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="functions.html#cb153-1" tabindex="-1"></a><span class="fu">min</span>(numbers)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <ol start="4" style="list-style-type: lower-roman">
 <li>Use the <code>mean()</code> function to calculate the average of the <code>numbers</code> vector.</li>
 </ol>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="functions.html#cb139-1" tabindex="-1"></a><span class="fu">mean</span>(numbers)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="functions.html#cb155-1" tabindex="-1"></a><span class="fu">mean</span>(numbers)</span></code></pre></div>
 <pre><code>## [1] 18</code></pre>
 <ol start="22" style="list-style-type: lower-alpha">
 <li>Use the <code>length()</code> function to find out how many elements are in your numbers vector.</li>
 </ol>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="functions.html#cb141-1" tabindex="-1"></a><span class="fu">length</span>(numbers)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="functions.html#cb157-1" tabindex="-1"></a><span class="fu">length</span>(numbers)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
@@ -518,7 +518,7 @@ Packages in R are collections of R functions, data, and compiled code that are s
 <ol start="2" style="list-style-type: decimal">
 <li>Load the package</li>
 </ol>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="functions.html#cb146-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)  <span class="co"># Load it whenever you need to use it</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="functions.html#cb162-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)  <span class="co"># Load it whenever you need to use it</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Let’s explore a few package functions from dplyr:</li>
 </ol>
@@ -529,38 +529,38 @@ Packages in R are collections of R functions, data, and compiled code that are s
 <li><code>summarise()</code>: Summarizes data, such as calculating the mean or total</li>
 </ul>
 <p>We will create a data frame to demonstrate how to use functions from the <code>dplyr</code> package.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="functions.html#cb147-1" tabindex="-1"></a><span class="co"># Create a data frame for demonstration</span></span>
-<span id="cb147-2"><a href="functions.html#cb147-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb147-3"><a href="functions.html#cb147-3" tabindex="-1"></a>  <span class="at">Name =</span> <span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;David&quot;</span>, <span class="st">&quot;Anna&quot;</span>),</span>
-<span id="cb147-4"><a href="functions.html#cb147-4" tabindex="-1"></a>  <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">34</span>, <span class="dv">22</span>, <span class="dv">19</span>),</span>
-<span id="cb147-5"><a href="functions.html#cb147-5" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">88</span>, <span class="dv">92</span>)</span>
-<span id="cb147-6"><a href="functions.html#cb147-6" tabindex="-1"></a>)</span>
-<span id="cb147-7"><a href="functions.html#cb147-7" tabindex="-1"></a></span>
-<span id="cb147-8"><a href="functions.html#cb147-8" tabindex="-1"></a><span class="co"># 1. Select only the Name and Score columns</span></span>
-<span id="cb147-9"><a href="functions.html#cb147-9" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> <span class="fu">select</span>(data, Name, Score)</span>
-<span id="cb147-10"><a href="functions.html#cb147-10" tabindex="-1"></a>selected_data</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="functions.html#cb163-1" tabindex="-1"></a><span class="co"># Create a data frame for demonstration</span></span>
+<span id="cb163-2"><a href="functions.html#cb163-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb163-3"><a href="functions.html#cb163-3" tabindex="-1"></a>  <span class="at">Name =</span> <span class="fu">c</span>(<span class="st">&quot;John&quot;</span>, <span class="st">&quot;Jane&quot;</span>, <span class="st">&quot;David&quot;</span>, <span class="st">&quot;Anna&quot;</span>),</span>
+<span id="cb163-4"><a href="functions.html#cb163-4" tabindex="-1"></a>  <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">34</span>, <span class="dv">22</span>, <span class="dv">19</span>),</span>
+<span id="cb163-5"><a href="functions.html#cb163-5" tabindex="-1"></a>  <span class="at">Score =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">88</span>, <span class="dv">92</span>)</span>
+<span id="cb163-6"><a href="functions.html#cb163-6" tabindex="-1"></a>)</span>
+<span id="cb163-7"><a href="functions.html#cb163-7" tabindex="-1"></a></span>
+<span id="cb163-8"><a href="functions.html#cb163-8" tabindex="-1"></a><span class="co"># 1. Select only the Name and Score columns</span></span>
+<span id="cb163-9"><a href="functions.html#cb163-9" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> <span class="fu">select</span>(data, Name, Score)</span>
+<span id="cb163-10"><a href="functions.html#cb163-10" tabindex="-1"></a>selected_data</span></code></pre></div>
 <pre><code>##    Name Score
 ## 1  John    85
 ## 2  Jane    90
 ## 3 David    88
 ## 4  Anna    92</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="functions.html#cb149-1" tabindex="-1"></a><span class="co"># 2. Filter rows where Score is greater than 88</span></span>
-<span id="cb149-2"><a href="functions.html#cb149-2" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(data, Score <span class="sc">&gt;</span> <span class="dv">88</span>)</span>
-<span id="cb149-3"><a href="functions.html#cb149-3" tabindex="-1"></a>filtered_data</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="functions.html#cb165-1" tabindex="-1"></a><span class="co"># 2. Filter rows where Score is greater than 88</span></span>
+<span id="cb165-2"><a href="functions.html#cb165-2" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(data, Score <span class="sc">&gt;</span> <span class="dv">88</span>)</span>
+<span id="cb165-3"><a href="functions.html#cb165-3" tabindex="-1"></a>filtered_data</span></code></pre></div>
 <pre><code>##   Name Age Score
 ## 1 Jane  34    90
 ## 2 Anna  19    92</code></pre>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="functions.html#cb151-1" tabindex="-1"></a><span class="co"># 3. Add a new column that increases Score by 10</span></span>
-<span id="cb151-2"><a href="functions.html#cb151-2" tabindex="-1"></a>mutated_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(data, <span class="at">New_Score =</span> Score <span class="sc">+</span> <span class="dv">10</span>)</span>
-<span id="cb151-3"><a href="functions.html#cb151-3" tabindex="-1"></a>mutated_data</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="functions.html#cb167-1" tabindex="-1"></a><span class="co"># 3. Add a new column that increases Score by 10</span></span>
+<span id="cb167-2"><a href="functions.html#cb167-2" tabindex="-1"></a>mutated_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(data, <span class="at">New_Score =</span> Score <span class="sc">+</span> <span class="dv">10</span>)</span>
+<span id="cb167-3"><a href="functions.html#cb167-3" tabindex="-1"></a>mutated_data</span></code></pre></div>
 <pre><code>##    Name Age Score New_Score
 ## 1  John  28    85        95
 ## 2  Jane  34    90       100
 ## 3 David  22    88        98
 ## 4  Anna  19    92       102</code></pre>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="functions.html#cb153-1" tabindex="-1"></a><span class="co"># 4. Calculate the average age</span></span>
-<span id="cb153-2"><a href="functions.html#cb153-2" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> <span class="fu">summarise</span>(data, <span class="at">Average_Age =</span> <span class="fu">mean</span>(Age))</span>
-<span id="cb153-3"><a href="functions.html#cb153-3" tabindex="-1"></a>summary_data</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="functions.html#cb169-1" tabindex="-1"></a><span class="co"># 4. Calculate the average age</span></span>
+<span id="cb169-2"><a href="functions.html#cb169-2" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> <span class="fu">summarise</span>(data, <span class="at">Average_Age =</span> <span class="fu">mean</span>(Age))</span>
+<span id="cb169-3"><a href="functions.html#cb169-3" tabindex="-1"></a>summary_data</span></code></pre></div>
 <pre><code>##   Average_Age
 ## 1       25.75</code></pre>
 <p>In this example, we used functions from the <code>dplyr</code> package to select columns, filter rows, modify data, and summarize it!</p>
@@ -579,10 +579,10 @@ With packages, R becomes an even more powerful tool, allowing you to work with m
 <p>and is loaded by:</p>
 <pre><code>library(dplyr)</code></pre>
 <p>The iris data set is loaded by</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="functions.html#cb157-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
-<span id="cb157-2"><a href="functions.html#cb157-2" tabindex="-1"></a></span>
-<span id="cb157-3"><a href="functions.html#cb157-3" tabindex="-1"></a><span class="co"># view the first few columns </span></span>
-<span id="cb157-4"><a href="functions.html#cb157-4" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="functions.html#cb173-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb173-2"><a href="functions.html#cb173-2" tabindex="-1"></a></span>
+<span id="cb173-3"><a href="functions.html#cb173-3" tabindex="-1"></a><span class="co"># view the first few columns </span></span>
+<span id="cb173-4"><a href="functions.html#cb173-4" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -601,12 +601,12 @@ With packages, R becomes an even more powerful tool, allowing you to work with m
 <p>In this exercise, you will use the functions from the <code>dplyr</code> package to manipulate the <code>iris</code> data set. Remember the <code>dplyr</code> package is installed by:</p>
 <pre><code>install.packages(&quot;dplyr&quot;)</code></pre>
 <p>and is loaded by:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="functions.html#cb160-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="functions.html#cb176-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>The iris data set is loaded by</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="functions.html#cb161-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
-<span id="cb161-2"><a href="functions.html#cb161-2" tabindex="-1"></a></span>
-<span id="cb161-3"><a href="functions.html#cb161-3" tabindex="-1"></a><span class="co"># view the first few columns </span></span>
-<span id="cb161-4"><a href="functions.html#cb161-4" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="functions.html#cb177-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb177-2"><a href="functions.html#cb177-2" tabindex="-1"></a></span>
+<span id="cb177-3"><a href="functions.html#cb177-3" tabindex="-1"></a><span class="co"># view the first few columns </span></span>
+<span id="cb177-4"><a href="functions.html#cb177-4" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -618,10 +618,10 @@ With packages, R becomes an even more powerful tool, allowing you to work with m
 <ol style="list-style-type: lower-roman">
 <li>Use the <code>select</code> function to select the <code>Sepal.Length</code>, <code>Sepal.Width</code>, and <code>Species</code> columns.</li>
 </ol>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="functions.html#cb163-1" tabindex="-1"></a>selected_iris <span class="ot">&lt;-</span> <span class="fu">select</span>(iris, </span>
-<span id="cb163-2"><a href="functions.html#cb163-2" tabindex="-1"></a>                        Sepal.Length, Sepal.Width, Species)</span>
-<span id="cb163-3"><a href="functions.html#cb163-3" tabindex="-1"></a></span>
-<span id="cb163-4"><a href="functions.html#cb163-4" tabindex="-1"></a><span class="fu">head</span>(selected_iris)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="functions.html#cb179-1" tabindex="-1"></a>selected_iris <span class="ot">&lt;-</span> <span class="fu">select</span>(iris, </span>
+<span id="cb179-2"><a href="functions.html#cb179-2" tabindex="-1"></a>                        Sepal.Length, Sepal.Width, Species)</span>
+<span id="cb179-3"><a href="functions.html#cb179-3" tabindex="-1"></a></span>
+<span id="cb179-4"><a href="functions.html#cb179-4" tabindex="-1"></a><span class="fu">head</span>(selected_iris)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Species
 ## 1          5.1         3.5  setosa
 ## 2          4.9         3.0  setosa
@@ -632,10 +632,10 @@ With packages, R becomes an even more powerful tool, allowing you to work with m
 <ol start="2" style="list-style-type: lower-roman">
 <li>Use the <code>filter</code> function to filter rows where <code>Sepal.Length</code> is greater than 5.</li>
 </ol>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="functions.html#cb165-1" tabindex="-1"></a>filtered_iris <span class="ot">&lt;-</span> <span class="fu">filter</span>(iris, </span>
-<span id="cb165-2"><a href="functions.html#cb165-2" tabindex="-1"></a>                        Sepal.Length<span class="sc">&gt;</span><span class="dv">5</span>)</span>
-<span id="cb165-3"><a href="functions.html#cb165-3" tabindex="-1"></a></span>
-<span id="cb165-4"><a href="functions.html#cb165-4" tabindex="-1"></a><span class="fu">head</span>(filtered_iris)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="functions.html#cb181-1" tabindex="-1"></a>filtered_iris <span class="ot">&lt;-</span> <span class="fu">filter</span>(iris, </span>
+<span id="cb181-2"><a href="functions.html#cb181-2" tabindex="-1"></a>                        Sepal.Length<span class="sc">&gt;</span><span class="dv">5</span>)</span>
+<span id="cb181-3"><a href="functions.html#cb181-3" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="functions.html#cb181-4" tabindex="-1"></a><span class="fu">head</span>(filtered_iris)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          5.4         3.9          1.7         0.4  setosa
@@ -646,19 +646,19 @@ With packages, R becomes an even more powerful tool, allowing you to work with m
 <ol start="3" style="list-style-type: lower-roman">
 <li>Use the <code>mutate</code> function to create a new column <code>Sepal.Ratio</code> that divides <code>Sepal.Length</code> by <code>Sepal.Width</code>.</li>
 </ol>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="functions.html#cb167-1" tabindex="-1"></a>updated_iris <span class="ot">&lt;-</span> <span class="fu">mutate</span>(iris,</span>
-<span id="cb167-2"><a href="functions.html#cb167-2" tabindex="-1"></a>                       <span class="at">Sepal.Ratio=</span>Sepal.Length<span class="sc">/</span>Sepal.Width)</span>
-<span id="cb167-3"><a href="functions.html#cb167-3" tabindex="-1"></a></span>
-<span id="cb167-4"><a href="functions.html#cb167-4" tabindex="-1"></a><span class="fu">head</span>(updated_iris<span class="sc">$</span>Sepal.Ratio)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="functions.html#cb183-1" tabindex="-1"></a>updated_iris <span class="ot">&lt;-</span> <span class="fu">mutate</span>(iris,</span>
+<span id="cb183-2"><a href="functions.html#cb183-2" tabindex="-1"></a>                       <span class="at">Sepal.Ratio=</span>Sepal.Length<span class="sc">/</span>Sepal.Width)</span>
+<span id="cb183-3"><a href="functions.html#cb183-3" tabindex="-1"></a></span>
+<span id="cb183-4"><a href="functions.html#cb183-4" tabindex="-1"></a><span class="fu">head</span>(updated_iris<span class="sc">$</span>Sepal.Ratio)</span></code></pre></div>
 <pre><code>## [1] 1.457143 1.633333 1.468750 1.483871 1.388889 1.384615</code></pre>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
 <div id="type-of-arguments-in-r-functions" class="section level3 hasAnchor" number="2.1.4">
 <h3><span class="header-section-number">2.1.4</span> Type of arguments in R functions<a href="functions.html#type-of-arguments-in-r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now that we’ve learned and explored different types of functions, let’s dive into function arguments to strengthen your understanding of writing functions. Arguments are essential components of any function. Although it’s possible to write a function without parameters, like the example below, most functions do require arguments to tell them what data to process</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="functions.html#cb169-1" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb169-2"><a href="functions.html#cb169-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;Hello, my friend&#39;</span>)</span>
-<span id="cb169-3"><a href="functions.html#cb169-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="functions.html#cb185-1" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb185-2"><a href="functions.html#cb185-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;Hello, my friend&#39;</span>)</span>
+<span id="cb185-3"><a href="functions.html#cb185-3" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong>Why Arguments Matter</strong></p>
 <p>Arguments are the input for functions. They allow us to give the function specific values to work with. If we want a function to handle different cases or data, arguments give us that flexibility.</p>
 <p>When defining arguments, you include them inside the parentheses of the function definition, separated by commas. Generally, functions with more arguments tend to be more complex, but they also offer greater control over what the function does.</p>
@@ -669,12 +669,12 @@ my_function &lt;- function(argument1, argument2){
 <p><strong>Handling Missing Arguments</strong></p>
 <p>Whenever you create a function with parameters, you must provide the values for those parameters when calling the function. Otherwise, R will return an error. For example, if you forget to supply both numbers in a function to calculate their mean, the function won’t work.</p>
 <p>But you can avoid this issue by using <em>default arguments</em>. These are preset values that the function will use if you don’t provide them during the call. Let’s modify our mean function to demonstrate:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="functions.html#cb171-1" tabindex="-1"></a>mean_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(num_1, <span class="at">num_2 =</span> <span class="dv">30</span>) {</span>
-<span id="cb171-2"><a href="functions.html#cb171-2" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> (num_1 <span class="sc">+</span> num_2) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb171-3"><a href="functions.html#cb171-3" tabindex="-1"></a>  <span class="fu">return</span> (mean)</span>
-<span id="cb171-4"><a href="functions.html#cb171-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="functions.html#cb187-1" tabindex="-1"></a>mean_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(num_1, <span class="at">num_2 =</span> <span class="dv">30</span>) {</span>
+<span id="cb187-2"><a href="functions.html#cb187-2" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> (num_1 <span class="sc">+</span> num_2) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb187-3"><a href="functions.html#cb187-3" tabindex="-1"></a>  <span class="fu">return</span> (mean)</span>
+<span id="cb187-4"><a href="functions.html#cb187-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>In this version, if you only provide one value when calling the function, R will automatically use the default value for the second number (which is 30 in this case):</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="functions.html#cb172-1" tabindex="-1"></a><span class="fu">mean_two_numbers</span>(<span class="at">num_1 =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="functions.html#cb188-1" tabindex="-1"></a><span class="fu">mean_two_numbers</span>(<span class="at">num_1 =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 <p>You now understand how arguments work and the importance of default values in making functions more flexible and error-proof.</p>
 <p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
@@ -688,33 +688,33 @@ my_function &lt;- function(argument1, argument2){
 <ol style="list-style-type: decimal">
 <li>Create a function <code>greet</code> that prints a simple message like <code>"Hello, welcome to R programming!"</code>.</li>
 </ol>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="functions.html#cb174-1" tabindex="-1"></a>greet <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb174-2"><a href="functions.html#cb174-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, welcome to R programming!&quot;</span>)</span>
-<span id="cb174-3"><a href="functions.html#cb174-3" tabindex="-1"></a>}</span>
-<span id="cb174-4"><a href="functions.html#cb174-4" tabindex="-1"></a></span>
-<span id="cb174-5"><a href="functions.html#cb174-5" tabindex="-1"></a><span class="co"># Call the function</span></span>
-<span id="cb174-6"><a href="functions.html#cb174-6" tabindex="-1"></a><span class="fu">greet</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="functions.html#cb190-1" tabindex="-1"></a>greet <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb190-2"><a href="functions.html#cb190-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello, welcome to R programming!&quot;</span>)</span>
+<span id="cb190-3"><a href="functions.html#cb190-3" tabindex="-1"></a>}</span>
+<span id="cb190-4"><a href="functions.html#cb190-4" tabindex="-1"></a></span>
+<span id="cb190-5"><a href="functions.html#cb190-5" tabindex="-1"></a><span class="co"># Call the function</span></span>
+<span id="cb190-6"><a href="functions.html#cb190-6" tabindex="-1"></a><span class="fu">greet</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Hello, welcome to R programming!&quot;</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Write a function <code>multiply_numbers</code> that takes two arguments, <code>a</code> and <code>b</code>, and returns the product of these numbers.</li>
 </ol>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="functions.html#cb176-1" tabindex="-1"></a>multiply_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
-<span id="cb176-2"><a href="functions.html#cb176-2" tabindex="-1"></a>  <span class="fu">return</span>(a <span class="sc">*</span> b)</span>
-<span id="cb176-3"><a href="functions.html#cb176-3" tabindex="-1"></a>}</span>
-<span id="cb176-4"><a href="functions.html#cb176-4" tabindex="-1"></a></span>
-<span id="cb176-5"><a href="functions.html#cb176-5" tabindex="-1"></a><span class="co"># Call the function</span></span>
-<span id="cb176-6"><a href="functions.html#cb176-6" tabindex="-1"></a><span class="fu">multiply_numbers</span>(<span class="dv">6</span>, <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="functions.html#cb192-1" tabindex="-1"></a>multiply_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb192-2"><a href="functions.html#cb192-2" tabindex="-1"></a>  <span class="fu">return</span>(a <span class="sc">*</span> b)</span>
+<span id="cb192-3"><a href="functions.html#cb192-3" tabindex="-1"></a>}</span>
+<span id="cb192-4"><a href="functions.html#cb192-4" tabindex="-1"></a></span>
+<span id="cb192-5"><a href="functions.html#cb192-5" tabindex="-1"></a><span class="co"># Call the function</span></span>
+<span id="cb192-6"><a href="functions.html#cb192-6" tabindex="-1"></a><span class="fu">multiply_numbers</span>(<span class="dv">6</span>, <span class="dv">8</span>)</span></code></pre></div>
 <pre><code>## [1] 48</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Create a function <code>calculate_total</code> that accepts two arguments, price and tax_rate. Set a default value of <code>tax_rate = 0.15</code> (15%).</li>
 </ol>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="functions.html#cb178-1" tabindex="-1"></a>calculate_total <span class="ot">&lt;-</span> <span class="cf">function</span>(price, <span class="at">tax_rate =</span> <span class="fl">0.15</span>) {</span>
-<span id="cb178-2"><a href="functions.html#cb178-2" tabindex="-1"></a>  total <span class="ot">&lt;-</span> price <span class="sc">+</span> (price <span class="sc">*</span> tax_rate)</span>
-<span id="cb178-3"><a href="functions.html#cb178-3" tabindex="-1"></a>  <span class="fu">return</span>(total)</span>
-<span id="cb178-4"><a href="functions.html#cb178-4" tabindex="-1"></a>}</span>
-<span id="cb178-5"><a href="functions.html#cb178-5" tabindex="-1"></a></span>
-<span id="cb178-6"><a href="functions.html#cb178-6" tabindex="-1"></a><span class="co"># Call the function</span></span>
-<span id="cb178-7"><a href="functions.html#cb178-7" tabindex="-1"></a><span class="fu">calculate_total</span>(<span class="at">price=</span><span class="dv">160</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="functions.html#cb194-1" tabindex="-1"></a>calculate_total <span class="ot">&lt;-</span> <span class="cf">function</span>(price, <span class="at">tax_rate =</span> <span class="fl">0.15</span>) {</span>
+<span id="cb194-2"><a href="functions.html#cb194-2" tabindex="-1"></a>  total <span class="ot">&lt;-</span> price <span class="sc">+</span> (price <span class="sc">*</span> tax_rate)</span>
+<span id="cb194-3"><a href="functions.html#cb194-3" tabindex="-1"></a>  <span class="fu">return</span>(total)</span>
+<span id="cb194-4"><a href="functions.html#cb194-4" tabindex="-1"></a>}</span>
+<span id="cb194-5"><a href="functions.html#cb194-5" tabindex="-1"></a></span>
+<span id="cb194-6"><a href="functions.html#cb194-6" tabindex="-1"></a><span class="co"># Call the function</span></span>
+<span id="cb194-7"><a href="functions.html#cb194-7" tabindex="-1"></a><span class="fu">calculate_total</span>(<span class="at">price=</span><span class="dv">160</span>)</span></code></pre></div>
 <pre><code>## [1] 184</code></pre>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
@@ -723,14 +723,14 @@ my_function &lt;- function(argument1, argument2){
 <p>In many programming languages, functions take data as input and produce some result as output. Often, you must use a <code>return</code> statement to explicitly give back the result. Otherwise, the value might only be visible inside the function and not available to use later. But in R, the situation is a little more relaxed!</p>
 <p>In R, a function will always return a value that can be stored in a variable, even without a return statement. However, for clarity and good practice, it’s still helpful to include return to show your intent.</p>
 <p>Let’s walk through an example:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="functions.html#cb180-1" tabindex="-1"></a>mean_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(num_1, num_2) {</span>
-<span id="cb180-2"><a href="functions.html#cb180-2" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> (num_1 <span class="sc">+</span> num_2) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb180-3"><a href="functions.html#cb180-3" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> num_1 <span class="sc">+</span> num_2</span>
-<span id="cb180-4"><a href="functions.html#cb180-4" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sum =</span> sum))</span>
-<span id="cb180-5"><a href="functions.html#cb180-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="functions.html#cb196-1" tabindex="-1"></a>mean_sum <span class="ot">&lt;-</span> <span class="cf">function</span>(num_1, num_2) {</span>
+<span id="cb196-2"><a href="functions.html#cb196-2" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> (num_1 <span class="sc">+</span> num_2) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb196-3"><a href="functions.html#cb196-3" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> num_1 <span class="sc">+</span> num_2</span>
+<span id="cb196-4"><a href="functions.html#cb196-4" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sum =</span> sum))</span>
+<span id="cb196-5"><a href="functions.html#cb196-5" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now, calling the function:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="functions.html#cb181-1" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">mean_sum</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span>
-<span id="cb181-2"><a href="functions.html#cb181-2" tabindex="-1"></a><span class="fu">print</span>(results)  <span class="co"># You&#39;ll see both the mean and sum printed</span></span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="functions.html#cb197-1" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">mean_sum</span>(<span class="dv">10</span>, <span class="dv">20</span>)</span>
+<span id="cb197-2"><a href="functions.html#cb197-2" tabindex="-1"></a><span class="fu">print</span>(results)  <span class="co"># You&#39;ll see both the mean and sum printed</span></span></code></pre></div>
 <pre><code>## $mean
 ## [1] 15
 ## 
@@ -748,27 +748,27 @@ my_function &lt;- function(argument1, argument2){
 </ol>
 <p>You can also <strong>mix</strong> these two strategies! Let’s explore these options using an example.</p>
 <p>Here’s a simple function that takes two arguments: name and surname.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="functions.html#cb183-1" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(name, surname) {</span>
-<span id="cb183-2"><a href="functions.html#cb183-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&#39;Hello&#39;</span>, name, surname))</span>
-<span id="cb183-3"><a href="functions.html#cb183-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="functions.html#cb199-1" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(name, surname) {</span>
+<span id="cb199-2"><a href="functions.html#cb199-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&#39;Hello&#39;</span>, name, surname))</span>
+<span id="cb199-3"><a href="functions.html#cb199-3" tabindex="-1"></a>}</span></code></pre></div>
 <p>Lets call the function using different strategies;</p>
 <ol style="list-style-type: decimal">
 <li><strong>By Position</strong></li>
 </ol>
 <p>You pass the arguments in the exact order the function expects.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="functions.html#cb184-1" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&#39;Jane&#39;</span>, <span class="st">&#39;McCain&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="functions.html#cb200-1" tabindex="-1"></a><span class="fu">hello</span>(<span class="st">&#39;Jane&#39;</span>, <span class="st">&#39;McCain&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello Jane McCain&quot;</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><strong>By Name</strong></li>
 </ol>
 <p>When using this method, the order doesn’t matter. You just specify the argument names.</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="functions.html#cb186-1" tabindex="-1"></a><span class="fu">hello</span>(<span class="at">surname =</span> <span class="st">&#39;McCain&#39;</span>, <span class="at">name =</span> <span class="st">&#39;Jane&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="functions.html#cb202-1" tabindex="-1"></a><span class="fu">hello</span>(<span class="at">surname =</span> <span class="st">&#39;McCain&#39;</span>, <span class="at">name =</span> <span class="st">&#39;Jane&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello Jane McCain&quot;</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Mixing Position and Name</strong></li>
 </ol>
 <p>You can mix both approaches. Named arguments are matched first, then the remaining ones are matched by position</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="functions.html#cb188-1" tabindex="-1"></a><span class="fu">hello</span>(<span class="at">surname =</span> <span class="st">&#39;McCain&#39;</span>, <span class="st">&#39;Jane&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="functions.html#cb204-1" tabindex="-1"></a><span class="fu">hello</span>(<span class="at">surname =</span> <span class="st">&#39;McCain&#39;</span>, <span class="st">&#39;Jane&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello Jane McCain&quot;</code></pre>
 <p>This flexibility can make your code easier to read and maintain, especially when functions have many arguments!</p>
 </div>
@@ -777,12 +777,12 @@ my_function &lt;- function(argument1, argument2){
 <p>Finally when writing functions, it’s always a good idea to provide documentation to guide users on how to use the function. This is especially important when dealing with complex functions or when the function is shared with others.</p>
 <p>One simple way to add documentation is by including comments in the body of your function. These comments explain what each part of the function does. This is an informal method, but it helps both you and others quickly understand what’s happening in the function.</p>
 <p>Here’s an example:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="functions.html#cb190-1" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(name, surname) {</span>
-<span id="cb190-2"><a href="functions.html#cb190-2" tabindex="-1"></a>  <span class="co"># Say hello to a person with their name and surname</span></span>
-<span id="cb190-3"><a href="functions.html#cb190-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&#39;Hello,&#39;</span>, name, surname))</span>
-<span id="cb190-4"><a href="functions.html#cb190-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="functions.html#cb206-1" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(name, surname) {</span>
+<span id="cb206-2"><a href="functions.html#cb206-2" tabindex="-1"></a>  <span class="co"># Say hello to a person with their name and surname</span></span>
+<span id="cb206-3"><a href="functions.html#cb206-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&#39;Hello,&#39;</span>, name, surname))</span>
+<span id="cb206-4"><a href="functions.html#cb206-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>If you call the function without executing it, you’ll see its structure along with the comments:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="functions.html#cb191-1" tabindex="-1"></a>hello</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="functions.html#cb207-1" tabindex="-1"></a>hello</span></code></pre></div>
 <pre><code>## function(name, surname) {
 ##   # Say hello to a person with their name and surname
 ##   print(paste(&#39;Hello,&#39;, name, surname))
@@ -811,56 +811,56 @@ my_function &lt;- function(argument1, argument2){
 <ol style="list-style-type: decimal">
 <li>Create a User-Defined Function (UDF) named <code>calculate_area</code> that takes two arguments: <code>length</code> and <code>width</code>. The function should return the area of a rectangle.</li>
 </ol>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="functions.html#cb193-1" tabindex="-1"></a>calculate_area <span class="ot">&lt;-</span> <span class="cf">function</span>(length, width) {</span>
-<span id="cb193-2"><a href="functions.html#cb193-2" tabindex="-1"></a>  <span class="co"># Calculate the area by multiplying length and width</span></span>
-<span id="cb193-3"><a href="functions.html#cb193-3" tabindex="-1"></a>  area <span class="ot">&lt;-</span> length <span class="sc">*</span> width</span>
-<span id="cb193-4"><a href="functions.html#cb193-4" tabindex="-1"></a>  <span class="co"># Return the calculated area</span></span>
-<span id="cb193-5"><a href="functions.html#cb193-5" tabindex="-1"></a>  <span class="fu">return</span>(area)</span>
-<span id="cb193-6"><a href="functions.html#cb193-6" tabindex="-1"></a>}</span>
-<span id="cb193-7"><a href="functions.html#cb193-7" tabindex="-1"></a></span>
-<span id="cb193-8"><a href="functions.html#cb193-8" tabindex="-1"></a><span class="co"># Example usage of the calculate_area function</span></span>
-<span id="cb193-9"><a href="functions.html#cb193-9" tabindex="-1"></a>area_result <span class="ot">&lt;-</span> <span class="fu">calculate_area</span>(<span class="dv">5</span>, <span class="dv">10</span>)  <span class="co"># Length: 5, Width: 10</span></span>
-<span id="cb193-10"><a href="functions.html#cb193-10" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Area of rectangle:&quot;</span>, area_result)) </span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="functions.html#cb209-1" tabindex="-1"></a>calculate_area <span class="ot">&lt;-</span> <span class="cf">function</span>(length, width) {</span>
+<span id="cb209-2"><a href="functions.html#cb209-2" tabindex="-1"></a>  <span class="co"># Calculate the area by multiplying length and width</span></span>
+<span id="cb209-3"><a href="functions.html#cb209-3" tabindex="-1"></a>  area <span class="ot">&lt;-</span> length <span class="sc">*</span> width</span>
+<span id="cb209-4"><a href="functions.html#cb209-4" tabindex="-1"></a>  <span class="co"># Return the calculated area</span></span>
+<span id="cb209-5"><a href="functions.html#cb209-5" tabindex="-1"></a>  <span class="fu">return</span>(area)</span>
+<span id="cb209-6"><a href="functions.html#cb209-6" tabindex="-1"></a>}</span>
+<span id="cb209-7"><a href="functions.html#cb209-7" tabindex="-1"></a></span>
+<span id="cb209-8"><a href="functions.html#cb209-8" tabindex="-1"></a><span class="co"># Example usage of the calculate_area function</span></span>
+<span id="cb209-9"><a href="functions.html#cb209-9" tabindex="-1"></a>area_result <span class="ot">&lt;-</span> <span class="fu">calculate_area</span>(<span class="dv">5</span>, <span class="dv">10</span>)  <span class="co"># Length: 5, Width: 10</span></span>
+<span id="cb209-10"><a href="functions.html#cb209-10" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Area of rectangle:&quot;</span>, area_result)) </span></code></pre></div>
 <pre><code>## [1] &quot;Area of rectangle: 50&quot;</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Create a vector named <code>values</code> with the numbers <code>4, 8, 15, 16, 23, 42</code>. Use the built-in <code>sum()</code> function to calculate the total of the values vector and print the result.</li>
 </ol>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="functions.html#cb195-1" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">42</span>)</span>
-<span id="cb195-2"><a href="functions.html#cb195-2" tabindex="-1"></a><span class="co"># Use the built-in sum() function to calculate the total of the values vector</span></span>
-<span id="cb195-3"><a href="functions.html#cb195-3" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(values)</span>
-<span id="cb195-4"><a href="functions.html#cb195-4" tabindex="-1"></a><span class="co"># Print the result</span></span>
-<span id="cb195-5"><a href="functions.html#cb195-5" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Total of values vector:&quot;</span>, total))</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="functions.html#cb211-1" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">42</span>)</span>
+<span id="cb211-2"><a href="functions.html#cb211-2" tabindex="-1"></a><span class="co"># Use the built-in sum() function to calculate the total of the values vector</span></span>
+<span id="cb211-3"><a href="functions.html#cb211-3" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(values)</span>
+<span id="cb211-4"><a href="functions.html#cb211-4" tabindex="-1"></a><span class="co"># Print the result</span></span>
+<span id="cb211-5"><a href="functions.html#cb211-5" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Total of values vector:&quot;</span>, total))</span></code></pre></div>
 <pre><code>## [1] &quot;Total of values vector: 108&quot;</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Write a function named <code>greet</code> that takes one argument, <code>student_name</code>, and prints a greeting. Modify the function to have a default argument that greets a <code>"Student"</code> if no name is provided.</li>
 </ol>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="functions.html#cb197-1" tabindex="-1"></a>greet <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">student_name =</span> <span class="st">&quot;Student&quot;</span>) {</span>
-<span id="cb197-2"><a href="functions.html#cb197-2" tabindex="-1"></a>  <span class="co"># Print a greeting using the provided name or default to &quot;Student&quot;</span></span>
-<span id="cb197-3"><a href="functions.html#cb197-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Hello,&quot;</span>, student_name))</span>
-<span id="cb197-4"><a href="functions.html#cb197-4" tabindex="-1"></a>}</span>
-<span id="cb197-5"><a href="functions.html#cb197-5" tabindex="-1"></a></span>
-<span id="cb197-6"><a href="functions.html#cb197-6" tabindex="-1"></a><span class="co"># Example usage of the greet function with a provided name</span></span>
-<span id="cb197-7"><a href="functions.html#cb197-7" tabindex="-1"></a><span class="fu">greet</span>(<span class="st">&quot;John&quot;</span>)  <span class="co"># Should print &quot;Hello, John&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="functions.html#cb213-1" tabindex="-1"></a>greet <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">student_name =</span> <span class="st">&quot;Student&quot;</span>) {</span>
+<span id="cb213-2"><a href="functions.html#cb213-2" tabindex="-1"></a>  <span class="co"># Print a greeting using the provided name or default to &quot;Student&quot;</span></span>
+<span id="cb213-3"><a href="functions.html#cb213-3" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Hello,&quot;</span>, student_name))</span>
+<span id="cb213-4"><a href="functions.html#cb213-4" tabindex="-1"></a>}</span>
+<span id="cb213-5"><a href="functions.html#cb213-5" tabindex="-1"></a></span>
+<span id="cb213-6"><a href="functions.html#cb213-6" tabindex="-1"></a><span class="co"># Example usage of the greet function with a provided name</span></span>
+<span id="cb213-7"><a href="functions.html#cb213-7" tabindex="-1"></a><span class="fu">greet</span>(<span class="st">&quot;John&quot;</span>)  <span class="co"># Should print &quot;Hello, John&quot;</span></span></code></pre></div>
 <pre><code>## [1] &quot;Hello, John&quot;</code></pre>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="functions.html#cb199-1" tabindex="-1"></a><span class="co"># Example usage of the greet function without providing a name</span></span>
-<span id="cb199-2"><a href="functions.html#cb199-2" tabindex="-1"></a><span class="fu">greet</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="functions.html#cb215-1" tabindex="-1"></a><span class="co"># Example usage of the greet function without providing a name</span></span>
+<span id="cb215-2"><a href="functions.html#cb215-2" tabindex="-1"></a><span class="fu">greet</span>() </span></code></pre></div>
 <pre><code>## [1] &quot;Hello, Student&quot;</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Create a function named <code>mean_and_median</code> that takes a numeric vector as an argument and returns both the mean and median of that vector as a list.</li>
 </ol>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="functions.html#cb201-1" tabindex="-1"></a>mean_and_median <span class="ot">&lt;-</span> <span class="cf">function</span>(num_vector) {</span>
-<span id="cb201-2"><a href="functions.html#cb201-2" tabindex="-1"></a>  <span class="co"># Calculate the mean of the vector</span></span>
-<span id="cb201-3"><a href="functions.html#cb201-3" tabindex="-1"></a>  mean_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(num_vector)</span>
-<span id="cb201-4"><a href="functions.html#cb201-4" tabindex="-1"></a>  <span class="co"># Calculate the median of the vector</span></span>
-<span id="cb201-5"><a href="functions.html#cb201-5" tabindex="-1"></a>  median_value <span class="ot">&lt;-</span> <span class="fu">median</span>(num_vector)</span>
-<span id="cb201-6"><a href="functions.html#cb201-6" tabindex="-1"></a>  <span class="co"># Return both mean and median as a list</span></span>
-<span id="cb201-7"><a href="functions.html#cb201-7" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean_value, <span class="at">median =</span> median_value))</span>
-<span id="cb201-8"><a href="functions.html#cb201-8" tabindex="-1"></a>}</span>
-<span id="cb201-9"><a href="functions.html#cb201-9" tabindex="-1"></a></span>
-<span id="cb201-10"><a href="functions.html#cb201-10" tabindex="-1"></a><span class="co"># Example usage of the mean_and_median function</span></span>
-<span id="cb201-11"><a href="functions.html#cb201-11" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">mean_and_median</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">14</span>, <span class="dv">09</span>))</span>
-<span id="cb201-12"><a href="functions.html#cb201-12" tabindex="-1"></a><span class="co"># Print the results</span></span>
-<span id="cb201-13"><a href="functions.html#cb201-13" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Mean:&quot;</span>, results<span class="sc">$</span>mean, <span class="st">&quot;, Median:&quot;</span>, results<span class="sc">$</span>median))</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="functions.html#cb217-1" tabindex="-1"></a>mean_and_median <span class="ot">&lt;-</span> <span class="cf">function</span>(num_vector) {</span>
+<span id="cb217-2"><a href="functions.html#cb217-2" tabindex="-1"></a>  <span class="co"># Calculate the mean of the vector</span></span>
+<span id="cb217-3"><a href="functions.html#cb217-3" tabindex="-1"></a>  mean_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(num_vector)</span>
+<span id="cb217-4"><a href="functions.html#cb217-4" tabindex="-1"></a>  <span class="co"># Calculate the median of the vector</span></span>
+<span id="cb217-5"><a href="functions.html#cb217-5" tabindex="-1"></a>  median_value <span class="ot">&lt;-</span> <span class="fu">median</span>(num_vector)</span>
+<span id="cb217-6"><a href="functions.html#cb217-6" tabindex="-1"></a>  <span class="co"># Return both mean and median as a list</span></span>
+<span id="cb217-7"><a href="functions.html#cb217-7" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean_value, <span class="at">median =</span> median_value))</span>
+<span id="cb217-8"><a href="functions.html#cb217-8" tabindex="-1"></a>}</span>
+<span id="cb217-9"><a href="functions.html#cb217-9" tabindex="-1"></a></span>
+<span id="cb217-10"><a href="functions.html#cb217-10" tabindex="-1"></a><span class="co"># Example usage of the mean_and_median function</span></span>
+<span id="cb217-11"><a href="functions.html#cb217-11" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">mean_and_median</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">14</span>, <span class="dv">09</span>))</span>
+<span id="cb217-12"><a href="functions.html#cb217-12" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb217-13"><a href="functions.html#cb217-13" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Mean:&quot;</span>, results<span class="sc">$</span>mean, <span class="st">&quot;, Median:&quot;</span>, results<span class="sc">$</span>median))</span></code></pre></div>
 <pre><code>## [1] &quot;Mean: 15 , Median: 14&quot;</code></pre>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 

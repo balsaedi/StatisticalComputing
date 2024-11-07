@@ -485,7 +485,153 @@ ggplot(data = students_df,
 
 ## <span style="color: green;">**Hands-on Exercises**</span> 
 
+You will be required to work with a randomly generated patients data. Here are the steps to take to work on this exercise; 
+
+- You will run the code below to generate the data set. 
+```{r}
+# Set seed for reproducibility 
+set.seed(71)
+
+# Generate the data set 
+patients_data <- data.frame(
+  patient_id = 1:1000,
+  age = sample(20:80, 1000, replace = TRUE), 
+  height_cm = rnorm(1000, mean = 165, sd=10), 
+  weight_kg = runif(1000, min=50, max=135),
+  gender = sample(c("Male", "Female"), 1000, replace = TRUE),
+  condition = sample(c("Hypertension", "Malaria", "Pneumonia", "Diabetes", 
+                       "Asthma", "Healthy"), 1000, replace=TRUE)
+)
+
+head(patients_data)
+```
+
+You will use the `patients_data` to answer the questions below;
+
+1. Identify the data types for each column using the `str()` function. 
+2. Find the shape of the data set using the `dim` function. 
+3. Save the `patients_data` to CSV and name the file `patients_data.csv`. 
+4. Import the saved data set as `patients_df`. 
+5. Using the imported data set, `patients_df`, create the following charts. 
+
+  a. Plot a histogram to show the distribution of height. 
+  b. Create a bar chart to compare the number of male and female patients. 
+  c. Use a pie chart to show the composition of different health conditions. 
+  d. Plot a scatter plot to show the relationship between age and weight.
+
 _______________________________________________________________________
 <span style="color: brown;">**Solution**</span> 
+
+Run the code 
+```{r}
+# Set seed for reproducibility 
+set.seed(71)
+
+# Generate the data set 
+patients_data <- data.frame(
+  patient_id = 1:1000,
+  age = sample(20:80, 1000, replace = TRUE), 
+  height_cm = rnorm(1000, mean = 165, sd=10), 
+  weight_kg = runif(1000, min=50, max=135),
+  gender = sample(c("Male", "Female"), 1000, replace = TRUE),
+  condition = sample(c("Hypertension", "Malaria", "Pneumonia", "Diabetes", 
+                       "Asthma", "Healthy"), 1000, replace=TRUE)
+)
+
+head(patients_data)
+```
+
+You will use the `patients_data` to answer the questions below;
+
+1. Identify the data types for each column using the `str()` function. 
+```{r}
+str(patients_data)
+```
+
+2. Find the shape of the data set using the `dim` function. 
+```{r}
+dim(patients_data)
+```
+
+3. Save the `patients_data` to CSV and name the file `patients_data.csv`. 
+```{r}
+write.csv(patients_data, "data/patients_data.csv")
+```
+
+4. Import the saved data set as `patients_df`. 
+```{r}
+patients_df <- read.csv("data/patients_data.csv")
+head(patients_df)
+```
+
+5. Using the imported data set, `patients_df`, create the following charts. 
+
+  a. Plot a histogram to show the distribution of height. 
+  b. Create a bar chart to compare the number of male and female patients. 
+  c. Use a pie chart to show the composition of different health conditions. 
+  d. Plot a scatter plot to show the relationship between age and weight.
+  
+```{r}
+library(ggplot2)
+
+# Histogram
+ggplot(patients_df,
+       aes(x = height_cm)) +
+  geom_histogram(fill="skyblue", color="black") +
+  labs(
+    title = "Distribution of height",
+    y = "Frequency",
+    x = "Height(cm)"
+  ) + 
+  theme_minimal()
+```
+
+The distribution of height follows a near normal distribution. 
+
+- Plotting a bar chart
+```{r}
+ggplot(patients_df, 
+       aes(x = gender, fill=gender)) +
+  geom_bar() +
+  labs(
+    title = "Gender distribution",
+    x = "Gender", 
+    y = "Count"
+  ) + 
+  theme_minimal()
+```
+
+The female gender had more patients than the male patients
+
+- Plot a pie chart 
+```{r}
+library(dplyr)
+
+# Find the condition count 
+condition_count <- patients_df %>% count(condition)
+
+# Plot the data
+ggplot(condition_count, 
+       aes(x="", y=n, fill = condition)) +
+  geom_bar(stat = "identity", width=1) +
+  coord_polar("y") + 
+  labs(
+    title = "Proportion of Patients by Conditions"
+  ) +
+  theme_classic()
+```
+
+- Plot the relationship between age and weight
+```{r}
+ggplot(patients_df, 
+       aes(x = age, y = weight_kg)) +
+  geom_point() +
+  labs(
+    title = "Age vs Weight", 
+    x = "Age",
+    y = "Weight"
+  ) + 
+  theme_minimal()
+```
 
 <span style="color: brown;">**________________________________________________________________________________**</span>
