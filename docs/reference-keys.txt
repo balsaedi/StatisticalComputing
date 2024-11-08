@@ -30,7 +30,7 @@ concept-of-hypothesis-testing
 t-tests
 anova-analysis-of-variance
 chi-square-test
-hands-on-exercises-1
+hands-on-exercise-2
 simple-linear-regression
 basics-of-wilkinson-rogers-notation-y-x-linear-regression
 scatterplots-with-regression-lines-reading-lm-output
@@ -51,4 +51,4 @@ building-a-simple-r-package
 making-a-new-r-project
 adding-documentation
 uploading-and-installing-from-github
-hands-on-exercises-2
+hands-on-exercises-1

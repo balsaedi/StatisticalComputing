@@ -180,8 +180,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="general-statistics.html"><a href="general-statistics.html#inferential-statistics"><i class="fa fa-check"></i><b>4.3</b> Inferential Statistics</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="general-statistics.html"><a href="general-statistics.html#introduction-to-hypothesis-testing"><i class="fa fa-check"></i><b>4.3.1</b> Introduction to Hypothesis Testing</a></li>
-<li class="chapter" data-level="4.3.2" data-path="general-statistics.html"><a href="general-statistics.html#hands-on-exercises-1"><i class="fa fa-check"></i><b>4.3.2</b> Hands-on Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="4.4" data-path="general-statistics.html"><a href="general-statistics.html#hands-on-exercise-2"><i class="fa fa-check"></i><b>4.4</b> <span style="color: green;"><strong>Hands-on Exercise</strong></span></a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Simple Linear Regression</a>
 <ul>
@@ -212,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4" data-path="building-r-packages.html"><a href="building-r-packages.html#making-a-new-r-project"><i class="fa fa-check"></i><b>8.4</b> Making A New R Project</a></li>
 <li class="chapter" data-level="8.5" data-path="building-r-packages.html"><a href="building-r-packages.html#adding-documentation"><i class="fa fa-check"></i><b>8.5</b> Adding Documentation</a></li>
 <li class="chapter" data-level="8.6" data-path="building-r-packages.html"><a href="building-r-packages.html#uploading-and-installing-from-github"><i class="fa fa-check"></i><b>8.6</b> Uploading and Installing from Github</a></li>
-<li class="chapter" data-level="8.7" data-path="building-r-packages.html"><a href="building-r-packages.html#hands-on-exercises-2"><i class="fa fa-check"></i><b>8.7</b> <span style="color: green;"><strong>Hands-on Exercises</strong></span></a></li>
+<li class="chapter" data-level="8.7" data-path="building-r-packages.html"><a href="building-r-packages.html#hands-on-exercises-1"><i class="fa fa-check"></i><b>8.7</b> <span style="color: green;"><strong>Hands-on Exercises</strong></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -270,17 +270,17 @@ install.packages(&quot;roxygen2&quot;)</code></pre>
 <p>For large projects it is recommended to group similar functions in the same R file.</p>
 <p><strong>Step 3</strong></p>
 <p>In our new R package, we will write both the two functions discussed above in the same file called, <code>temp_conversion.R</code> that has the code below;</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="building-r-packages.html#cb385-1" tabindex="-1"></a><span class="co"># Convert from Fahrenheit to Celsius</span></span>
-<span id="cb385-2"><a href="building-r-packages.html#cb385-2" tabindex="-1"></a>F_to_C <span class="ot">&lt;-</span> <span class="cf">function</span>(F_temp){</span>
-<span id="cb385-3"><a href="building-r-packages.html#cb385-3" tabindex="-1"></a>  C_temp <span class="ot">&lt;-</span> (F_temp <span class="sc">-</span><span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">9</span></span>
-<span id="cb385-4"><a href="building-r-packages.html#cb385-4" tabindex="-1"></a>  <span class="fu">return</span> (C_temp)</span>
-<span id="cb385-5"><a href="building-r-packages.html#cb385-5" tabindex="-1"></a>}</span>
-<span id="cb385-6"><a href="building-r-packages.html#cb385-6" tabindex="-1"></a></span>
-<span id="cb385-7"><a href="building-r-packages.html#cb385-7" tabindex="-1"></a><span class="co"># Convert from Celsius to Fahrenheit</span></span>
-<span id="cb385-8"><a href="building-r-packages.html#cb385-8" tabindex="-1"></a>C_to_F <span class="ot">&lt;-</span> <span class="cf">function</span>(C_temp){</span>
-<span id="cb385-9"><a href="building-r-packages.html#cb385-9" tabindex="-1"></a>  F_temp <span class="ot">&lt;-</span> (C_temp <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span></span>
-<span id="cb385-10"><a href="building-r-packages.html#cb385-10" tabindex="-1"></a>  <span class="fu">return</span>(F_temp)</span>
-<span id="cb385-11"><a href="building-r-packages.html#cb385-11" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="building-r-packages.html#cb401-1" tabindex="-1"></a><span class="co"># Convert from Fahrenheit to Celsius</span></span>
+<span id="cb401-2"><a href="building-r-packages.html#cb401-2" tabindex="-1"></a>F_to_C <span class="ot">&lt;-</span> <span class="cf">function</span>(F_temp){</span>
+<span id="cb401-3"><a href="building-r-packages.html#cb401-3" tabindex="-1"></a>  C_temp <span class="ot">&lt;-</span> (F_temp <span class="sc">-</span><span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">9</span></span>
+<span id="cb401-4"><a href="building-r-packages.html#cb401-4" tabindex="-1"></a>  <span class="fu">return</span> (C_temp)</span>
+<span id="cb401-5"><a href="building-r-packages.html#cb401-5" tabindex="-1"></a>}</span>
+<span id="cb401-6"><a href="building-r-packages.html#cb401-6" tabindex="-1"></a></span>
+<span id="cb401-7"><a href="building-r-packages.html#cb401-7" tabindex="-1"></a><span class="co"># Convert from Celsius to Fahrenheit</span></span>
+<span id="cb401-8"><a href="building-r-packages.html#cb401-8" tabindex="-1"></a>C_to_F <span class="ot">&lt;-</span> <span class="cf">function</span>(C_temp){</span>
+<span id="cb401-9"><a href="building-r-packages.html#cb401-9" tabindex="-1"></a>  F_temp <span class="ot">&lt;-</span> (C_temp <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span></span>
+<span id="cb401-10"><a href="building-r-packages.html#cb401-10" tabindex="-1"></a>  <span class="fu">return</span>(F_temp)</span>
+<span id="cb401-11"><a href="building-r-packages.html#cb401-11" tabindex="-1"></a>}</span></code></pre></div>
 <p>That is the whole file for now, it has less than 15 lines of code.</p>
 <p><img src="images/temp_conversion_image.png" /></p>
 <p><strong>Step 4</strong></p>
@@ -290,15 +290,15 @@ Type: Package
 Title: Temperature Conversion Package for Demonstration
 Version: 0.0.1.0</code></pre>
 <p>This is now a working R package and can be loaded by;</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="building-r-packages.html#cb387-1" tabindex="-1"></a><span class="fu">library</span>(devtools);</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="building-r-packages.html#cb403-1" tabindex="-1"></a><span class="fu">library</span>(devtools);</span></code></pre></div>
 <pre><code>## Loading required package: usethis</code></pre>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="building-r-packages.html#cb389-1" tabindex="-1"></a><span class="fu">load_all</span>(<span class="st">&quot;F2C_R_package&quot;</span>) <span class="co"># Load the directory path to where the package is</span></span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="building-r-packages.html#cb405-1" tabindex="-1"></a><span class="fu">load_all</span>(<span class="st">&quot;F2C_R_package&quot;</span>) <span class="co"># Load the directory path to where the package is</span></span></code></pre></div>
 <pre><code>## ℹ Loading F2CTempConverter</code></pre>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="building-r-packages.html#cb391-1" tabindex="-1"></a><span class="co"># Lets convert the temperature from Fahrenheit to Celsius</span></span>
-<span id="cb391-2"><a href="building-r-packages.html#cb391-2" tabindex="-1"></a><span class="fu">F_to_C</span>(<span class="dv">79</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="building-r-packages.html#cb407-1" tabindex="-1"></a><span class="co"># Lets convert the temperature from Fahrenheit to Celsius</span></span>
+<span id="cb407-2"><a href="building-r-packages.html#cb407-2" tabindex="-1"></a><span class="fu">F_to_C</span>(<span class="dv">79</span>)</span></code></pre></div>
 <pre><code>## [1] 26.11111</code></pre>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="building-r-packages.html#cb393-1" tabindex="-1"></a><span class="co"># Converting from Celsius to Fahreinheit</span></span>
-<span id="cb393-2"><a href="building-r-packages.html#cb393-2" tabindex="-1"></a><span class="fu">C_to_F</span>(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="building-r-packages.html#cb409-1" tabindex="-1"></a><span class="co"># Converting from Celsius to Fahreinheit</span></span>
+<span id="cb409-2"><a href="building-r-packages.html#cb409-2" tabindex="-1"></a><span class="fu">C_to_F</span>(<span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## [1] 68</code></pre>
 <p>After this its good to add documentation to help users know what the function does.</p>
 </div>
@@ -423,8 +423,8 @@ git push -u origin main</code></pre>
 </ul>
 <p><em>You package is now on GitHub and ready for installation and use!</em></p>
 </div>
-<div id="hands-on-exercises-2" class="section level2 hasAnchor" number="8.7">
-<h2><span class="header-section-number">8.7</span> <span style="color: green;"><strong>Hands-on Exercises</strong></span><a href="building-r-packages.html#hands-on-exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="hands-on-exercises-1" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> <span style="color: green;"><strong>Hands-on Exercises</strong></span><a href="building-r-packages.html#hands-on-exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Create a package called weight converter that converts mass from Kilograms(kg) to Pounds(lb) and vice versa.</p>
 <ul>
 <li>Tag it as version <code>0.0.1</code> in the <code>DESCRIPTION</code> file.</li>

@@ -180,8 +180,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="general-statistics.html"><a href="general-statistics.html#inferential-statistics"><i class="fa fa-check"></i><b>4.3</b> Inferential Statistics</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="general-statistics.html"><a href="general-statistics.html#introduction-to-hypothesis-testing"><i class="fa fa-check"></i><b>4.3.1</b> Introduction to Hypothesis Testing</a></li>
-<li class="chapter" data-level="4.3.2" data-path="general-statistics.html"><a href="general-statistics.html#hands-on-exercises-1"><i class="fa fa-check"></i><b>4.3.2</b> Hands-on Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="4.4" data-path="general-statistics.html"><a href="general-statistics.html#hands-on-exercise-2"><i class="fa fa-check"></i><b>4.4</b> <span style="color: green;"><strong>Hands-on Exercise</strong></span></a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>5</b> Simple Linear Regression</a>
 <ul>
@@ -212,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4" data-path="building-r-packages.html"><a href="building-r-packages.html#making-a-new-r-project"><i class="fa fa-check"></i><b>8.4</b> Making A New R Project</a></li>
 <li class="chapter" data-level="8.5" data-path="building-r-packages.html"><a href="building-r-packages.html#adding-documentation"><i class="fa fa-check"></i><b>8.5</b> Adding Documentation</a></li>
 <li class="chapter" data-level="8.6" data-path="building-r-packages.html"><a href="building-r-packages.html#uploading-and-installing-from-github"><i class="fa fa-check"></i><b>8.6</b> Uploading and Installing from Github</a></li>
-<li class="chapter" data-level="8.7" data-path="building-r-packages.html"><a href="building-r-packages.html#hands-on-exercises-2"><i class="fa fa-check"></i><b>8.7</b> <span style="color: green;"><strong>Hands-on Exercises</strong></span></a></li>
+<li class="chapter" data-level="8.7" data-path="building-r-packages.html"><a href="building-r-packages.html#hands-on-exercises-1"><i class="fa fa-check"></i><b>8.7</b> <span style="color: green;"><strong>Hands-on Exercises</strong></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -245,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.1</span> Apply Family<a href="group-manipulation.html#apply-family" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <strong>apply family</strong> in R is a collection of functions that helps you apply operations to data structures like vectors, lists, matrices and data frames in a more efficient way than using loops. Think of these functions as a way to give commands to your data in bulk, telling each piece what to do without repeating yourself.</p>
 <p>Let’s make this fun! Imagine you’re running a café, and you have tables (rows of data) with customer orders (columns of data). You want to calculate the total for each table or find out how much each customer spent on average. The <code>apply</code> family is like hiring a helper who goes to each table and collects information without you having to ask each customer individually!</p>
-<p>Lets have a quick overview of the members of the <strong>apply family</strong>;</p>
+<p>We will have a quick overview of the members of the <strong>apply family</strong>;</p>
 <ul>
 <li><code>apply()</code> - Works with matrices or data frames, applying a function to rows or columns.</li>
 <li><code>lapply()</code> - Loops over elements in a list, applying a function to each element and returning a list.</li>
@@ -624,8 +624,136 @@ It’s like your helper asking every customer for two values and summing them up
 </div>
 <div id="hands-on-exercise-1" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> <span style="color: green;"><strong>Hands-on Exercise</strong></span><a href="group-manipulation.html#hands-on-exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this practical exercise, you will be required to download and import the Furniture sales data set from <a href="https://www.kaggle.com/datasets/rajagrawal7089/furniture-sales-data">here</a> and perform the following;</p>
+<ol style="list-style-type: decimal">
+<li>Calculate the average profit margin for each material using the <code>tapply</code> function.</li>
+<li>Find the difference between the cost and the price of each item on the <code>mapply</code> function.</li>
+<li>Calculate the maximum price, cost and sales columns using the <code>sapply</code> and <code>lapply</code> function. Note the difference between the two functions.</li>
+<li>Use aggregation to find the maximum sales for each product category.</li>
+<li>Subset the <code>brand</code>, <code>sales</code> columns and name it <code>brand_df</code>. Convert the data to a longer format and store in a variable <code>pbrand_df_long</code>.</li>
+</ol>
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p>Import the data set</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="group-manipulation.html#cb270-1" tabindex="-1"></a><span class="co"># Load the data set </span></span>
+<span id="cb270-2"><a href="group-manipulation.html#cb270-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Furniture.csv&quot;</span>)</span>
+<span id="cb270-3"><a href="group-manipulation.html#cb270-3" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>##      price      cost sales profit_margin inventory discount_percentage
+## 1 218.5431 181.61093    40      16.89924       105           27.796433
+## 2 477.8214 385.03383     7      19.41889       192           26.943715
+## 3 379.3973 276.73677    32      27.05884        59           21.948130
+## 4 319.3963 281.84133    48      11.75811        45           11.009944
+## 5 120.2084  69.74368    19      41.98102        35            3.183763
+## 6 120.1975  65.35208     6      45.62943       185           20.659352
+##   delivery_days category material color location season store_type  brand
+## 1             9      Bed  Plastic   Red    Rural Spring     Online BrandA
+## 2             6    Chair    Glass  Blue    Rural Summer     Online BrandD
+## 3             2    Table    Metal Black Suburban   Fall     Online BrandD
+## 4             2    Table    Glass Green    Rural Summer     Retail BrandD
+## 5             9    Chair    Glass Brown    Rural   Fall     Online BrandD
+## 6             8    Table  Plastic Brown    Urban   Fall     Retail BrandB
+##     revenue
+## 1  3949.165
+## 2 -3521.002
+## 3 14285.560
+## 4 12261.074
+## 5 -4588.256
+## 6  9136.302</code></pre>
+<ol style="list-style-type: decimal">
+<li>Calculate the average profit margin for each material using the <code>tapply</code> function.</li>
+</ol>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="group-manipulation.html#cb272-1" tabindex="-1"></a>average_profit_margin <span class="ot">&lt;-</span> <span class="fu">tapply</span>(df<span class="sc">$</span>profit_margin, df<span class="sc">$</span>material,</span>
+<span id="cb272-2"><a href="group-manipulation.html#cb272-2" tabindex="-1"></a>                                mean)</span>
+<span id="cb272-3"><a href="group-manipulation.html#cb272-3" tabindex="-1"></a></span>
+<span id="cb272-4"><a href="group-manipulation.html#cb272-4" tabindex="-1"></a>average_profit_margin</span></code></pre></div>
+<pre><code>##   Fabric    Glass    Metal  Plastic     Wood 
+## 29.23317 30.31741 30.67792 30.09190 30.57714</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Find the difference between the cost and the price of each item on the <code>mapply</code> function.</li>
+</ol>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="group-manipulation.html#cb274-1" tabindex="-1"></a><span class="co"># Create a function that finds difference between two numbers </span></span>
+<span id="cb274-2"><a href="group-manipulation.html#cb274-2" tabindex="-1"></a>diff_a_b <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b){</span>
+<span id="cb274-3"><a href="group-manipulation.html#cb274-3" tabindex="-1"></a>  d <span class="ot">=</span> a <span class="sc">-</span> b</span>
+<span id="cb274-4"><a href="group-manipulation.html#cb274-4" tabindex="-1"></a>  <span class="fu">return</span>(d)</span>
+<span id="cb274-5"><a href="group-manipulation.html#cb274-5" tabindex="-1"></a>}</span>
+<span id="cb274-6"><a href="group-manipulation.html#cb274-6" tabindex="-1"></a></span>
+<span id="cb274-7"><a href="group-manipulation.html#cb274-7" tabindex="-1"></a><span class="co"># Difference between cost and price </span></span>
+<span id="cb274-8"><a href="group-manipulation.html#cb274-8" tabindex="-1"></a>cost_price_difference <span class="ot">&lt;-</span> <span class="fu">mapply</span>(diff_a_b, df<span class="sc">$</span>price, df<span class="sc">$</span>cost)</span>
+<span id="cb274-9"><a href="group-manipulation.html#cb274-9" tabindex="-1"></a></span>
+<span id="cb274-10"><a href="group-manipulation.html#cb274-10" tabindex="-1"></a><span class="fu">head</span>(cost_price_difference)</span></code></pre></div>
+<pre><code>## [1]  36.93212  92.78761 102.66051  37.55498  50.46471  54.84545</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Calculate the maximum <code>price</code>, <code>cost</code> and <code>sales</code> columns using the <code>sapply</code> and <code>lapply</code> function. Note the difference between the two functions.</li>
+</ol>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="group-manipulation.html#cb276-1" tabindex="-1"></a><span class="co"># Subset the data set </span></span>
+<span id="cb276-2"><a href="group-manipulation.html#cb276-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb276-3"><a href="group-manipulation.html#cb276-3" tabindex="-1"></a></span>
+<span id="cb276-4"><a href="group-manipulation.html#cb276-4" tabindex="-1"></a>subset_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb276-5"><a href="group-manipulation.html#cb276-5" tabindex="-1"></a>  <span class="fu">select</span>(price, cost, sales)</span>
+<span id="cb276-6"><a href="group-manipulation.html#cb276-6" tabindex="-1"></a></span>
+<span id="cb276-7"><a href="group-manipulation.html#cb276-7" tabindex="-1"></a><span class="co"># Using sapply function</span></span>
+<span id="cb276-8"><a href="group-manipulation.html#cb276-8" tabindex="-1"></a><span class="fu">sapply</span>(subset_df, max)</span></code></pre></div>
+<pre><code>##    price     cost    sales 
+## 499.8730 447.0229  49.0000</code></pre>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="group-manipulation.html#cb278-1" tabindex="-1"></a><span class="co"># Using the lapply function </span></span>
+<span id="cb278-2"><a href="group-manipulation.html#cb278-2" tabindex="-1"></a><span class="fu">lapply</span>(subset_df, max)</span></code></pre></div>
+<pre><code>## $price
+## [1] 499.873
+## 
+## $cost
+## [1] 447.0229
+## 
+## $sales
+## [1] 49</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Use aggregation to find the maximum sales for each product category.</li>
+</ol>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="group-manipulation.html#cb280-1" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb280-2"><a href="group-manipulation.html#cb280-2" tabindex="-1"></a></span>
+<span id="cb280-3"><a href="group-manipulation.html#cb280-3" tabindex="-1"></a><span class="co"># Perform aggregation </span></span>
+<span id="cb280-4"><a href="group-manipulation.html#cb280-4" tabindex="-1"></a>aggregated_sales <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(sales <span class="sc">~</span> category,</span>
+<span id="cb280-5"><a href="group-manipulation.html#cb280-5" tabindex="-1"></a>                              <span class="at">data =</span> df,</span>
+<span id="cb280-6"><a href="group-manipulation.html#cb280-6" tabindex="-1"></a>                              <span class="at">FUN =</span> max)</span>
+<span id="cb280-7"><a href="group-manipulation.html#cb280-7" tabindex="-1"></a></span>
+<span id="cb280-8"><a href="group-manipulation.html#cb280-8" tabindex="-1"></a>aggregated_sales</span></code></pre></div>
+<pre><code>##   category sales
+## 1      Bed    49
+## 2    Chair    49
+## 3     Desk    49
+## 4     Sofa    49
+## 5    Table    49</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Subset the <code>brand</code>, <code>sales</code> columns and name it <code>brand_df</code>. Convert the data to a longer format and store in a variable <code>pbrand_df_long</code>.</li>
+</ol>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="group-manipulation.html#cb282-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb282-2"><a href="group-manipulation.html#cb282-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb282-3"><a href="group-manipulation.html#cb282-3" tabindex="-1"></a></span>
+<span id="cb282-4"><a href="group-manipulation.html#cb282-4" tabindex="-1"></a><span class="co"># Subset the data set </span></span>
+<span id="cb282-5"><a href="group-manipulation.html#cb282-5" tabindex="-1"></a>brand_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb282-6"><a href="group-manipulation.html#cb282-6" tabindex="-1"></a>  <span class="fu">select</span>(brand, sales)</span>
+<span id="cb282-7"><a href="group-manipulation.html#cb282-7" tabindex="-1"></a></span>
+<span id="cb282-8"><a href="group-manipulation.html#cb282-8" tabindex="-1"></a><span class="fu">head</span>(brand_df)</span></code></pre></div>
+<pre><code>##    brand sales
+## 1 BrandA    40
+## 2 BrandD     7
+## 3 BrandD    32
+## 4 BrandD    48
+## 5 BrandD    19
+## 6 BrandB     6</code></pre>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="group-manipulation.html#cb284-1" tabindex="-1"></a><span class="co"># To a longer format </span></span>
+<span id="cb284-2"><a href="group-manipulation.html#cb284-2" tabindex="-1"></a>brand_df_long <span class="ot">&lt;-</span> brand_df <span class="sc">%&gt;%</span> </span>
+<span id="cb284-3"><a href="group-manipulation.html#cb284-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>( <span class="at">cols =</span> <span class="st">&quot;brand&quot;</span>)</span>
+<span id="cb284-4"><a href="group-manipulation.html#cb284-4" tabindex="-1"></a></span>
+<span id="cb284-5"><a href="group-manipulation.html#cb284-5" tabindex="-1"></a><span class="fu">head</span>(brand_df_long)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   sales name  value 
+##   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1    40 brand BrandA
+## 2     7 brand BrandD
+## 3    32 brand BrandD
+## 4    48 brand BrandD
+## 5    19 brand BrandD
+## 6     6 brand BrandB</code></pre>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 
 </div>

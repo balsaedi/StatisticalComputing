@@ -10,7 +10,7 @@ The **apply family** in R is a collection of functions that helps you apply oper
 
 Let’s make this fun! Imagine you’re running a café, and you have tables (rows of data) with customer orders (columns of data). You want to calculate the total for each table or find out how much each customer spent on average. The `apply` family is like hiring a helper who goes to each table and collects information without you having to ask each customer individually!
 
-Lets have a quick overview of the members of the **apply family**;
+We will have a quick overview of the members of the **apply family**;
 
 - `apply()` - Works with matrices or data frames, applying a function to rows or columns. 
 - `lapply()` - Loops over elements in a list, applying a function to each element and returning a list. 
@@ -312,7 +312,88 @@ head(iris_wide)
 
 ## <span style="color: green;">**Hands-on Exercise**</span> 
 
+In this practical exercise, you will be required to download and import the Furniture sales data set from [here]( https://www.kaggle.com/datasets/rajagrawal7089/furniture-sales-data) and perform the following; 
+
+1. Calculate the average profit margin for each material using the `tapply` function. 
+2. Find the difference between the cost and the price of each item on the `mapply` function. 
+3. Calculate the maximum price, cost and sales columns using the `sapply` and `lapply` function. Note the difference between the two functions. 
+4. Use aggregation to find the maximum sales for each product category. 
+5. Subset the `brand`, `sales` columns and name it `brand_df`. Convert the data to a longer format and store in a variable `pbrand_df_long`. 
+
 _______________________________________________________________________
 <span style="color: brown;">**Solution**</span> 
+
+Import the data set
+```{r}
+# Load the data set 
+df <- read.csv("data/Furniture.csv")
+head(df)
+```
+
+1. Calculate the average profit margin for each material using the `tapply` function. 
+```{r}
+average_profit_margin <- tapply(df$profit_margin, df$material,
+                                mean)
+
+average_profit_margin
+```
+
+2. Find the difference between the cost and the price of each item on the `mapply` function. 
+```{r}
+# Create a function that finds difference between two numbers 
+diff_a_b <- function(a, b){
+  d = a - b
+  return(d)
+}
+
+# Difference between cost and price 
+cost_price_difference <- mapply(diff_a_b, df$price, df$cost)
+
+head(cost_price_difference)
+```
+
+3. Calculate the maximum `price`, `cost` and `sales` columns using the `sapply` and `lapply` function. Note the difference between the two functions. 
+```{r}
+# Subset the data set 
+library(dplyr)
+
+subset_df <- df %>%
+  select(price, cost, sales)
+
+# Using sapply function
+sapply(subset_df, max)
+
+# Using the lapply function 
+lapply(subset_df, max)
+```
+4. Use aggregation to find the maximum sales for each product category. 
+```{r}
+library(plyr)
+
+# Perform aggregation 
+aggregated_sales <- aggregate(sales ~ category,
+                              data = df,
+                              FUN = max)
+
+aggregated_sales
+```
+
+5. Subset the `brand`, `sales` columns and name it `brand_df`. Convert the data to a longer format and store in a variable `pbrand_df_long`. 
+```{r}
+library(tidyr)
+library(dplyr)
+
+# Subset the data set 
+brand_df <- df %>%
+  select(brand, sales)
+
+head(brand_df)
+
+# To a longer format 
+brand_df_long <- brand_df %>% 
+  pivot_longer( cols = "brand")
+
+head(brand_df_long)
+```
 
 <span style="color: brown;">**________________________________________________________________________________**</span>

@@ -783,7 +783,7 @@ print(chisq.test(sepal_width_data))
 
 <span style="color: brown;">**________________________________________________________________________________**</span>
 
-### Hands-on Exercises
+## <span style="color: green;">**Hands-on Exercise**</span> 
 
 You are required to download the Groundhog Day Forecasts and Temperatures data set from [here](https://www.kaggle.com/datasets/groundhogclub/groundhog-day).
 
