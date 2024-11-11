@@ -6,7 +6,7 @@ For example, imagine you want to predict a student's exam score based on the num
 
 **What is Simple Linear Regression?**
 
-SWimple linear regression is essentially about finding the line that best describes the relationship between two variables(independent and dependent variables) in your data. The line is called the **regression line**, and it helps us make predictions. 
+Simple linear regression is essentially about finding the line that best describes the relationship between two variables(independent and dependent variables) in your data. The line is called the **regression line**, and it helps us make predictions. 
 
 ## Basics of Wilkinson-Rogers Notation (y ~ x), Linear Regression
 
