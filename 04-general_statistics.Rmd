@@ -76,7 +76,45 @@ which.max(table(ecommerce$Product.Category))
 
 c. **Quartiles**
 
-**____Come back later_____**
+These are values that divide a data set into four equal parts, each representing the 25% of the data points. They help describe the spread of the data, providing insights into the distribution's shape and spread. 
+
+The quartiles are;
+
+  i. *First Quartile(Q1)* - The $25^{th}$ percentile; the value below which 25% of the data falls. Also known as the lower quartile. 
+  ii. *Median(Q2)* - Also known as the second quartile; the middle of the data set, where half of the values are above and another half of the values are below. 
+  iii. *Third quartile(Q3)* - The $75^{th}$ percentile; the value below which 75% of the data falls. 
+  
+Using quartiles, we can calculate the **Interquartile Range (IQR)**, which measures the spread of the middle 50% of the data. $$IQR = Q3 - Q1$$
+
+<span style="color: orange;">**Try it!**</span> 
+
+Lets put this into action; we will create a vector ages and calculate the quartiles. 
+
+`ages <- c(21, 27, 55, 13, 87, 51, 33, 64, 40)`
+
+Lets line the ages in an ascending order 
+
+`ages <- c(13, 21, 27, 33, 40, 51, 55, 64, 87)`
+
+Finding the; 
+  - median, will be middle value which is `40`.
+  - Q1, is the median of the lower half which is
+```
+Q1  = (21 + 27)/2 = 24
+```
+  - Q3, is the median of the upper half which is
+```
+Q3 = (55 + 64)/2 = 59.5
+```
+
+Using R to calculate quartiles using the `quantile()` function;
+```{r}
+ages <- c(21, 27, 55, 13, 87, 51, 33, 64, 40)
+
+# Calculate the quartiles 
+quantile(ages, type=2, probs = c(0.25, 0.5, 0.75))
+```
+
 
 d. **Range**
 
@@ -156,9 +194,56 @@ sd(ecommerce$Net.Amount)
 
 <span style="color: green;">**Practical Exercise**</span> 
 
+Using the ecommerce data set provided at the beginning of the course, calculate the following metrics for the gross amount with R;
+
+1. Mean
+2. Median and IQR
+3. Maximum, minimum and range 
+4. Standard deviation and variance.
+
 _______________________________________________________________________
 <span style="color: brown;">**Solution**</span> 
 
+- Read the data set 
+```{r}
+ecommerce = read.csv("data/ecommerce.csv")
+gross_amount <- ecommerce$Gross.Amount
+```
+
+1. Mean
+```{r}
+mean(gross_amount)
+```
+
+2. Median and IQR
+```{r}
+# Calculate the median
+median(gross_amount)
+
+# Calculate the IQR
+IQR(gross_amount)
+```
+
+3. Maximum, minimum and range 
+```{r}
+# Minimum
+min(gross_amount)
+
+# Maximum 
+max(gross_amount)
+
+# Range
+diff(range(gross_amount))
+```
+
+4. Standard deviation and variance.
+```{r}
+# Variance 
+var(gross_amount)
+
+# Standard deviation
+sd(gross_amount)
+```
 <span style="color: brown;">**________________________________________________________________________________**</span>
 
 ## Data Visualization
@@ -387,19 +472,107 @@ ggplot(PurchasebyAge,
 
 Age 25 - 45 had the highest total spending in the ecommerce store while age of 60 and above had the least total spending. 
 
-e. **Pie Charts**
-
-**______Explain about pie charts________**
-
 
 f. **Boxplots and Violin Plots**
 
-**_______Explain about outliers using box plots_______**
+Box plot is a type of chart that uses boxes and lines to show distributions of one or more groups of a continuous numeric data. They provide a high-level information at a glance for instance the data symmetry, skew and variance. They can also be used to show outliers within a data set. This is the only chart that can effectively give the measure of spread and central tendency(median, quartiles and range).
+
+<span style="color: orange;">**Try it!**</span> 
+
+We will plot a boxplot of the Net Amount spent on the ecommerce store.
+
+```{r}
+library(ggplot2)
+
+# Plot a boxplot
+ggplot(ecommerce, aes(y=Net.Amount))+
+  geom_boxplot(fill="black")
+```
+
+The upper and lower boundaries represents the upper(Q3) and lower(Q1) quartiles respectively. In out case the upper quartile is about 4200INR and the lower quartile is approximately 1500. The median is represented by the line cutting through the box, whereby in our case is approximately 2800 INR. The maximum value is the uppermost point of the boxplot which is approximately 8300INR. Finally, the minimum is the bottom of the plot which is approximately 350INR. 
 
 <span style="color: green;">**Practical Exercise**</span>
 
+To enhance your understanding in basic data visualizations, you will be required to use the inbuilt diamonds data set and follow the instructions below. 
+
+i. Plot a bar chart to show the count of diamonds by `cut` quality. 
+ii. Generate a scatter plot to show the relationship between `carat` and `price`.
+iii. Plot a histogram of the `price` of diamonds. 
+iv. Create a boxplot to compare the price distributions across different different diamond `color` categories. 
+v. Visualize the male and female passengers in each class. 
+
+**Hint: ** The titanic data set is loaded as below 
+```
+data("diamonds")
+```
+
 _______________________________________________________________________
 <span style="color: brown;">**Solution**</span> 
+
+- Load the required libraries and data set.
+```{r}
+library(ggplot2) # library for visualization
+
+data("diamonds") # Load diamonds data 
+```
+
+i. Plot a bar chart to show the count of diamonds by `cut` quality. 
+```{r}
+ggplot(diamonds, 
+        aes(x=cut)) + 
+  geom_bar(fill="skyblue") + 
+  labs(
+    title = "Count of diamonds by cut",
+    x = "Cut Quality",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+
+Most diamonds had an ideal cut quality while least of them had a fair cut quality
+
+ii. Generate a scatter plot to show the relationship between `carat` and `price`.
+```{r}
+ggplot(diamonds,
+       aes(x = carat, y = price)) +
+  geom_point(color = "darkblue", alpha=0.5) +
+  labs(
+    title = "Carat vs Price", 
+    x = "Carat",
+    y = "Price"
+  ) + 
+  theme_classic()
+```
+
+The relationship between Carat and Price was almost directly proportional where higher carat was equal to higher prices. 
+
+iii. Plot a histogram of the `price` of diamonds. 
+```{r}
+ggplot(diamonds, 
+       aes(x = price)) + 
+  geom_histogram(bins=30, fill="orange", color="black") + 
+  labs(
+    title = "Diamond Prices distribution", 
+    x = "Price", 
+    y = "Count"
+  ) + 
+  theme_light()
+```
+
+The distribution of diamond prices was right-skewed. Most of the diamonds had prices lower than 5000
+
+iv. Create a boxplot to compare the price distributions across different different diamond `color` categories. 
+```{r}
+ggplot(diamonds,
+       aes(x=color, y=price, fill=color)) + 
+  geom_boxplot() + 
+  labs(
+    title = "Diamond Prices distribution by color", 
+    x = "Diamond color",
+    y = "Price"
+  ) + 
+  theme_dark()
+```
 
 <span style="color: brown;">**________________________________________________________________________________**</span>
 

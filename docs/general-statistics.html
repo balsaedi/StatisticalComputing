@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-11-09" />
+<meta name="date" content="2024-11-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -332,35 +332,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="3" style="list-style-type: lower-alpha">
 <li><strong>Quartiles</strong></li>
 </ol>
-<p><strong>____Come back later_____</strong></p>
+<p>These are values that divide a data set into four equal parts, each representing the 25% of the data points. They help describe the spread of the data, providing insights into the distribution’s shape and spread.</p>
+<p>The quartiles are;</p>
+<ol style="list-style-type: lower-roman">
+<li><em>First Quartile(Q1)</em> - The <span class="math inline">\(25^{th}\)</span> percentile; the value below which 25% of the data falls. Also known as the lower quartile.</li>
+<li><em>Median(Q2)</em> - Also known as the second quartile; the middle of the data set, where half of the values are above and another half of the values are below.</li>
+<li><em>Third quartile(Q3)</em> - The <span class="math inline">\(75^{th}\)</span> percentile; the value below which 75% of the data falls.</li>
+</ol>
+<p>Using quartiles, we can calculate the <strong>Interquartile Range (IQR)</strong>, which measures the spread of the middle 50% of the data. <span class="math display">\[IQR = Q3 - Q1\]</span></p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>Lets put this into action; we will create a vector ages and calculate the quartiles.</p>
+<p><code>ages &lt;- c(21, 27, 55, 13, 87, 51, 33, 64, 40)</code></p>
+<p>Lets line the ages in an ascending order</p>
+<p><code>ages &lt;- c(13, 21, 27, 33, 40, 51, 55, 64, 87)</code></p>
+<p>Finding the;
+- median, will be middle value which is <code>40</code>.
+- Q1, is the median of the lower half which is</p>
+<pre><code>Q1  = (21 + 27)/2 = 24</code></pre>
+<ul>
+<li>Q3, is the median of the upper half which is</li>
+</ul>
+<pre><code>Q3 = (55 + 64)/2 = 59.5</code></pre>
+<p>Using R to calculate quartiles using the <code>quantile()</code> function;</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="general-statistics.html#cb296-1" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">27</span>, <span class="dv">55</span>, <span class="dv">13</span>, <span class="dv">87</span>, <span class="dv">51</span>, <span class="dv">33</span>, <span class="dv">64</span>, <span class="dv">40</span>)</span>
+<span id="cb296-2"><a href="general-statistics.html#cb296-2" tabindex="-1"></a></span>
+<span id="cb296-3"><a href="general-statistics.html#cb296-3" tabindex="-1"></a><span class="co"># Calculate the quartiles </span></span>
+<span id="cb296-4"><a href="general-statistics.html#cb296-4" tabindex="-1"></a><span class="fu">quantile</span>(ages, <span class="at">type=</span><span class="dv">2</span>, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code></pre></div>
+<pre><code>## 25% 50% 75% 
+##  27  40  55</code></pre>
 <ol start="4" style="list-style-type: lower-alpha">
 <li><strong>Range</strong></li>
 </ol>
 <p>To understand range, we will define, maximum and maximum values. The <strong>maximum</strong> value is the largest value in a set while the <strong>minimum</strong> is the smallest value in a set. <strong>Range</strong> is the difference between the maximum(largest value) and the minimum value in a set.</p>
 <p>Here is a formula for range; <span class="math display">\[Range = Max - Min\]</span></p>
 <p>Lets create a vector <code>ages</code> that defines the ages of different customers on a retail stores, find the maximum and minimum ages then calculate the range.</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="general-statistics.html#cb294-1" tabindex="-1"></a><span class="co"># Create vector ages</span></span>
-<span id="cb294-2"><a href="general-statistics.html#cb294-2" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">27</span>, <span class="dv">55</span>, <span class="dv">13</span>, <span class="dv">87</span>, <span class="dv">51</span>, <span class="dv">33</span>, <span class="dv">64</span>)</span>
-<span id="cb294-3"><a href="general-statistics.html#cb294-3" tabindex="-1"></a></span>
-<span id="cb294-4"><a href="general-statistics.html#cb294-4" tabindex="-1"></a><span class="co"># Find the maximum</span></span>
-<span id="cb294-5"><a href="general-statistics.html#cb294-5" tabindex="-1"></a><span class="fu">max</span>(ages)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="general-statistics.html#cb298-1" tabindex="-1"></a><span class="co"># Create vector ages</span></span>
+<span id="cb298-2"><a href="general-statistics.html#cb298-2" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">27</span>, <span class="dv">55</span>, <span class="dv">13</span>, <span class="dv">87</span>, <span class="dv">51</span>, <span class="dv">33</span>, <span class="dv">64</span>)</span>
+<span id="cb298-3"><a href="general-statistics.html#cb298-3" tabindex="-1"></a></span>
+<span id="cb298-4"><a href="general-statistics.html#cb298-4" tabindex="-1"></a><span class="co"># Find the maximum</span></span>
+<span id="cb298-5"><a href="general-statistics.html#cb298-5" tabindex="-1"></a><span class="fu">max</span>(ages)</span></code></pre></div>
 <pre><code>## [1] 87</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="general-statistics.html#cb296-1" tabindex="-1"></a><span class="co"># Find the minimum </span></span>
-<span id="cb296-2"><a href="general-statistics.html#cb296-2" tabindex="-1"></a><span class="fu">min</span>(ages)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="general-statistics.html#cb300-1" tabindex="-1"></a><span class="co"># Find the minimum </span></span>
+<span id="cb300-2"><a href="general-statistics.html#cb300-2" tabindex="-1"></a><span class="fu">min</span>(ages)</span></code></pre></div>
 <pre><code>## [1] 13</code></pre>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="general-statistics.html#cb298-1" tabindex="-1"></a><span class="co"># Calculate the range </span></span>
-<span id="cb298-2"><a href="general-statistics.html#cb298-2" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(ages))</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="general-statistics.html#cb302-1" tabindex="-1"></a><span class="co"># Calculate the range </span></span>
+<span id="cb302-2"><a href="general-statistics.html#cb302-2" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(ages))</span></code></pre></div>
 <pre><code>## [1] 74</code></pre>
 <p><span style="color: orange;"><strong>Try it!</strong></span></p>
 <p>Now its clear what range, lets get into the real-world scenario. We will find the maximum and minimum <code>Gross.Amount</code> spent on the ecommerce store. Finally, we calculate the range of amount spent by customers(<code>Gross.Amount</code>)</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="general-statistics.html#cb300-1" tabindex="-1"></a><span class="co"># Maximum amount spent by customers </span></span>
-<span id="cb300-2"><a href="general-statistics.html#cb300-2" tabindex="-1"></a><span class="fu">max</span>(ecommerce<span class="sc">$</span>Gross.Amount)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="general-statistics.html#cb304-1" tabindex="-1"></a><span class="co"># Maximum amount spent by customers </span></span>
+<span id="cb304-2"><a href="general-statistics.html#cb304-2" tabindex="-1"></a><span class="fu">max</span>(ecommerce<span class="sc">$</span>Gross.Amount)</span></code></pre></div>
 <pre><code>## [1] 8394.826</code></pre>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="general-statistics.html#cb302-1" tabindex="-1"></a><span class="co"># Minimum amount spent by customers</span></span>
-<span id="cb302-2"><a href="general-statistics.html#cb302-2" tabindex="-1"></a><span class="fu">min</span>(ecommerce<span class="sc">$</span>Gross.Amount)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="general-statistics.html#cb306-1" tabindex="-1"></a><span class="co"># Minimum amount spent by customers</span></span>
+<span id="cb306-2"><a href="general-statistics.html#cb306-2" tabindex="-1"></a><span class="fu">min</span>(ecommerce<span class="sc">$</span>Gross.Amount)</span></code></pre></div>
 <pre><code>## [1] 136.4543</code></pre>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="general-statistics.html#cb304-1" tabindex="-1"></a><span class="co"># Range </span></span>
-<span id="cb304-2"><a href="general-statistics.html#cb304-2" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(ecommerce<span class="sc">$</span>Gross.Amount))</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="general-statistics.html#cb308-1" tabindex="-1"></a><span class="co"># Range </span></span>
+<span id="cb308-2"><a href="general-statistics.html#cb308-2" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(ecommerce<span class="sc">$</span>Gross.Amount))</span></code></pre></div>
 <pre><code>## [1] 8258.371</code></pre>
 <ol start="5" style="list-style-type: lower-alpha">
 <li><strong>Standard deviation and Variance</strong></li>
@@ -378,25 +405,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Where <span class="math inline">\(S\)</span> is the standard deviation.</p>
 <p>Variance and standard deviation can be calculated in R environment using <code>var()</code> and <code>sd()</code> functions respectively.</p>
 <p>Lets create a vector of weights of the athletes in kilograms and calculate the variance and standard deviation.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="general-statistics.html#cb306-1" tabindex="-1"></a><span class="co"># Sample vector </span></span>
-<span id="cb306-2"><a href="general-statistics.html#cb306-2" tabindex="-1"></a>athlete_weights <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">76</span>, <span class="dv">52</span>, <span class="dv">68</span>, <span class="dv">71</span>, <span class="dv">63</span>, <span class="dv">58</span>, <span class="dv">52</span>, <span class="dv">85</span>, <span class="dv">96</span>)</span>
-<span id="cb306-3"><a href="general-statistics.html#cb306-3" tabindex="-1"></a></span>
-<span id="cb306-4"><a href="general-statistics.html#cb306-4" tabindex="-1"></a><span class="co"># Calculate variance</span></span>
-<span id="cb306-5"><a href="general-statistics.html#cb306-5" tabindex="-1"></a><span class="fu">var</span>(athlete_weights)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="general-statistics.html#cb310-1" tabindex="-1"></a><span class="co"># Sample vector </span></span>
+<span id="cb310-2"><a href="general-statistics.html#cb310-2" tabindex="-1"></a>athlete_weights <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">76</span>, <span class="dv">52</span>, <span class="dv">68</span>, <span class="dv">71</span>, <span class="dv">63</span>, <span class="dv">58</span>, <span class="dv">52</span>, <span class="dv">85</span>, <span class="dv">96</span>)</span>
+<span id="cb310-3"><a href="general-statistics.html#cb310-3" tabindex="-1"></a></span>
+<span id="cb310-4"><a href="general-statistics.html#cb310-4" tabindex="-1"></a><span class="co"># Calculate variance</span></span>
+<span id="cb310-5"><a href="general-statistics.html#cb310-5" tabindex="-1"></a><span class="fu">var</span>(athlete_weights)</span></code></pre></div>
 <pre><code>## [1] 216.7111</code></pre>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="general-statistics.html#cb308-1" tabindex="-1"></a><span class="co"># Calculate the standard deviation</span></span>
-<span id="cb308-2"><a href="general-statistics.html#cb308-2" tabindex="-1"></a><span class="fu">sd</span>(athlete_weights)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="general-statistics.html#cb312-1" tabindex="-1"></a><span class="co"># Calculate the standard deviation</span></span>
+<span id="cb312-2"><a href="general-statistics.html#cb312-2" tabindex="-1"></a><span class="fu">sd</span>(athlete_weights)</span></code></pre></div>
 <pre><code>## [1] 14.72111</code></pre>
 <p>Lets put into real world practice and calculate variance and standard deviation of net amount spent on the ecommerce store.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="general-statistics.html#cb310-1" tabindex="-1"></a><span class="co"># Variance</span></span>
-<span id="cb310-2"><a href="general-statistics.html#cb310-2" tabindex="-1"></a><span class="fu">var</span>(ecommerce<span class="sc">$</span>Net.Amount)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="general-statistics.html#cb314-1" tabindex="-1"></a><span class="co"># Variance</span></span>
+<span id="cb314-2"><a href="general-statistics.html#cb314-2" tabindex="-1"></a><span class="fu">var</span>(ecommerce<span class="sc">$</span>Net.Amount)</span></code></pre></div>
 <pre><code>## [1] 2979517</code></pre>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="general-statistics.html#cb312-1" tabindex="-1"></a><span class="co"># Standard deviation</span></span>
-<span id="cb312-2"><a href="general-statistics.html#cb312-2" tabindex="-1"></a><span class="fu">sd</span>(ecommerce<span class="sc">$</span>Net.Amount)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="general-statistics.html#cb316-1" tabindex="-1"></a><span class="co"># Standard deviation</span></span>
+<span id="cb316-2"><a href="general-statistics.html#cb316-2" tabindex="-1"></a><span class="fu">sd</span>(ecommerce<span class="sc">$</span>Net.Amount)</span></code></pre></div>
 <pre><code>## [1] 1726.128</code></pre>
 <p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>Using the ecommerce data set provided at the beginning of the course, calculate the following metrics for the gross amount with R;</p>
+<ol style="list-style-type: decimal">
+<li>Mean</li>
+<li>Median and IQR</li>
+<li>Maximum, minimum and range</li>
+<li>Standard deviation and variance.</li>
+</ol>
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>
+<ul>
+<li>Read the data set</li>
+</ul>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="general-statistics.html#cb318-1" tabindex="-1"></a>ecommerce <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/ecommerce.csv&quot;</span>)</span>
+<span id="cb318-2"><a href="general-statistics.html#cb318-2" tabindex="-1"></a>gross_amount <span class="ot">&lt;-</span> ecommerce<span class="sc">$</span>Gross.Amount</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>Mean</li>
+</ol>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="general-statistics.html#cb319-1" tabindex="-1"></a><span class="fu">mean</span>(gross_amount)</span></code></pre></div>
+<pre><code>## [1] 3012.937</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Median and IQR</li>
+</ol>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="general-statistics.html#cb321-1" tabindex="-1"></a><span class="co"># Calculate the median</span></span>
+<span id="cb321-2"><a href="general-statistics.html#cb321-2" tabindex="-1"></a><span class="fu">median</span>(gross_amount)</span></code></pre></div>
+<pre><code>## [1] 2954.266</code></pre>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="general-statistics.html#cb323-1" tabindex="-1"></a><span class="co"># Calculate the IQR</span></span>
+<span id="cb323-2"><a href="general-statistics.html#cb323-2" tabindex="-1"></a><span class="fu">IQR</span>(gross_amount)</span></code></pre></div>
+<pre><code>## [1] 2780.11</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Maximum, minimum and range</li>
+</ol>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="general-statistics.html#cb325-1" tabindex="-1"></a><span class="co"># Minimum</span></span>
+<span id="cb325-2"><a href="general-statistics.html#cb325-2" tabindex="-1"></a><span class="fu">min</span>(gross_amount)</span></code></pre></div>
+<pre><code>## [1] 136.4543</code></pre>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="general-statistics.html#cb327-1" tabindex="-1"></a><span class="co"># Maximum </span></span>
+<span id="cb327-2"><a href="general-statistics.html#cb327-2" tabindex="-1"></a><span class="fu">max</span>(gross_amount)</span></code></pre></div>
+<pre><code>## [1] 8394.826</code></pre>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="general-statistics.html#cb329-1" tabindex="-1"></a><span class="co"># Range</span></span>
+<span id="cb329-2"><a href="general-statistics.html#cb329-2" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(gross_amount))</span></code></pre></div>
+<pre><code>## [1] 8258.371</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Standard deviation and variance.</li>
+</ol>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="general-statistics.html#cb331-1" tabindex="-1"></a><span class="co"># Variance </span></span>
+<span id="cb331-2"><a href="general-statistics.html#cb331-2" tabindex="-1"></a><span class="fu">var</span>(gross_amount)</span></code></pre></div>
+<pre><code>## [1] 2953005</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="general-statistics.html#cb333-1" tabindex="-1"></a><span class="co"># Standard deviation</span></span>
+<span id="cb333-2"><a href="general-statistics.html#cb333-2" tabindex="-1"></a><span class="fu">sd</span>(gross_amount)</span></code></pre></div>
+<pre><code>## [1] 1718.431</code></pre>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
 <div id="data-visualization-1" class="section level2 hasAnchor" number="4.2">
@@ -406,115 +480,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The package can be installed by;</p>
 <pre><code>install.packages(&quot;ggplot2&quot;)</code></pre>
 <p>and once the package is installed it is loaded by;</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="general-statistics.html#cb315-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="general-statistics.html#cb336-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <p>Lets create simple charts with the <code>ggplot2</code> package.</p>
 <ol style="list-style-type: lower-alpha">
 <li><strong>Scatter plots</strong></li>
 </ol>
 <p>Scatter plot is used to show the numerical relationship between two or more. Lets create a simple plot.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="general-statistics.html#cb316-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
-<span id="cb316-2"><a href="general-statistics.html#cb316-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb316-3"><a href="general-statistics.html#cb316-3" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
-<span id="cb316-4"><a href="general-statistics.html#cb316-4" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb316-5"><a href="general-statistics.html#cb316-5" tabindex="-1"></a>)</span>
-<span id="cb316-6"><a href="general-statistics.html#cb316-6" tabindex="-1"></a></span>
-<span id="cb316-7"><a href="general-statistics.html#cb316-7" tabindex="-1"></a><span class="co"># Creating a scatter plot</span></span>
-<span id="cb316-8"><a href="general-statistics.html#cb316-8" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="co"># data</span></span>
-<span id="cb316-9"><a href="general-statistics.html#cb316-9" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="co">#aesthetics</span></span>
-<span id="cb316-10"><a href="general-statistics.html#cb316-10" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co">#geometrics</span></span>
-<span id="cb316-11"><a href="general-statistics.html#cb316-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scatter Plot Example&quot;</span>, <span class="at">x =</span> <span class="st">&quot;X Values&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Y Values&quot;</span>) <span class="sc">+</span></span>
-<span id="cb316-12"><a href="general-statistics.html#cb316-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="general-statistics.html#cb337-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb337-2"><a href="general-statistics.html#cb337-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb337-3"><a href="general-statistics.html#cb337-3" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
+<span id="cb337-4"><a href="general-statistics.html#cb337-4" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb337-5"><a href="general-statistics.html#cb337-5" tabindex="-1"></a>)</span>
+<span id="cb337-6"><a href="general-statistics.html#cb337-6" tabindex="-1"></a></span>
+<span id="cb337-7"><a href="general-statistics.html#cb337-7" tabindex="-1"></a><span class="co"># Creating a scatter plot</span></span>
+<span id="cb337-8"><a href="general-statistics.html#cb337-8" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="co"># data</span></span>
+<span id="cb337-9"><a href="general-statistics.html#cb337-9" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="co">#aesthetics</span></span>
+<span id="cb337-10"><a href="general-statistics.html#cb337-10" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co">#geometrics</span></span>
+<span id="cb337-11"><a href="general-statistics.html#cb337-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scatter Plot Example&quot;</span>, <span class="at">x =</span> <span class="st">&quot;X Values&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Y Values&quot;</span>) <span class="sc">+</span></span>
+<span id="cb337-12"><a href="general-statistics.html#cb337-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
 <p><span style="color: orange;"><strong>Try it!</strong></span></p>
 <p>Lets make it more interesting by exploring the real world scenario where we will visualize the relationship between Discount and the Net Amount on the ecommerce store.</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="general-statistics.html#cb317-1" tabindex="-1"></a><span class="co"># Creating a scatter plot</span></span>
-<span id="cb317-2"><a href="general-statistics.html#cb317-2" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ], <span class="co"># first 100 rows of the data</span></span>
-<span id="cb317-3"><a href="general-statistics.html#cb317-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Net.Amount, <span class="at">y =</span> Discount.Amount..INR.)) <span class="sc">+</span> <span class="co">#aesthetics</span></span>
-<span id="cb317-4"><a href="general-statistics.html#cb317-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co">#geometrics</span></span>
-<span id="cb317-5"><a href="general-statistics.html#cb317-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relationship between Net Amount and the Discount&quot;</span>, </span>
-<span id="cb317-6"><a href="general-statistics.html#cb317-6" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Net Amount&quot;</span>, </span>
-<span id="cb317-7"><a href="general-statistics.html#cb317-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Discount&quot;</span>) <span class="sc">+</span></span>
-<span id="cb317-8"><a href="general-statistics.html#cb317-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="general-statistics.html#cb338-1" tabindex="-1"></a><span class="co"># Creating a scatter plot</span></span>
+<span id="cb338-2"><a href="general-statistics.html#cb338-2" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ], <span class="co"># first 100 rows of the data</span></span>
+<span id="cb338-3"><a href="general-statistics.html#cb338-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Net.Amount, <span class="at">y =</span> Discount.Amount..INR.)) <span class="sc">+</span> <span class="co">#aesthetics</span></span>
+<span id="cb338-4"><a href="general-statistics.html#cb338-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co">#geometrics</span></span>
+<span id="cb338-5"><a href="general-statistics.html#cb338-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relationship between Net Amount and the Discount&quot;</span>, </span>
+<span id="cb338-6"><a href="general-statistics.html#cb338-6" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Net Amount&quot;</span>, </span>
+<span id="cb338-7"><a href="general-statistics.html#cb338-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Discount&quot;</span>) <span class="sc">+</span></span>
+<span id="cb338-8"><a href="general-statistics.html#cb338-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
 <p>The scatter chart above shows that there is no clear relationship between the Net Amount spent and the discount offered since at every spending(low, medium or high) had low or high discount. High spending did not necessarily guarantee low or high discount.</p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li><strong>Line Chart</strong></li>
 </ol>
 <p>Line Chart is used to show trend(Growth or fall over time). Let create a simple line chart to show this;</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="general-statistics.html#cb318-1" tabindex="-1"></a><span class="co"># Sample data </span></span>
-<span id="cb318-2"><a href="general-statistics.html#cb318-2" tabindex="-1"></a>dates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;2023-10-01&quot;</span>, <span class="st">&quot;2023-10-05&quot;</span>, <span class="st">&quot;2023-10-10&quot;</span>, <span class="st">&quot;2023-10-15&quot;</span>, <span class="st">&quot;2023-10-20&quot;</span>, <span class="st">&quot;2023-10-25&quot;</span>, <span class="st">&quot;2023-10-30&quot;</span>, <span class="st">&quot;2023-11-04&quot;</span>, <span class="st">&quot;2023-11-09&quot;</span>, <span class="st">&quot;2023-11-14&quot;</span>)</span>
-<span id="cb318-3"><a href="general-statistics.html#cb318-3" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">82</span>, <span class="dv">88</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">87</span>, <span class="dv">92</span>, <span class="dv">95</span>, <span class="dv">98</span>, <span class="dv">100</span>)</span>
-<span id="cb318-4"><a href="general-statistics.html#cb318-4" tabindex="-1"></a></span>
-<span id="cb318-5"><a href="general-statistics.html#cb318-5" tabindex="-1"></a><span class="co"># Create a data frame </span></span>
-<span id="cb318-6"><a href="general-statistics.html#cb318-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb318-7"><a href="general-statistics.html#cb318-7" tabindex="-1"></a>  <span class="at">date =</span> <span class="fu">as.Date</span>(dates),</span>
-<span id="cb318-8"><a href="general-statistics.html#cb318-8" tabindex="-1"></a>  <span class="at">scores =</span> scores</span>
-<span id="cb318-9"><a href="general-statistics.html#cb318-9" tabindex="-1"></a>)</span>
-<span id="cb318-10"><a href="general-statistics.html#cb318-10" tabindex="-1"></a></span>
-<span id="cb318-11"><a href="general-statistics.html#cb318-11" tabindex="-1"></a><span class="co"># Plot a scatter plot </span></span>
-<span id="cb318-12"><a href="general-statistics.html#cb318-12" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="co"># data</span></span>
-<span id="cb318-13"><a href="general-statistics.html#cb318-13" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>scores)) <span class="sc">+</span> </span>
-<span id="cb318-14"><a href="general-statistics.html#cb318-14" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb318-15"><a href="general-statistics.html#cb318-15" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb318-16"><a href="general-statistics.html#cb318-16" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Scores progression from October to November&quot;</span>,</span>
-<span id="cb318-17"><a href="general-statistics.html#cb318-17" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Date&quot;</span>,</span>
-<span id="cb318-18"><a href="general-statistics.html#cb318-18" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Scores&quot;</span></span>
-<span id="cb318-19"><a href="general-statistics.html#cb318-19" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb318-20"><a href="general-statistics.html#cb318-20" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="general-statistics.html#cb339-1" tabindex="-1"></a><span class="co"># Sample data </span></span>
+<span id="cb339-2"><a href="general-statistics.html#cb339-2" tabindex="-1"></a>dates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;2023-10-01&quot;</span>, <span class="st">&quot;2023-10-05&quot;</span>, <span class="st">&quot;2023-10-10&quot;</span>, <span class="st">&quot;2023-10-15&quot;</span>, <span class="st">&quot;2023-10-20&quot;</span>, <span class="st">&quot;2023-10-25&quot;</span>, <span class="st">&quot;2023-10-30&quot;</span>, <span class="st">&quot;2023-11-04&quot;</span>, <span class="st">&quot;2023-11-09&quot;</span>, <span class="st">&quot;2023-11-14&quot;</span>)</span>
+<span id="cb339-3"><a href="general-statistics.html#cb339-3" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">82</span>, <span class="dv">88</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">87</span>, <span class="dv">92</span>, <span class="dv">95</span>, <span class="dv">98</span>, <span class="dv">100</span>)</span>
+<span id="cb339-4"><a href="general-statistics.html#cb339-4" tabindex="-1"></a></span>
+<span id="cb339-5"><a href="general-statistics.html#cb339-5" tabindex="-1"></a><span class="co"># Create a data frame </span></span>
+<span id="cb339-6"><a href="general-statistics.html#cb339-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb339-7"><a href="general-statistics.html#cb339-7" tabindex="-1"></a>  <span class="at">date =</span> <span class="fu">as.Date</span>(dates),</span>
+<span id="cb339-8"><a href="general-statistics.html#cb339-8" tabindex="-1"></a>  <span class="at">scores =</span> scores</span>
+<span id="cb339-9"><a href="general-statistics.html#cb339-9" tabindex="-1"></a>)</span>
+<span id="cb339-10"><a href="general-statistics.html#cb339-10" tabindex="-1"></a></span>
+<span id="cb339-11"><a href="general-statistics.html#cb339-11" tabindex="-1"></a><span class="co"># Plot a scatter plot </span></span>
+<span id="cb339-12"><a href="general-statistics.html#cb339-12" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="co"># data</span></span>
+<span id="cb339-13"><a href="general-statistics.html#cb339-13" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>scores)) <span class="sc">+</span> </span>
+<span id="cb339-14"><a href="general-statistics.html#cb339-14" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb339-15"><a href="general-statistics.html#cb339-15" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb339-16"><a href="general-statistics.html#cb339-16" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Scores progression from October to November&quot;</span>,</span>
+<span id="cb339-17"><a href="general-statistics.html#cb339-17" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Date&quot;</span>,</span>
+<span id="cb339-18"><a href="general-statistics.html#cb339-18" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Scores&quot;</span></span>
+<span id="cb339-19"><a href="general-statistics.html#cb339-19" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb339-20"><a href="general-statistics.html#cb339-20" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 <p>There has a been a gradual increase of scores from October to November.</p>
 <p><span style="color: orange;"><strong>Try it!</strong></span></p>
 <p>Lets put this into a real world scenario. We will plot the Gross Amount spent by Customers over the years at the ecommerce store.</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="general-statistics.html#cb319-1" tabindex="-1"></a><span class="co"># Convert the purchase date to date type </span></span>
-<span id="cb319-2"><a href="general-statistics.html#cb319-2" tabindex="-1"></a>ecommerce<span class="sc">$</span>Purchase.Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(ecommerce<span class="sc">$</span>Purchase.Date)</span>
-<span id="cb319-3"><a href="general-statistics.html#cb319-3" tabindex="-1"></a></span>
-<span id="cb319-4"><a href="general-statistics.html#cb319-4" tabindex="-1"></a><span class="co"># Plot a scatter plot </span></span>
-<span id="cb319-5"><a href="general-statistics.html#cb319-5" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ], <span class="co"># data</span></span>
-<span id="cb319-6"><a href="general-statistics.html#cb319-6" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Purchase.Date, <span class="at">y=</span>Gross.Amount)) <span class="sc">+</span> </span>
-<span id="cb319-7"><a href="general-statistics.html#cb319-7" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb319-8"><a href="general-statistics.html#cb319-8" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb319-9"><a href="general-statistics.html#cb319-9" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Gross Amount spent over time&quot;</span>,</span>
-<span id="cb319-10"><a href="general-statistics.html#cb319-10" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Purchase Date&quot;</span>,</span>
-<span id="cb319-11"><a href="general-statistics.html#cb319-11" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Gross Amount&quot;</span></span>
-<span id="cb319-12"><a href="general-statistics.html#cb319-12" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb319-13"><a href="general-statistics.html#cb319-13" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="general-statistics.html#cb340-1" tabindex="-1"></a><span class="co"># Convert the purchase date to date type </span></span>
+<span id="cb340-2"><a href="general-statistics.html#cb340-2" tabindex="-1"></a>ecommerce<span class="sc">$</span>Purchase.Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(ecommerce<span class="sc">$</span>Purchase.Date)</span>
+<span id="cb340-3"><a href="general-statistics.html#cb340-3" tabindex="-1"></a></span>
+<span id="cb340-4"><a href="general-statistics.html#cb340-4" tabindex="-1"></a><span class="co"># Plot a scatter plot </span></span>
+<span id="cb340-5"><a href="general-statistics.html#cb340-5" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, ], <span class="co"># data</span></span>
+<span id="cb340-6"><a href="general-statistics.html#cb340-6" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Purchase.Date, <span class="at">y=</span>Gross.Amount)) <span class="sc">+</span> </span>
+<span id="cb340-7"><a href="general-statistics.html#cb340-7" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb340-8"><a href="general-statistics.html#cb340-8" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb340-9"><a href="general-statistics.html#cb340-9" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Gross Amount spent over time&quot;</span>,</span>
+<span id="cb340-10"><a href="general-statistics.html#cb340-10" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Purchase Date&quot;</span>,</span>
+<span id="cb340-11"><a href="general-statistics.html#cb340-11" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Gross Amount&quot;</span></span>
+<span id="cb340-12"><a href="general-statistics.html#cb340-12" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb340-13"><a href="general-statistics.html#cb340-13" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p>There has been gradual spikes of rise and fall of the amount spent on the store.</p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li><strong>Histograms and Density Plots</strong></li>
 </ol>
 <p>Histograms and Density plots are used to show the distribution of continuous variables. Histogram is visually similar to the bar chart however it is used show frequency and distribution across a list-like data set(vectors, lists, sets, arrays, etc) that stores continuous numeric values. The count of observation within a certain range of values are displayed.</p>
 <p>Lets create a vector of random 100 ages and plot the data to a histogram.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="general-statistics.html#cb320-1" tabindex="-1"></a><span class="co"># Generate random 1000 ages between 0 and 100</span></span>
-<span id="cb320-2"><a href="general-statistics.html#cb320-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb320-3"><a href="general-statistics.html#cb320-3" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb320-4"><a href="general-statistics.html#cb320-4" tabindex="-1"></a></span>
-<span id="cb320-5"><a href="general-statistics.html#cb320-5" tabindex="-1"></a><span class="co"># Create a data frame to use with ggplot</span></span>
-<span id="cb320-6"><a href="general-statistics.html#cb320-6" tabindex="-1"></a>age_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Age =</span> ages)</span>
-<span id="cb320-7"><a href="general-statistics.html#cb320-7" tabindex="-1"></a></span>
-<span id="cb320-8"><a href="general-statistics.html#cb320-8" tabindex="-1"></a><span class="co"># PLOTTING</span></span>
-<span id="cb320-9"><a href="general-statistics.html#cb320-9" tabindex="-1"></a><span class="co"># Create the histogram using ggplot</span></span>
-<span id="cb320-10"><a href="general-statistics.html#cb320-10" tabindex="-1"></a><span class="fu">ggplot</span>(age_data, <span class="fu">aes</span>(<span class="at">x =</span> Age)) <span class="sc">+</span></span>
-<span id="cb320-11"><a href="general-statistics.html#cb320-11" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb320-12"><a href="general-statistics.html#cb320-12" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb320-13"><a href="general-statistics.html#cb320-13" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Histogram of Randomly Generated Ages&quot;</span>, </span>
-<span id="cb320-14"><a href="general-statistics.html#cb320-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
-<span id="cb320-15"><a href="general-statistics.html#cb320-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
-<span id="cb320-16"><a href="general-statistics.html#cb320-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="general-statistics.html#cb341-1" tabindex="-1"></a><span class="co"># Generate random 1000 ages between 0 and 100</span></span>
+<span id="cb341-2"><a href="general-statistics.html#cb341-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb341-3"><a href="general-statistics.html#cb341-3" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb341-4"><a href="general-statistics.html#cb341-4" tabindex="-1"></a></span>
+<span id="cb341-5"><a href="general-statistics.html#cb341-5" tabindex="-1"></a><span class="co"># Create a data frame to use with ggplot</span></span>
+<span id="cb341-6"><a href="general-statistics.html#cb341-6" tabindex="-1"></a>age_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Age =</span> ages)</span>
+<span id="cb341-7"><a href="general-statistics.html#cb341-7" tabindex="-1"></a></span>
+<span id="cb341-8"><a href="general-statistics.html#cb341-8" tabindex="-1"></a><span class="co"># PLOTTING</span></span>
+<span id="cb341-9"><a href="general-statistics.html#cb341-9" tabindex="-1"></a><span class="co"># Create the histogram using ggplot</span></span>
+<span id="cb341-10"><a href="general-statistics.html#cb341-10" tabindex="-1"></a><span class="fu">ggplot</span>(age_data, <span class="fu">aes</span>(<span class="at">x =</span> Age)) <span class="sc">+</span></span>
+<span id="cb341-11"><a href="general-statistics.html#cb341-11" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb341-12"><a href="general-statistics.html#cb341-12" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb341-13"><a href="general-statistics.html#cb341-13" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Histogram of Randomly Generated Ages&quot;</span>, </span>
+<span id="cb341-14"><a href="general-statistics.html#cb341-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
+<span id="cb341-15"><a href="general-statistics.html#cb341-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb341-16"><a href="general-statistics.html#cb341-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
 <p>The bins are groups of ages ranging 5 years</p>
 <p><span style="color: orange;"><strong>Try it!</strong></span></p>
 <p>Lets put his into action and plot the distribution of Discount offered on the ecommerce store</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="general-statistics.html#cb321-1" tabindex="-1"></a><span class="co"># Create the histogram using ggplot</span></span>
-<span id="cb321-2"><a href="general-statistics.html#cb321-2" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce, </span>
-<span id="cb321-3"><a href="general-statistics.html#cb321-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Discount.Amount..INR.)) <span class="sc">+</span></span>
-<span id="cb321-4"><a href="general-statistics.html#cb321-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb321-5"><a href="general-statistics.html#cb321-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb321-6"><a href="general-statistics.html#cb321-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Histogram of Discount offered&quot;</span>, </span>
-<span id="cb321-7"><a href="general-statistics.html#cb321-7" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Discount&quot;</span>, </span>
-<span id="cb321-8"><a href="general-statistics.html#cb321-8" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
-<span id="cb321-9"><a href="general-statistics.html#cb321-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="general-statistics.html#cb342-1" tabindex="-1"></a><span class="co"># Create the histogram using ggplot</span></span>
+<span id="cb342-2"><a href="general-statistics.html#cb342-2" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce, </span>
+<span id="cb342-3"><a href="general-statistics.html#cb342-3" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Discount.Amount..INR.)) <span class="sc">+</span></span>
+<span id="cb342-4"><a href="general-statistics.html#cb342-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb342-5"><a href="general-statistics.html#cb342-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb342-6"><a href="general-statistics.html#cb342-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Histogram of Discount offered&quot;</span>, </span>
+<span id="cb342-7"><a href="general-statistics.html#cb342-7" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Discount&quot;</span>, </span>
+<span id="cb342-8"><a href="general-statistics.html#cb342-8" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb342-9"><a href="general-statistics.html#cb342-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
 <p>The distribution is right skewed and most of the customers in the store were offered very low discount for their purchases.</p>
 <p><strong>Check it later and speak about density plots</strong></p>
 <ol start="4" style="list-style-type: lower-alpha">
@@ -530,74 +604,150 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>There are many more uses of bar charts however there are some use cases where bar charts are not preferred like when working with continuous data, scatter and line charts are more befitting. Also, bar charts are not appropriate where data has too many categories, heatmaps will do better.</p>
 <p>To create a simple bar chart using <code>ggplot2</code>, we use <code>geom_bar</code> to define that its a bar chart.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="general-statistics.html#cb322-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
-<span id="cb322-2"><a href="general-statistics.html#cb322-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb322-3"><a href="general-statistics.html#cb322-3" tabindex="-1"></a>  <span class="at">category =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>),</span>
-<span id="cb322-4"><a href="general-statistics.html#cb322-4" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">17</span>, <span class="dv">35</span>, <span class="dv">10</span>)</span>
-<span id="cb322-5"><a href="general-statistics.html#cb322-5" tabindex="-1"></a>)</span>
-<span id="cb322-6"><a href="general-statistics.html#cb322-6" tabindex="-1"></a></span>
-<span id="cb322-7"><a href="general-statistics.html#cb322-7" tabindex="-1"></a><span class="do">## The data set above will be used to create a bar chart</span></span>
-<span id="cb322-8"><a href="general-statistics.html#cb322-8" tabindex="-1"></a><span class="co"># Creating a bar chart</span></span>
-<span id="cb322-9"><a href="general-statistics.html#cb322-9" tabindex="-1"></a><span class="fu">ggplot</span>(df, </span>
-<span id="cb322-10"><a href="general-statistics.html#cb322-10" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> category, <span class="at">y =</span> value)) <span class="sc">+</span></span>
-<span id="cb322-11"><a href="general-statistics.html#cb322-11" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
-<span id="cb322-12"><a href="general-statistics.html#cb322-12" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb322-13"><a href="general-statistics.html#cb322-13" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Value by Category&quot;</span>, </span>
-<span id="cb322-14"><a href="general-statistics.html#cb322-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Category&quot;</span>, </span>
-<span id="cb322-15"><a href="general-statistics.html#cb322-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Value&quot;</span>) <span class="sc">+</span></span>
-<span id="cb322-16"><a href="general-statistics.html#cb322-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="general-statistics.html#cb343-1" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb343-2"><a href="general-statistics.html#cb343-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb343-3"><a href="general-statistics.html#cb343-3" tabindex="-1"></a>  <span class="at">category =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>),</span>
+<span id="cb343-4"><a href="general-statistics.html#cb343-4" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">17</span>, <span class="dv">35</span>, <span class="dv">10</span>)</span>
+<span id="cb343-5"><a href="general-statistics.html#cb343-5" tabindex="-1"></a>)</span>
+<span id="cb343-6"><a href="general-statistics.html#cb343-6" tabindex="-1"></a></span>
+<span id="cb343-7"><a href="general-statistics.html#cb343-7" tabindex="-1"></a><span class="do">## The data set above will be used to create a bar chart</span></span>
+<span id="cb343-8"><a href="general-statistics.html#cb343-8" tabindex="-1"></a><span class="co"># Creating a bar chart</span></span>
+<span id="cb343-9"><a href="general-statistics.html#cb343-9" tabindex="-1"></a><span class="fu">ggplot</span>(df, </span>
+<span id="cb343-10"><a href="general-statistics.html#cb343-10" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> category, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb343-11"><a href="general-statistics.html#cb343-11" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb343-12"><a href="general-statistics.html#cb343-12" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb343-13"><a href="general-statistics.html#cb343-13" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Value by Category&quot;</span>, </span>
+<span id="cb343-14"><a href="general-statistics.html#cb343-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Category&quot;</span>, </span>
+<span id="cb343-15"><a href="general-statistics.html#cb343-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Value&quot;</span>) <span class="sc">+</span></span>
+<span id="cb343-16"><a href="general-statistics.html#cb343-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 <p>From the bar chart above, Category “C” has the largest value while category “D” has the lowest value.</p>
 <p><span style="color: orange;"><strong>Try it!</strong></span></p>
 <p>Lets create a bar chart of a real world scenario. We will calculate the average Gross amount spent by different age groups in the ecommerce store.</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="general-statistics.html#cb323-1" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb323-2"><a href="general-statistics.html#cb323-2" tabindex="-1"></a></span>
-<span id="cb323-3"><a href="general-statistics.html#cb323-3" tabindex="-1"></a><span class="co"># Aggregate by mean</span></span>
-<span id="cb323-4"><a href="general-statistics.html#cb323-4" tabindex="-1"></a>PurchasebyAge <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Gross.Amount <span class="sc">~</span> Age.Group,</span>
-<span id="cb323-5"><a href="general-statistics.html#cb323-5" tabindex="-1"></a>                           <span class="at">data =</span> ecommerce,</span>
-<span id="cb323-6"><a href="general-statistics.html#cb323-6" tabindex="-1"></a>                           <span class="at">FUN =</span> mean</span>
-<span id="cb323-7"><a href="general-statistics.html#cb323-7" tabindex="-1"></a>                           )</span>
-<span id="cb323-8"><a href="general-statistics.html#cb323-8" tabindex="-1"></a></span>
-<span id="cb323-9"><a href="general-statistics.html#cb323-9" tabindex="-1"></a><span class="co"># Plot a bar chart</span></span>
-<span id="cb323-10"><a href="general-statistics.html#cb323-10" tabindex="-1"></a><span class="fu">ggplot</span>(PurchasebyAge, </span>
-<span id="cb323-11"><a href="general-statistics.html#cb323-11" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age.Group, <span class="at">y =</span> Gross.Amount)) <span class="sc">+</span></span>
-<span id="cb323-12"><a href="general-statistics.html#cb323-12" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;blue&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb323-13"><a href="general-statistics.html#cb323-13" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb323-14"><a href="general-statistics.html#cb323-14" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Average Gross Amount by Age Group&quot;</span>, </span>
-<span id="cb323-15"><a href="general-statistics.html#cb323-15" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age Group&quot;</span>, </span>
-<span id="cb323-16"><a href="general-statistics.html#cb323-16" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Average Gross Amount&quot;</span>) <span class="sc">+</span></span>
-<span id="cb323-17"><a href="general-statistics.html#cb323-17" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="general-statistics.html#cb344-1" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb344-2"><a href="general-statistics.html#cb344-2" tabindex="-1"></a></span>
+<span id="cb344-3"><a href="general-statistics.html#cb344-3" tabindex="-1"></a><span class="co"># Aggregate by mean</span></span>
+<span id="cb344-4"><a href="general-statistics.html#cb344-4" tabindex="-1"></a>PurchasebyAge <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Gross.Amount <span class="sc">~</span> Age.Group,</span>
+<span id="cb344-5"><a href="general-statistics.html#cb344-5" tabindex="-1"></a>                           <span class="at">data =</span> ecommerce,</span>
+<span id="cb344-6"><a href="general-statistics.html#cb344-6" tabindex="-1"></a>                           <span class="at">FUN =</span> mean</span>
+<span id="cb344-7"><a href="general-statistics.html#cb344-7" tabindex="-1"></a>                           )</span>
+<span id="cb344-8"><a href="general-statistics.html#cb344-8" tabindex="-1"></a></span>
+<span id="cb344-9"><a href="general-statistics.html#cb344-9" tabindex="-1"></a><span class="co"># Plot a bar chart</span></span>
+<span id="cb344-10"><a href="general-statistics.html#cb344-10" tabindex="-1"></a><span class="fu">ggplot</span>(PurchasebyAge, </span>
+<span id="cb344-11"><a href="general-statistics.html#cb344-11" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age.Group, <span class="at">y =</span> Gross.Amount)) <span class="sc">+</span></span>
+<span id="cb344-12"><a href="general-statistics.html#cb344-12" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;blue&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb344-13"><a href="general-statistics.html#cb344-13" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb344-14"><a href="general-statistics.html#cb344-14" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Average Gross Amount by Age Group&quot;</span>, </span>
+<span id="cb344-15"><a href="general-statistics.html#cb344-15" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age Group&quot;</span>, </span>
+<span id="cb344-16"><a href="general-statistics.html#cb344-16" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Average Gross Amount&quot;</span>) <span class="sc">+</span></span>
+<span id="cb344-17"><a href="general-statistics.html#cb344-17" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
 <p>All the age group had an almost equal average spending on the ecommerce store.</p>
 <p>What if we calculated the total spending for each age group? That would be interesting! Lets calculate and plot a bar chart to represent that.</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="general-statistics.html#cb324-1" tabindex="-1"></a><span class="co"># Aggregate by sum</span></span>
-<span id="cb324-2"><a href="general-statistics.html#cb324-2" tabindex="-1"></a>PurchasebyAge <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Gross.Amount <span class="sc">~</span> Age.Group,</span>
-<span id="cb324-3"><a href="general-statistics.html#cb324-3" tabindex="-1"></a>                           <span class="at">data =</span> ecommerce,</span>
-<span id="cb324-4"><a href="general-statistics.html#cb324-4" tabindex="-1"></a>                           <span class="at">FUN =</span> sum</span>
-<span id="cb324-5"><a href="general-statistics.html#cb324-5" tabindex="-1"></a>                           )</span>
-<span id="cb324-6"><a href="general-statistics.html#cb324-6" tabindex="-1"></a></span>
-<span id="cb324-7"><a href="general-statistics.html#cb324-7" tabindex="-1"></a><span class="co"># Plot a bar chart</span></span>
-<span id="cb324-8"><a href="general-statistics.html#cb324-8" tabindex="-1"></a><span class="fu">ggplot</span>(PurchasebyAge, </span>
-<span id="cb324-9"><a href="general-statistics.html#cb324-9" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age.Group, <span class="at">y =</span> Gross.Amount)) <span class="sc">+</span></span>
-<span id="cb324-10"><a href="general-statistics.html#cb324-10" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;blue&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
-<span id="cb324-11"><a href="general-statistics.html#cb324-11" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb324-12"><a href="general-statistics.html#cb324-12" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Total Gross Amount by Age Group&quot;</span>, </span>
-<span id="cb324-13"><a href="general-statistics.html#cb324-13" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age Group&quot;</span>, </span>
-<span id="cb324-14"><a href="general-statistics.html#cb324-14" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Total Gross Amount&quot;</span>) <span class="sc">+</span></span>
-<span id="cb324-15"><a href="general-statistics.html#cb324-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="general-statistics.html#cb345-1" tabindex="-1"></a><span class="co"># Aggregate by sum</span></span>
+<span id="cb345-2"><a href="general-statistics.html#cb345-2" tabindex="-1"></a>PurchasebyAge <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Gross.Amount <span class="sc">~</span> Age.Group,</span>
+<span id="cb345-3"><a href="general-statistics.html#cb345-3" tabindex="-1"></a>                           <span class="at">data =</span> ecommerce,</span>
+<span id="cb345-4"><a href="general-statistics.html#cb345-4" tabindex="-1"></a>                           <span class="at">FUN =</span> sum</span>
+<span id="cb345-5"><a href="general-statistics.html#cb345-5" tabindex="-1"></a>                           )</span>
+<span id="cb345-6"><a href="general-statistics.html#cb345-6" tabindex="-1"></a></span>
+<span id="cb345-7"><a href="general-statistics.html#cb345-7" tabindex="-1"></a><span class="co"># Plot a bar chart</span></span>
+<span id="cb345-8"><a href="general-statistics.html#cb345-8" tabindex="-1"></a><span class="fu">ggplot</span>(PurchasebyAge, </span>
+<span id="cb345-9"><a href="general-statistics.html#cb345-9" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Age.Group, <span class="at">y =</span> Gross.Amount)) <span class="sc">+</span></span>
+<span id="cb345-10"><a href="general-statistics.html#cb345-10" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;blue&quot;</span>, <span class="at">color=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb345-11"><a href="general-statistics.html#cb345-11" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb345-12"><a href="general-statistics.html#cb345-12" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Total Gross Amount by Age Group&quot;</span>, </span>
+<span id="cb345-13"><a href="general-statistics.html#cb345-13" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age Group&quot;</span>, </span>
+<span id="cb345-14"><a href="general-statistics.html#cb345-14" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Total Gross Amount&quot;</span>) <span class="sc">+</span></span>
+<span id="cb345-15"><a href="general-statistics.html#cb345-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
 <p>Age 25 - 45 had the highest total spending in the ecommerce store while age of 60 and above had the least total spending.</p>
-<ol start="5" style="list-style-type: lower-alpha">
-<li><strong>Pie Charts</strong></li>
-</ol>
-<p><strong>______Explain about pie charts________</strong></p>
 <ol start="6" style="list-style-type: lower-alpha">
 <li><strong>Boxplots and Violin Plots</strong></li>
 </ol>
-<p><strong>_______Explain about outliers using box plots_______</strong></p>
+<p>Box plot is a type of chart that uses boxes and lines to show distributions of one or more groups of a continuous numeric data. They provide a high-level information at a glance for instance the data symmetry, skew and variance. They can also be used to show outliers within a data set. This is the only chart that can effectively give the measure of spread and central tendency(median, quartiles and range).</p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>We will plot a boxplot of the Net Amount spent on the ecommerce store.</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="general-statistics.html#cb346-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb346-2"><a href="general-statistics.html#cb346-2" tabindex="-1"></a></span>
+<span id="cb346-3"><a href="general-statistics.html#cb346-3" tabindex="-1"></a><span class="co"># Plot a boxplot</span></span>
+<span id="cb346-4"><a href="general-statistics.html#cb346-4" tabindex="-1"></a><span class="fu">ggplot</span>(ecommerce, <span class="fu">aes</span>(<span class="at">y=</span>Net.Amount))<span class="sc">+</span></span>
+<span id="cb346-5"><a href="general-statistics.html#cb346-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p>The upper and lower boundaries represents the upper(Q3) and lower(Q1) quartiles respectively. In out case the upper quartile is about 4200INR and the lower quartile is approximately 1500. The median is represented by the line cutting through the box, whereby in our case is approximately 2800 INR. The maximum value is the uppermost point of the boxplot which is approximately 8300INR. Finally, the minimum is the bottom of the plot which is approximately 350INR.</p>
 <p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>To enhance your understanding in basic data visualizations, you will be required to use the inbuilt diamonds data set and follow the instructions below.</p>
+<ol style="list-style-type: lower-roman">
+<li>Plot a bar chart to show the count of diamonds by <code>cut</code> quality.</li>
+<li>Generate a scatter plot to show the relationship between <code>carat</code> and <code>price</code>.</li>
+<li>Plot a histogram of the <code>price</code> of diamonds.</li>
+<li>Create a boxplot to compare the price distributions across different different diamond <code>color</code> categories.</li>
+<li>Visualize the male and female passengers in each class.</li>
+</ol>
+<p><strong>Hint: </strong> The titanic data set is loaded as below</p>
+<pre><code>data(&quot;diamonds&quot;)</code></pre>
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>
+<ul>
+<li>Load the required libraries and data set.</li>
+</ul>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="general-statistics.html#cb348-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># library for visualization</span></span>
+<span id="cb348-2"><a href="general-statistics.html#cb348-2" tabindex="-1"></a></span>
+<span id="cb348-3"><a href="general-statistics.html#cb348-3" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;diamonds&quot;</span>) <span class="co"># Load diamonds data </span></span></code></pre></div>
+<ol style="list-style-type: lower-roman">
+<li>Plot a bar chart to show the count of diamonds by <code>cut</code> quality.</li>
+</ol>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="general-statistics.html#cb349-1" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, </span>
+<span id="cb349-2"><a href="general-statistics.html#cb349-2" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x=</span>cut)) <span class="sc">+</span> </span>
+<span id="cb349-3"><a href="general-statistics.html#cb349-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb349-4"><a href="general-statistics.html#cb349-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb349-5"><a href="general-statistics.html#cb349-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Count of diamonds by cut&quot;</span>,</span>
+<span id="cb349-6"><a href="general-statistics.html#cb349-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Cut Quality&quot;</span>,</span>
+<span id="cb349-7"><a href="general-statistics.html#cb349-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Count&quot;</span></span>
+<span id="cb349-8"><a href="general-statistics.html#cb349-8" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb349-9"><a href="general-statistics.html#cb349-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
+<p>Most diamonds had an ideal cut quality while least of them had a fair cut quality</p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Generate a scatter plot to show the relationship between <code>carat</code> and <code>price</code>.</li>
+</ol>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="general-statistics.html#cb350-1" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds,</span>
+<span id="cb350-2"><a href="general-statistics.html#cb350-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb350-3"><a href="general-statistics.html#cb350-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb350-4"><a href="general-statistics.html#cb350-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb350-5"><a href="general-statistics.html#cb350-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Carat vs Price&quot;</span>, </span>
+<span id="cb350-6"><a href="general-statistics.html#cb350-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Carat&quot;</span>,</span>
+<span id="cb350-7"><a href="general-statistics.html#cb350-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Price&quot;</span></span>
+<span id="cb350-8"><a href="general-statistics.html#cb350-8" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb350-9"><a href="general-statistics.html#cb350-9" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
+<p>The relationship between Carat and Price was almost directly proportional where higher carat was equal to higher prices.</p>
+<ol start="3" style="list-style-type: lower-roman">
+<li>Plot a histogram of the <code>price</code> of diamonds.</li>
+</ol>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="general-statistics.html#cb351-1" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, </span>
+<span id="cb351-2"><a href="general-statistics.html#cb351-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> </span>
+<span id="cb351-3"><a href="general-statistics.html#cb351-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>, <span class="at">fill=</span><span class="st">&quot;orange&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb351-4"><a href="general-statistics.html#cb351-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb351-5"><a href="general-statistics.html#cb351-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Diamond Prices distribution&quot;</span>, </span>
+<span id="cb351-6"><a href="general-statistics.html#cb351-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Price&quot;</span>, </span>
+<span id="cb351-7"><a href="general-statistics.html#cb351-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Count&quot;</span></span>
+<span id="cb351-8"><a href="general-statistics.html#cb351-8" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb351-9"><a href="general-statistics.html#cb351-9" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p>The distribution of diamond prices was right-skewed. Most of the diamonds had prices lower than 5000</p>
+<ol start="4" style="list-style-type: lower-roman">
+<li>Create a boxplot to compare the price distributions across different different diamond <code>color</code> categories.</li>
+</ol>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="general-statistics.html#cb352-1" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds,</span>
+<span id="cb352-2"><a href="general-statistics.html#cb352-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>color, <span class="at">y=</span>price, <span class="at">fill=</span>color)) <span class="sc">+</span> </span>
+<span id="cb352-3"><a href="general-statistics.html#cb352-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb352-4"><a href="general-statistics.html#cb352-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb352-5"><a href="general-statistics.html#cb352-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Diamond Prices distribution by color&quot;</span>, </span>
+<span id="cb352-6"><a href="general-statistics.html#cb352-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Diamond color&quot;</span>,</span>
+<span id="cb352-7"><a href="general-statistics.html#cb352-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Price&quot;</span></span>
+<span id="cb352-8"><a href="general-statistics.html#cb352-8" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb352-9"><a href="general-statistics.html#cb352-9" tabindex="-1"></a>  <span class="fu">theme_dark</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
 <div id="inferential-statistics" class="section level2 hasAnchor" number="4.3">
@@ -654,21 +804,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>P-value is the probability value that tells you how likely is that your data could have occurred under null hypothesis. In our case a p-value of below 0.05 is considered to be statistically significant and the null value is rejected. The vice versa is true</p>
 <p>Lets perform a t-test using R;</p>
 <p>We will generate sample data</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="general-statistics.html#cb325-1" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
-<span id="cb325-2"><a href="general-statistics.html#cb325-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb325-3"><a href="general-statistics.html#cb325-3" tabindex="-1"></a></span>
-<span id="cb325-4"><a href="general-statistics.html#cb325-4" tabindex="-1"></a><span class="co"># Generate random student marks (out of 100)</span></span>
-<span id="cb325-5"><a href="general-statistics.html#cb325-5" tabindex="-1"></a>student_marks <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">65</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
-<span id="cb325-6"><a href="general-statistics.html#cb325-6" tabindex="-1"></a></span>
-<span id="cb325-7"><a href="general-statistics.html#cb325-7" tabindex="-1"></a><span class="co"># Display the first few marks</span></span>
-<span id="cb325-8"><a href="general-statistics.html#cb325-8" tabindex="-1"></a><span class="fu">head</span>(student_marks)</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="general-statistics.html#cb353-1" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb353-2"><a href="general-statistics.html#cb353-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb353-3"><a href="general-statistics.html#cb353-3" tabindex="-1"></a></span>
+<span id="cb353-4"><a href="general-statistics.html#cb353-4" tabindex="-1"></a><span class="co"># Generate random student marks (out of 100)</span></span>
+<span id="cb353-5"><a href="general-statistics.html#cb353-5" tabindex="-1"></a>student_marks <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">65</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb353-6"><a href="general-statistics.html#cb353-6" tabindex="-1"></a></span>
+<span id="cb353-7"><a href="general-statistics.html#cb353-7" tabindex="-1"></a><span class="co"># Display the first few marks</span></span>
+<span id="cb353-8"><a href="general-statistics.html#cb353-8" tabindex="-1"></a><span class="fu">head</span>(student_marks)</span></code></pre></div>
 <pre><code>## [1] 59.39524 62.69823 80.58708 65.70508 66.29288 82.15065</code></pre>
 <p>Perform the t-test</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="general-statistics.html#cb327-1" tabindex="-1"></a><span class="co"># Conduct one-sample t-test</span></span>
-<span id="cb327-2"><a href="general-statistics.html#cb327-2" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(student_marks, <span class="at">mu =</span> <span class="dv">70</span>)</span>
-<span id="cb327-3"><a href="general-statistics.html#cb327-3" tabindex="-1"></a></span>
-<span id="cb327-4"><a href="general-statistics.html#cb327-4" tabindex="-1"></a><span class="co"># Display the t-test result</span></span>
-<span id="cb327-5"><a href="general-statistics.html#cb327-5" tabindex="-1"></a><span class="fu">print</span>(t_test_result)</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="general-statistics.html#cb355-1" tabindex="-1"></a><span class="co"># Conduct one-sample t-test</span></span>
+<span id="cb355-2"><a href="general-statistics.html#cb355-2" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(student_marks, <span class="at">mu =</span> <span class="dv">70</span>)</span>
+<span id="cb355-3"><a href="general-statistics.html#cb355-3" tabindex="-1"></a></span>
+<span id="cb355-4"><a href="general-statistics.html#cb355-4" tabindex="-1"></a><span class="co"># Display the t-test result</span></span>
+<span id="cb355-5"><a href="general-statistics.html#cb355-5" tabindex="-1"></a><span class="fu">print</span>(t_test_result)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -689,23 +839,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the setosa sepal length and the pre-assumed mean</li>
 </ul>
 <p><strong>Note</strong>: If the pre-assumed mean is not given in the question therefore the whole population mean is used(as the pre-assumed mean). In this case, the setosa sepal length mean of the whole iris species.</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="general-statistics.html#cb329-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb329-2"><a href="general-statistics.html#cb329-2" tabindex="-1"></a><span class="co"># Load the data</span></span>
-<span id="cb329-3"><a href="general-statistics.html#cb329-3" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb329-4"><a href="general-statistics.html#cb329-4" tabindex="-1"></a></span>
-<span id="cb329-5"><a href="general-statistics.html#cb329-5" tabindex="-1"></a><span class="co"># Get the setosa sepal length</span></span>
-<span id="cb329-6"><a href="general-statistics.html#cb329-6" tabindex="-1"></a>setosa <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
-<span id="cb329-7"><a href="general-statistics.html#cb329-7" tabindex="-1"></a>  <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>)</span>
-<span id="cb329-8"><a href="general-statistics.html#cb329-8" tabindex="-1"></a></span>
-<span id="cb329-9"><a href="general-statistics.html#cb329-9" tabindex="-1"></a>setosa.sepal.length <span class="ot">&lt;-</span> setosa<span class="sc">$</span>Sepal.Length</span>
-<span id="cb329-10"><a href="general-statistics.html#cb329-10" tabindex="-1"></a></span>
-<span id="cb329-11"><a href="general-statistics.html#cb329-11" tabindex="-1"></a><span class="co"># Calculate one-sample ttest </span></span>
-<span id="cb329-12"><a href="general-statistics.html#cb329-12" tabindex="-1"></a><span class="do">## Set the pre-assumed mean </span></span>
-<span id="cb329-13"><a href="general-statistics.html#cb329-13" tabindex="-1"></a>pre_assumed_mean <span class="ot">&lt;-</span> <span class="fl">5.84</span> <span class="co"># as in the question</span></span>
-<span id="cb329-14"><a href="general-statistics.html#cb329-14" tabindex="-1"></a></span>
-<span id="cb329-15"><a href="general-statistics.html#cb329-15" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(setosa.sepal.length, <span class="at">mu =</span> pre_assumed_mean)</span>
-<span id="cb329-16"><a href="general-statistics.html#cb329-16" tabindex="-1"></a></span>
-<span id="cb329-17"><a href="general-statistics.html#cb329-17" tabindex="-1"></a><span class="fu">print</span>(t_test_result)</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="general-statistics.html#cb357-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb357-2"><a href="general-statistics.html#cb357-2" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb357-3"><a href="general-statistics.html#cb357-3" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb357-4"><a href="general-statistics.html#cb357-4" tabindex="-1"></a></span>
+<span id="cb357-5"><a href="general-statistics.html#cb357-5" tabindex="-1"></a><span class="co"># Get the setosa sepal length</span></span>
+<span id="cb357-6"><a href="general-statistics.html#cb357-6" tabindex="-1"></a>setosa <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb357-7"><a href="general-statistics.html#cb357-7" tabindex="-1"></a>  <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;setosa&quot;</span>)</span>
+<span id="cb357-8"><a href="general-statistics.html#cb357-8" tabindex="-1"></a></span>
+<span id="cb357-9"><a href="general-statistics.html#cb357-9" tabindex="-1"></a>setosa.sepal.length <span class="ot">&lt;-</span> setosa<span class="sc">$</span>Sepal.Length</span>
+<span id="cb357-10"><a href="general-statistics.html#cb357-10" tabindex="-1"></a></span>
+<span id="cb357-11"><a href="general-statistics.html#cb357-11" tabindex="-1"></a><span class="co"># Calculate one-sample ttest </span></span>
+<span id="cb357-12"><a href="general-statistics.html#cb357-12" tabindex="-1"></a><span class="do">## Set the pre-assumed mean </span></span>
+<span id="cb357-13"><a href="general-statistics.html#cb357-13" tabindex="-1"></a>pre_assumed_mean <span class="ot">&lt;-</span> <span class="fl">5.84</span> <span class="co"># as in the question</span></span>
+<span id="cb357-14"><a href="general-statistics.html#cb357-14" tabindex="-1"></a></span>
+<span id="cb357-15"><a href="general-statistics.html#cb357-15" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(setosa.sepal.length, <span class="at">mu =</span> pre_assumed_mean)</span>
+<span id="cb357-16"><a href="general-statistics.html#cb357-16" tabindex="-1"></a></span>
+<span id="cb357-17"><a href="general-statistics.html#cb357-17" tabindex="-1"></a><span class="fu">print</span>(t_test_result)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -739,22 +889,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are the sample sizes of the first and second sample respectively.</li>
 </ul>
 <p>Let create a random population of student scores for two classes and perform two-sample t-test in R;</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="general-statistics.html#cb331-1" tabindex="-1"></a><span class="co"># Generate the population sample</span></span>
-<span id="cb331-2"><a href="general-statistics.html#cb331-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb331-3"><a href="general-statistics.html#cb331-3" tabindex="-1"></a>group_A_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">8</span>)  <span class="co"># Group A</span></span>
-<span id="cb331-4"><a href="general-statistics.html#cb331-4" tabindex="-1"></a>group_B_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">10</span>)  <span class="co"># Group B</span></span>
-<span id="cb331-5"><a href="general-statistics.html#cb331-5" tabindex="-1"></a></span>
-<span id="cb331-6"><a href="general-statistics.html#cb331-6" tabindex="-1"></a><span class="co"># Display the first few scores of each group</span></span>
-<span id="cb331-7"><a href="general-statistics.html#cb331-7" tabindex="-1"></a><span class="fu">head</span>(group_A_scores)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="general-statistics.html#cb359-1" tabindex="-1"></a><span class="co"># Generate the population sample</span></span>
+<span id="cb359-2"><a href="general-statistics.html#cb359-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb359-3"><a href="general-statistics.html#cb359-3" tabindex="-1"></a>group_A_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">8</span>)  <span class="co"># Group A</span></span>
+<span id="cb359-4"><a href="general-statistics.html#cb359-4" tabindex="-1"></a>group_B_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">10</span>)  <span class="co"># Group B</span></span>
+<span id="cb359-5"><a href="general-statistics.html#cb359-5" tabindex="-1"></a></span>
+<span id="cb359-6"><a href="general-statistics.html#cb359-6" tabindex="-1"></a><span class="co"># Display the first few scores of each group</span></span>
+<span id="cb359-7"><a href="general-statistics.html#cb359-7" tabindex="-1"></a><span class="fu">head</span>(group_A_scores)</span></code></pre></div>
 <pre><code>## [1] 70.51619 73.15858 87.46967 75.56407 76.03430 88.72052</code></pre>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="general-statistics.html#cb333-1" tabindex="-1"></a><span class="fu">head</span>(group_B_scores)</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="general-statistics.html#cb361-1" tabindex="-1"></a><span class="fu">head</span>(group_B_scores)</span></code></pre></div>
 <pre><code>## [1] 63.13307 88.37787 81.53373 68.61863 92.53815 84.26464</code></pre>
 <p>Performing the two sample t-test. Lets set the confidence level to 95%(0.95)</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="general-statistics.html#cb335-1" tabindex="-1"></a>ttest_result <span class="ot">=</span> <span class="fu">t.test</span>(group_A_scores, group_B_scores, </span>
-<span id="cb335-2"><a href="general-statistics.html#cb335-2" tabindex="-1"></a>                      <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb335-3"><a href="general-statistics.html#cb335-3" tabindex="-1"></a>                      <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb335-4"><a href="general-statistics.html#cb335-4" tabindex="-1"></a></span>
-<span id="cb335-5"><a href="general-statistics.html#cb335-5" tabindex="-1"></a>ttest_result</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="general-statistics.html#cb363-1" tabindex="-1"></a>ttest_result <span class="ot">=</span> <span class="fu">t.test</span>(group_A_scores, group_B_scores, </span>
+<span id="cb363-2"><a href="general-statistics.html#cb363-2" tabindex="-1"></a>                      <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb363-3"><a href="general-statistics.html#cb363-3" tabindex="-1"></a>                      <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb363-4"><a href="general-statistics.html#cb363-4" tabindex="-1"></a></span>
+<span id="cb363-5"><a href="general-statistics.html#cb363-5" tabindex="-1"></a>ttest_result</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -783,30 +933,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Null Hypothesis(<span class="math inline">\(H_0\)</span>): There is no significant difference between the mean of virginica and the mean of versicolor</li>
 <li>Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the mean of virginica and the versicolor</li>
 </ul>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="general-statistics.html#cb337-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb337-2"><a href="general-statistics.html#cb337-2" tabindex="-1"></a></span>
-<span id="cb337-3"><a href="general-statistics.html#cb337-3" tabindex="-1"></a><span class="co"># Load the data </span></span>
-<span id="cb337-4"><a href="general-statistics.html#cb337-4" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb337-5"><a href="general-statistics.html#cb337-5" tabindex="-1"></a></span>
-<span id="cb337-6"><a href="general-statistics.html#cb337-6" tabindex="-1"></a><span class="co"># Retrieve the data for the two species </span></span>
-<span id="cb337-7"><a href="general-statistics.html#cb337-7" tabindex="-1"></a><span class="do">## Virginica petal length</span></span>
-<span id="cb337-8"><a href="general-statistics.html#cb337-8" tabindex="-1"></a>virginica <span class="ot">&lt;-</span> iris<span class="sc">%&gt;%</span> </span>
-<span id="cb337-9"><a href="general-statistics.html#cb337-9" tabindex="-1"></a>  <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)</span>
-<span id="cb337-10"><a href="general-statistics.html#cb337-10" tabindex="-1"></a></span>
-<span id="cb337-11"><a href="general-statistics.html#cb337-11" tabindex="-1"></a>virginica.petal.length <span class="ot">&lt;-</span> virginica<span class="sc">$</span>Petal.Length</span>
-<span id="cb337-12"><a href="general-statistics.html#cb337-12" tabindex="-1"></a></span>
-<span id="cb337-13"><a href="general-statistics.html#cb337-13" tabindex="-1"></a><span class="do">## Versicolor petal length</span></span>
-<span id="cb337-14"><a href="general-statistics.html#cb337-14" tabindex="-1"></a>versicolor <span class="ot">&lt;-</span> iris<span class="sc">%&gt;%</span> </span>
-<span id="cb337-15"><a href="general-statistics.html#cb337-15" tabindex="-1"></a>  <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>)</span>
-<span id="cb337-16"><a href="general-statistics.html#cb337-16" tabindex="-1"></a></span>
-<span id="cb337-17"><a href="general-statistics.html#cb337-17" tabindex="-1"></a>versicolor.petal.length <span class="ot">&lt;-</span> versicolor<span class="sc">$</span>Petal.Length</span>
-<span id="cb337-18"><a href="general-statistics.html#cb337-18" tabindex="-1"></a></span>
-<span id="cb337-19"><a href="general-statistics.html#cb337-19" tabindex="-1"></a><span class="co"># Conduct two-sample t-test</span></span>
-<span id="cb337-20"><a href="general-statistics.html#cb337-20" tabindex="-1"></a>ttest_result <span class="ot">=</span> <span class="fu">t.test</span>(virginica.petal.length, versicolor.petal.length, </span>
-<span id="cb337-21"><a href="general-statistics.html#cb337-21" tabindex="-1"></a>                      <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb337-22"><a href="general-statistics.html#cb337-22" tabindex="-1"></a>                      <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb337-23"><a href="general-statistics.html#cb337-23" tabindex="-1"></a></span>
-<span id="cb337-24"><a href="general-statistics.html#cb337-24" tabindex="-1"></a>ttest_result</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="general-statistics.html#cb365-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb365-2"><a href="general-statistics.html#cb365-2" tabindex="-1"></a></span>
+<span id="cb365-3"><a href="general-statistics.html#cb365-3" tabindex="-1"></a><span class="co"># Load the data </span></span>
+<span id="cb365-4"><a href="general-statistics.html#cb365-4" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb365-5"><a href="general-statistics.html#cb365-5" tabindex="-1"></a></span>
+<span id="cb365-6"><a href="general-statistics.html#cb365-6" tabindex="-1"></a><span class="co"># Retrieve the data for the two species </span></span>
+<span id="cb365-7"><a href="general-statistics.html#cb365-7" tabindex="-1"></a><span class="do">## Virginica petal length</span></span>
+<span id="cb365-8"><a href="general-statistics.html#cb365-8" tabindex="-1"></a>virginica <span class="ot">&lt;-</span> iris<span class="sc">%&gt;%</span> </span>
+<span id="cb365-9"><a href="general-statistics.html#cb365-9" tabindex="-1"></a>  <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)</span>
+<span id="cb365-10"><a href="general-statistics.html#cb365-10" tabindex="-1"></a></span>
+<span id="cb365-11"><a href="general-statistics.html#cb365-11" tabindex="-1"></a>virginica.petal.length <span class="ot">&lt;-</span> virginica<span class="sc">$</span>Petal.Length</span>
+<span id="cb365-12"><a href="general-statistics.html#cb365-12" tabindex="-1"></a></span>
+<span id="cb365-13"><a href="general-statistics.html#cb365-13" tabindex="-1"></a><span class="do">## Versicolor petal length</span></span>
+<span id="cb365-14"><a href="general-statistics.html#cb365-14" tabindex="-1"></a>versicolor <span class="ot">&lt;-</span> iris<span class="sc">%&gt;%</span> </span>
+<span id="cb365-15"><a href="general-statistics.html#cb365-15" tabindex="-1"></a>  <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb365-16"><a href="general-statistics.html#cb365-16" tabindex="-1"></a></span>
+<span id="cb365-17"><a href="general-statistics.html#cb365-17" tabindex="-1"></a>versicolor.petal.length <span class="ot">&lt;-</span> versicolor<span class="sc">$</span>Petal.Length</span>
+<span id="cb365-18"><a href="general-statistics.html#cb365-18" tabindex="-1"></a></span>
+<span id="cb365-19"><a href="general-statistics.html#cb365-19" tabindex="-1"></a><span class="co"># Conduct two-sample t-test</span></span>
+<span id="cb365-20"><a href="general-statistics.html#cb365-20" tabindex="-1"></a>ttest_result <span class="ot">=</span> <span class="fu">t.test</span>(virginica.petal.length, versicolor.petal.length, </span>
+<span id="cb365-21"><a href="general-statistics.html#cb365-21" tabindex="-1"></a>                      <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb365-22"><a href="general-statistics.html#cb365-22" tabindex="-1"></a>                      <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb365-23"><a href="general-statistics.html#cb365-23" tabindex="-1"></a></span>
+<span id="cb365-24"><a href="general-statistics.html#cb365-24" tabindex="-1"></a>ttest_result</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -833,9 +983,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Homogeinity of variance</strong>: All the groups being tested should have similar variations.</li>
 </ol>
 <p>Lets calculate the ANOVA using the the crop yield data set. The fertilizer are in three categories; 1, 2 and 3</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="general-statistics.html#cb339-1" tabindex="-1"></a><span class="co"># Load the data set </span></span>
-<span id="cb339-2"><a href="general-statistics.html#cb339-2" tabindex="-1"></a>crop_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cropdata.csv&quot;</span>)</span>
-<span id="cb339-3"><a href="general-statistics.html#cb339-3" tabindex="-1"></a><span class="fu">head</span>(crop_df) <span class="co"># view the first few rows of the data set</span></span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="general-statistics.html#cb367-1" tabindex="-1"></a><span class="co"># Load the data set </span></span>
+<span id="cb367-2"><a href="general-statistics.html#cb367-2" tabindex="-1"></a>crop_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cropdata.csv&quot;</span>)</span>
+<span id="cb367-3"><a href="general-statistics.html#cb367-3" tabindex="-1"></a><span class="fu">head</span>(crop_df) <span class="co"># view the first few rows of the data set</span></span></code></pre></div>
 <pre><code>##   density block fertilizer    yield
 ## 1       1     1          1 177.2287
 ## 2       2     2          1 177.5500
@@ -843,9 +993,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4       2     4          1 177.7036
 ## 5       1     1          1 177.1255
 ## 6       2     2          1 176.7783</code></pre>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="general-statistics.html#cb341-1" tabindex="-1"></a><span class="co"># Calculate one way ANOVA </span></span>
-<span id="cb341-2"><a href="general-statistics.html#cb341-2" tabindex="-1"></a>anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> crop_df)</span>
-<span id="cb341-3"><a href="general-statistics.html#cb341-3" tabindex="-1"></a>anova</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="general-statistics.html#cb369-1" tabindex="-1"></a><span class="co"># Calculate one way ANOVA </span></span>
+<span id="cb369-2"><a href="general-statistics.html#cb369-2" tabindex="-1"></a>anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> crop_df)</span>
+<span id="cb369-3"><a href="general-statistics.html#cb369-3" tabindex="-1"></a>anova</span></code></pre></div>
 <pre><code>## Call:
 ##    aov(formula = yield ~ fertilizer, data = crop_df)
 ## 
@@ -875,14 +1025,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Null Hypothesis(<span class="math inline">\(H_0\)</span>): There is no siginificant difference among the sepal width of all the iris species.</li>
 <li>Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a signifincant difference among the sepal width of all the iris species</li>
 </ul>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="general-statistics.html#cb343-1" tabindex="-1"></a><span class="co"># Load the data </span></span>
-<span id="cb343-2"><a href="general-statistics.html#cb343-2" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb343-3"><a href="general-statistics.html#cb343-3" tabindex="-1"></a></span>
-<span id="cb343-4"><a href="general-statistics.html#cb343-4" tabindex="-1"></a><span class="co"># Perform the ANOVA</span></span>
-<span id="cb343-5"><a href="general-statistics.html#cb343-5" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(Sepal.Width <span class="sc">~</span> Species, <span class="at">data =</span> iris)</span>
-<span id="cb343-6"><a href="general-statistics.html#cb343-6" tabindex="-1"></a></span>
-<span id="cb343-7"><a href="general-statistics.html#cb343-7" tabindex="-1"></a><span class="co"># Display the ANOVA table</span></span>
-<span id="cb343-8"><a href="general-statistics.html#cb343-8" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="general-statistics.html#cb371-1" tabindex="-1"></a><span class="co"># Load the data </span></span>
+<span id="cb371-2"><a href="general-statistics.html#cb371-2" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb371-3"><a href="general-statistics.html#cb371-3" tabindex="-1"></a></span>
+<span id="cb371-4"><a href="general-statistics.html#cb371-4" tabindex="-1"></a><span class="co"># Perform the ANOVA</span></span>
+<span id="cb371-5"><a href="general-statistics.html#cb371-5" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(Sepal.Width <span class="sc">~</span> Species, <span class="at">data =</span> iris)</span>
+<span id="cb371-6"><a href="general-statistics.html#cb371-6" tabindex="-1"></a></span>
+<span id="cb371-7"><a href="general-statistics.html#cb371-7" tabindex="-1"></a><span class="co"># Display the ANOVA table</span></span>
+<span id="cb371-8"><a href="general-statistics.html#cb371-8" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div>
 <pre><code>##              Df Sum Sq Mean Sq F value Pr(&gt;F)    
 ## Species       2  11.35   5.672   49.16 &lt;2e-16 ***
 ## Residuals   147  16.96   0.115                   
@@ -908,14 +1058,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>ALternate Hypothesis (<span class="math inline">\(H_a\)</span>): The smoking habit is dependent on the exercise level.</li>
 </ul>
 <p>Load the data</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="general-statistics.html#cb345-1" tabindex="-1"></a><span class="co"># Load the library</span></span>
-<span id="cb345-2"><a href="general-statistics.html#cb345-2" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="general-statistics.html#cb373-1" tabindex="-1"></a><span class="co"># Load the library</span></span>
+<span id="cb373-2"><a href="general-statistics.html#cb373-2" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;MASS&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     select</code></pre>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="general-statistics.html#cb348-1" tabindex="-1"></a><span class="fu">head</span>(survey) <span class="co"># view the data</span></span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="general-statistics.html#cb376-1" tabindex="-1"></a><span class="fu">head</span>(survey) <span class="co"># view the data</span></span></code></pre></div>
 <pre><code>##      Sex Wr.Hnd NW.Hnd W.Hnd    Fold Pulse    Clap Exer Smoke Height      M.I
 ## 1 Female   18.5   18.0 Right  R on L    92    Left Some Never 173.00   Metric
 ## 2   Male   19.5   20.5  Left  R on L   104    Left None Regul 177.80 Imperial
@@ -931,10 +1081,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 23.667
 ## 6 21.000</code></pre>
 <p>Create a contigency table between the Smoke and the Exercise leel.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="general-statistics.html#cb350-1" tabindex="-1"></a><span class="co"># Create a contingency table with the needed variables.       </span></span>
-<span id="cb350-2"><a href="general-statistics.html#cb350-2" tabindex="-1"></a>stu_data <span class="ot">=</span> <span class="fu">table</span>(survey<span class="sc">$</span>Smoke,survey<span class="sc">$</span>Exer) </span>
-<span id="cb350-3"><a href="general-statistics.html#cb350-3" tabindex="-1"></a>                 </span>
-<span id="cb350-4"><a href="general-statistics.html#cb350-4" tabindex="-1"></a><span class="fu">print</span>(stu_data)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="general-statistics.html#cb378-1" tabindex="-1"></a><span class="co"># Create a contingency table with the needed variables.       </span></span>
+<span id="cb378-2"><a href="general-statistics.html#cb378-2" tabindex="-1"></a>stu_data <span class="ot">=</span> <span class="fu">table</span>(survey<span class="sc">$</span>Smoke,survey<span class="sc">$</span>Exer) </span>
+<span id="cb378-3"><a href="general-statistics.html#cb378-3" tabindex="-1"></a>                 </span>
+<span id="cb378-4"><a href="general-statistics.html#cb378-4" tabindex="-1"></a><span class="fu">print</span>(stu_data)</span></code></pre></div>
 <pre><code>##        
 ##         Freq None Some
 ##   Heavy    7    1    3
@@ -942,8 +1092,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   Occas   12    3    4
 ##   Regul    9    1    7</code></pre>
 <p>Perform the chi-square test on the <code>stu_data</code>, the contigency table.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="general-statistics.html#cb352-1" tabindex="-1"></a><span class="co"># applying chisq.test() function</span></span>
-<span id="cb352-2"><a href="general-statistics.html#cb352-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">chisq.test</span>(stu_data))</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="general-statistics.html#cb380-1" tabindex="-1"></a><span class="co"># applying chisq.test() function</span></span>
+<span id="cb380-2"><a href="general-statistics.html#cb380-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">chisq.test</span>(stu_data))</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -951,14 +1101,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## X-squared = 5.4885, df = 6, p-value = 0.4828</code></pre>
 <p>From the results, the p-value is 0.4828 which is greater than 0.05 therefore the null hypothesis is not rejected. It’c concluded that the smoking habit is independent of the exercise level since there is weak to now correlation between the <code>Smoke</code> and <code>Exer</code> variables.</p>
 <p>Finally, lets visualize the results from the contigency table;</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="general-statistics.html#cb354-1" tabindex="-1"></a><span class="co"># Visualize the data with a bar plot</span></span>
-<span id="cb354-2"><a href="general-statistics.html#cb354-2" tabindex="-1"></a><span class="fu">barplot</span>(stu_data, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;lightgreen&quot;</span>),</span>
-<span id="cb354-3"><a href="general-statistics.html#cb354-3" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Smoking Habits vs Exercise Levels&quot;</span>,</span>
-<span id="cb354-4"><a href="general-statistics.html#cb354-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Exercise Level&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of Students&quot;</span>)</span>
-<span id="cb354-5"><a href="general-statistics.html#cb354-5" tabindex="-1"></a> </span>
-<span id="cb354-6"><a href="general-statistics.html#cb354-6" tabindex="-1"></a><span class="co"># Add legend separately</span></span>
-<span id="cb354-7"><a href="general-statistics.html#cb354-7" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;center&quot;</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(stu_data), <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;lightgreen&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="general-statistics.html#cb382-1" tabindex="-1"></a><span class="co"># Visualize the data with a bar plot</span></span>
+<span id="cb382-2"><a href="general-statistics.html#cb382-2" tabindex="-1"></a><span class="fu">barplot</span>(stu_data, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;lightgreen&quot;</span>),</span>
+<span id="cb382-3"><a href="general-statistics.html#cb382-3" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Smoking Habits vs Exercise Levels&quot;</span>,</span>
+<span id="cb382-4"><a href="general-statistics.html#cb382-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Exercise Level&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Number of Students&quot;</span>)</span>
+<span id="cb382-5"><a href="general-statistics.html#cb382-5" tabindex="-1"></a> </span>
+<span id="cb382-6"><a href="general-statistics.html#cb382-6" tabindex="-1"></a><span class="co"># Add legend separately</span></span>
+<span id="cb382-7"><a href="general-statistics.html#cb382-7" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;center&quot;</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(stu_data), <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;lightgreen&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
 <p>You can see from the table, those students who never smoke lead in every exercise level while the heavy smokers are the least in every group.</p>
 <p><span style="color: green;"><strong>Practical exercise</strong></span></p>
 <p>Using the Iris data set, perform a Chi-square test to determine if there is a relationship between two categorical variables: the species (Species) and a new categorical variable that classifies sepal width (Sepal.Length) into categories (e.g., “Short”, “Medium”, “Long”).</p>
@@ -976,23 +1126,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>
 <p>Load the data set</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="general-statistics.html#cb355-1" tabindex="-1"></a><span class="fu">data</span>(iris) </span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="general-statistics.html#cb383-1" tabindex="-1"></a><span class="fu">data</span>(iris) </span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>Create a new variable <code>sepal.Width.Category</code> in the data set by categorizing the <code>Sepal.Width</code> variable into 3 categories: <code>"Short"</code>, <code>"Medium"</code>, and <code>"Long"</code> (as per the defined ranges).</li>
 </ol>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="general-statistics.html#cb356-1" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
-<span id="cb356-2"><a href="general-statistics.html#cb356-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb356-3"><a href="general-statistics.html#cb356-3" tabindex="-1"></a></span>
-<span id="cb356-4"><a href="general-statistics.html#cb356-4" tabindex="-1"></a><span class="co"># Create a new column &#39;Sepal_Width_Category&#39; based on conditions</span></span>
-<span id="cb356-5"><a href="general-statistics.html#cb356-5" tabindex="-1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
-<span id="cb356-6"><a href="general-statistics.html#cb356-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sepal.Width.Category =</span> <span class="fu">case_when</span>(</span>
-<span id="cb356-7"><a href="general-statistics.html#cb356-7" tabindex="-1"></a>    Sepal.Width <span class="sc">&lt;</span> <span class="fl">3.0</span> <span class="sc">~</span> <span class="st">&quot;Short&quot;</span>,</span>
-<span id="cb356-8"><a href="general-statistics.html#cb356-8" tabindex="-1"></a>    Sepal.Width <span class="sc">&gt;=</span> <span class="fl">3.0</span> <span class="sc">&amp;</span> Sepal.Width <span class="sc">&lt;=</span> <span class="fl">3.8</span> <span class="sc">~</span> <span class="st">&quot;Medium&quot;</span>,</span>
-<span id="cb356-9"><a href="general-statistics.html#cb356-9" tabindex="-1"></a>    Sepal.Width <span class="sc">&gt;</span> <span class="fl">3.8</span> <span class="sc">~</span> <span class="st">&quot;Long&quot;</span></span>
-<span id="cb356-10"><a href="general-statistics.html#cb356-10" tabindex="-1"></a>  ))</span>
-<span id="cb356-11"><a href="general-statistics.html#cb356-11" tabindex="-1"></a></span>
-<span id="cb356-12"><a href="general-statistics.html#cb356-12" tabindex="-1"></a><span class="co"># Display the first few rows to see the new column</span></span>
-<span id="cb356-13"><a href="general-statistics.html#cb356-13" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="general-statistics.html#cb384-1" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb384-2"><a href="general-statistics.html#cb384-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb384-3"><a href="general-statistics.html#cb384-3" tabindex="-1"></a></span>
+<span id="cb384-4"><a href="general-statistics.html#cb384-4" tabindex="-1"></a><span class="co"># Create a new column &#39;Sepal_Width_Category&#39; based on conditions</span></span>
+<span id="cb384-5"><a href="general-statistics.html#cb384-5" tabindex="-1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb384-6"><a href="general-statistics.html#cb384-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sepal.Width.Category =</span> <span class="fu">case_when</span>(</span>
+<span id="cb384-7"><a href="general-statistics.html#cb384-7" tabindex="-1"></a>    Sepal.Width <span class="sc">&lt;</span> <span class="fl">3.0</span> <span class="sc">~</span> <span class="st">&quot;Short&quot;</span>,</span>
+<span id="cb384-8"><a href="general-statistics.html#cb384-8" tabindex="-1"></a>    Sepal.Width <span class="sc">&gt;=</span> <span class="fl">3.0</span> <span class="sc">&amp;</span> Sepal.Width <span class="sc">&lt;=</span> <span class="fl">3.8</span> <span class="sc">~</span> <span class="st">&quot;Medium&quot;</span>,</span>
+<span id="cb384-9"><a href="general-statistics.html#cb384-9" tabindex="-1"></a>    Sepal.Width <span class="sc">&gt;</span> <span class="fl">3.8</span> <span class="sc">~</span> <span class="st">&quot;Long&quot;</span></span>
+<span id="cb384-10"><a href="general-statistics.html#cb384-10" tabindex="-1"></a>  ))</span>
+<span id="cb384-11"><a href="general-statistics.html#cb384-11" tabindex="-1"></a></span>
+<span id="cb384-12"><a href="general-statistics.html#cb384-12" tabindex="-1"></a><span class="co"># Display the first few rows to see the new column</span></span>
+<span id="cb384-13"><a href="general-statistics.html#cb384-13" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -1010,17 +1160,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="2" style="list-style-type: decimal">
 <li>Perform a Chi-square test to see if there’s an association between the new <code>sepal.Width.Category</code> categories and the <code>Species</code> column.</li>
 </ol>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="general-statistics.html#cb358-1" tabindex="-1"></a><span class="co"># Create a contigency table </span></span>
-<span id="cb358-2"><a href="general-statistics.html#cb358-2" tabindex="-1"></a>sepal_width_data <span class="ot">=</span> <span class="fu">table</span>(iris<span class="sc">$</span>sepal.Width.Category,iris<span class="sc">$</span>Species) </span>
-<span id="cb358-3"><a href="general-statistics.html#cb358-3" tabindex="-1"></a></span>
-<span id="cb358-4"><a href="general-statistics.html#cb358-4" tabindex="-1"></a><span class="fu">print</span>(sepal_width_data)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="general-statistics.html#cb386-1" tabindex="-1"></a><span class="co"># Create a contigency table </span></span>
+<span id="cb386-2"><a href="general-statistics.html#cb386-2" tabindex="-1"></a>sepal_width_data <span class="ot">=</span> <span class="fu">table</span>(iris<span class="sc">$</span>sepal.Width.Category,iris<span class="sc">$</span>Species) </span>
+<span id="cb386-3"><a href="general-statistics.html#cb386-3" tabindex="-1"></a></span>
+<span id="cb386-4"><a href="general-statistics.html#cb386-4" tabindex="-1"></a><span class="fu">print</span>(sepal_width_data)</span></code></pre></div>
 <pre><code>##         
 ##          setosa versicolor virginica
 ##   Long        6          0         0
 ##   Medium     42         16        29
 ##   Short       2         34        21</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="general-statistics.html#cb360-1" tabindex="-1"></a><span class="co"># applying chisq.test() function</span></span>
-<span id="cb360-2"><a href="general-statistics.html#cb360-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">chisq.test</span>(sepal_width_data))</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="general-statistics.html#cb388-1" tabindex="-1"></a><span class="co"># applying chisq.test() function</span></span>
+<span id="cb388-2"><a href="general-statistics.html#cb388-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">chisq.test</span>(sepal_width_data))</span></code></pre></div>
 <pre><code>## Warning in chisq.test(sepal_width_data): Chi-squared approximation may be
 ## incorrect</code></pre>
 <pre><code>## 
@@ -1045,17 +1195,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>
 <p>Load the data</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="general-statistics.html#cb363-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/GroundhogDayForecastsandTemperaturesdata.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="general-statistics.html#cb391-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/GroundhogDayForecastsandTemperaturesdata.csv&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Perform one sample t-test on February Average temperature. The pre-assumed mean is 35</li>
 </ul>
 <p>Formulate the hypothesis
 - Null hypothesis (<span class="math inline">\(H_0\)</span>): There is no significant difference between the February Average Temeprature mean and the pre-assumed mean
 - Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the February Average Temperature and the pre-assumed mean.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="general-statistics.html#cb364-1" tabindex="-1"></a>one.sample.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(df<span class="sc">$</span>February.Average.Temperature, <span class="at">mu=</span><span class="dv">35</span>)</span>
-<span id="cb364-2"><a href="general-statistics.html#cb364-2" tabindex="-1"></a></span>
-<span id="cb364-3"><a href="general-statistics.html#cb364-3" tabindex="-1"></a><span class="co"># Display the results </span></span>
-<span id="cb364-4"><a href="general-statistics.html#cb364-4" tabindex="-1"></a><span class="fu">print</span>(one.sample.ttest)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="general-statistics.html#cb392-1" tabindex="-1"></a>one.sample.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(df<span class="sc">$</span>February.Average.Temperature, <span class="at">mu=</span><span class="dv">35</span>)</span>
+<span id="cb392-2"><a href="general-statistics.html#cb392-2" tabindex="-1"></a></span>
+<span id="cb392-3"><a href="general-statistics.html#cb392-3" tabindex="-1"></a><span class="co"># Display the results </span></span>
+<span id="cb392-4"><a href="general-statistics.html#cb392-4" tabindex="-1"></a><span class="fu">print</span>(one.sample.ttest)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -1076,13 +1226,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Null hypothesis(<span class="math inline">\(H_0\)</span>): There is no significant difference between the North East Average Temperature for March and the March daily temparature.</li>
 <li>ALternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the North East Average Temperature and the March daily temparature.</li>
 </ul>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="general-statistics.html#cb366-1" tabindex="-1"></a><span class="co"># Perform two sample ttest</span></span>
-<span id="cb366-2"><a href="general-statistics.html#cb366-2" tabindex="-1"></a>ttest_result <span class="ot">=</span> <span class="fu">t.test</span>(df<span class="sc">$</span>March.Average.Temperature..Northeast., </span>
-<span id="cb366-3"><a href="general-statistics.html#cb366-3" tabindex="-1"></a>                      df<span class="sc">$</span>March.Average.Temperature, </span>
-<span id="cb366-4"><a href="general-statistics.html#cb366-4" tabindex="-1"></a>                      <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb366-5"><a href="general-statistics.html#cb366-5" tabindex="-1"></a>                      <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb366-6"><a href="general-statistics.html#cb366-6" tabindex="-1"></a></span>
-<span id="cb366-7"><a href="general-statistics.html#cb366-7" tabindex="-1"></a>ttest_result</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="general-statistics.html#cb394-1" tabindex="-1"></a><span class="co"># Perform two sample ttest</span></span>
+<span id="cb394-2"><a href="general-statistics.html#cb394-2" tabindex="-1"></a>ttest_result <span class="ot">=</span> <span class="fu">t.test</span>(df<span class="sc">$</span>March.Average.Temperature..Northeast., </span>
+<span id="cb394-3"><a href="general-statistics.html#cb394-3" tabindex="-1"></a>                      df<span class="sc">$</span>March.Average.Temperature, </span>
+<span id="cb394-4"><a href="general-statistics.html#cb394-4" tabindex="-1"></a>                      <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb394-5"><a href="general-statistics.html#cb394-5" tabindex="-1"></a>                      <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb394-6"><a href="general-statistics.html#cb394-6" tabindex="-1"></a></span>
+<span id="cb394-7"><a href="general-statistics.html#cb394-7" tabindex="-1"></a>ttest_result</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -1103,11 +1253,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Null Hypothesis(<span class="math inline">\(H_0\)</span>): There is no significant difference between the presence and the absence of Punxsutawney Phil during February based on the Average Temperature</li>
 <li>Alternate Hypothesis(<span class="math inline">\(H_a\)</span>): There is a significant difference between the presence and the absence of Punxsutawney Phil during February based on the Average Temperature</li>
 </ul>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="general-statistics.html#cb368-1" tabindex="-1"></a><span class="co"># Perform ANOVA</span></span>
-<span id="cb368-2"><a href="general-statistics.html#cb368-2" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(February.Average.Temperature <span class="sc">~</span> df<span class="sc">$</span>Punxsutawney.Phil, <span class="at">data =</span> df)</span>
-<span id="cb368-3"><a href="general-statistics.html#cb368-3" tabindex="-1"></a></span>
-<span id="cb368-4"><a href="general-statistics.html#cb368-4" tabindex="-1"></a><span class="co"># Display the ANOVA table</span></span>
-<span id="cb368-5"><a href="general-statistics.html#cb368-5" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="general-statistics.html#cb396-1" tabindex="-1"></a><span class="co"># Perform ANOVA</span></span>
+<span id="cb396-2"><a href="general-statistics.html#cb396-2" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(February.Average.Temperature <span class="sc">~</span> df<span class="sc">$</span>Punxsutawney.Phil, <span class="at">data =</span> df)</span>
+<span id="cb396-3"><a href="general-statistics.html#cb396-3" tabindex="-1"></a></span>
+<span id="cb396-4"><a href="general-statistics.html#cb396-4" tabindex="-1"></a><span class="co"># Display the ANOVA table</span></span>
+<span id="cb396-5"><a href="general-statistics.html#cb396-5" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div>
 <pre><code>##                       Df Sum Sq Mean Sq F value Pr(&gt;F)  
 ## df$Punxsutawney.Phil   4   92.7   23.18   2.258 0.0669 .
 ## Residuals            118 1211.3   10.27                 
