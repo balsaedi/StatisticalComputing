@@ -287,7 +287,7 @@ runExample(&quot;01_hello&quot;)</code></pre>
 </div>
 <div id="server" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Server<a href="r-shiny.html#server" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Here i the server function for the Hello Shiny Example:</p>
+<p>Here is the server function for the Hello Shiny Example:</p>
 <div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="r-shiny.html#cb442-1" tabindex="-1"></a><span class="co"># Define server logic required to draw a histogram ----</span></span>
 <span id="cb442-2"><a href="r-shiny.html#cb442-2" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
 <span id="cb442-3"><a href="r-shiny.html#cb442-3" tabindex="-1"></a></span>
@@ -362,7 +362,58 @@ shinyApp(ui = ui, server = server)</code></pre>
 <span id="cb444-37"><a href="r-shiny.html#cb444-37" tabindex="-1"></a></span>
 <span id="cb444-38"><a href="r-shiny.html#cb444-38" tabindex="-1"></a><span class="co"># Run the app</span></span>
 <span id="cb444-39"><a href="r-shiny.html#cb444-39" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div>
-<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>Create a folder called <code>"shiny_app_demo"</code> and create an R script file called <code>app.R</code> where you will write the above code.</p>
+<p>After importing <code>shiny</code> and <code>bslib</code> libraries in your current environment run the app by executing the code below</p>
+<pre><code>library
+runApp(&quot;shiny_app_demo&quot;)</code></pre>
+<p>This is how the app is expected to show up.
+<img src="images/shiny_app_image_1.png" /></p>
+<p><strong>Note: </strong> Everything will stop until you close the app</p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>We will create a shiny app based on the <code>mtcars</code> built-in data set. This app lets you visualize the mpg agains any other variable in the data set. Follow the steps below;</p>
+<ol style="list-style-type: lower-roman">
+<li>Create a directory called <code>"shiny_apps"</code>. Inside the <code>shiny_app</code> directory, create another directory called <code>app_01</code>.</li>
+<li>In the <code>app_01</code> directory, create an R script file called <code>app.R</code>. Add the lines below to import the necessary libraries</li>
+</ol>
+<pre><code>library(shiny)</code></pre>
+<ol start="3" style="list-style-type: lower-roman">
+<li>Create a UI component by adding the lines below</li>
+</ol>
+<pre><code># Create a UI component 
+ui &lt;- fluidPage(
+  titlePanel(&quot;Scatter Plot Visualizer&quot;), 
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(&quot;variable&quot;, &quot;Choose Variab;e for x-axis: &quot;,
+                  choices = names(mtcars),
+                  selected = &quot;hp&quot;),
+      mainPanel(
+        plotOutput(&quot;scatterPlot&quot;)
+      )
+    )
+  )
+)
+</code></pre>
+<ol start="4" style="list-style-type: lower-roman">
+<li>Now add the lines below to create a server component</li>
+</ol>
+<pre><code># Server component
+server&lt;- function(input, output) {
+  output$scatterPlot &lt;- renderPlot({
+    plot(mtcars[[input$variable]],
+         mtcars$mpg,
+         xlab = input$variable, 
+         ylab = &quot;mpg&quot;,
+         main = paste(&quot;mpg vs&quot;, input$variable))
+  })
+}</code></pre>
+<ol start="22" style="list-style-type: lower-alpha">
+<li>Finally, run the app by adding the line below towards the end of the script</li>
+</ol>
+<pre><code>shinyApp(ui = ui, server = server)</code></pre>
+<ol start="6" style="list-style-type: lower-roman">
+<li>Watch the app in action!</li>
+</ol>
 
 </div>
 </div>

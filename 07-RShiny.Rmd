@@ -56,7 +56,7 @@ ui <- page_sidebar(
 ```
 
 ### Server
-Here i the server function for the Hello Shiny Example:
+Here is the server function for the Hello Shiny Example:
 ```{r}
 # Define server logic required to draw a histogram ----
 server <- function(input, output) {
@@ -143,5 +143,67 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-<span style="color: green;">**Practical Exercise**</span>
+Create a folder called `"shiny_app_demo"` and create an R script file called `app.R` where you will write the above code.
+
+After importing `shiny` and `bslib` libraries in your current environment run the app by executing the code below
+```
+library(shiny)
+runApp("shiny_app_demo")
+```
+
+This is how the app is expected to show up. 
+![](images/shiny_app_image_1.png)
+
+**Note: ** Everything will stop until you close the app
+
+
+
+<span style="color: orange;">**Try it!**</span>
+
+We will create a shiny app based on the `mtcars` built-in data set. This app lets you visualize the mpg agains any other variable in the data set. Follow the steps below;
+
+i. Create a directory called `"shiny_apps"`. Inside the `shiny_app` directory, create another directory called `app_01`. 
+ii. In the `app_01` directory, create an R script file called `app.R`. Add the lines below to import the necessary libraries 
+```
+library(shiny)
+```
+iii. Create a UI component by adding the lines below
+```
+# UI Component
+ui <- fluidPage(
+  titlePanel("Scatter Plot Visualizer"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("variable", "Choose Variable for x-axis:", 
+                  choices = names(mtcars), selected = "hp")
+    ),
+    mainPanel(
+      plotOutput("scatterPlot")
+    )
+  )
+)
+
+```
+iv. Now add the lines below to create a server component
+```
+# Server Component
+server <- function(input, output) {
+  output$scatterPlot <- renderPlot({
+    plot(mtcars[[input$variable]], mtcars$mpg,
+         xlab = input$variable, ylab = "mpg",
+         main = paste("mpg vs", input$variable))
+  })
+}
+```
+v. Finally, run the app  by adding the line below towards the end of the script
+```
+# Run the App
+shinyApp(ui = ui, server = server)
+```
+vi. Run the below script in a different environment and watch the app in action!
+```
+library(shiny)
+runApp("shiny_apps/app_01")
+```
+
 
