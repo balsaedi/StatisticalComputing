@@ -44,7 +44,7 @@ height = c(110, 130, 150, 160, 170)
 model_1 <- lm(height ~ age)
 ```
 
-The `lm()` function stands fir 'linear model` and it finds the best line to describle the relationship between height and age. 
+The `lm()` function stands for 'linear model` and it finds the best line to describle the relationship between height and age. 
 ```{r}
 summary(model_1)
 ```
@@ -128,5 +128,48 @@ print(paste("Predicted MPG for a car weighing 3.5 tons:", round(predicted_mpg, 2
 
 ## Confidence Intervals for Regression Coefficients, Testing Coefficients
 
+Lets revisit the model that we fitted age and height of youths.
+```{r}
+summary(model_1)
+```
+
+Here we will focus on the coefficients and the confidence intervals. The confidence interval for each regression coefficient helps us understand the range within which true value of the coeefficient is likely to fall. 
+
+The `confint()` function in R is used to obtain this information. 
+```{r}
+# Calculate the confidence interval 
+confint(model_1)
+```
+
+As stated earlier the simple linear regression model equation is $y = mx + b$; we will remodel this equation to fit the 2.5% and 97.5% confidence interval inform of $height(y)  =  Coefficient(m) * age(x) + Intercept(b)$. Therefore: 
+
+- At 2.5% confidence interval; the equation is $$height  = 2.028 * age + 82.877$$
+- At 97.5% confidence interval; the equations is $$height  = 3.972 * age + 115.123$$
+
+Using the quations above you can estimate the height of the youth based on age. 
+
+<span style="color: green;">**Practical Exercise**</span> 
+
+In this exercise, you will be required to use the built-in R `mtcars` data set. Use the weight(`wt`) to predict the fuel consumption(`mpg`). Find the equation with the confidence interval. 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+```{r}
+# Load the data 
+data(mtcars)
+
+# Fit the linear regression model
+model_2 <- lm(mpg ~ wt, data = mtcars)
+
+# Confidence intervals 
+confint(model_2)
+```
+
+- At 2.5% confidence interval, the equation to find `mpg` is $$mpg  = -6.486 * wt + 33.351$$
+- At 97.5% confidence interval, the equation to find `mpg` is $$mpg  = -4.203 * wt + 41.120$$
+
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
 
 ## Identifying Points in a Plot

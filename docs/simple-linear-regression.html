@@ -263,7 +263,7 @@ height = c(110, 130, 150, 160, 170)</code></pre>
 <span id="cb400-4"><a href="simple-linear-regression.html#cb400-4" tabindex="-1"></a></span>
 <span id="cb400-5"><a href="simple-linear-regression.html#cb400-5" tabindex="-1"></a><span class="co"># Fitting a linear regression data set</span></span>
 <span id="cb400-6"><a href="simple-linear-regression.html#cb400-6" tabindex="-1"></a>model_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(height <span class="sc">~</span> age)</span></code></pre></div>
-<p>The <code>lm()</code> function stands fir ’linear model` and it finds the best line to describle the relationship between height and age.</p>
+<p>The <code>lm()</code> function stands for ’linear model` and it finds the best line to describle the relationship between height and age.</p>
 <div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="simple-linear-regression.html#cb401-1" tabindex="-1"></a><span class="fu">summary</span>(model_1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
@@ -369,6 +369,59 @@ height = c(110, 130, 150, 160, 170)</code></pre>
 </div>
 <div id="confidence-intervals-for-regression-coefficients-testing-coefficients" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Confidence Intervals for Regression Coefficients, Testing Coefficients<a href="simple-linear-regression.html#confidence-intervals-for-regression-coefficients-testing-coefficients" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lets revisit the model that we fitted age and height of youths.</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="simple-linear-regression.html#cb413-1" tabindex="-1"></a><span class="fu">summary</span>(model_1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = height ~ age)
+## 
+## Residuals:
+##  1  2  3  4  5 
+## -4  1  6  1 -4 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  99.0000     5.0662   19.54 0.000293 ***
+## age           3.0000     0.3055    9.82 0.002245 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.83 on 3 degrees of freedom
+## Multiple R-squared:  0.9698, Adjusted R-squared:  0.9598 
+## F-statistic: 96.43 on 1 and 3 DF,  p-value: 0.002245</code></pre>
+<p>Here we will focus on the coefficients and the confidence intervals. The confidence interval for each regression coefficient helps us understand the range within which true value of the coeefficient is likely to fall.</p>
+<p>The <code>confint()</code> function in R is used to obtain this information.</p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="simple-linear-regression.html#cb415-1" tabindex="-1"></a><span class="co"># Calculate the confidence interval </span></span>
+<span id="cb415-2"><a href="simple-linear-regression.html#cb415-2" tabindex="-1"></a><span class="fu">confint</span>(model_1)</span></code></pre></div>
+<pre><code>##                 2.5 %     97.5 %
+## (Intercept) 82.877001 115.122999
+## age          2.027747   3.972253</code></pre>
+<p>As stated earlier the simple linear regression model equation is <span class="math inline">\(y = mx + b\)</span>; we will remodel this equation to fit the 2.5% and 97.5% confidence interval inform of <span class="math inline">\(height(y)  =  Coefficient(m) * age(x) + Intercept(b)\)</span>. Therefore:</p>
+<ul>
+<li>At 2.5% confidence interval; the equation is <span class="math display">\[height  = 2.028 * age + 82.877\]</span></li>
+<li>At 97.5% confidence interval; the equations is <span class="math display">\[height  = 3.972 * age + 115.123\]</span></li>
+</ul>
+<p>Using the quations above you can estimate the height of the youth based on age.</p>
+<p><span style="color: green;"><strong>Practical Exercise</strong></span></p>
+<p>In this exercise, you will be required to use the built-in R <code>mtcars</code> data set. Use the weight(<code>wt</code>) to predict the fuel consumption(<code>mpg</code>). Find the equation with the confidence interval.</p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="simple-linear-regression.html#cb417-1" tabindex="-1"></a><span class="co"># Load the data </span></span>
+<span id="cb417-2"><a href="simple-linear-regression.html#cb417-2" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb417-3"><a href="simple-linear-regression.html#cb417-3" tabindex="-1"></a></span>
+<span id="cb417-4"><a href="simple-linear-regression.html#cb417-4" tabindex="-1"></a><span class="co"># Fit the linear regression model</span></span>
+<span id="cb417-5"><a href="simple-linear-regression.html#cb417-5" tabindex="-1"></a>model_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb417-6"><a href="simple-linear-regression.html#cb417-6" tabindex="-1"></a></span>
+<span id="cb417-7"><a href="simple-linear-regression.html#cb417-7" tabindex="-1"></a><span class="co"># Confidence intervals </span></span>
+<span id="cb417-8"><a href="simple-linear-regression.html#cb417-8" tabindex="-1"></a><span class="fu">confint</span>(model_2)</span></code></pre></div>
+<pre><code>##                 2.5 %    97.5 %
+## (Intercept) 33.450500 41.119753
+## wt          -6.486308 -4.202635</code></pre>
+<ul>
+<li>At 2.5% confidence interval, the equation to find <code>mpg</code> is <span class="math display">\[mpg  = -6.486 * wt + 33.351\]</span></li>
+<li>At 97.5% confidence interval, the equation to find <code>mpg</code> is <span class="math display">\[mpg  = -4.203 * wt + 41.120\]</span></li>
+</ul>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 </div>
 <div id="identifying-points-in-a-plot" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Identifying Points in a Plot<a href="simple-linear-regression.html#identifying-points-in-a-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
