@@ -36,6 +36,7 @@ basics-of-wilkinson-rogers-notation-y-x-linear-regression
 scatterplots-with-regression-lines-reading-lm-output
 confidence-intervals-for-regression-coefficients-testing-coefficients
 identifying-points-in-a-plot
+hands-on-exercise-3
 reproducibility-and-report-with-r-markdown
 key-tools-in-r-for-reproducibility-and-reporting
 creating-reproducible-reports

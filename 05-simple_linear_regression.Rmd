@@ -169,7 +169,136 @@ confint(model_2)
 - At 2.5% confidence interval, the equation to find `mpg` is $$mpg  = -6.486 * wt + 33.351$$
 - At 97.5% confidence interval, the equation to find `mpg` is $$mpg  = -4.203 * wt + 41.120$$
 
-
 <span style="color: brown;">**________________________________________________________________________________**</span>
 
 ## Identifying Points in a Plot
+
+We made the scatter plot above static. Here, we will enable any researcher to identify specific points in the chart. I will now plot the chart using `ggplot2` library. 
+
+Lets do it
+```{r}
+library(ggplot2)
+
+# Create the data set
+height_data <- data.frame(
+  age = c(5, 10, 15, 20, 25),
+  height = c(110, 130, 150, 160, 170)
+)
+
+# Plot the and label the points 
+ggplot(height_data, 
+       aes(x = age, y = height)) + 
+  geom_point(color = "blue", size=3) + # for scatter plot 
+  geom_smooth(method = "lm", color="red", se = FALSE) + # regression line 
+  geom_text(
+    aes(label = paste("(", age, ",", height, ")", sep="")),
+    vjust = -1, color = "darkgreen") + # For interactiveness 
+  labs(
+    title = "Age vs Height with Identified points", 
+    x = "Age", 
+    y = "Height"
+    ) + 
+  theme_classic()
+```
+
+<span style="color: orange;">**Try it!**</span>
+
+Lets repeat the same with the mtcars data set, we will plot a weight vs fuel consumption (mpg) with identified points in the plots
+
+```{r}
+library(ggplot2)
+
+# Load the data
+data(mtcars)
+
+# Plotting
+ggplot(mtcars, 
+       aes(x = wt, y = mpg)) + 
+  geom_point(color = "blue", size=3) + # for scatter plot 
+  geom_smooth(method = "lm", color="red", se = FALSE) + # regression line 
+  geom_text(
+    aes(label = paste("(", wt, ",", mpg, ")", sep="")),
+    vjust = -1, color = "darkgreen") + # For interactiveness 
+  labs(
+    title = "Wight vs mpg with Identified points", 
+    x = "Weight", 
+    y = "mpg"
+    ) + 
+  theme_classic()
+```
+
+
+## <span style="color: green;">**Hands-On Exercise**</span>
+
+In this exercise, you are required to download the boston housing data set from [here](https://www.kaggle.com/datasets/fedesoriano/the-boston-houseprice-data) and answer the following questions. 
+
+i. Write the simple linear regression equation in form of $y=mx + b$.
+ii. Import the data and fit the linear regression model using the `lm` function to find the relationship between the average number of rooms(`RM`) and the housing price(`MEDV`). `MEDV` is the target variable while `RM` is the independent variable. Generate the summary of the model
+iii. Create a scatter plot; x = `RM` and y = `MEDV`. 
+iv. Add a regression line to the scatter plot. 
+v. Use the `confint()` function to find the coefficients at 2.5% and 97.5 confidence intervals. 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+- Load the data and libraries 
+```{r}
+library(ggplot2)
+
+# Import the data 
+boston_housing_df <- read.csv("data/boston_housing.csv")
+```
+
+
+i. Write the simple linear regression equation.
+$$MEDV = Coefficient * RM + Intercept$$
+
+
+ii. Import the data and fit the linear regression model using the `lm` function to find the relationship between the average number of rooms(`RM`) and the housing price(`MEDV`). `MEDV` is the target variable while `RM` is the independent variable. Generate the summary of the model.
+```{r}
+rm <- boston_housing_df$RM
+medv <- boston_housing_df$MEDV
+
+# Fit a linear regression model
+model_3 <- lm(medv ~ rm)
+
+# Summary of the model
+summary(model_3)
+```
+
+ii. Create a scatter plot; x = `RM` and y = `MEDV`. 
+```{r}
+# Scatter plot of number of rooms and price
+plot(rm, medv,
+     main = "Price vs Number of rooms", 
+     xlab = "Number of rooms",
+     ylab = "Price",pch=19,
+     col = "blue"
+       )
+```
+
+iii. Add a regression line to the scatter plot. 
+```{r}
+# Scatter plot of number of rooms and price
+plot(rm, medv,
+     main = "Price vs Number of rooms", 
+     xlab = "Number of rooms",
+     ylab = "Price",pch=19,
+     col = "blue"
+       )
+
+# Add a regression line 
+abline(model_3, col="red", lwd=2)
+```
+
+iv. Use the `confint()` function to find the coefficients at 2.5% and 97.5 confidence intervals at rewrite the equations with values at each confidence interval. 
+```{r}
+confint(model_3)
+```
+
+- At 2.5% confidence interval, the equation is $$MEDV = 8.279 * RM - 39.877$$
+- At 97.5 confidence level, the equation is $$MEDV = 9.925 * RM - 29.465$$
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
+
+

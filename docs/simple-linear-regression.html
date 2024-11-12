@@ -189,6 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#scatterplots-with-regression-lines-reading-lm-output"><i class="fa fa-check"></i><b>5.2</b> Scatterplots with Regression Lines, Reading lm() Output</a></li>
 <li class="chapter" data-level="5.3" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#confidence-intervals-for-regression-coefficients-testing-coefficients"><i class="fa fa-check"></i><b>5.3</b> Confidence Intervals for Regression Coefficients, Testing Coefficients</a></li>
 <li class="chapter" data-level="5.4" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#identifying-points-in-a-plot"><i class="fa fa-check"></i><b>5.4</b> Identifying Points in a Plot</a></li>
+<li class="chapter" data-level="5.5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#hands-on-exercise-3"><i class="fa fa-check"></i><b>5.5</b> <span style="color: green;"><strong>Hands-On Exercise</strong></span></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="reproducibility-and-report-with-r-markdown.html"><a href="reproducibility-and-report-with-r-markdown.html"><i class="fa fa-check"></i><b>6</b> Reproducibility and Report with R Markdown</a>
 <ul>
@@ -425,6 +426,143 @@ height = c(110, 130, 150, 160, 170)</code></pre>
 </div>
 <div id="identifying-points-in-a-plot" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Identifying Points in a Plot<a href="simple-linear-regression.html#identifying-points-in-a-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We made the scatter plot above static. Here, we will enable any researcher to identify specific points in the chart. I will now plot the chart using <code>ggplot2</code> library.</p>
+<p>Lets do it</p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="simple-linear-regression.html#cb419-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb419-2"><a href="simple-linear-regression.html#cb419-2" tabindex="-1"></a></span>
+<span id="cb419-3"><a href="simple-linear-regression.html#cb419-3" tabindex="-1"></a><span class="co"># Create the data set</span></span>
+<span id="cb419-4"><a href="simple-linear-regression.html#cb419-4" tabindex="-1"></a>height_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb419-5"><a href="simple-linear-regression.html#cb419-5" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>),</span>
+<span id="cb419-6"><a href="simple-linear-regression.html#cb419-6" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="dv">110</span>, <span class="dv">130</span>, <span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">170</span>)</span>
+<span id="cb419-7"><a href="simple-linear-regression.html#cb419-7" tabindex="-1"></a>)</span>
+<span id="cb419-8"><a href="simple-linear-regression.html#cb419-8" tabindex="-1"></a></span>
+<span id="cb419-9"><a href="simple-linear-regression.html#cb419-9" tabindex="-1"></a><span class="co"># Plot the and label the points </span></span>
+<span id="cb419-10"><a href="simple-linear-regression.html#cb419-10" tabindex="-1"></a><span class="fu">ggplot</span>(height_data, </span>
+<span id="cb419-11"><a href="simple-linear-regression.html#cb419-11" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> height)) <span class="sc">+</span> </span>
+<span id="cb419-12"><a href="simple-linear-regression.html#cb419-12" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> <span class="co"># for scatter plot </span></span>
+<span id="cb419-13"><a href="simple-linear-regression.html#cb419-13" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># regression line </span></span>
+<span id="cb419-14"><a href="simple-linear-regression.html#cb419-14" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb419-15"><a href="simple-linear-regression.html#cb419-15" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;(&quot;</span>, age, <span class="st">&quot;,&quot;</span>, height, <span class="st">&quot;)&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)),</span>
+<span id="cb419-16"><a href="simple-linear-regression.html#cb419-16" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span> <span class="co"># For interactiveness </span></span>
+<span id="cb419-17"><a href="simple-linear-regression.html#cb419-17" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb419-18"><a href="simple-linear-regression.html#cb419-18" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Age vs Height with Identified points&quot;</span>, </span>
+<span id="cb419-19"><a href="simple-linear-regression.html#cb419-19" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
+<span id="cb419-20"><a href="simple-linear-regression.html#cb419-20" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Height&quot;</span></span>
+<span id="cb419-21"><a href="simple-linear-regression.html#cb419-21" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb419-22"><a href="simple-linear-regression.html#cb419-22" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
+<p><span style="color: orange;"><strong>Try it!</strong></span></p>
+<p>Lets repeat the same with the mtcars data set, we will plot a weight vs fuel consumption (mpg) with identified points in the plots</p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="simple-linear-regression.html#cb421-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb421-2"><a href="simple-linear-regression.html#cb421-2" tabindex="-1"></a></span>
+<span id="cb421-3"><a href="simple-linear-regression.html#cb421-3" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb421-4"><a href="simple-linear-regression.html#cb421-4" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb421-5"><a href="simple-linear-regression.html#cb421-5" tabindex="-1"></a></span>
+<span id="cb421-6"><a href="simple-linear-regression.html#cb421-6" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb421-7"><a href="simple-linear-regression.html#cb421-7" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, </span>
+<span id="cb421-8"><a href="simple-linear-regression.html#cb421-8" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg)) <span class="sc">+</span> </span>
+<span id="cb421-9"><a href="simple-linear-regression.html#cb421-9" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> <span class="co"># for scatter plot </span></span>
+<span id="cb421-10"><a href="simple-linear-regression.html#cb421-10" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># regression line </span></span>
+<span id="cb421-11"><a href="simple-linear-regression.html#cb421-11" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb421-12"><a href="simple-linear-regression.html#cb421-12" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;(&quot;</span>, wt, <span class="st">&quot;,&quot;</span>, mpg, <span class="st">&quot;)&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)),</span>
+<span id="cb421-13"><a href="simple-linear-regression.html#cb421-13" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span> <span class="co"># For interactiveness </span></span>
+<span id="cb421-14"><a href="simple-linear-regression.html#cb421-14" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb421-15"><a href="simple-linear-regression.html#cb421-15" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Wight vs mpg with Identified points&quot;</span>, </span>
+<span id="cb421-16"><a href="simple-linear-regression.html#cb421-16" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Weight&quot;</span>, </span>
+<span id="cb421-17"><a href="simple-linear-regression.html#cb421-17" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;mpg&quot;</span></span>
+<span id="cb421-18"><a href="simple-linear-regression.html#cb421-18" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb421-19"><a href="simple-linear-regression.html#cb421-19" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
+</div>
+<div id="hands-on-exercise-3" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> <span style="color: green;"><strong>Hands-On Exercise</strong></span><a href="simple-linear-regression.html#hands-on-exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this exercise, you are required to download the boston housing data set from <a href="https://www.kaggle.com/datasets/fedesoriano/the-boston-houseprice-data">here</a> and answer the following questions.</p>
+<ol style="list-style-type: lower-roman">
+<li>Write the simple linear regression equation in form of <span class="math inline">\(y=mx + b\)</span>.</li>
+<li>Import the data and fit the linear regression model using the <code>lm</code> function to find the relationship between the average number of rooms(<code>RM</code>) and the housing price(<code>MEDV</code>). <code>MEDV</code> is the target variable while <code>RM</code> is the independent variable. Generate the summary of the model</li>
+<li>Create a scatter plot; x = <code>RM</code> and y = <code>MEDV</code>.</li>
+<li>Add a regression line to the scatter plot.</li>
+<li>Use the <code>confint()</code> function to find the coefficients at 2.5% and 97.5 confidence intervals.</li>
+</ol>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<ul>
+<li>Load the data and libraries</li>
+</ul>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="simple-linear-regression.html#cb423-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb423-2"><a href="simple-linear-regression.html#cb423-2" tabindex="-1"></a></span>
+<span id="cb423-3"><a href="simple-linear-regression.html#cb423-3" tabindex="-1"></a><span class="co"># Import the data </span></span>
+<span id="cb423-4"><a href="simple-linear-regression.html#cb423-4" tabindex="-1"></a>boston_housing_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/boston_housing.csv&quot;</span>)</span></code></pre></div>
+<ol style="list-style-type: lower-roman">
+<li><p>Write the simple linear regression equation.
+<span class="math display">\[MEDV = Coefficient * RM + Intercept\]</span></p></li>
+<li><p>Import the data and fit the linear regression model using the <code>lm</code> function to find the relationship between the average number of rooms(<code>RM</code>) and the housing price(<code>MEDV</code>). <code>MEDV</code> is the target variable while <code>RM</code> is the independent variable. Generate the summary of the model.</p></li>
+</ol>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="simple-linear-regression.html#cb424-1" tabindex="-1"></a>rm <span class="ot">&lt;-</span> boston_housing_df<span class="sc">$</span>RM</span>
+<span id="cb424-2"><a href="simple-linear-regression.html#cb424-2" tabindex="-1"></a>medv <span class="ot">&lt;-</span> boston_housing_df<span class="sc">$</span>MEDV</span>
+<span id="cb424-3"><a href="simple-linear-regression.html#cb424-3" tabindex="-1"></a></span>
+<span id="cb424-4"><a href="simple-linear-regression.html#cb424-4" tabindex="-1"></a><span class="co"># Fit a linear regression model</span></span>
+<span id="cb424-5"><a href="simple-linear-regression.html#cb424-5" tabindex="-1"></a>model_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv <span class="sc">~</span> rm)</span>
+<span id="cb424-6"><a href="simple-linear-regression.html#cb424-6" tabindex="-1"></a></span>
+<span id="cb424-7"><a href="simple-linear-regression.html#cb424-7" tabindex="-1"></a><span class="co"># Summary of the model</span></span>
+<span id="cb424-8"><a href="simple-linear-regression.html#cb424-8" tabindex="-1"></a><span class="fu">summary</span>(model_3)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = medv ~ rm)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -23.346  -2.547   0.090   2.986  39.433 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -34.671      2.650  -13.08   &lt;2e-16 ***
+## rm             9.102      0.419   21.72   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 6.616 on 504 degrees of freedom
+## Multiple R-squared:  0.4835, Adjusted R-squared:  0.4825 
+## F-statistic: 471.8 on 1 and 504 DF,  p-value: &lt; 2.2e-16</code></pre>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Create a scatter plot; x = <code>RM</code> and y = <code>MEDV</code>.</li>
+</ol>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="simple-linear-regression.html#cb426-1" tabindex="-1"></a><span class="co"># Scatter plot of number of rooms and price</span></span>
+<span id="cb426-2"><a href="simple-linear-regression.html#cb426-2" tabindex="-1"></a><span class="fu">plot</span>(rm, medv,</span>
+<span id="cb426-3"><a href="simple-linear-regression.html#cb426-3" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Price vs Number of rooms&quot;</span>, </span>
+<span id="cb426-4"><a href="simple-linear-regression.html#cb426-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Number of rooms&quot;</span>,</span>
+<span id="cb426-5"><a href="simple-linear-regression.html#cb426-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Price&quot;</span>,<span class="at">pch=</span><span class="dv">19</span>,</span>
+<span id="cb426-6"><a href="simple-linear-regression.html#cb426-6" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb426-7"><a href="simple-linear-regression.html#cb426-7" tabindex="-1"></a>       )</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
+<ol start="3" style="list-style-type: lower-roman">
+<li>Add a regression line to the scatter plot.</li>
+</ol>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="simple-linear-regression.html#cb427-1" tabindex="-1"></a><span class="co"># Scatter plot of number of rooms and price</span></span>
+<span id="cb427-2"><a href="simple-linear-regression.html#cb427-2" tabindex="-1"></a><span class="fu">plot</span>(rm, medv,</span>
+<span id="cb427-3"><a href="simple-linear-regression.html#cb427-3" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Price vs Number of rooms&quot;</span>, </span>
+<span id="cb427-4"><a href="simple-linear-regression.html#cb427-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Number of rooms&quot;</span>,</span>
+<span id="cb427-5"><a href="simple-linear-regression.html#cb427-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Price&quot;</span>,<span class="at">pch=</span><span class="dv">19</span>,</span>
+<span id="cb427-6"><a href="simple-linear-regression.html#cb427-6" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb427-7"><a href="simple-linear-regression.html#cb427-7" tabindex="-1"></a>       )</span>
+<span id="cb427-8"><a href="simple-linear-regression.html#cb427-8" tabindex="-1"></a></span>
+<span id="cb427-9"><a href="simple-linear-regression.html#cb427-9" tabindex="-1"></a><span class="co"># Add a regression line </span></span>
+<span id="cb427-10"><a href="simple-linear-regression.html#cb427-10" tabindex="-1"></a><span class="fu">abline</span>(model_3, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+<ol start="4" style="list-style-type: lower-roman">
+<li>Use the <code>confint()</code> function to find the coefficients at 2.5% and 97.5 confidence intervals at rewrite the equations with values at each confidence interval.</li>
+</ol>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="simple-linear-regression.html#cb428-1" tabindex="-1"></a><span class="fu">confint</span>(model_3)</span></code></pre></div>
+<pre><code>##                  2.5 %     97.5 %
+## (Intercept) -39.876641 -29.464601
+## rm            8.278855   9.925363</code></pre>
+<ul>
+<li>At 2.5% confidence interval, the equation is <span class="math display">\[MEDV = 8.279 * RM - 39.877\]</span></li>
+<li>At 97.5 confidence level, the equation is <span class="math display">\[MEDV = 9.925 * RM - 29.465\]</span></li>
+</ul>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 
 </div>
 </div>
