@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-11-12" />
+<meta name="date" content="2024-11-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,6 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.1" data-path="r-shiny.html"><a href="r-shiny.html#user-interfaceui"><i class="fa fa-check"></i><b>7.1.1</b> User Interface(ui)</a></li>
 <li class="chapter" data-level="7.1.2" data-path="r-shiny.html"><a href="r-shiny.html#server"><i class="fa fa-check"></i><b>7.1.2</b> Server</a></li>
 </ul></li>
+<li class="chapter" data-level="7.2" data-path="r-shiny.html"><a href="r-shiny.html#hands-on-exercise-4"><i class="fa fa-check"></i><b>7.2</b> <span style="color: green;"><strong>Hands-On Exercise</strong></span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="building-r-packages.html"><a href="building-r-packages.html"><i class="fa fa-check"></i><b>8</b> Building R Packages</a>
 <ul>
@@ -364,7 +365,7 @@ shinyApp(ui = ui, server = server)</code></pre>
 <span id="cb444-39"><a href="r-shiny.html#cb444-39" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div>
 <p>Create a folder called <code>"shiny_app_demo"</code> and create an R script file called <code>app.R</code> where you will write the above code.</p>
 <p>After importing <code>shiny</code> and <code>bslib</code> libraries in your current environment run the app by executing the code below</p>
-<pre><code>library
+<pre><code>library(shiny)
 runApp(&quot;shiny_app_demo&quot;)</code></pre>
 <p>This is how the app is expected to show up.
 <img src="images/shiny_app_image_1.png" /></p>
@@ -379,17 +380,16 @@ runApp(&quot;shiny_app_demo&quot;)</code></pre>
 <ol start="3" style="list-style-type: lower-roman">
 <li>Create a UI component by adding the lines below</li>
 </ol>
-<pre><code># Create a UI component 
+<pre><code># UI Component
 ui &lt;- fluidPage(
-  titlePanel(&quot;Scatter Plot Visualizer&quot;), 
+  titlePanel(&quot;Scatter Plot Visualizer&quot;),
   sidebarLayout(
     sidebarPanel(
-      selectInput(&quot;variable&quot;, &quot;Choose Variab;e for x-axis: &quot;,
-                  choices = names(mtcars),
-                  selected = &quot;hp&quot;),
-      mainPanel(
-        plotOutput(&quot;scatterPlot&quot;)
-      )
+      selectInput(&quot;variable&quot;, &quot;Choose Variable for x-axis:&quot;, 
+                  choices = names(mtcars), selected = &quot;hp&quot;)
+    ),
+    mainPanel(
+      plotOutput(&quot;scatterPlot&quot;)
     )
   )
 )
@@ -397,25 +397,117 @@ ui &lt;- fluidPage(
 <ol start="4" style="list-style-type: lower-roman">
 <li>Now add the lines below to create a server component</li>
 </ol>
-<pre><code># Server component
-server&lt;- function(input, output) {
+<pre><code># Server Component
+server &lt;- function(input, output) {
   output$scatterPlot &lt;- renderPlot({
-    plot(mtcars[[input$variable]],
-         mtcars$mpg,
-         xlab = input$variable, 
-         ylab = &quot;mpg&quot;,
+    plot(mtcars[[input$variable]], mtcars$mpg,
+         xlab = input$variable, ylab = &quot;mpg&quot;,
          main = paste(&quot;mpg vs&quot;, input$variable))
   })
 }</code></pre>
 <ol start="22" style="list-style-type: lower-alpha">
 <li>Finally, run the app by adding the line below towards the end of the script</li>
 </ol>
-<pre><code>shinyApp(ui = ui, server = server)</code></pre>
+<pre><code># Run the App
+shinyApp(ui = ui, server = server)</code></pre>
 <ol start="6" style="list-style-type: lower-roman">
-<li>Watch the app in action!</li>
+<li>Run the below script in a different environment and watch the app in action!</li>
 </ol>
-
+<pre><code>library(shiny)
+runApp(&quot;shiny_apps/app_01&quot;)</code></pre>
+<p><span style="color: orange;"><strong>Try it again!</strong></span></p>
+<p>How about we make a bar chart using the built-in iris data set? Yes, we will have the bar chart that allows us to filter different iris species and visualize each characteristics separately. Lets get into action! Follow the steps below.</p>
+<ol style="list-style-type: lower-roman">
+<li>Create a director <code>app_02</code> and add a new R script file called <code>app.R</code>.</li>
+<li>Add the code below to <code>app.R</code> to import the necessary library</li>
+</ol>
+<pre><code>library(shiny)
+library(ggplot2)</code></pre>
+<ol start="3" style="list-style-type: lower-roman">
+<li>Add the ui components with the <code>sidePanel</code>(where the control takes place) and the <code>mainPanel</code> (Where the chart shows up). Add the lines of code below.</li>
+</ol>
+<pre><code># UI Component
+ui &lt;- fluidPage(
+  titlePanel(&quot;Bar Chart Explorer&quot;),
+  sidebarLayout(
+    sidebarPanel(
+      checkboxGroupInput(&quot;species&quot;, &quot;Select Species:&quot;, 
+                         choices = unique(iris$Species), 
+                         selected = unique(iris$Species))
+    ),
+    mainPanel(
+      plotOutput(&quot;barChart&quot;)
+    )
+  )
+)</code></pre>
+<ol start="4" style="list-style-type: lower-roman">
+<li>Add the server component where the calculations will take place. Use the <code>renderPlot</code> to show the app that you need to plot.</li>
+</ol>
+<pre><code># Server Component
+server &lt;- function(input, output) {
+  output$barChart &lt;- renderPlot({
+    filtered_data &lt;- iris[iris$Species %in% input$species, ]
+    ggplot(filtered_data, aes(Species)) +
+      geom_bar(fill = &quot;steelblue&quot;) +
+      labs(title = &quot;Species Count&quot;, x = &quot;Species&quot;, y = &quot;Count&quot;)
+  })
+}</code></pre>
+<ol start="22" style="list-style-type: lower-alpha">
+<li>Add the lines below to complete the script</li>
+</ol>
+<pre><code># Run the App
+shinyApp(ui = ui, server = server)</code></pre>
+<ol start="6" style="list-style-type: lower-roman">
+<li>Finally, run the code below in a different environment to get the app running.</li>
+</ol>
+<pre><code>library(shiny)
+runApp(&quot;shiny_apps/app_02&quot;)</code></pre>
 </div>
+</div>
+<div id="hands-on-exercise-4" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> <span style="color: green;"><strong>Hands-On Exercise</strong></span><a href="r-shiny.html#hands-on-exercise-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this exercise, you will be required to download the Boston housing data set from <a href="https://www.kaggle.com/datasets/fedesoriano/the-boston-houseprice-data">here</a>. Follow the instructions below to create a shiny app.</p>
+<ol style="list-style-type: lower-roman">
+<li>Load the data set</li>
+<li>Your shiny app should have a simple structure with;</li>
+</ol>
+<ul>
+<li>A sidebar panel for inputs</li>
+<li>A main panel to display visualizations</li>
+</ul>
+<ol start="3" style="list-style-type: lower-roman">
+<li>Implement the following functionalities in your app;</li>
+</ol>
+<ul>
+<li>A scatter plot that will allow the user to select an independent variable from the data set(e.g crime rate, number of rooms) to plot against the median house value (<code>MEDV</code>).</li>
+<li>Provide an option for the user to view a histogram of the median house value to understand the distribution of the housing prices.</li>
+<li>Allow the user to select the categorical variable like <code>CHAS</code> to compare distributions of <code>MEDV</code> using a boxplot.</li>
+</ul>
+<ol start="4" style="list-style-type: lower-roman">
+<li>Make sure you use labels and titles for each title to make visualizations easy to understand. Also, comment your code to explain what each part does.</li>
+</ol>
+<p>Here are the app layout requirements;</p>
+<ol style="list-style-type: decimal">
+<li>Side bar panel</li>
+</ol>
+<ul>
+<li>A dropdown menu for selecting an independent variable (e.g., <code>CRIM</code>, <code>RM</code>, <code>TAX</code>) for the scatter plot.</li>
+<li>A checkbox to view the histogram of <code>MEDV</code>.</li>
+<li>A dropdown menu for selecting the categorical variable (<code>CHAS</code>) for the box plot.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Main Panel</li>
+</ol>
+<ul>
+<li>A scatter plot that shows the relationship between the selected variable and <code>MEDV</code>.</li>
+<li>A histogram of <code>MEDV</code> when selected.</li>
+<li>A box plot of <code>MEDV</code> grouped by <code>CHAS</code>.</li>
+</ul>
+<p>Remember to do your work in a folder <code>assignment</code> that will be inside the <code>shiny_apps</code> directory. Create an <code>app.R</code> script.</p>
+<hr />
+<p><span style="color: brown;"><strong>Solution</strong></span></p>
+<p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
+
 </div>
 </div>
             </section>

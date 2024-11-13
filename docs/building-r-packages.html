@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-11-12" />
+<meta name="date" content="2024-11-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,6 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.1" data-path="r-shiny.html"><a href="r-shiny.html#user-interfaceui"><i class="fa fa-check"></i><b>7.1.1</b> User Interface(ui)</a></li>
 <li class="chapter" data-level="7.1.2" data-path="r-shiny.html"><a href="r-shiny.html#server"><i class="fa fa-check"></i><b>7.1.2</b> Server</a></li>
 </ul></li>
+<li class="chapter" data-level="7.2" data-path="r-shiny.html"><a href="r-shiny.html#hands-on-exercise-4"><i class="fa fa-check"></i><b>7.2</b> <span style="color: green;"><strong>Hands-On Exercise</strong></span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="building-r-packages.html"><a href="building-r-packages.html"><i class="fa fa-check"></i><b>8</b> Building R Packages</a>
 <ul>
@@ -271,17 +272,17 @@ install.packages(&quot;roxygen2&quot;)</code></pre>
 <p>For large projects it is recommended to group similar functions in the same R file.</p>
 <p><strong>Step 3</strong></p>
 <p>In our new R package, we will write both the two functions discussed above in the same file called, <code>temp_conversion.R</code> that has the code below;</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="building-r-packages.html#cb451-1" tabindex="-1"></a><span class="co"># Convert from Fahrenheit to Celsius</span></span>
-<span id="cb451-2"><a href="building-r-packages.html#cb451-2" tabindex="-1"></a>F_to_C <span class="ot">&lt;-</span> <span class="cf">function</span>(F_temp){</span>
-<span id="cb451-3"><a href="building-r-packages.html#cb451-3" tabindex="-1"></a>  C_temp <span class="ot">&lt;-</span> (F_temp <span class="sc">-</span><span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">9</span></span>
-<span id="cb451-4"><a href="building-r-packages.html#cb451-4" tabindex="-1"></a>  <span class="fu">return</span> (C_temp)</span>
-<span id="cb451-5"><a href="building-r-packages.html#cb451-5" tabindex="-1"></a>}</span>
-<span id="cb451-6"><a href="building-r-packages.html#cb451-6" tabindex="-1"></a></span>
-<span id="cb451-7"><a href="building-r-packages.html#cb451-7" tabindex="-1"></a><span class="co"># Convert from Celsius to Fahrenheit</span></span>
-<span id="cb451-8"><a href="building-r-packages.html#cb451-8" tabindex="-1"></a>C_to_F <span class="ot">&lt;-</span> <span class="cf">function</span>(C_temp){</span>
-<span id="cb451-9"><a href="building-r-packages.html#cb451-9" tabindex="-1"></a>  F_temp <span class="ot">&lt;-</span> (C_temp <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span></span>
-<span id="cb451-10"><a href="building-r-packages.html#cb451-10" tabindex="-1"></a>  <span class="fu">return</span>(F_temp)</span>
-<span id="cb451-11"><a href="building-r-packages.html#cb451-11" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="building-r-packages.html#cb457-1" tabindex="-1"></a><span class="co"># Convert from Fahrenheit to Celsius</span></span>
+<span id="cb457-2"><a href="building-r-packages.html#cb457-2" tabindex="-1"></a>F_to_C <span class="ot">&lt;-</span> <span class="cf">function</span>(F_temp){</span>
+<span id="cb457-3"><a href="building-r-packages.html#cb457-3" tabindex="-1"></a>  C_temp <span class="ot">&lt;-</span> (F_temp <span class="sc">-</span><span class="dv">32</span>) <span class="sc">*</span> <span class="dv">5</span><span class="sc">/</span><span class="dv">9</span></span>
+<span id="cb457-4"><a href="building-r-packages.html#cb457-4" tabindex="-1"></a>  <span class="fu">return</span> (C_temp)</span>
+<span id="cb457-5"><a href="building-r-packages.html#cb457-5" tabindex="-1"></a>}</span>
+<span id="cb457-6"><a href="building-r-packages.html#cb457-6" tabindex="-1"></a></span>
+<span id="cb457-7"><a href="building-r-packages.html#cb457-7" tabindex="-1"></a><span class="co"># Convert from Celsius to Fahrenheit</span></span>
+<span id="cb457-8"><a href="building-r-packages.html#cb457-8" tabindex="-1"></a>C_to_F <span class="ot">&lt;-</span> <span class="cf">function</span>(C_temp){</span>
+<span id="cb457-9"><a href="building-r-packages.html#cb457-9" tabindex="-1"></a>  F_temp <span class="ot">&lt;-</span> (C_temp <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span></span>
+<span id="cb457-10"><a href="building-r-packages.html#cb457-10" tabindex="-1"></a>  <span class="fu">return</span>(F_temp)</span>
+<span id="cb457-11"><a href="building-r-packages.html#cb457-11" tabindex="-1"></a>}</span></code></pre></div>
 <p>That is the whole file for now, it has less than 15 lines of code.</p>
 <p><img src="images/temp_conversion_image.png" /></p>
 <p><strong>Step 4</strong></p>
@@ -291,15 +292,15 @@ Type: Package
 Title: Temperature Conversion Package for Demonstration
 Version: 0.0.1.0</code></pre>
 <p>This is now a working R package and can be loaded by;</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="building-r-packages.html#cb453-1" tabindex="-1"></a><span class="fu">library</span>(devtools);</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="building-r-packages.html#cb459-1" tabindex="-1"></a><span class="fu">library</span>(devtools);</span></code></pre></div>
 <pre><code>## Loading required package: usethis</code></pre>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="building-r-packages.html#cb455-1" tabindex="-1"></a><span class="fu">load_all</span>(<span class="st">&quot;F2C_R_package&quot;</span>) <span class="co"># Load the directory path to where the package is</span></span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="building-r-packages.html#cb461-1" tabindex="-1"></a><span class="fu">load_all</span>(<span class="st">&quot;F2C_R_package&quot;</span>) <span class="co"># Load the directory path to where the package is</span></span></code></pre></div>
 <pre><code>## ℹ Loading F2CTempConverter</code></pre>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="building-r-packages.html#cb457-1" tabindex="-1"></a><span class="co"># Lets convert the temperature from Fahrenheit to Celsius</span></span>
-<span id="cb457-2"><a href="building-r-packages.html#cb457-2" tabindex="-1"></a><span class="fu">F_to_C</span>(<span class="dv">79</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="building-r-packages.html#cb463-1" tabindex="-1"></a><span class="co"># Lets convert the temperature from Fahrenheit to Celsius</span></span>
+<span id="cb463-2"><a href="building-r-packages.html#cb463-2" tabindex="-1"></a><span class="fu">F_to_C</span>(<span class="dv">79</span>)</span></code></pre></div>
 <pre><code>## [1] 26.11111</code></pre>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="building-r-packages.html#cb459-1" tabindex="-1"></a><span class="co"># Converting from Celsius to Fahreinheit</span></span>
-<span id="cb459-2"><a href="building-r-packages.html#cb459-2" tabindex="-1"></a><span class="fu">C_to_F</span>(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="building-r-packages.html#cb465-1" tabindex="-1"></a><span class="co"># Converting from Celsius to Fahreinheit</span></span>
+<span id="cb465-2"><a href="building-r-packages.html#cb465-2" tabindex="-1"></a><span class="fu">C_to_F</span>(<span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## [1] 68</code></pre>
 <p>After this its good to add documentation to help users know what the function does.</p>
 </div>

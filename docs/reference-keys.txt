@@ -45,6 +45,7 @@ r-shiny
 structure-of-a-shiny-app
 user-interfaceui
 server
+hands-on-exercise-4
 building-r-packages
 introduction
 prerequisites

@@ -206,4 +206,94 @@ library(shiny)
 runApp("shiny_apps/app_01")
 ```
 
+<span style="color: orange;">**Try it again!**</span>
 
+How about we make a bar chart using the built-in iris data set? Yes, we will have the bar chart that allows us to filter different iris species and visualize each characteristics separately. Lets get into action! Follow the steps below. 
+
+i. Create a director `app_02` and add a new R script file called `app.R`. 
+ii. Add the code below to `app.R` to import the necessary library
+```
+library(shiny)
+library(ggplot2)
+```
+iii. Add the ui components with the `sidePanel`(where the control takes place) and the `mainPanel` (Where the chart shows up). Add the lines of code below. 
+```
+# UI Component
+ui <- fluidPage(
+  titlePanel("Bar Chart Explorer"),
+  sidebarLayout(
+    sidebarPanel(
+      checkboxGroupInput("species", "Select Species:", 
+                         choices = unique(iris$Species), 
+                         selected = unique(iris$Species))
+    ),
+    mainPanel(
+      plotOutput("barChart")
+    )
+  )
+)
+```
+iv. Add the server component where the calculations will take place. Use the `renderPlot` to show the app that you need to plot.
+```
+# Server Component
+server <- function(input, output) {
+  output$barChart <- renderPlot({
+    filtered_data <- iris[iris$Species %in% input$species, ]
+    ggplot(filtered_data, aes(Species)) +
+      geom_bar(fill = "steelblue") +
+      labs(title = "Species Count", x = "Species", y = "Count")
+  })
+}
+```
+v. Add the lines below to complete the script
+```
+# Run the App
+shinyApp(ui = ui, server = server)
+```
+vi. Finally, run the code below in a different environment to get the app running. 
+```
+library(shiny)
+runApp("shiny_apps/app_02")
+```
+
+## <span style="color: green;">**Hands-On Exercise**</span>
+
+In this exercise, you will be required to download the Boston housing data set from [here]( https://www.kaggle.com/datasets/fedesoriano/the-boston-houseprice-data). Follow the instructions below to create a shiny app. 
+
+i. Load the data set
+ii. Your shiny app should have a simple structure with; 
+  
+  - A sidebar panel for inputs 
+  - A main panel to display visualizations 
+
+iii. Implement the following functionalities in your app;
+
+  - A scatter plot that will allow the user to select an independent variable from the data set(e.g crime rate, number of rooms) to plot against the median house value (`MEDV`). 
+  - Provide an option for the user to view a histogram of the median house value to understand  the distribution of the housing prices. 
+  - Allow the user to select the categorical variable like `CHAS` to compare distributions of `MEDV` using a boxplot. 
+  
+iv. Make sure you use labels and titles for each title to make visualizations easy to understand. Also, comment your code to explain what each part does. 
+
+Here are the app layout requirements;
+
+1. Side bar panel
+
+  * A dropdown menu for selecting an independent variable (e.g., `CRIM`, `RM`, `TAX`) for the scatter plot.
+  * A checkbox to view the histogram of `MEDV`.
+  * A dropdown menu for selecting the categorical variable (`CHAS`) for the box plot.
+  
+2. Main Panel
+
+  * A scatter plot that shows the relationship between the selected variable and `MEDV`.
+  * A histogram of `MEDV` when selected.
+  * A box plot of `MEDV` grouped by `CHAS`.
+  
+
+Remember to do your work in a folder `assignment` that will be inside the `shiny_apps` directory. Create an `app.R` script. 
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
