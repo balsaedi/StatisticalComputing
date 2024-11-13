@@ -8,7 +8,7 @@ In this course you have encountered several packages like `dplyr`, `plyr` and `g
 
 CRAN(The Comprehensive R Archive Network) and GitHub provide a repository where one can host and install packages to their local environments. 
 
-In this guide, we will walk through how to create a package and host the packages either on GitHub or CRAN. 
+In this guide, we will walk through how to create a package and host the packages either on GitHub.
 
 ## Prerequisites 
 
@@ -27,7 +27,7 @@ It might be necessary to restart R studio after installing the above packages
 
 ## Building a simple R package
 
-Here is where the fun begin! We will create a simple R package to serve you with the basics of building packages. The package will involve tow functions; 
+Here is where the fun begin! We will create a simple R package to serve you with the basics of building packages. The package will involve two functions; 
 
 i. A function to convert temperature from degrees Fahrenheit($^oF$) to degrees Celsius($^oC$). 
 ii. A function to convert temperature from degrees Celsius($^oC$) to degrees Fahrenheit($^oF$).
@@ -202,13 +202,13 @@ Now that we have package read and working we can upload to github for sharing an
 1. Visit [github](https://github.com) and sign in(or sign up if you don't have an account)
 2. Click the **New** button to create a new repository. 
 3. Name the repository ideally the same as the package name. In our case we will name our repository `F2C_R_package`. Add a description and make the repository public so that anyone can access it. Don't initialize a README file since you will pushing your files from R Studio. 
-4. Finnaly click **Create repository**. 
+4. Finally click **Create repository**. 
 
 **Step 2: Set up Git in R Studio**
 
 1. Open your package project in R Studio. 
 2. Go to `Tools > Project Options > Git/SVN` and select `Git` to enable version control. 
-3. T o commit you package to GitHub, first make sure you have git installed locally then link your R Studio project to your zGitHub repository using the following commands in the terminal. 
+3. T o commit you package to GitHub, first make sure you have git installed locally then link your R Studio project to your GitHub repository using the following commands in the terminal. 
 
 ```
 # Intialize git in the project 

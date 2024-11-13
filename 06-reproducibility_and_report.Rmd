@@ -16,8 +16,6 @@ Let's dive into the tools that make reproducibility and reporting a breeze in R:
 
   - **Interactive Demo:** Create an R Markdown file in RStudio by clicking File > New File > R Markdown…. You can add headers, code chunks, and text.
   - **Run Your Code:** Run each chunk individually, or click Knit to create a fully formatted report with all your code and outputs embedded.
-  
-Find [here]() more resources on R markdown. **________remember the resources_______**
 
 2. **Setting a Seed fr Consistency:** R’s random number generator can be controlled with `set.seed()`. For instance;
 ```{r}

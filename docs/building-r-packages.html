@@ -242,7 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the second chapter we introduced about functions and we later talked about package functions, here we will now focus on how to build those packages. Packages are bundles of code and data to perform created by R users or community to perform a set of goven tasks.</p>
 <p>In this course you have encountered several packages like <code>dplyr</code>, <code>plyr</code> and <code>ggplot2</code> and might have installed one or many of them. Packages provide a ready-to-use functions and data sets that produce results faster without the need to write everything from scratch. Here we will discuss how you can create you own package in R. This will give you a deeper appreciation of the packages you rely on daily basis and how they are built.</p>
 <p>CRAN(The Comprehensive R Archive Network) and GitHub provide a repository where one can host and install packages to their local environments.</p>
-<p>In this guide, we will walk through how to create a package and host the packages either on GitHub or CRAN.</p>
+<p>In this guide, we will walk through how to create a package and host the packages either on GitHub.</p>
 </div>
 <div id="prerequisites" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Prerequisites<a href="building-r-packages.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -257,7 +257,7 @@ install.packages(&quot;roxygen2&quot;)</code></pre>
 </div>
 <div id="building-a-simple-r-package" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Building a simple R package<a href="building-r-packages.html#building-a-simple-r-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Here is where the fun begin! We will create a simple R package to serve you with the basics of building packages. The package will involve tow functions;</p>
+<p>Here is where the fun begin! We will create a simple R package to serve you with the basics of building packages. The package will involve two functions;</p>
 <ol style="list-style-type: lower-roman">
 <li>A function to convert temperature from degrees Fahrenheit(<span class="math inline">\(^oF\)</span>) to degrees Celsius(<span class="math inline">\(^oC\)</span>).</li>
 <li>A function to convert temperature from degrees Celsius(<span class="math inline">\(^oC\)</span>) to degrees Fahrenheit(<span class="math inline">\(^oF\)</span>).</li>
@@ -382,13 +382,13 @@ load_all(&quot;F2C_R_package&quot;)</code></pre>
 <li>Visit <a href="https://github.com">github</a> and sign in(or sign up if you don’t have an account)</li>
 <li>Click the <strong>New</strong> button to create a new repository.</li>
 <li>Name the repository ideally the same as the package name. In our case we will name our repository <code>F2C_R_package</code>. Add a description and make the repository public so that anyone can access it. Don’t initialize a README file since you will pushing your files from R Studio.</li>
-<li>Finnaly click <strong>Create repository</strong>.</li>
+<li>Finally click <strong>Create repository</strong>.</li>
 </ol>
 <p><strong>Step 2: Set up Git in R Studio</strong></p>
 <ol style="list-style-type: decimal">
 <li>Open your package project in R Studio.</li>
 <li>Go to <code>Tools &gt; Project Options &gt; Git/SVN</code> and select <code>Git</code> to enable version control.</li>
-<li>T o commit you package to GitHub, first make sure you have git installed locally then link your R Studio project to your zGitHub repository using the following commands in the terminal.</li>
+<li>T o commit you package to GitHub, first make sure you have git installed locally then link your R Studio project to your GitHub repository using the following commands in the terminal.</li>
 </ol>
 <pre><code># Intialize git in the project 
 git init 
