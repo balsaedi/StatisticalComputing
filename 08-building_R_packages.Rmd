@@ -87,7 +87,7 @@ load_all("F2C_R_package") # Load the directory path to where the package is
 # Lets convert the temperature from Fahrenheit to Celsius
 F_to_C(79)
 
-# Converting from Celsius to Fahreinheit
+# Converting from Celsius to Fahrenheit
 C_to_F(20)
 ```
 
@@ -265,3 +265,17 @@ Create a package called weight converter that converts mass from Kilograms(kg) t
 - Add README file to show how to install and use the file 
 - Install on your local machine from GitHub using `devtools` library. 
 - Finally, test your newly installed package and run some code.
+
+_______________________________________________________________________
+<span style="color: brown;">**Solution**</span> 
+
+Instruction to; 
+
+- Test the functionalities (Function to convert Kilos to pounds and back)
+- Check documentation
+- Check version tagged in the `DESCRIPTION` file. 
+- Check if package pushed to github(optional)
+
+Complete Solution in `K2P_R_package` directory
+
+<span style="color: brown;">**________________________________________________________________________________**</span>
