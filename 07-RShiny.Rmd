@@ -294,6 +294,6 @@ Remember to do your work in a folder `assignment` that will be inside the `shiny
 _______________________________________________________________________
 <span style="color: brown;">**Solution**</span> 
 
-
+Check the `app.R` file in `shiny_apps/assignment/` directory. 
 
 <span style="color: brown;">**________________________________________________________________________________**</span>
