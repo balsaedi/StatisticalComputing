@@ -241,8 +241,6 @@ library(openxlsx)
 write.xlsx(students_imported, "data/students_exported.xlsx")
 ```
 
-<span style="color: green;">**Practical Exercise**</span>
-
 ## Data Cleaning 
 
 Before you analyze data, it is crucial to ensure that it is clean. Here are some common issues in data cleaning;
@@ -338,13 +336,6 @@ dim(df_cleaned)
 ```
 
 - Only one row had outliers and was removed. The data is now clean and ready for further analysis. 
-
-<span style="color: green;">**Practical Exercise**</span>
-
-_______________________________________________________________________
-<span style="color: brown;">**Solution**</span> 
-
-<span style="color: brown;">**________________________________________________________________________________**</span>
 
 ## Data Visualization
 
