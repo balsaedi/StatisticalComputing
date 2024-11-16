@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-11-15" />
+<meta name="date" content="2024-11-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -507,6 +507,90 @@ runApp(&quot;shiny_apps/app_02&quot;)</code></pre>
 <hr />
 <p><span style="color: brown;"><strong>Solution</strong></span></p>
 <p>Check the <code>app.R</code> file in <code>shiny_apps/assignment/</code> directory.</p>
+<p>This is how the app is created and run;</p>
+<ul>
+<li>Create a directory <code>assignment</code> in the <code>shiny_apps</code>.</li>
+<li>Within the <code>assignment</code> directory create an R script <code>app.R</code>.</li>
+<li>Add the code below to install and import the necessary libraries.</li>
+</ul>
+<pre><code># Install the library 
+install.packages(&quot;shiny&quot;)
+
+# Load necessary libraries
+library(shiny)
+library(ggplot2) # for plotting</code></pre>
+<ul>
+<li>Thereafter, add the lines to below to the <code>app.R</code> file to create a UI component.</li>
+</ul>
+<pre><code># Define UI for the app
+ui &lt;- fluidPage(
+  titlePanel(&quot;Boston Housing Data Explorer&quot;),
+  
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(&quot;xvar&quot;, &quot;Choose a variable for Scatter Plot:&quot;,
+                  choices = names(boston_df)[-14], # Excluding &#39;medv&#39; as it&#39;s the dependent variable
+                  selected = &quot;RM&quot;),  # Default selection
+      selectInput(&quot;box_var&quot;, &quot;Choose a variable for Box Plot:&quot;,
+                  choices = names(boston_df), selected = &quot;MEDV&quot;),
+      checkboxInput(&quot;show_hist&quot;, &quot;Show Histogram of MEDV&quot;, FALSE)
+    ),
+    
+    mainPanel(
+      plotOutput(&quot;scatterPlot&quot;),
+      plotOutput(&quot;boxPlot&quot;),
+      plotOutput(&quot;histPlot&quot;)
+    )
+  )
+)</code></pre>
+<ul>
+<li>Now that the UI is ready, add the lines below to create the server logic for the app.</li>
+</ul>
+<pre><code># Define server logic for the app
+server &lt;- function(input, output) {
+  
+  # Scatter Plot: Selected variable vs Median House Value (medv)
+  output$scatterPlot &lt;- renderPlot({
+    ggplot(boston_df, aes_string(x = input$xvar, y = &quot;MEDV&quot;)) +
+      geom_point(color = &quot;blue&quot;, alpha = 0.6) +
+      geom_smooth(method = &quot;lm&quot;, col = &quot;red&quot;, se = FALSE) +
+      labs(title = paste(&quot;Scatter Plot of&quot;, input$xvar, &quot;vs Median House Value&quot;),
+           x = input$xvar, y = &quot;Median House Value (MEDV)&quot;) +
+      theme_minimal()
+  })
+  
+  # Box Plot of MEDV by Categorical Variable
+  output$boxPlot &lt;- renderPlot({
+    ggplot(boston_df, aes_string(y = input$box_var)) +
+      geom_boxplot(fill = &quot;lightgreen&quot;, color = &quot;darkgreen&quot;) +
+      labs(title = paste(&quot;Box Plot of Median House Value by&quot;, input$box_var),
+           x = input$box_var) +
+      theme_minimal()
+  })
+  
+  # Histogram of MEDV
+  output$histPlot &lt;- renderPlot({
+    if (input$show_hist) {
+      ggplot(boston_df, aes(x = MEDV)) +
+        geom_histogram(binwidth = 5, fill = &quot;skyblue&quot;, color = &quot;black&quot;, alpha = 0.7) +
+        labs(title = &quot;Histogram of Median House Value (MEDV)&quot;,
+             x = &quot;Median House Value&quot;, y = &quot;Frequency&quot;) +
+        theme_minimal()
+    }
+  })
+}</code></pre>
+<ul>
+<li>The UI and server is ready. Finally, we need to add the lines below to enable the app to run.</li>
+</ul>
+<pre><code># Run the app
+shinyApp(ui = ui, server = server)</code></pre>
+<ul>
+<li>Save the file and run the below line to the console to get the app running.</li>
+</ul>
+<pre><code>library(shiny)
+runApp(&quot;shiny_apps/assignment/app.R&quot;)</code></pre>
+<p>Here is how the app will look like
+<img src="images/app_assignment.png" /></p>
 <p><span style="color: brown;"><strong>________________________________________________________________________________</strong></span></p>
 
 </div>

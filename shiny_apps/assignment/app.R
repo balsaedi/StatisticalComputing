@@ -1,5 +1,6 @@
 # Load necessary libraries
 library(shiny)
+library(ggplot2) # for plotting
 
 # Load the data 
 boston_df <- read.csv("../../data/boston_housing.csv")
